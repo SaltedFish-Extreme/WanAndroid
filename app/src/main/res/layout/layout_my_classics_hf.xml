@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?><!--填充式自定义刷新加载布局-->
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="@dimen/dp_20"
+    tools:background="?android:background"
+    tools:parentTag="android.widget.RelativeLayout">
+
+    <ImageView
+        android:id="@+id/iv_my_classics_hf_state"
+        android:layout_width="@dimen/dp_16"
+        android:layout_height="@dimen/dp_16"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/dp_8"
+        android:layout_toStartOf="@id/tv_my_classics_hf_content"
+        android:contentDescription="@android:string/unknownName"
+        app:tint="@android:color/darker_gray" />
+
+    <TextView
+        android:id="@+id/tv_my_classics_hf_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:lines="1"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="@dimen/sp_14" />
+</merge>

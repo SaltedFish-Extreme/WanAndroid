@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?><!--设置页-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.hjq.bar.TitleBar
+        android:id="@+id/title_bar"
+        style="@style/TitleBar"
+        app:title="@string/setting" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dp_15">
+
+        <com.example.wanAndroid.widget.settingbar.SettingBar
+            style="@style/SettingBar"
+            app:bar_leftText="@string/setting_dark"
+            app:bar_rightDrawable="@null">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/setting_dark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="@dimen/dp_20"
+                tools:ignore="TouchTargetSizeCheck" />
+        </com.example.wanAndroid.widget.settingbar.SettingBar>
+
+        <com.example.wanAndroid.widget.settingbar.SettingBar
+            android:id="@+id/setting_clear"
+            style="@style/SettingBar"
+            app:bar_leftText="@string/setting_clear"
+            app:bar_rightText="@string/setting_cache" />
+
+        <com.example.wanAndroid.widget.settingbar.SettingBar
+            android:id="@+id/setting_scan"
+            style="@style/SettingBar"
+            app:bar_leftText="@string/setting_scan"
+            app:bar_rightText="@string/setting_recommend" />
+
+        <com.example.wanAndroid.widget.settingbar.SettingBar
+            android:id="@+id/setting_update"
+            style="@style/SettingBar"
+            app:bar_leftText="@string/setting_update"
+            app:bar_rightText="@string/setting_version" />
+
+        <com.example.wanAndroid.widget.settingbar.SettingBar
+            android:id="@+id/setting_web"
+            style="@style/SettingBar"
+            app:bar_leftText="@string/setting_web"
+            app:bar_rightText="@string/setting_site" />
+
+        <com.example.wanAndroid.widget.settingbar.SettingBar
+            android:id="@+id/setting_project"
+            style="@style/SettingBar"
+            app:bar_leftText="@string/setting_project"
+            app:bar_rightText="@string/setting_code" />
+
+        <com.example.wanAndroid.widget.settingbar.SettingBar
+            android:id="@+id/setting_copyright"
+            style="@style/SettingBar"
+            app:bar_leftText="@string/setting_copyright"
+            app:bar_rightText="@string/setting_tips" />
+
+        <com.example.wanAndroid.widget.settingbar.SettingBar
+            android:id="@+id/setting_about"
+            style="@style/SettingBar"
+            app:bar_leftText="@string/setting_about"
+            app:bar_rightText="@string/setting_desc" />
+
+    </LinearLayout>
+
+</LinearLayout>

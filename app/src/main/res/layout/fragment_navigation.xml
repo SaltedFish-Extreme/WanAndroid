@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?><!--通用带垂直导航栏及rv的片段-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".ui.fragment.NavigationFragment">
+
+    <q.rorbin.verticaltablayout.VerticalTabLayout
+        android:id="@+id/vertical_tab_layout"
+        android:layout_width="@dimen/dp_110"
+        android:layout_height="match_parent"
+        android:contentDescription="@android:string/unknownName"
+        app:indicator_color="@color/color_vertical_tab_layout_fill"
+        app:indicator_gravity="fill"
+        app:tab_height="@dimen/dp_50"
+        app:tab_margin="@dimen/dp_5"
+        app:tab_mode="scrollable" />
+
+    <View
+        android:layout_width="@dimen/dp_0.5"
+        android:layout_height="match_parent"
+        android:background="@color/color_line_divider_bg" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_navigation_list" />
+
+</LinearLayout>

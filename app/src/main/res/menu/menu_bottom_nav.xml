@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?><!--首页底部选项卡menu-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--id和nav_bottom中保持一致-->
+    <item
+        android:id="@+id/home_page"
+        android:icon="@drawable/ic_menu_home"
+        android:title="@string/home_fragment" />
+
+    <item
+        android:id="@+id/project_page"
+        android:icon="@drawable/ic_menu_project"
+        android:title="@string/project_fragment" />
+
+    <item
+        android:id="@+id/square_page"
+        android:icon="@drawable/ic_menu_square"
+        android:title="@string/square_fragment" />
+
+    <item
+        android:id="@+id/platform_page"
+        android:icon="@drawable/ic_menu_platform"
+        android:title="@string/platform_fragment" />
+
+    <item
+        android:id="@+id/mine_page"
+        android:icon="@drawable/ic_menu_mine"
+        android:title="@string/mine_fragment" />
+
+</menu>

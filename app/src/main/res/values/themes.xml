@@ -1,0 +1,97 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.WanAndroid" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/super_blue</item>
+        <item name="colorPrimaryVariant">@android:color/holo_orange_dark</item>
+        <item name="colorOnPrimary">@android:color/darker_gray</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/violet</item>
+        <item name="colorSecondaryVariant">@color/super_blue</item>
+        <item name="colorOnSecondary">@android:color/background_light</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <!--闪屏页主题-->
+    <style name="Theme.WanAndroid.SplashTheme">
+        <!--启动页背景-->
+        <item name="android:windowBackground">@drawable/bg_project</item>
+        <!--全屏-->
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <!--弹出菜单主题-->
+    <style name="PopupMenuStyle" parent="@style/Widget.AppCompat.PopupMenu.Overflow">
+        <!--使弹出菜单和标题栏不重叠-->
+        <item name="overlapAnchor">false</item>
+    </style>
+
+    <!--自定义Toolbar样式-->
+    <style name="KToolbarStyle" parent="@style/Widget.AppCompat.Toolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <!--导航按钮图标，这里注释，在代码中定义ActionBarDrawerToggle-->
+        <!--<item name="navigationIcon">@drawable/ic_menu</item>-->
+        <item name="titleTextAppearance">@style/KToolbarTitleAppearance</item>
+    </style>
+    <!--自定义Toolbar标题-->
+    <style name="KToolbarTitleAppearance" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">@dimen/sp_18</item>
+        <!--标题文本颜色，这里注释，为了适配夜间主题自动切换颜色-->
+        <!--<item name="android:textColor">@android:color/black</item>-->
+    </style>
+
+    <!--标签框通用样式-->
+    <style name="ShapeTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/dp_8</item>
+        <item name="android:padding">@dimen/dp_4</item>
+        <item name="android:textSize">@dimen/sp_10</item>
+    </style>
+
+    <!--标题栏通用样式-->
+    <style name="TitleBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/color_floating_button</item>
+        <item name="android:paddingTop">@dimen/dp_20</item>
+        <item name="leftIcon">@drawable/ic_back</item>
+        <item name="leftIconTint">@color/color_ic_bg_tint</item>
+        <item name="rightIconTint">@color/color_ic_bg_tint</item>
+        <item name="titleColor">?android:attr/textColorPrimary</item>
+        <item name="titleSize">@dimen/sp_20</item>
+        <item name="lineVisible">false</item>
+    </style>
+
+    <!--设置栏通用样式-->
+    <style name="SettingBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">?android:attr/colorBackground</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="bar_leftTextSize">@dimen/sp_16</item>
+        <item name="bar_leftTextColor">?android:attr/textColorPrimary</item>
+        <item name="bar_leftDrawablePadding">@dimen/dp_20</item>
+        <item name="bar_leftDrawableTint">@color/color_drawable_bg_tint</item>
+        <item name="bar_rightTextColor">?android:attr/textColorSecondary</item>
+        <item name="bar_rightDrawable">@drawable/ic_arrows_right</item>
+        <item name="bar_rightDrawableTint">@color/color_ic_bg_tint</item>
+        <item name="bar_lineVisible">false</item>
+    </style>
+
+    <!--ShapeAbleImageView 圆角-->
+    <style name="RoundedStyle">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10dp</item>
+    </style>
+
+    <!--ShapeAbleImageView 圆 -->
+    <style name="CircleStyle">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+</resources>

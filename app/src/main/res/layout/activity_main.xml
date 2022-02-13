@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?><!--主页--><!--侧滑栏视图-->
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
+    tools:openDrawer="start">
+
+    <!--主页面-->
+    <!--监听子控件事件的FrameLayout-->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!--应用栏滚动手势-->
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <!--自定义工具栏-->
+            <com.example.wanAndroid.widget.toolbar.Toolbar
+                android:id="@+id/toolbar"
+                style="@style/KToolbarStyle"
+                android:layout_marginTop="@dimen/dp_20"
+                app:layout_scrollFlags="scroll|enterAlways" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <!--给 Fragment管理容器 底部导航栏 设置layout_behavior视图滚动行为-->
+        <!--Fragment管理容器
+        name指定NavHost实现类名称，默认androidx.navigation.fragment.NavHostFragment，
+        defaultNavHost为false表示不拦截系统返回按钮，否则按返回键切换回主页Fragment，
+        navGraph指定要绑定的导航图，可在代码中配置，这里在xml里配置
+        不使用navGraph时需添加layout使用页面占位，屏蔽预览图警告-->
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/nav_host_fragment"
+            android:name="com.example.wanAndroid.widget.navigation.MyNavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:defaultNavHost="false"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:navGraph="@navigation/nav_bottom" />
+
+        <!--底部导航栏
+        当background设置为透明色时，
+        需要设置outlineProvider="none"不为view绘制阴影，
+        否则需要设置outlineSpotShadowColor绘制阴影颜色，需api>=28-->
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/black_translucent"
+            android:outlineProvider="none"
+            app:layout_behavior="com.example.wanAndroid.widget.behavior.BottomNavigationBehavior"
+            app:menu="@menu/menu_bottom_nav" />
+
+        <!--悬浮按钮-->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="@dimen/dp_20"
+            android:layout_marginBottom="@dimen/dp_70"
+            android:contentDescription="@android:string/unknownName"
+            android:visibility="invisible"
+            app:backgroundTint="@color/color_floating_button"
+            app:srcCompat="@drawable/ic_arrow_upward" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <!--侧滑栏-->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/layout_nav_header"
+        app:itemIconSize="@dimen/dp_22"
+        app:menu="@menu/menu_nav" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

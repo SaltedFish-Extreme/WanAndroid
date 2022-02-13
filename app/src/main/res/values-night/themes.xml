@@ -1,0 +1,14 @@
+<!--夜间主题差异型编程-->
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.WanAndroid" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+        <!--图标填充颜色-->
+        <item name="iconTint">@color/white</item>
+        <!--位图填充颜色-->
+        <item name="drawableTint">@color/white</item>
+        <!--子图标填充颜色-->
+        <item name="itemIconTint">@color/selector_color_bottom_navigation_night</item>
+        <!--子文本填充颜色-->
+        <item name="itemTextColor">@color/selector_color_bottom_navigation_night</item>
+    </style>
+</resources>

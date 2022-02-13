@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?><!--填充式自定义轮播图布局-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:foreground="?attr/selectableItemBackground">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@android:string/unknownName"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/banner_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/black_translucent"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:lines="1"
+        android:padding="@dimen/dp_10"
+        android:paddingStart="@dimen/dp_10"
+        android:paddingEnd="@dimen/dp_40"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

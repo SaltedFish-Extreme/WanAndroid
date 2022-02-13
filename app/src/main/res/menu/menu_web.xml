@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?><!--web页面右侧menu-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/web_collect"
+        android:checked="false"
+        android:icon="@drawable/ic_collect_black_24"
+        android:title="@null"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/web_share"
+        android:title="@string/web_share" />
+    <item
+        android:id="@+id/web_refresh"
+        android:title="@string/web_refresh" />
+    <item
+        android:id="@+id/web_browser"
+        android:title="@string/web_browser" />
+</menu>

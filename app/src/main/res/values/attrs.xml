@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 设置栏 -->
+    <declare-styleable name="SettingBar">
+        <!-- 左边 -->
+        <attr name="bar_leftText" format="string" />
+        <attr name="bar_leftTextColor" format="color" />
+        <attr name="bar_leftTextSize" format="dimension" />
+        <attr name="bar_leftTextHint" format="string" />
+        <attr name="bar_leftDrawable" format="reference" />
+        <attr name="bar_leftDrawablePadding" format="dimension" />
+        <attr name="bar_leftDrawableSize" format="dimension" />
+        <attr name="bar_leftDrawableTint" format="color" />
+        <!-- 右边 -->
+        <attr name="bar_rightText" format="string" />
+        <attr name="bar_rightTextColor" format="color" />
+        <attr name="bar_rightTextSize" format="dimension" />
+        <attr name="bar_rightTextHint" format="string" />
+        <attr name="bar_rightDrawable" format="reference" />
+        <attr name="bar_rightDrawablePadding" format="dimension" />
+        <attr name="bar_rightDrawableSize" format="dimension" />
+        <attr name="bar_rightDrawableTint" format="color" />
+        <!-- 分割线 -->
+        <attr name="bar_lineVisible" format="boolean" />
+        <attr name="bar_lineDrawable" format="reference|color" />
+        <attr name="bar_lineSize" format="dimension" />
+        <attr name="bar_lineMargin" format="dimension" />
+    </declare-styleable>
+    <!-- 仿 ios 开关按钮 -->
+    <declare-styleable name="SwitchButton">
+        <!-- 是否选中 -->
+        <attr name="android:checked" />
+        <!-- 是否禁用 -->
+        <attr name="android:enabled" />
+    </declare-styleable>
+    <!-- 正则表达式编辑框 -->
+    <declare-styleable name="RegexEditText">
+        <!-- 正则输入限制 -->
+        <attr name="inputRegex" format="string" />
+        <!-- 常用正则类型 -->
+        <attr name="regexType">
+            <!-- 手机号（只能以 1 开头）-->
+            <enum name="mobile" value="0x01" />
+            <!-- 中文（普通的中文字符）-->
+            <enum name="chinese" value="0x02" />
+            <!-- 英文（大写和小写的英文）-->
+            <enum name="english" value="0x03" />
+            <!-- 数字（只允许输入纯数字）-->
+            <enum name="number" value="0x04" />
+            <!-- 整数（非 0 开头的数字）-->
+            <enum name="count" value="0x05" />
+            <!-- 用户名（中文、英文、数字）-->
+            <enum name="name" value="0x06" />
+            <!-- 非空格字符 -->
+            <enum name="nonnull" value="0x07" />
+        </attr>
+    </declare-styleable>
+    <!-- 带提交动画按钮 -->
+    <declare-styleable name="SubmitButton">
+        <!-- 进度按钮颜色 -->
+        <attr name="progressColor" format="color" />
+        <!-- 成功按钮颜色 -->
+        <attr name="succeedColor" format="color" />
+        <!-- 出错按钮颜色 -->
+        <attr name="errorColor" format="color" />
+        <!-- 进度条样式 -->
+        <attr name="progressStyle" format="enum">
+            <!-- 无进度 -->
+            <enum name="loading" value="0x00" />
+            <!-- 带进度 -->
+            <enum name="progress" value="0x01" />
+        </attr>
+    </declare-styleable>
+    <!-- 支持限定 Drawable 大小的 TextView -->
+    <declare-styleable name="DrawableTextView">
+        <!-- Drawable 宽度 -->
+        <attr name="drawableWidth" format="dimension" />
+        <!-- Drawable 高度 -->
+        <attr name="drawableHeight" format="dimension" />
+    </declare-styleable>
+    <!-- 缩放的 ImageView -->
+    <declare-styleable name="ScaleImageView">
+        <!-- 缩放比例 -->
+        <attr name="scaleRatio" format="float" />
+    </declare-styleable>
+</resources>

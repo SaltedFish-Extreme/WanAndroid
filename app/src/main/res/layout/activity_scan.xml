@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?><!--扫描二维码-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--扫码开源库，这里使用默认扫描线-->
+    <cn.bingoogolapple.qrcode.zxing.ZXingView
+        android:id="@+id/zxing_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:qrcv_borderColor="@color/orange_red"
+        app:qrcv_cornerColor="@color/super_blue"
+        app:qrcv_isAutoZoom="true"
+        app:qrcv_isOnlyDecodeScanBoxArea="true"
+        app:qrcv_isShowDefaultGridScanLineDrawable="true"
+        app:qrcv_isShowLocationPoint="true"
+        app:qrcv_isShowTipBackground="true"
+        app:qrcv_qrCodeTipText="@string/scan_tip"
+        app:qrcv_toolbarHeight="@dimen/dp_100" />
+
+    <!--默认悬浮按钮-->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/flash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp_150"
+        android:contentDescription="@android:string/unknownName"
+        android:src="@drawable/ic_flash_off"
+        tools:ignore="RelativeOverlap" />
+
+    <!--自定义悬浮按钮-->
+    <com.example.wanAndroid.widget.view.FloatActionButton
+        android:id="@+id/fab"
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_60"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="@dimen/dp_50"
+        android:layout_marginBottom="@dimen/dp_50"
+        android:background="@drawable/roll_accent_bg"
+        android:padding="@dimen/dp_20"
+        app:srcCompat="@drawable/ic_album" />
+
+</RelativeLayout>

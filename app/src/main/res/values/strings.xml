@@ -1,0 +1,84 @@
+<resources>
+    <!--主页-->
+    <string name="app_name">玩Android</string>
+    <string name="home_fragment">首页</string>
+    <string name="project_fragment">项目</string>
+    <string name="square_fragment">广场</string>
+    <string name="platform_fragment">公众号</string>
+    <string name="mine_fragment">我的</string>
+    <string name="exit">再按一次退出程序</string>
+    <string name="no_wifi">当前没有网络连接，请确保已经打开网络</string>
+    <!--缺省页-->
+    <string name="no_data">暂无数据，点击重试</string>
+    <string name="no_net">网络异常，点击重试</string>
+    <!--主页导航栏按钮长按不弹吐司-->
+    <string name="navigation_drawer_open" />
+    <string name="navigation_drawer_close" />
+    <!--Dialog按钮-->
+    <string name="sure">确定</string>
+    <string name="cancel">取消</string>
+    <!--文章列表项-->
+    <string name="top_tip">置顶</string>
+    <string name="new_fresh">新</string>
+    <string name="just">刚刚</string>
+    <string name="article_author">咸鱼至尊</string>
+    <string name="article_title">这是一个菜的扣jio的人写的项目</string>
+    <string name="article_content">一个Jetpack结合MVVM的快速开发框架，基于MVVM模式集成谷歌官方推荐的JetPack组件库：LiveData、ViewModel、Lifecycle组件 使用Kotlin语言，添加大量拓展函数，简化代码 加入Retrofit网络请求,协程，帮你简化各种操作，让你快速开发项目</string>
+    <string name="article_chapter">分类·项目</string>
+    <string name="new_project">最新项目</string>
+    <!--侧滑栏&我的页-->
+    <string name="my_integral">我的积分</string>
+    <string name="my_collect">我的收藏</string>
+    <string name="my_share">我的分享</string>
+    <string name="my_record">历史记录</string>
+    <string name="my_user">点击头像登陆</string>
+    <string name="my_grade">等级:</string>
+    <string name="my_rank">排名:</string>
+    <string name="my_ellipsis">--</string>
+    <string name="my_setting">系统设置</string>
+    <string name="my_exit">退出登录</string>
+    <string name="my_score">1000</string>
+    <!--设置页-->
+    <string name="setting">设置</string>
+    <string name="setting_dark">夜间模式</string>
+    <string name="setting_clear">清除缓存</string>
+    <string name="setting_scan">扫码下载</string>
+    <string name="setting_update">版本更新</string>
+    <string name="setting_web">官方网站</string>
+    <string name="setting_project">项目源码</string>
+    <string name="setting_copyright">版权声明</string>
+    <string name="setting_about">关于我们</string>
+    <string name="setting_cache">0MB</string>
+    <string name="setting_recommend">好用的话推荐给你的小伙伴吧(ಡωಡ)</string>
+    <string name="setting_version">当前版本 %s</string>
+    <string name="setting_site">https://www.wanandroid.com</string>
+    <string name="setting_code">SaltedFish-Extreme/wanandroid</string>
+    <string name="setting_tips">仅作个人及非商业用途 ⊙ω⊙</string>
+    <string name="setting_desc">一个练习时长一年半的安卓菜鸡(ㅎ.ㅎ)</string>
+    <string name="clear_cache">确定清理缓存吗</string>
+    <string name="clear_success">清理成功</string>
+    <string name="update_address">https://wwz.lanzouo.com/b030pezzi</string>
+    <string name="setting_repository">https://github.com/SaltedFish-Extreme/WanAndroid</string>
+    <string name="copyright_content">本APP所使用的所有API均由 玩Android 网站提供，仅供学习交流，不可用于任何商业用途。</string>
+    <string name="qq">1738099872</string>
+    <string name="email">1738099872@qq.com</string>
+    <string name="github">github.com/SaltedFish-Extreme</string>
+    <!--网页-->
+    <string name="loading">加载中…</string>
+    <string name="text_plan">text/plain</string>
+    <string name="web_collect">收藏</string>
+    <string name="web_share">分享</string>
+    <string name="web_share_url">%1$s分享【%2$s】：%3$s</string>
+    <string name="web_refresh">刷新</string>
+    <string name="web_browser">用浏览器打开</string>
+    <!--扫码页-->
+    <string name="scan_prompt">长按下方二维码可保存下载链接图片\n密码：玩安卓\n(右上方扫码图标可扫码打开下载链接)</string>
+    <string name="share_jump">确定跳转到下载链接地址吗\n\n密码：玩安卓</string>
+    <string name="scan_qrcode">扫码下载</string>
+    <string name="save_succeed">保存成功</string>
+    <string name="identify_succeed">识别成功</string>
+    <string name="identify_error">未识别到二维码</string>
+    <string name="open_camera_failed">打开相机失败</string>
+    <string name="open_flash">\n环境过暗，请打开闪光灯 </string>
+    <string name="scan_tip">将二维码/条码放入框内，即可自动扫描</string>
+</resources>

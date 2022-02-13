@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--夜间主题差异型编程-->
+<resources>
+    <!--悬浮按钮颜色--><color name="color_floating_button">@color/gray_8f</color>
+    <!--重要文字颜色--><color name="color_important">@color/orange_red</color>
+    <!--标签文字颜色--><color name="color_tag">@color/super_blue</color>
+    <!--文章作者颜色--><color name="color_article_author">@color/pale_grey</color>
+    <!--文章章节颜色--><color name="color_article_chapter">@color/light_grey</color>
+    <!--viewpager指示器选中颜色--><color name="color_viewpager_selected">@color/white</color>
+    <!--viewpager指示器未选中颜色--><color name="color_viewpager_unselected">@color/white_smoke</color>
+    <!--垂直标签布局填充颜色--><color name="color_vertical_tab_layout_fill">@color/tundra</color>
+    <!--垂直标签布局文字颜色--><color name="color_vertical_tab_layout_text">@color/orchid</color>
+    <!--分割线颜色--><color name="color_line_divider_bg">@color/boulder</color>
+    <!--标签item填充颜色--><color name="color_tab_item_fill">@color/silver</color>
+    <!--图标背景色调--><color name="color_ic_bg_tint">@color/white</color>
+    <!--可绘制背景色调--><color name="color_drawable_bg_tint">@color/medium_orchid</color>
+    <!--web页面背景绘制颜色--><color name="color_web_bg_draw">@color/black</color>
+</resources>

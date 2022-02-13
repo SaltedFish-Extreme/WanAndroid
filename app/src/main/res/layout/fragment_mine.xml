@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?><!--我的片段-->
+<com.example.wanAndroid.widget.nested.NestedLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.fragment.MineFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_200"
+        android:background="@color/color_floating_button"
+        android:padding="@dimen/dp_5">
+
+        <ImageView
+            android:id="@+id/notification_image"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:background="@drawable/ic_notification"
+            android:backgroundTint="@color/color_ic_bg_tint"
+            android:contentDescription="@android:string/unknownName"
+            android:foreground="?attr/selectableItemBackground"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@id/header_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/header_image" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/header_image"
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="@dimen/dp_80"
+            android:foreground="?attr/selectableItemBackground"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/CircleStyle"
+            app:srcCompat="@drawable/ic_account" />
+
+        <TextView
+            android:id="@+id/user_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:text="@string/my_user"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="@dimen/sp_15"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/header_image" />
+
+        <TextView
+            android:id="@+id/grade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_grade"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="@dimen/sp_15"
+            app:layout_constraintBottom_toBottomOf="@id/grade_text"
+            app:layout_constraintEnd_toStartOf="@id/grade_text"
+            app:layout_constraintTop_toTopOf="@id/grade_text" />
+
+        <TextView
+            android:id="@+id/grade_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_5"
+            android:text="@string/my_ellipsis"
+            android:textColor="?android:attr/textColorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guide_line"
+            app:layout_constraintTop_toBottomOf="@id/user_text" />
+
+        <TextView
+            android:id="@+id/rank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_5"
+            android:text="@string/my_rank"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="@dimen/sp_15"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guide_line"
+            app:layout_constraintTop_toBottomOf="@id/user_text" />
+
+        <TextView
+            android:id="@+id/rank_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_ellipsis"
+            android:textColor="?android:attr/textColorPrimary"
+            app:layout_constraintBottom_toBottomOf="@id/rank"
+            app:layout_constraintStart_toEndOf="@id/rank"
+            app:layout_constraintTop_toTopOf="@id/rank" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.example.wanAndroid.widget.settingbar.SettingBar
+        android:id="@+id/mine_integral"
+        style="@style/SettingBar"
+        app:bar_leftDrawable="@drawable/ic_integral_24"
+        app:bar_leftText="@string/my_integral" />
+
+    <com.example.wanAndroid.widget.settingbar.SettingBar
+        android:id="@+id/mine_collect"
+        style="@style/SettingBar"
+        app:bar_leftDrawable="@drawable/ic_collect_black_24"
+        app:bar_leftText="@string/my_collect" />
+
+    <com.example.wanAndroid.widget.settingbar.SettingBar
+        android:id="@+id/mine_share"
+        style="@style/SettingBar"
+        app:bar_leftDrawable="@drawable/ic_share_24"
+        app:bar_leftText="@string/my_share" />
+
+    <com.example.wanAndroid.widget.settingbar.SettingBar
+        android:id="@+id/mine_record"
+        style="@style/SettingBar"
+        app:bar_leftDrawable="@drawable/ic_record_24"
+        app:bar_leftText="@string/my_record" />
+
+    <com.example.wanAndroid.widget.settingbar.SettingBar
+        android:id="@+id/mine_setting"
+        style="@style/SettingBar"
+        app:bar_leftDrawable="@drawable/ic_setting_24"
+        app:bar_leftText="@string/my_setting" />
+
+    <com.example.wanAndroid.widget.settingbar.SettingBar
+        android:id="@+id/mine_exit"
+        style="@style/SettingBar"
+        app:bar_leftDrawable="@drawable/ic_exit_24"
+        app:bar_leftText="@string/my_exit" />
+
+</com.example.wanAndroid.widget.nested.NestedLinearLayout>

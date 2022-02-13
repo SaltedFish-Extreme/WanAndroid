@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dp_10"
+    android:background="@drawable/shape"
+    android:padding="@dimen/dp_10"
+    tools:context=".ui.fragment.AboutDialogFragment">
+
+    <ImageView
+        android:id="@+id/iv_qq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:background="@drawable/ic_qq"
+        android:backgroundTint="@color/color_ic_bg_tint"
+        android:contentDescription="@android:string/unknownName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_qq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_10"
+        android:text="@string/qq"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="@dimen/sp_20"
+        app:layout_constraintBottom_toBottomOf="@id/iv_qq"
+        app:layout_constraintStart_toEndOf="@id/iv_qq"
+        app:layout_constraintTop_toTopOf="@id/iv_qq" />
+
+    <ImageView
+        android:id="@+id/iv_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:background="@drawable/ic_email"
+        android:backgroundTint="@color/color_ic_bg_tint"
+        android:contentDescription="@android:string/unknownName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_qq" />
+
+    <TextView
+        android:id="@+id/tv_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_10"
+        android:text="@string/email"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="@dimen/sp_20"
+        app:layout_constraintBottom_toBottomOf="@id/iv_email"
+        app:layout_constraintStart_toEndOf="@id/iv_email"
+        app:layout_constraintTop_toTopOf="@id/iv_email" />
+
+    <ImageView
+        android:id="@+id/iv_github"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:background="@drawable/ic_github"
+        android:backgroundTint="@color/color_ic_bg_tint"
+        android:contentDescription="@android:string/unknownName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_email" />
+
+    <TextView
+        android:id="@+id/tv_github"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_10"
+        android:text="@string/github"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="@dimen/sp_20"
+        app:layout_constraintBottom_toBottomOf="@id/iv_github"
+        app:layout_constraintStart_toEndOf="@id/iv_github"
+        app:layout_constraintTop_toTopOf="@id/iv_github" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

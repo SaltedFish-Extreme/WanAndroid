@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?><!--导航图，navigation父标签，
+id用来和管理容器的navGraph标签绑定，startDestination指定默认显示的fragment-->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_bottom"
+    app:startDestination="@id/home_page">
+
+    <!--可包含多个子fragment，
+    这里使用自定义fixFragment标签，在MyFragmentNavigator中注解
+    id用来导航跳转，这里需和对应的menu菜单中itemId保持一致，
+    name指定对应Fragment类，label指定名称，layout可预览指定视图-->
+    <fixFragment
+        android:id="@+id/home_page"
+        android:name="com.example.wanAndroid.ui.fragment.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home" />
+
+    <fixFragment
+        android:id="@+id/project_page"
+        android:name="com.example.wanAndroid.ui.fragment.ProjectFragment"
+        android:label="ProjectFragment"
+        tools:layout="@layout/fragment_project" />
+
+    <fixFragment
+        android:id="@+id/square_page"
+        android:name="com.example.wanAndroid.ui.fragment.SquareFragment"
+        android:label="SquareFragment"
+        tools:layout="@layout/fragment_project" />
+
+    <fixFragment
+        android:id="@+id/platform_page"
+        android:name="com.example.wanAndroid.ui.fragment.PlatformFragment"
+        android:label="PlatformFragment"
+        tools:layout="@layout/fragment_project" />
+
+    <fixFragment
+        android:id="@+id/mine_page"
+        android:name="com.example.wanAndroid.ui.fragment.MineFragment"
+        android:label="MineFragment"
+        tools:layout="@layout/fragment_mine" />
+
+    <!--子action标签用来执行跳转操作，指定id，以及destination要跳转到哪个fragment-->
+</navigation>
