@@ -18,7 +18,7 @@ import com.drake.serialize.intent.share
 import com.example.wanAndroid.R
 import com.example.wanAndroid.logic.dao.Constant
 import com.example.wanAndroid.util.vibration
-import com.example.wanAndroid.webclient.WebClientFactory
+import com.example.wanAndroid.util.BaseWebClient
 import com.example.wanAndroid.widget.ext.getAgentWeb
 import com.example.wanAndroid.widget.web.WebContainer
 import com.google.android.material.appbar.AppBarLayout
@@ -100,7 +100,7 @@ class WebActivity : AppCompatActivity() {
             webContainer,
             layoutParams,
             webView,
-            WebClientFactory.create(shareUrl),
+            BaseWebClient(),
             mWebChromeClient
         )
         mAgentWeb.webCreator.webView.apply {
