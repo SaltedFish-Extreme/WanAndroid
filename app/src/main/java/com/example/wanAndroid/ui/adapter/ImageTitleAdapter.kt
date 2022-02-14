@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.wanAndroid.R
 import com.example.wanAndroid.logic.model.BannerResponse
-import com.hjq.toast.ToastUtils
+import com.example.wanAndroid.ui.activity.WebActivity
 import com.youth.banner.adapter.BannerAdapter
 
 /**
@@ -24,13 +24,6 @@ class ImageTitleAdapter(dataList: List<BannerResponse>) : BannerAdapter<BannerRe
         val title: TextView = view.findViewById(R.id.banner_title)
     }
 
-    init {
-        //设置轮播图点击事件
-        setOnBannerListener { data, _ ->
-            ToastUtils.debugShow(data.title)
-        }
-    }
-
     override fun onCreateHolder(parent: ViewGroup, viewType: Int): ImageTitleHolder {
         return ImageTitleHolder(LayoutInflater.from(parent.context).inflate(R.layout.layout_banner_image_title, parent, false))
     }
@@ -39,8 +32,13 @@ class ImageTitleAdapter(dataList: List<BannerResponse>) : BannerAdapter<BannerRe
         holder.imageView.run {
             //加载网络图片
             Glide.with(context).load(data.imagePath).into(this)
+            //设置标题
+            holder.title.text = data.title
+            //banner点击事件
+            setOnBannerListener { mData, _ ->
+                //打开网页URL
+                WebActivity.start(context, mData.url)
+            }
         }
-        //设置标题
-        holder.title.text = data.title
     }
 }
