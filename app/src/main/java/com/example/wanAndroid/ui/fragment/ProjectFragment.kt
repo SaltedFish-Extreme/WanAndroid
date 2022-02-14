@@ -58,9 +58,9 @@ class ProjectFragment : Fragment(R.layout.fragment_project) {
                 magicIndicator.bindViewPager2(viewPager, classifyList)
                 //缓存所有fragment，不会销毁重建
                 viewPager.offscreenPageLimit = fragments.size
+                //设置初次创建页面为否
+                first = false
             }
-            //设置初次创建页面为否
-            first = false
         }
     }
 }

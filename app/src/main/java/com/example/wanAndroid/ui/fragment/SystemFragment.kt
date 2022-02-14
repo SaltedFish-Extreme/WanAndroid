@@ -1,6 +1,5 @@
 package com.example.wanAndroid.ui.fragment
 
-import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.drake.brv.PageRefreshLayout
@@ -49,6 +48,8 @@ class SystemFragment : Fragment(R.layout.fragment_home) {
                         //如果第一次切换且数据为空显示空缺省页
                         showEmpty()
                     } else {
+                        //设置初次创建页面为否
+                        first = false
                         //设置数据
                         adapter.setList(data.data)
                         //没有更多数据，结束动画，显示内容(没有更多数据)
@@ -56,8 +57,6 @@ class SystemFragment : Fragment(R.layout.fragment_home) {
                     }
                 }
             }.refreshing()
-            //设置初次创建页面为否
-            first = false
         }
     }
 
