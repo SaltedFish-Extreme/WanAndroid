@@ -25,7 +25,10 @@ class ArticleAdapter(private val showTag: Boolean = false) : BaseAdapter<Article
         //设置默认加载动画
         setAnimationWithDefault(AnimationType.ScaleIn)
         //设置Item点击事件
-        this.setOnItemClickListener { _, _, position -> ToastUtils.debugShow("$position") }
+        this.setOnItemClickListener { _, _, position ->
+            //跳转网页打开链接
+            data[position].run { WebActivity.start(context, link) }
+        }
         //先注册需要点击的子控件id
         this.addChildClickViewIds(R.id.item_article_author, R.id.item_article_chapter, R.id.item_article_collect)
         //设置子控件点击监听
