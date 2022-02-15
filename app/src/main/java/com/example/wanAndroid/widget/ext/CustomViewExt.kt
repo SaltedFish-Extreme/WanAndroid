@@ -18,6 +18,7 @@ import androidx.annotation.Nullable
 import androidx.core.view.get
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -147,7 +148,7 @@ fun String.getAgentWeb(
     .go(this)
 
 /**
- * 初始化ViewPager2扩展函数
+ * 初始化ViewPager2扩展函数(Fragment使用)
  *
  * @param fragment 当前fragment
  * @param fragments fragment集合
@@ -159,6 +160,25 @@ fun ViewPager2.init(fragment: Fragment, fragments: ArrayList<Fragment>, isUserIn
     this.isUserInputEnabled = isUserInputEnabled
     //设置适配器
     adapter = object : FragmentStateAdapter(fragment) {
+        override fun createFragment(position: Int) = fragments[position]
+        override fun getItemCount() = fragments.size
+    }
+    return this
+}
+
+/**
+ * 初始化ViewPager2扩展函数(Activity使用)
+ *
+ * @param activity 当前activity
+ * @param fragments fragment集合
+ * @param isUserInputEnabled 是否允许滑动
+ * @return ViewPager2
+ */
+fun ViewPager2.init(activity: FragmentActivity, fragments: ArrayList<Fragment>, isUserInputEnabled: Boolean = true): ViewPager2 {
+    //是否可滑动
+    this.isUserInputEnabled = isUserInputEnabled
+    //设置适配器
+    adapter = object : FragmentStateAdapter(activity) {
         override fun createFragment(position: Int) = fragments[position]
         override fun getItemCount() = fragments.size
     }

@@ -53,4 +53,7 @@ object NetApi {
 
     /** 分享人对应列表数据路径 */
     const val SearchArticleByIdAPI = "user"
+
+    /** 知识体系下的文章路径 */
+    const val SystemArticleAPI = "article/list"
 }

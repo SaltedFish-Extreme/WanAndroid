@@ -32,6 +32,9 @@
             android:value="true" />
 
         <activity
+            android:name=".ui.activity.SystemActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.AuthorActivity"
             android:exported="false"
             android:launchMode="singleTop" />
