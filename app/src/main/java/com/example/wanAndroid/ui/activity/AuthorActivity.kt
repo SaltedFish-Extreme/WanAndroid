@@ -59,6 +59,8 @@ class AuthorActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_author)
+        //标题栏返回按钮关闭页面
+        titleBar.leftView.setOnClickListener { finish() }
         //是否作者(userid为-1)
         if (userId == -1) {
             //设置此页面请求分页初始索引(按照作者昵称搜索文章)

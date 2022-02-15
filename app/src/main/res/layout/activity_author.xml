@@ -13,17 +13,13 @@
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_240"
+            android:background="@color/color_floating_button"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:scrimVisibleHeightTrigger="@dimen/dp_110">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@color/color_floating_button" />
+                android:layout_height="match_parent">
 
                 <ImageView
                     android:id="@+id/header_image"
@@ -37,11 +33,12 @@
                     android:id="@+id/header_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/header_image"
+                    android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/dp_185"
+                    android:gravity="center"
                     android:textColor="?android:attr/textColorPrimary"
                     android:textSize="@dimen/sp_20"
-                    app:layout_collapseMode="parallax"
                     tools:text="@string/article_author" />
             </RelativeLayout>
 
