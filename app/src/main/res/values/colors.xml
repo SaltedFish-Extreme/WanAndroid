@@ -163,7 +163,7 @@
     <!--灰黑色--><color name="gray_black">#505050</color>
     <!--黑色半透明--><color name="black_translucent">#80000000</color>
     <!--白色半透明--><color name="white_translucent">#80FFFFFF</color>
-    <!--全透明--><color name="translucent">#00000000</color>
+    <!--全透明--><color name="transparent">#00000000</color>
     <!--不透明--><color name="opaque">#FF000000</color>
 
     <!--默认mipmap前景色--><color name="mipmap_foreground_color">#33FFFFFF</color>
@@ -184,5 +184,5 @@
     <!--标签item填充颜色--><color name="color_tab_item_fill">@color/light_grey</color>
     <!--图标背景色调--><color name="color_ic_bg_tint">@color/black</color>
     <!--可绘制背景色调--><color name="color_drawable_bg_tint">@color/color_accent</color>
-    <!--web页面背景绘制颜色--><color name="color_web_bg_draw">@color/translucent</color>
+    <!--web页面背景绘制颜色--><color name="color_web_bg_draw">@color/transparent</color>
 </resources>

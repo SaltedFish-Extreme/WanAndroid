@@ -32,6 +32,9 @@ class MyApplication : Application() {
          */
         @SuppressLint("StaticFieldLeak")
         internal lateinit var context: Context
+
+        /** 根据昵称生成头像API密钥 (https://api.multiavatar.com) */
+        const val apikey = "a6YniOPf1dbrSc"
     }
 
     override fun onCreate() {

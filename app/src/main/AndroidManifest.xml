@@ -8,13 +8,13 @@
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <!-- 震动权限 -->
     <uses-permission android:name="android.permission.VIBRATE" />
-    <!--存储权限-->
+    <!-- 存储权限 -->
     <uses-permission
         android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!--相机权限-->
+    <!-- 相机权限 -->
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
@@ -31,6 +31,10 @@
             android:name="ScopedStorage"
             android:value="true" />
 
+        <activity
+            android:name=".ui.activity.AuthorActivity"
+            android:exported="false"
+            android:launchMode="singleTop" />
         <activity
             android:name=".ui.activity.ScanActivity"
             android:exported="false" />

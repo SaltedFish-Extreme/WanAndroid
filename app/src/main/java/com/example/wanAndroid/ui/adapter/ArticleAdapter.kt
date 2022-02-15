@@ -3,8 +3,11 @@ package com.example.wanAndroid.ui.adapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.drake.serialize.intent.openActivity
 import com.example.wanAndroid.R
 import com.example.wanAndroid.logic.model.ArticleResponse
+import com.example.wanAndroid.ui.activity.AuthorActivity
+import com.example.wanAndroid.ui.activity.WebActivity
 import com.example.wanAndroid.ui.base.BaseAdapter
 import com.example.wanAndroid.util.vibration
 import com.example.wanAndroid.widget.ext.html2Sting
@@ -30,12 +33,18 @@ class ArticleAdapter(private val showTag: Boolean = false) : BaseAdapter<Article
             data[position].run { WebActivity.start(context, link) }
         }
         //先注册需要点击的子控件id
-        this.addChildClickViewIds(R.id.item_article_author, R.id.item_article_chapter, R.id.item_article_collect)
+        this.addChildClickViewIds(R.id.item_article_author, R.id.item_article_collect)
         //设置子控件点击监听
         this.setOnItemChildClickListener { _, view, position ->
             when (view.id) {
-                R.id.item_article_author -> ToastUtils.debugShow("作者被点击了! ${data[position].run { author.ifEmpty { this.shareUser } }}")
-                R.id.item_article_chapter -> ToastUtils.debugShow("章节被点击了! ${data[position].run { "$superChapterName·$chapterName" }}")
+                R.id.item_article_author -> {
+                    //打开文章作者页面
+                    context.openActivity<AuthorActivity>(
+                        //传递name和userId
+                        "name" to data[position].run { author.ifEmpty { shareUser } },
+                        "userId" to data[position].run { userId }
+                    )
+                }
                 R.id.item_article_collect -> context.vibration() //震动一下
             }
         }

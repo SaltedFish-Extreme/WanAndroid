@@ -10,6 +10,7 @@ data class ArticleResponse(
     val envelopePic: String,
     val fresh: Boolean,
     val id: Int,
+    val userId: Int,
     val link: String,
     val niceDate: String,
     val shareUser: String,

@@ -9,6 +9,9 @@ object NetApi {
     /** 全局根路径 */
     const val BaseURL = "https://www.wanandroid.com/"
 
+    /** 根据昵称生成头像API根路径 */
+    const val GenerateAvatarAPI = "https://api.multiavatar.com"
+
     /** 首页轮播图路径 */
     const val BannerAPI = "banner/json"
 
@@ -44,4 +47,10 @@ object NetApi {
 
     /** 导航数据路径 */
     const val NavigationAPI = "navi/json"
+
+    /** 按照作者昵称搜索文章路径 */
+    const val SearchArticleByNameAPI = "article/list"
+
+    /** 分享人对应列表数据路径 */
+    const val SearchArticleByIdAPI = "user"
 }
