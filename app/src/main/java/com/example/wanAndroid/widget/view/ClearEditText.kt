@@ -27,7 +27,7 @@ import com.example.wanAndroid.R
 class ClearEditText @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = android.R.attr.editTextStyle) :
     RegexEditText(context, attrs, defStyleAttr), OnTouchListener, OnFocusChangeListener, TextWatcher {
 
-    private val clearDrawable: Drawable = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_delete)!!)
+    private val clearDrawable: Drawable = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_clear)!!)
     private var touchListener: OnTouchListener? = null
     private var focusChangeListener: OnFocusChangeListener? = null
 

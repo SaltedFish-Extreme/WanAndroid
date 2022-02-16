@@ -41,7 +41,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="@dimen/dp_50"
         android:layout_marginBottom="@dimen/dp_50"
-        android:background="@drawable/roll_accent_bg"
+        android:background="@drawable/roll_fab_bg"
         android:padding="@dimen/dp_20"
         app:srcCompat="@drawable/ic_album" />
 
