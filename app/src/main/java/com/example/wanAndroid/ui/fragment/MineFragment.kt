@@ -1,8 +1,10 @@
 package com.example.wanAndroid.ui.fragment
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -19,7 +21,7 @@ import com.hjq.toast.ToastUtils
  *
  * desc: 我的Fragment
  */
-class MineFragment : Fragment(R.layout.fragment_mine) {
+class MineFragment : Fragment() {
 
     private val notificationImage: ImageView by lazy { requireView().findViewById(R.id.notification_image) }
     private val headerImage: ShapeableImageView by lazy { requireView().findViewById(R.id.header_image) }
@@ -38,6 +40,10 @@ class MineFragment : Fragment(R.layout.fragment_mine) {
         super.onCreate(savedInstanceState)
         //控制选项菜单
         setHasOptionsMenu(true)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_mine, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

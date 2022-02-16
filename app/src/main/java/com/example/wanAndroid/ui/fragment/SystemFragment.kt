@@ -1,5 +1,9 @@
 package com.example.wanAndroid.ui.fragment
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.drake.brv.PageRefreshLayout
@@ -19,7 +23,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
  *
  * desc: 子体系Fragment
  */
-class SystemFragment : Fragment(R.layout.fragment_home) {
+class SystemFragment : Fragment() {
 
     private val page: PageRefreshLayout by lazy { requireView().findViewById(R.id.page) }
     private val rv: RecyclerView by lazy { requireView().findViewById(R.id.rv) }
@@ -30,6 +34,10 @@ class SystemFragment : Fragment(R.layout.fragment_home) {
 
     /** 适配器 */
     private val adapter: SystemAdapter by lazy { SystemAdapter(mutableListOf()) }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_home, container, false)
+    }
 
     override fun onResume() {
         super.onResume()

@@ -1,7 +1,9 @@
 package com.example.wanAndroid.ui.fragment
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.wanAndroid.R
@@ -16,7 +18,7 @@ import net.lucode.hackware.magicindicator.MagicIndicator
  *
  * desc: 广场Fragment
  */
-class SquareFragment : Fragment(R.layout.fragment_project) {
+class SquareFragment : Fragment() {
 
     private val toolbar: Toolbar by lazy { requireActivity().findViewById(R.id.toolbar) }
     private val viewPager: ViewPager2 by lazy { requireView().findViewById(R.id.view_pager) }
@@ -35,6 +37,10 @@ class SquareFragment : Fragment(R.layout.fragment_project) {
         fragments.add(InquiryAnswerChildFragment())
         fragments.add(SystemFragment())
         fragments.add(NavigationFragment())
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_project, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

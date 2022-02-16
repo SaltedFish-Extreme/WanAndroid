@@ -29,7 +29,7 @@ import com.youth.banner.indicator.CircleIndicator
  *
  * desc: 首页Fragment
  */
-class HomeFragment : Fragment(R.layout.fragment_home) {
+class HomeFragment : Fragment() {
 
     private val rv: RecyclerView by lazy { requireView().findViewById(R.id.rv) }
     private val page: PageRefreshLayout by lazy { requireView().findViewById(R.id.page) }
@@ -39,6 +39,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     /** 是否初次切换页面 */
     private var first = true
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_home, container, false)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

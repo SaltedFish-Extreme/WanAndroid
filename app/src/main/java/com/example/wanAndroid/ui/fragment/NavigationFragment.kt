@@ -1,5 +1,9 @@
 package com.example.wanAndroid.ui.fragment
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,7 +25,7 @@ import q.rorbin.verticaltablayout.widget.TabView
  *
  * desc: 子导航Fragment
  */
-class NavigationFragment : Fragment(R.layout.fragment_navigation) {
+class NavigationFragment : Fragment() {
 
     private val verticalTabLayout: VerticalTabLayout by lazy { requireView().findViewById(R.id.vertical_tab_layout) }
     private val rv: RecyclerView by lazy { requireView().findViewById(R.id.rv) }
@@ -41,6 +45,10 @@ class NavigationFragment : Fragment(R.layout.fragment_navigation) {
 
     /** 是否可以滚动 */
     private var scroll = false
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_navigation, container, false)
+    }
 
     override fun onResume() {
         super.onResume()

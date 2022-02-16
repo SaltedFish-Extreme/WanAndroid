@@ -1,7 +1,9 @@
 package com.example.wanAndroid.ui.fragment
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.drake.brv.PageRefreshLayout
@@ -22,7 +24,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
  *
  * desc: 子项目Fragment
  */
-class ProjectChildFragment : Fragment(R.layout.fragment_home) {
+class ProjectChildFragment : Fragment() {
 
     private val page: PageRefreshLayout by lazy { requireView().findViewById(R.id.page) }
     private val rv: RecyclerView by lazy { requireView().findViewById(R.id.rv) }
@@ -60,6 +62,10 @@ class ProjectChildFragment : Fragment(R.layout.fragment_home) {
             fragment.arguments = args
             return fragment
         }
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
