@@ -17,8 +17,8 @@ import com.drake.serialize.intent.browse
 import com.drake.serialize.intent.share
 import com.example.wanAndroid.R
 import com.example.wanAndroid.logic.dao.Constant
-import com.example.wanAndroid.util.vibration
 import com.example.wanAndroid.util.BaseWebClient
+import com.example.wanAndroid.util.vibration
 import com.example.wanAndroid.widget.ext.getAgentWeb
 import com.example.wanAndroid.widget.web.WebContainer
 import com.google.android.material.appbar.AppBarLayout
@@ -44,16 +44,16 @@ class WebActivity : AppCompatActivity() {
     private var collect = false
 
     companion object {
-        fun start(context: Context?, id: Int, title: String, url: String, bundle: Bundle? = null) {
+        fun start(context: Context, id: Int, title: String, url: String, bundle: Bundle? = null) {
             Intent(context, WebActivity::class.java).run {
                 putExtra(Constant.CONTENT_ID_KEY, id)
                 putExtra(Constant.CONTENT_TITLE_KEY, title)
                 putExtra(Constant.CONTENT_URL_KEY, url)
-                context?.startActivity(this, bundle)
+                context.startActivity(this, bundle)
             }
         }
 
-        fun start(context: Context?, url: String) {
+        fun start(context: Context, url: String) {
             start(context, -1, "", url)
         }
     }
@@ -155,7 +155,7 @@ class WebActivity : AppCompatActivity() {
             R.id.web_share -> {
                 //分享
                 share(
-                    getString(R.string.web_share_url, getString(R.string.app_name), shareTitle, shareUrl),
+                    getString(R.string.web_share_url, getString(R.string.app_name), shareTitle.ifEmpty { title.text }, shareUrl),
                     getString(R.string.text_plan),
                     getString(R.string.web_share)
                 )
