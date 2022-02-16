@@ -49,6 +49,19 @@ class SystemAdapter(dataList: MutableList<SystemResponse>) : BaseAdapter<SystemR
         //设置rv标题
         holder.setText(R.id.title, item.name.html2Sting())
         //使用子流标签适配器
-        holder.getView<RecyclerView>(R.id.rv).adapter = SystemChildAdapter(item.children)
+        holder.getView<RecyclerView>(R.id.rv).adapter = SystemChildAdapter(item.children).run {
+            //给子项适配器设置点击事件
+            setOnItemClickListener { _, _, position ->
+                //打开体系页面
+                context.openActivity<SystemActivity>(
+                    //传递页面标题 子名称集合 子ID集合 索引
+                    "title" to item.name,
+                    "content" to item.children.map { it.name },
+                    "cid" to item.children.map { it.id },
+                    "index" to position
+                )
+            }
+            this
+        }
     }
 }

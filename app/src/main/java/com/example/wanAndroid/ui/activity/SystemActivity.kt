@@ -33,6 +33,9 @@ class SystemActivity : BaseActivity(), SwipeBackAbility.OnlyEdge {
     /** Serialize界面传递参数: cid */
     private val cid: List<Int> by bundle()
 
+    /** Serialize界面传递参数: index 默认值0 */
+    private val index: Int by bundle(0)
+
     /** fragment集合 */
     private val fragments: ArrayList<Fragment> by lazy { arrayListOf() }
 
@@ -51,7 +54,7 @@ class SystemActivity : BaseActivity(), SwipeBackAbility.OnlyEdge {
             //拦截导航按钮长按吐司
             navigationContentDescription = ""
         }
-        //没有子页面不继续执行创建子fragment操作
+        //没有子页面不继续执行后续操作
         if (content.isEmpty()) return
         //根据cid创建对应的fragment实例并添加进集合
         cid.forEach {
@@ -63,6 +66,8 @@ class SystemActivity : BaseActivity(), SwipeBackAbility.OnlyEdge {
         magicIndicator.bindViewPager2(viewPager, content)
         //缓存所有fragment，不会销毁重建
         viewPager.offscreenPageLimit = fragments.size
+        //指定viewpager默认选中页面
+        viewPager.currentItem = index
     }
 
     /** 只允许边缘侧滑返回 */
