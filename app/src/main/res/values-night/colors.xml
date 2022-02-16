@@ -15,4 +15,5 @@
     <!--图标背景色调--><color name="color_ic_bg_tint">@color/white</color>
     <!--可绘制背景色调--><color name="color_drawable_bg_tint">@color/medium_orchid</color>
     <!--web页面背景绘制颜色--><color name="color_web_bg_draw">@color/black</color>
+    <!--搜索框背景颜色--><color name="color_search_bg">@color/light_inky_grey</color>
 </resources>

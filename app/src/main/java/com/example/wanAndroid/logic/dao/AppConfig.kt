@@ -10,4 +10,7 @@ import com.drake.serialize.serialize.serial
 object AppConfig {
     /** 是否夜间主题 */
     var DarkTheme: Boolean by serial(false) //懒加载
+
+    /** 搜索记录 */
+    val SearchHistory: Set<String> by serial(mutableSetOf())
 }

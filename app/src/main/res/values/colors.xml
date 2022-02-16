@@ -34,6 +34,8 @@
     <!--石灰色 --><color name="boulder">#757575</color>
     <!--银杯色 --><color name="silver_chalice">#9e9e9e</color>
     <!--水银色 --><color name="mercury">#e6e6e6</color>
+    <!--淡墨黑色 --><color name="light_inky_black">#11ffffff</color>
+    <!--淡墨灰色 --><color name="light_inky_grey">#11000000</color>
 
     <!--红色 --><color name="red">#ff0000</color>
     <!--暗红色 --><color name="dark_red">#8b0000</color>
@@ -185,4 +187,5 @@
     <!--图标背景色调--><color name="color_ic_bg_tint">@color/black</color>
     <!--可绘制背景色调--><color name="color_drawable_bg_tint">@color/color_accent</color>
     <!--web页面背景绘制颜色--><color name="color_web_bg_draw">@color/transparent</color>
+    <!--搜索框背景颜色--><color name="color_search_bg">@color/light_inky_black</color>
 </resources>

@@ -56,4 +56,7 @@ object NetApi {
 
     /** 知识体系下的文章路径 */
     const val SystemArticleAPI = "article/list"
+
+    /** 搜索热词路径 */
+    const val SearchHotAPI = "hotkey/json"
 }

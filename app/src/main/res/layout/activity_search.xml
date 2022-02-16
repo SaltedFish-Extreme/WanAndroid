@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?><!--搜索页面-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_search_bar" />
+
+    <com.example.wanAndroid.widget.nested.NestedLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_16">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:text="@string/search_hot"
+            android:textColor="@color/color_drawable_bg_tint"
+            android:textSize="@dimen/sp_18" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_hot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/dp_10"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/search_history"
+                android:textColor="@color/color_drawable_bg_tint"
+                android:textSize="@dimen/sp_18" />
+
+            <TextView
+                android:id="@+id/clear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp_5"
+                android:gravity="end"
+                android:text="@string/clear"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="@dimen/sp_16" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    </com.example.wanAndroid.widget.nested.NestedLinearLayout>
+
+</LinearLayout>

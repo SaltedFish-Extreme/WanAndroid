@@ -146,8 +146,8 @@ class MainActivity : BaseActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            //搜索按钮要执行的操作
-            R.id.search -> ToastUtils.debugShow("You clicked search")
+            //点击搜索按钮跳转搜索页面
+            R.id.search -> openActivity<SearchActivity>()
         }
         return true
     }

@@ -81,4 +81,9 @@
     <string name="open_camera_failed">打开相机失败</string>
     <string name="open_flash">\n环境过暗，请打开闪光灯 </string>
     <string name="scan_tip">将二维码/条码放入框内，即可自动扫描</string>
+    <!--搜索页-->
+    <string name="search_tip">输入关键字搜索</string>
+    <string name="search_hot">热门搜索</string>
+    <string name="search_history">搜索历史</string>
+    <string name="clear">清空</string>
 </resources>
