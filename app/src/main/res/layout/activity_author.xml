@@ -42,6 +42,17 @@
                     tools:text="@string/article_author" />
             </RelativeLayout>
 
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                android:layout_marginTop="@dimen/dp_20"
+                android:paddingTop="20dp" />
+
+            <com.hjq.bar.TitleBar
+                android:id="@+id/title_bar"
+                style="@style/TitleBar"
+                app:layout_collapseMode="pin" />
+
         </com.example.wanAndroid.widget.layout.XCollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -61,8 +72,17 @@
             tools:listitem="@layout/item_article_list" />
     </com.drake.brv.PageRefreshLayout>
 
-    <com.hjq.bar.TitleBar
-        android:id="@+id/title_bar"
-        style="@style/TitleBar" />
+    <!--悬浮按钮-->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="@dimen/dp_20"
+        android:layout_marginBottom="@dimen/dp_70"
+        android:contentDescription="@android:string/unknownName"
+        android:visibility="invisible"
+        app:backgroundTint="@color/color_floating_button"
+        app:srcCompat="@drawable/ic_arrow_upward" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

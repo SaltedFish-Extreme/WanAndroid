@@ -20,7 +20,10 @@ import com.example.wanAndroid.logic.model.base.ApiResponse
 import com.example.wanAndroid.logic.net.NetApi
 import com.example.wanAndroid.ui.adapter.ArticleAdapter
 import com.example.wanAndroid.ui.base.BaseActivity
+import com.example.wanAndroid.widget.ext.cancelFloatBtn
+import com.example.wanAndroid.widget.ext.initFloatBtn
 import com.example.wanAndroid.widget.layout.XCollapsingToolbarLayout
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.hjq.bar.TitleBar
 import java.io.File
 
@@ -37,6 +40,7 @@ class AuthorActivity : BaseActivity() {
     private val headerText: TextView by lazy { findViewById(R.id.header_text) }
     private val page: PageRefreshLayout by lazy { findViewById(R.id.page) }
     private val rv: RecyclerView by lazy { findViewById(R.id.rv) }
+    private val fab: FloatingActionButton by lazy { findViewById(R.id.fab) }
 
     /** Serialize界面传递参数: name */
     private val name: String by bundle()
@@ -59,6 +63,8 @@ class AuthorActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_author)
+        //初始化rv悬浮按钮扩展函数
+        rv.initFloatBtn(fab)
         //标题栏返回按钮关闭页面
         titleBar.leftView.setOnClickListener { finish() }
         //是否作者(userid为-1)
@@ -79,6 +85,12 @@ class AuthorActivity : BaseActivity() {
         rv.adapter = adapter
         //刷新数据
         onRefresh()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        //取消rv悬浮按钮扩展函数
+        rv.cancelFloatBtn(fab)
     }
 
     /** 加载头像 */
