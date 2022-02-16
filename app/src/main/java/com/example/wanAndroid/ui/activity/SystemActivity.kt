@@ -51,6 +51,8 @@ class SystemActivity : BaseActivity(), SwipeBackAbility.OnlyEdge {
             //拦截导航按钮长按吐司
             navigationContentDescription = ""
         }
+        //没有子页面不继续执行创建子fragment操作
+        if (content.isEmpty()) return
         //根据cid创建对应的fragment实例并添加进集合
         cid.forEach {
             fragments.add(SystemChildFragment.newInstance(it))
