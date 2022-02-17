@@ -200,7 +200,6 @@ class WebActivity : BaseActivity() {
 
     override fun onDestroy() {
         mAgentWeb.webLifeCycle.onDestroy()
-        setSupportActionBar(null)
         super.onDestroy()
     }
 }
