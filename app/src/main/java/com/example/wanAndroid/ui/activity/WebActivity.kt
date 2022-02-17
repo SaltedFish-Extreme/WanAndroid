@@ -4,12 +4,14 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.*
+import android.view.KeyEvent
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
 import android.webkit.DownloadListener
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.download.library.DownloadImpl
@@ -17,6 +19,7 @@ import com.drake.serialize.intent.browse
 import com.drake.serialize.intent.share
 import com.example.wanAndroid.R
 import com.example.wanAndroid.logic.dao.Constant
+import com.example.wanAndroid.ui.base.BaseActivity
 import com.example.wanAndroid.util.BaseWebClient
 import com.example.wanAndroid.util.vibration
 import com.example.wanAndroid.widget.ext.getAgentWeb
@@ -31,7 +34,7 @@ import com.just.agentweb.WebChromeClient
  *
  * desc: 网页Activity
  */
-class WebActivity : AppCompatActivity() {
+class WebActivity : BaseActivity() {
 
     private val webContainer: WebContainer by lazy { findViewById(R.id.web_container) }
     private val toolbar: Toolbar by lazy { findViewById(R.id.toolbar) }
@@ -61,8 +64,6 @@ class WebActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web)
-        //使页面填充到状态栏(为了让toolBar沉浸状态栏)
-        window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         intent.extras?.let {
             shareId = it.getInt(Constant.CONTENT_ID_KEY, -1)
             shareTitle = it.getString(Constant.CONTENT_TITLE_KEY, "")
