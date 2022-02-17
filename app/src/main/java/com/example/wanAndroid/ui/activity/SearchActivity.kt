@@ -31,22 +31,29 @@ class SearchActivity : BaseActivity() {
     private val clear: TextView by lazy { findViewById(R.id.clear) }
     private val rvHistory: RecyclerView by lazy { findViewById(R.id.rv_history) }
 
+    /** 搜索热词 */
     private val searchHotData: MutableList<SearchHotResponse> by lazy { mutableListOf() }
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
+        //返回按钮关闭页面
         back.setOnClickListener { finish() }
         if (AppConfig.SearchHot.isNullOrEmpty()) {
+            //没有存储过搜索热词就发起请求
             scopeNetLife {
                 //请求搜索热词数据
                 val data = Get<ApiResponse<MutableList<SearchHotResponse>>>(NetApi.SearchHotAPI).await()
+                //添加数据进集合
                 searchHotData.addAll(data.data)
+                //存储数据
                 AppConfig.SearchHot.addAll(data.data)
+                //刷新adapter数据
                 rvHot.adapter?.notifyDataSetChanged()
             }
         } else {
+            //存储过搜索热词直接获取添加进集合
             searchHotData.addAll(AppConfig.SearchHot)
         }
         //初始化热门rv
