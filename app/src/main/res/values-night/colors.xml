@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--夜间主题差异型编程-->
+<?xml version="1.0" encoding="utf-8"?><!--夜间主题差异型编程-->
 <resources>
     <!--悬浮按钮颜色--><color name="color_floating_button">@color/gray_8f</color>
     <!--重要文字颜色--><color name="color_important">@color/orange_red</color>

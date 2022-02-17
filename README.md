@@ -1,6 +1,7 @@
 # WanAndroid
 
 ## 应用介绍
+
 ***玩安卓项目APP，使用玩Android网站提供的接口，参考了各位大佬的玩安卓项目以及集成了很多优秀的开源库和工具类的项目***
 
 ## 软件录屏
@@ -10,9 +11,11 @@ https://user-images.githubusercontent.com/54784104/154418744-e9be9a1c-c595-40d1-
 https://user-images.githubusercontent.com/54784104/154418770-de7e7933-1e38-46f7-aa98-e4e44f28a43f.mp4
 
 ## 功能介绍
+
 目前做完了主页面、作者页、设置页、搜索页、网页以及部分二级页面，后续会把历史记录以及用户功能方面做完
 
 ## 参考项目
+
 感谢
 
 [冰可乐大佬的玩安卓](https://github.com/iceCola7/WanAndroid)
