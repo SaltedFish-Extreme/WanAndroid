@@ -126,6 +126,8 @@ class WebActivity : BaseActivity() {
         override fun onReceivedTitle(view: WebView, title: String) {
             super.onReceivedTitle(view, title)
             this@WebActivity.title.text = title
+            this@WebActivity.shareUrl = view.url.toString()
+            this@WebActivity.shareTitle = title
         }
     }
 
@@ -156,7 +158,7 @@ class WebActivity : BaseActivity() {
             R.id.web_share -> {
                 //分享
                 share(
-                    getString(R.string.web_share_url, getString(R.string.app_name), shareTitle.ifEmpty { title.text }, shareUrl),
+                    getString(R.string.web_share_url, getString(R.string.app_name), shareTitle, shareUrl),
                     getString(R.string.text_plan),
                     getString(R.string.web_share)
                 )
