@@ -59,4 +59,7 @@ object NetApi {
 
     /** 搜索热词路径 */
     const val SearchHotAPI = "hotkey/json"
+
+    /** 搜索结果路径 */
+    const val SearchResultAPI = "article/query"
 }

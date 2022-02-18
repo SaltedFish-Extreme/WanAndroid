@@ -6,6 +6,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.drake.net.Get
 import com.drake.net.utils.scopeNetLife
+import com.drake.serialize.intent.openActivity
 import com.example.wanAndroid.R
 import com.example.wanAndroid.logic.dao.AppConfig
 import com.example.wanAndroid.logic.model.SearchHotResponse
@@ -17,7 +18,6 @@ import com.example.wanAndroid.ui.base.BaseActivity
 import com.example.wanAndroid.widget.view.ClearEditText
 import com.example.wanAndroid.widget.view.PressAlphaTextView
 import com.google.android.flexbox.FlexboxLayoutManager
-import com.hjq.toast.ToastUtils
 
 /**
  * Created by 咸鱼至尊 on 2022/2/16
@@ -53,13 +53,13 @@ class SearchActivity : BaseActivity() {
             AppConfig.SearchHistory = arrayListOf()
             historyAdapter.setList(arrayListOf())
         }
-        //搜索图标跳转搜索结果Activity并更新搜索记录
+        //搜索图标跳转搜索结果Activity传递参数并更新搜索记录
         search.setOnClickListener {
             //文本为空不执行操作
             if (searchText.text.isNullOrBlank()) {
                 return@setOnClickListener
             } else {
-                ToastUtils.debugShow(searchText.text.toString().trim())
+                openActivity<SearchResultActivity>("key" to searchText.text.toString().trim())
                 updateKey(searchText.text.toString().trim())
             }
         }
@@ -94,9 +94,9 @@ class SearchActivity : BaseActivity() {
             isNestedScrollingEnabled = false
             //设置adapter
             rvHot.adapter = hotAdapter.run {
-                //点击热词item标签跳转搜索结果Activity并更新搜索记录
+                //点击热词item标签跳转搜索结果Activity传递参数并更新搜索记录
                 setOnItemClickListener { _, _, position ->
-                    ToastUtils.debugShow(this.data[position].name)
+                    openActivity<SearchResultActivity>("key" to this.data[position].name)
                     updateKey(this.data[position].name)
                 }
                 //返回此adapter
@@ -116,9 +116,9 @@ class SearchActivity : BaseActivity() {
         }
         //设置adapter
         rvHistory.adapter = historyAdapter.run {
-            //点击历史记录item跳转搜索结果Activity并更新搜索记录
+            //点击历史记录item跳转搜索结果Activity传递参数并更新搜索记录
             setOnItemClickListener { _, _, position ->
-                ToastUtils.debugShow(this.data[position])
+                openActivity<SearchResultActivity>("key" to this.data[position])
                 updateKey(this.data[position])
             }
             //注册需要点击的子控件id
