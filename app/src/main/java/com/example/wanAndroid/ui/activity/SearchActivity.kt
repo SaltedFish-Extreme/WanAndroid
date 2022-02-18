@@ -59,8 +59,8 @@ class SearchActivity : BaseActivity() {
             if (searchText.text.isNullOrBlank()) {
                 return@setOnClickListener
             } else {
-                ToastUtils.debugShow(searchText.text)
-                updateKey(searchText.text.toString())
+                ToastUtils.debugShow(searchText.text.toString().trim())
+                updateKey(searchText.text.toString().trim())
             }
         }
     }
