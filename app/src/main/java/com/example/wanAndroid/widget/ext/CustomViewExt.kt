@@ -141,7 +141,7 @@ fun String.getAgentWeb(
     .setWebChromeClient(webChromeClient)
     .setMainFrameErrorView(R.layout.agentweb_error_page, -1)
     .setSecurityType(AgentWeb.SecurityType.STRICT_CHECK)
-    .setOpenOtherPageWays(DefaultWebClient.OpenOtherPageWays.ASK)//打开其他应用时，弹窗咨询用户是否前往其他应用
+    .setOpenOtherPageWays(DefaultWebClient.OpenOtherPageWays.DISALLOW)//不允许打开其他应用
     .interceptUnkownUrl()
     .createAgentWeb()
     .ready()

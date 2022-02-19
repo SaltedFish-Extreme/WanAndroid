@@ -20,7 +20,11 @@ open class BaseWebClient : WebViewClient() {
         "www.jd.com",
         "yun.tuisnake.com",
         "yun.lvehaisen.com",
-        "yun.tuitiger.com"
+        "yun.tuitiger.com",
+        "ad.lflucky.com",
+        "downloads.jianshu.io",
+        "juejin.zlink.toutiao.com",
+        "app-wvhzpj.openinstall.io"
     )
 
     private fun isBlackHost(host: String): Boolean {
