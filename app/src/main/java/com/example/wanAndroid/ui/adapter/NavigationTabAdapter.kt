@@ -10,7 +10,7 @@ import q.rorbin.verticaltablayout.widget.ITabView
 /**
  * Created by 咸鱼至尊 on 2022/1/31
  *
- * desc: 自定义导航选项卡标签适配器
+ * desc: 导航选项卡标签适配器
  */
 class NavigationTabAdapter(private val dataList: List<NavigationResponse>) : TabAdapter {
 

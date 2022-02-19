@@ -4,7 +4,12 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.example.wanAndroid.R
 import com.example.wanAndroid.ui.base.BaseAdapter
 
-class SearcHistoryAdapter(dataList: MutableList<String>) : BaseAdapter<String>(R.layout.item_history_list, dataList) {
+/**
+ * Created by 咸鱼至尊 on 2022/2/17
+ *
+ * desc: 搜索历史适配器
+ */
+class SearchHistoryAdapter(dataList: MutableList<String>) : BaseAdapter<String>(R.layout.item_search_history_list, dataList) {
 
     init {
         setAnimationWithDefault(AnimationType.ScaleIn)

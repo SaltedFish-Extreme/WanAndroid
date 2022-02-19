@@ -15,7 +15,7 @@ import com.youth.banner.adapter.BannerAdapter
 /**
  * Created by 咸鱼至尊 on 2021/12/20
  *
- * desc: 自定义banner布局适配器，图片+标题
+ * desc: banner布局适配器，图片+标题
  */
 class ImageTitleAdapter(dataList: List<BannerResponse>) : BannerAdapter<BannerResponse, ImageTitleAdapter.ImageTitleHolder>(dataList) {
 

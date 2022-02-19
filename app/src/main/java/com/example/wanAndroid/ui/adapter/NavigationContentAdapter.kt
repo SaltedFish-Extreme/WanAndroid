@@ -11,7 +11,7 @@ import com.google.android.flexbox.FlexboxLayoutManager
 /**
  * Created by 咸鱼至尊 on 2022/1/31
  *
- * desc: 自定义导航内容适配器
+ * desc: 导航内容适配器
  */
 class NavigationContentAdapter(dataList: MutableList<NavigationResponse>) : BaseAdapter<NavigationResponse>(R.layout.item_navigation_list, dataList) {
 

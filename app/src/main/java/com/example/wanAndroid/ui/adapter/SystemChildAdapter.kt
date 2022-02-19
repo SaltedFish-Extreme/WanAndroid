@@ -9,7 +9,7 @@ import com.example.wanAndroid.widget.ext.html2Sting
 /**
  * Created by 咸鱼至尊 on 2022/2/2
  *
- * desc: 自定义体系子流标签适配器
+ * desc: 体系子流标签适配器
  */
 class SystemChildAdapter(dataList: MutableList<ClassificationResponse>) : BaseAdapter<ClassificationResponse>(R.layout.item_flow_text, dataList) {
 

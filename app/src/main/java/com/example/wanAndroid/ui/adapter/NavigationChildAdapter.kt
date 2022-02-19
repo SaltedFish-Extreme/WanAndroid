@@ -11,7 +11,7 @@ import com.example.wanAndroid.widget.ext.randomColor
 /**
  * Created by 咸鱼至尊 on 2022/1/31
  *
- * desc: 自定义导航子流标签适配器
+ * desc: 导航子流标签适配器
  */
 class NavigationChildAdapter(dataList: MutableList<ArticleResponse>) : BaseAdapter<ArticleResponse>(R.layout.item_flow_shape, dataList) {
 

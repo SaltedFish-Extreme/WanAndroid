@@ -13,7 +13,7 @@ import com.google.android.flexbox.FlexboxLayoutManager
 /**
  * Created by 咸鱼至尊 on 2022/2/2
  *
- * desc: 自定义体系适配器
+ * desc: 体系适配器
  */
 class SystemAdapter(dataList: MutableList<SystemResponse>) : BaseAdapter<SystemResponse>(R.layout.item_system_list, dataList) {
 

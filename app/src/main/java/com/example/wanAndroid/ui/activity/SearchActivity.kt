@@ -12,8 +12,8 @@ import com.example.wanAndroid.logic.dao.AppConfig
 import com.example.wanAndroid.logic.model.SearchHotResponse
 import com.example.wanAndroid.logic.model.base.ApiResponse
 import com.example.wanAndroid.logic.net.NetApi
-import com.example.wanAndroid.ui.adapter.SearcHistoryAdapter
-import com.example.wanAndroid.ui.adapter.SearcHotAdapter
+import com.example.wanAndroid.ui.adapter.SearchHistoryAdapter
+import com.example.wanAndroid.ui.adapter.SearchHotAdapter
 import com.example.wanAndroid.ui.base.BaseActivity
 import com.example.wanAndroid.widget.view.ClearEditText
 import com.example.wanAndroid.widget.view.PressAlphaTextView
@@ -34,10 +34,10 @@ class SearchActivity : BaseActivity() {
     private val rvHistory: RecyclerView by lazy { findViewById(R.id.rv_history) }
 
     /** 搜索热词适配器 */
-    private val hotAdapter: SearcHotAdapter by lazy { SearcHotAdapter(arrayListOf()) }
+    private val hotAdapter: SearchHotAdapter by lazy { SearchHotAdapter(arrayListOf()) }
 
     /** 搜索历史适配器 */
-    private val historyAdapter: SearcHistoryAdapter by lazy { SearcHistoryAdapter(arrayListOf()) }
+    private val historyAdapter: SearchHistoryAdapter by lazy { SearchHistoryAdapter(arrayListOf()) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

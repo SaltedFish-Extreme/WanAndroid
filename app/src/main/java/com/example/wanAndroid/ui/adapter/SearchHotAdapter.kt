@@ -6,7 +6,12 @@ import com.example.wanAndroid.logic.model.SearchHotResponse
 import com.example.wanAndroid.ui.base.BaseAdapter
 import com.example.wanAndroid.widget.ext.randomColor
 
-class SearcHotAdapter(dataList: MutableList<SearchHotResponse>) : BaseAdapter<SearchHotResponse>(R.layout.item_flow_shape, dataList) {
+/**
+ * Created by 咸鱼至尊 on 2022/2/16
+ *
+ * desc: 搜索热词适配器
+ */
+class SearchHotAdapter(dataList: MutableList<SearchHotResponse>) : BaseAdapter<SearchHotResponse>(R.layout.item_flow_shape, dataList) {
 
     init {
         setAnimationWithDefault(AnimationType.ScaleIn)
