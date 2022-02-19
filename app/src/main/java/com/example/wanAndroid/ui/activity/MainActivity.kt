@@ -20,6 +20,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.navigation.NavigationView
 import com.hjq.toast.ToastUtils
+import org.litepal.LitePal
 
 /**
  * Created by 咸鱼至尊 on 2021/12/9
@@ -48,6 +49,10 @@ class MainActivity : BaseActivity() {
         initBottomNavigationView()
         //初始化侧滑栏控件
         initNavigationView()
+        //获取数据库
+        LitePal.getDatabase()
+        //删除数据库
+        //LitePal.deleteDatabase("example")
     }
 
     /** 初始化抽屉布局控件 */
@@ -130,7 +135,7 @@ class MainActivity : BaseActivity() {
                 R.id.nav_integral -> ToastUtils.debugShow(R.string.my_integral)
                 R.id.nav_collect -> ToastUtils.debugShow(R.string.my_collect)
                 R.id.nav_share -> ToastUtils.debugShow(R.string.my_share)
-                R.id.nav_record -> ToastUtils.debugShow(R.string.my_record)
+                R.id.nav_record -> openActivity<HistoryRecordActivity>()
                 R.id.nav_setting -> openActivity<SettingActivity>()
                 R.id.nav_exit -> ToastUtils.debugShow(R.string.my_exit)
             }

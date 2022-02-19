@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?><!--历史记录页面-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.hjq.bar.TitleBar
+        android:id="@+id/title_bar"
+        style="@style/TitleBar"
+        app:rightTitle="@string/clear"
+        app:title="@string/my_record" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title_bar"
+        tools:listitem="@layout/item_history_record_list" />
+
+    <!--悬浮按钮-->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="@dimen/dp_20"
+        android:layout_marginBottom="@dimen/dp_70"
+        android:contentDescription="@android:string/unknownName"
+        android:visibility="invisible"
+        app:backgroundTint="@color/color_floating_button"
+        app:srcCompat="@drawable/ic_arrow_upward" />
+
+</RelativeLayout>

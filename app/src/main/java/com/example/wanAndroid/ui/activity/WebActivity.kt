@@ -19,22 +19,25 @@ import com.drake.serialize.intent.browse
 import com.drake.serialize.intent.share
 import com.example.wanAndroid.R
 import com.example.wanAndroid.logic.dao.Constant
+import com.example.wanAndroid.logic.dao.HistoryRecordDB
 import com.example.wanAndroid.ui.base.BaseActivity
 import com.example.wanAndroid.util.BaseWebClient
 import com.example.wanAndroid.util.vibration
 import com.example.wanAndroid.widget.ext.getAgentWeb
+import com.example.wanAndroid.widget.ext.html2Sting
 import com.example.wanAndroid.widget.web.WebContainer
 import com.google.android.material.appbar.AppBarLayout
 import com.just.agentweb.AgentWeb
 import com.just.agentweb.NestedScrollAgentWebView
 import com.just.agentweb.WebChromeClient
+import java.sql.Date
 
 /**
  * Created by 咸鱼至尊 on 2022/2/10
  *
- * desc: 网页Activity
+ * desc: 网页Activity (不接收广播)
  */
-class WebActivity : BaseActivity() {
+class WebActivity : BaseActivity(false) {
 
     private val webContainer: WebContainer by lazy { findViewById(R.id.web_container) }
     private val toolbar: Toolbar by lazy { findViewById(R.id.toolbar) }
@@ -116,18 +119,33 @@ class WebActivity : BaseActivity() {
         }
         //web文件下载监听(异步文件下载，自动申请权限，自动弹出安装)
         DownloadListener { url, _, _, _, _ ->
-            DownloadImpl.getInstance(applicationContext)
-                .url(url)
-                .enqueue()
+            //这样并不能阻止csdn等网站弹窗app下载，目前只能在BaseWebClient拦截其网址，有能力也可以加黑名单或者正则表达式判断
+            if (url.startsWith("https://") && url.endsWith(".apk")) {
+                DownloadImpl.getInstance(applicationContext)
+                    .url(url)
+                    .enqueue()
+            }
         }
     }
 
     private val mWebChromeClient = object : WebChromeClient() {
         override fun onReceivedTitle(view: WebView, title: String) {
             super.onReceivedTitle(view, title)
-            this@WebActivity.title.text = title
-            this@WebActivity.shareUrl = view.url.toString()
-            this@WebActivity.shareTitle = title
+            //只对不是以URL链接为标题的网页执行以下操作(e.g.微信公众号会先显示网页链接，再显示标题)
+            if (title.isNotEmpty() && !title.startsWith("http")) {
+                //设置网页标题
+                this@WebActivity.title.text = title.html2Sting()
+                //设置网页分享标题
+                this@WebActivity.shareTitle = title.html2Sting()
+                //设置网页分享URL
+                this@WebActivity.shareUrl = view.url.toString()
+                //给历史记录数据库表写入一条记录，已存在则更新
+                val db = HistoryRecordDB()
+                db.title = shareTitle
+                db.url = shareUrl
+                db.date = Date(System.currentTimeMillis())
+                db.saveOrUpdate("title = ?", shareTitle)
+            }
         }
     }
 

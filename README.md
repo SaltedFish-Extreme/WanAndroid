@@ -2,7 +2,7 @@
 
 ## 应用介绍
 
-***玩安卓项目APP，使用玩Android网站提供的接口，参考了各位大佬的玩安卓项目以及集成了很多优秀的开源库和工具类的项目***
+***玩安卓项目APP，使用玩Android网站提供的接口，使用了很多技术，参考了各位大佬的玩安卓项目以及集成了很多优秀的开源库和工具类的项目***
 
 ## 软件录屏
 
@@ -10,9 +10,11 @@ https://user-images.githubusercontent.com/54784104/154418744-e9be9a1c-c595-40d1-
 
 https://user-images.githubusercontent.com/54784104/154418770-de7e7933-1e38-46f7-aa98-e4e44f28a43f.mp4
 
+https://user-images.githubusercontent.com/54784104/154806857-b08c5b3e-13a9-4d8f-8d71-19d82e197ca2.mp4
+
 ## 功能介绍
 
-目前做完了主页面、作者页、设置页、搜索页、网页以及部分二级页面，后续会把历史记录以及用户功能方面做完
+目前做完了主页面、作者页、设置页、搜索页、网页、历史记录页以及部分二级页面，后续会把用户功能方面做完
 
 ## 参考项目
 
@@ -35,8 +37,8 @@ https://user-images.githubusercontent.com/54784104/154418770-de7e7933-1e38-46f7-
 ***[序列化数据](https://github.com/liangjingkanji/Serialize)***
 ***[RecyclerView](https://github.com/liangjingkanji/BRV)***
 ***[Adapter](https://github.com/CymChad/BaseRecyclerViewAdapterHelper)***
-
 ***[侧滑返回](https://github.com/goweii/SwipeBack)***
+
 ***[今日诗词](https://github.com/xenv/jinrishici-sdk-android)***
 ***[ViewPager指示器](https://github.com/hackware1993/MagicIndicator)***
 ***[图片加载](https://github.com/bumptech/glide)***
@@ -50,8 +52,8 @@ https://user-images.githubusercontent.com/54784104/154418770-de7e7933-1e38-46f7-
 ***[揭示效果](https://github.com/goweii/RevealLayout)***
 ***[伸缩布局](https://github.com/google/flexbox-layout)***
 ***[垂直选项卡](https://github.com/qstumn/VerticalTabLayout)***
-***[滑动布局](https://github.com/daimajia/AndroidSwipeLayout)***
 ***[web浏览器](https://github.com/Justson/AgentWeb)***
 ***[web文件下载](https://github.com/Justson/Downloader)***
 ***[web进度指示条](https://github.com/Justson/CoolIndicator)***
 ***[扫描二维码](https://github.com/bingoogolapple/BGAQRCode-Android)***
+***[数据库](https://github.com/guolindev/LitePal)***

@@ -16,6 +16,7 @@ import com.example.wanAndroid.widget.refresh.MyClassicsHeader
 import com.hjq.toast.ToastUtils
 import com.jinrishici.sdk.android.factory.JinrishiciFactory
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
+import org.litepal.LitePal
 import per.goweii.swipeback.SwipeBack
 import per.goweii.swipeback.SwipeBackDirection
 import per.goweii.swipeback.transformer.ParallaxSwipeBackTransformer
@@ -46,6 +47,8 @@ class MyApplication : Application() {
             true -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             false -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
+        //初始化数据库
+        LitePal.initialize(this)
         //初始化Toast框架
         ToastUtils.init(this)
         //初始化今日诗词

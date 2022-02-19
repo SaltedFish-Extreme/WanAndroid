@@ -61,6 +61,7 @@
         <item name="leftIcon">@drawable/ic_back</item>
         <item name="leftIconTint">@color/color_ic_bg_tint</item>
         <item name="rightIconTint">@color/color_ic_bg_tint</item>
+        <item name="rightTitleColor">?android:attr/textColorPrimary</item>
         <item name="titleColor">?android:attr/textColorPrimary</item>
         <item name="titleSize">@dimen/sp_20</item>
         <item name="lineVisible">false</item>

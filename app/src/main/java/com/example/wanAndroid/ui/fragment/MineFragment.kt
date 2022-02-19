@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.drake.serialize.intent.openActivity
 import com.example.wanAndroid.R
+import com.example.wanAndroid.ui.activity.HistoryRecordActivity
 import com.example.wanAndroid.ui.activity.SettingActivity
 import com.example.wanAndroid.widget.settingbar.SettingBar
 import com.example.wanAndroid.widget.toolbar.Toolbar
@@ -56,7 +57,7 @@ class MineFragment : Fragment() {
         mineIntegral.setOnClickListener { ToastUtils.debugShow(R.string.my_integral) }
         mineCollect.setOnClickListener { ToastUtils.debugShow(R.string.my_collect) }
         mineShare.setOnClickListener { ToastUtils.debugShow(R.string.my_share) }
-        mineRecord.setOnClickListener { ToastUtils.debugShow(R.string.my_record) }
+        mineRecord.setOnClickListener { openActivity<HistoryRecordActivity>() }
         mineSetting.setOnClickListener { openActivity<SettingActivity>() }
         mineExit.setOnClickListener { ToastUtils.debugShow(R.string.my_exit) }
     }

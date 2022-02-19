@@ -86,4 +86,10 @@
     <string name="search_hot">热门搜索(目前搜索最多的关键词)</string>
     <string name="search_history">搜索历史(保留最近前十条搜索记录)</string>
     <string name="clear">清空</string>
+    <!--历史记录页-->
+    <string name="copy_link">复制链接</string>
+    <string name="delete">删除</string>
+    <string name="delete_succeed">删除成功</string>
+    <string name="date">2022\-02\-02 00:00:00</string>
+    <string name="delete_confirm">确定删除所有历史记录吗？</string>
 </resources>
