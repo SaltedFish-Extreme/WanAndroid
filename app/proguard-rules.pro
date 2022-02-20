@@ -14,7 +14,7 @@
 
 -optimizations !code/simplification/artithmetic,!field/*,!class/merging/*
 
--keep class com.example.wanAndroid.logic.**{*;}
+-keep class com.example.wanAndroid.logic.**{ *; }
 
 ################common###############
 
@@ -24,7 +24,7 @@
 }
 -keepnames class * implements java.io.Serializable
 -keepattributes Signature
--keep class **.R$* {*;}
+-keep class **.R$* { *; }
 -ignorewarnings
 -keepclassmembers class **.R$* {
     public static <fields>;
@@ -44,10 +44,10 @@
 -keep interface android.support.** { *; }
 -dontwarn android.support.**
 
--keep class com.google.android.material.** {*;}
--keep class androidx.** {*;}
+-keep class com.google.android.material.** { *; }
+-keep class androidx.** { *; }
 -keep public class * extends androidx.**
--keep interface androidx.** {*;}
+-keep interface androidx.** { *; }
 -dontwarn com.google.android.material.**
 -dontnote com.google.android.material.**
 -dontwarn androidx.**
@@ -69,12 +69,18 @@
 }
 
 ################AgentWeb###############
--keep class com.just.agentweb.** {
-    *;
-}
+-keep class com.just.agentweb.** { *; }
 
 -dontwarn com.just.agentweb.**
 
 ################Litepal###############
--keep class org.litepal.** {*;}
--keep class * extends org.litepal.crud.LitePalSupport {*;}
+-keep class org.litepal.** { *; }
+-keep class * extends org.litepal.crud.LitePalSupport { *; }
+
+################今日诗词###############
+# For using GSON @Expose annotation
+-keepattributes *Annotation*
+# Gson specific classes
+-keep class com.google.gson.stream.** { *; }
+# Application classes that will be serialized/deserialized over Gson
+-keep class com.jinrishici.sdk.android.model.** { *; }
