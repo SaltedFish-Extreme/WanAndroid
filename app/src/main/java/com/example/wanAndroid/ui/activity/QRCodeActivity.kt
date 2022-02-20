@@ -6,7 +6,7 @@ import com.drake.serialize.intent.openActivity
 import com.example.wanAndroid.R
 import com.example.wanAndroid.ui.base.BaseActivity
 import com.example.wanAndroid.util.PhotoUtils
-import com.example.wanAndroid.util.vibration
+import com.example.wanAndroid.ext.vibration
 import com.hjq.bar.TitleBar
 import com.hjq.permissions.Permission
 import com.hjq.permissions.XXPermissions

@@ -10,9 +10,7 @@ import java.math.BigDecimal
  *
  * desc: 缓存工具类
  */
-@Suppress("MemberVisibilityCanBePrivate", "unused")
 object CacheDataUtil {
-
     /** 获取缓存大小 */
     @Throws(Exception::class)
     fun getTotalCacheSize(context: Context): String {
@@ -57,7 +55,7 @@ object CacheDataUtil {
      * SDCard/Android/data/你的应用包名/cache/目录， 一般存放临时缓存数据
      */
     @Throws(Exception::class)
-    fun getFolderSize(file: File?): Long {
+    private fun getFolderSize(file: File?): Long {
         var size: Long = 0
         try {
             val fileList = file!!.listFiles()
@@ -76,7 +74,7 @@ object CacheDataUtil {
     }
 
     /** 格式化单位 */
-    fun getFormatSize(size: Double): String {
+    private fun getFormatSize(size: Double): String {
         val kiloByte = size / 1024
         if (kiloByte < 1) {
             return size.toString() + "Byte"

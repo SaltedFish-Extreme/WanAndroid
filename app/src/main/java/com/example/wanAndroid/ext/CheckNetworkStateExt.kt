@@ -1,4 +1,4 @@
-package com.example.wanAndroid.util
+package com.example.wanAndroid.ext
 
 import android.content.Context
 import android.net.ConnectivityManager
@@ -7,7 +7,7 @@ import android.net.NetworkCapabilities
 /**
  * Created by 咸鱼至尊 on 2021/12/9
  *
- * desc: 上下文对象扩展函数 网络连接检查工具类
+ * desc: 上下文对象扩展函数 网络连接检查
  *
  * @return 是否联网
  */

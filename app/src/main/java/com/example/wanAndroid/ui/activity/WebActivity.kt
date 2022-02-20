@@ -18,11 +18,11 @@ import com.download.library.DownloadImpl
 import com.drake.serialize.intent.browse
 import com.drake.serialize.intent.share
 import com.example.wanAndroid.R
+import com.example.wanAndroid.ext.vibration
 import com.example.wanAndroid.logic.dao.Constant
 import com.example.wanAndroid.logic.dao.HistoryRecordDB
+import com.example.wanAndroid.ui.BaseWebClient
 import com.example.wanAndroid.ui.base.BaseActivity
-import com.example.wanAndroid.util.BaseWebClient
-import com.example.wanAndroid.util.vibration
 import com.example.wanAndroid.widget.ext.getAgentWeb
 import com.example.wanAndroid.widget.ext.html2Sting
 import com.example.wanAndroid.widget.web.WebContainer
@@ -30,6 +30,7 @@ import com.google.android.material.appbar.AppBarLayout
 import com.just.agentweb.AgentWeb
 import com.just.agentweb.NestedScrollAgentWebView
 import com.just.agentweb.WebChromeClient
+import per.goweii.swipeback.SwipeBackAbility
 import java.sql.Date
 
 /**
@@ -37,7 +38,7 @@ import java.sql.Date
  *
  * desc: 网页Activity (不接收广播)
  */
-class WebActivity : BaseActivity(false) {
+class WebActivity : BaseActivity(false), SwipeBackAbility.OnlyEdge {
 
     private val webContainer: WebContainer by lazy { findViewById(R.id.web_container) }
     private val toolbar: Toolbar by lazy { findViewById(R.id.toolbar) }
@@ -81,7 +82,7 @@ class WebActivity : BaseActivity(false) {
             setNavigationOnClickListener { finish() }
             //拦截导航按钮长按吐司
             navigationContentDescription = ""
-            //todo 屏蔽溢出菜单长按吐司事件
+            //todo 拦截溢出菜单长按吐司事件
         }
         title.apply {
             text = getString(R.string.loading)
@@ -222,4 +223,7 @@ class WebActivity : BaseActivity(false) {
         mAgentWeb.webLifeCycle.onDestroy()
         super.onDestroy()
     }
+
+    /** 只允许边缘侧滑返回 */
+    override fun swipeBackOnlyEdge() = true
 }

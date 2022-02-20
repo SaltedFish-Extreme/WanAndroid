@@ -11,6 +11,7 @@ import java.io.InputStreamReader
  *
  * desc: 字符串工具类
  */
+@Suppress("unused")
 object StringUtil {
     /** 输入流转字符串 */
     fun getString(stream: InputStream): String {

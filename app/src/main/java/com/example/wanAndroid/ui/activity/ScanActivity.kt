@@ -7,7 +7,7 @@ import cn.bingoogolapple.qrcode.zxing.ZXingView
 import com.example.wanAndroid.R
 import com.example.wanAndroid.ui.base.BaseActivity
 import com.example.wanAndroid.util.GlideEngine
-import com.example.wanAndroid.util.vibration
+import com.example.wanAndroid.ext.vibration
 import com.example.wanAndroid.widget.view.FloatActionButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.hjq.toast.ToastUtils

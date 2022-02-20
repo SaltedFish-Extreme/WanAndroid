@@ -1,4 +1,4 @@
-package com.example.wanAndroid.util
+package com.example.wanAndroid.ext
 
 import android.content.Context
 import android.os.*

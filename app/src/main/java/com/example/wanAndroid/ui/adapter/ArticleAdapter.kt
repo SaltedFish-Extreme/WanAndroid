@@ -9,7 +9,7 @@ import com.example.wanAndroid.logic.model.ArticleResponse
 import com.example.wanAndroid.ui.activity.AuthorActivity
 import com.example.wanAndroid.ui.activity.WebActivity
 import com.example.wanAndroid.ui.base.BaseAdapter
-import com.example.wanAndroid.util.vibration
+import com.example.wanAndroid.ext.vibration
 import com.example.wanAndroid.widget.ext.html2Sting
 import com.google.android.material.imageview.ShapeableImageView
 import com.hjq.toast.ToastUtils

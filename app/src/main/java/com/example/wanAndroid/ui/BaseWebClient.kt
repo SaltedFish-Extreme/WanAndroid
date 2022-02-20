@@ -1,4 +1,4 @@
-package com.example.wanAndroid.util
+package com.example.wanAndroid.ui
 
 import android.net.Uri
 import android.net.http.SslError
