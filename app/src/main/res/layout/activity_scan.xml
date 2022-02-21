@@ -30,6 +30,7 @@
         android:layout_marginBottom="@dimen/dp_150"
         android:contentDescription="@android:string/unknownName"
         android:src="@drawable/ic_flash_off"
+        app:backgroundTint="@color/color_floating_button"
         tools:ignore="RelativeOverlap" />
 
     <!--自定义悬浮按钮-->

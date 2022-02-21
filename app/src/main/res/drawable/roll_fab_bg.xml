@@ -64,7 +64,7 @@
             <!-- Blue button pressed -->
             <item>
                 <shape android:shape="oval">
-                    <solid android:color="#90CAF9" />
+                    <solid android:color="@color/color_fab_pressed" />
                 </shape>
             </item>
         </layer-list>
@@ -135,7 +135,7 @@
 
             <item>
                 <shape android:shape="oval">
-                    <solid android:color="@color/color_floating_button" />
+                    <solid android:color="@color/color_fab" />
                 </shape>
             </item>
 

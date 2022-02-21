@@ -1,7 +1,9 @@
 <!--夜间主题差异型编程-->
 <resources>
-    <!-- Base application theme. -->
+    <!-- 应用主题样式 -->
     <style name="Theme.WanAndroid" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+        <!-- 应用的强调色，CheckBox RadioButton Switch 等一般控件的选中效果默认采用该颜色 -->
+        <item name="colorAccent">@color/orchid</item>
         <!--图标填充颜色-->
         <item name="iconTint">@color/white</item>
         <!--位图填充颜色-->

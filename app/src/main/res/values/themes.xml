@@ -1,15 +1,13 @@
 <resources>
-    <!-- Base application theme. -->
+    <!-- 应用主题样式 -->
     <style name="Theme.WanAndroid" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
-        <!-- Primary brand color. -->
+        <!-- 应用的主要色调，ActionBar Toolbar 默认使用该颜色 -->
         <item name="colorPrimary">@color/super_blue</item>
-        <item name="colorPrimaryVariant">@android:color/holo_orange_dark</item>
-        <item name="colorOnPrimary">@android:color/darker_gray</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/violet</item>
-        <item name="colorSecondaryVariant">@color/super_blue</item>
-        <item name="colorOnSecondary">@android:color/background_light</item>
-        <!-- Status bar color. -->
+        <!-- 应用的强调色，CheckBox RadioButton Switch 等一般控件的选中效果默认采用该颜色 -->
+        <item name="colorAccent">@color/deep_sky_blue</item>
+        <!-- 应用的主要暗色调，状态栏默认使用该颜色 -->
+        <item name="colorPrimaryDark">@android:color/transparent</item>
+        <!-- 状态栏 -->
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>
     </style>

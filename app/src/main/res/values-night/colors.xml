@@ -15,4 +15,6 @@
     <!--可绘制背景色调--><color name="color_drawable_bg_tint">@color/medium_orchid</color>
     <!--web页面背景绘制颜色--><color name="color_web_bg_draw">@color/black</color>
     <!--搜索框背景颜色--><color name="color_search_bg">@color/light_inky_grey</color>
+    <!--自定义悬浮按钮颜色--><color name="color_fab">@color/dove_gray</color>
+    <!--自定义悬浮按钮按下颜色--><color name="color_fab_pressed">@color/dusty_gray</color>
 </resources>
