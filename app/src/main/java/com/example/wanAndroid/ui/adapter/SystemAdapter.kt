@@ -7,7 +7,7 @@ import com.example.wanAndroid.R
 import com.example.wanAndroid.logic.model.SystemResponse
 import com.example.wanAndroid.ui.activity.SystemActivity
 import com.example.wanAndroid.ui.base.BaseAdapter
-import com.example.wanAndroid.widget.ext.html2Sting
+import com.example.wanAndroid.widget.ext.html2Spanned
 import com.google.android.flexbox.FlexboxLayoutManager
 
 /**
@@ -47,7 +47,7 @@ class SystemAdapter(dataList: MutableList<SystemResponse>) : BaseAdapter<SystemR
 
     override fun convert(holder: BaseViewHolder, item: SystemResponse) {
         //设置rv标题
-        holder.setText(R.id.title, item.name.html2Sting())
+        holder.setText(R.id.title, item.name.html2Spanned())
         //使用子流标签适配器
         holder.getView<RecyclerView>(R.id.rv).adapter = SystemChildAdapter(item.children).run {
             //给子项适配器设置点击事件

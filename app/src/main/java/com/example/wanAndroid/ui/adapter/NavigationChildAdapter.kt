@@ -5,7 +5,7 @@ import com.example.wanAndroid.R
 import com.example.wanAndroid.logic.model.ArticleResponse
 import com.example.wanAndroid.ui.activity.WebActivity
 import com.example.wanAndroid.ui.base.BaseAdapter
-import com.example.wanAndroid.widget.ext.html2Sting
+import com.example.wanAndroid.widget.ext.html2Spanned
 import com.example.wanAndroid.widget.ext.randomColor
 
 /**
@@ -26,7 +26,7 @@ class NavigationChildAdapter(dataList: MutableList<ArticleResponse>) : BaseAdapt
 
     override fun convert(holder: BaseViewHolder, item: ArticleResponse) {
         //标签文字
-        holder.setText(R.id.flow_tag, item.title.html2Sting())
+        holder.setText(R.id.flow_tag, item.title.html2Spanned())
         //标签文字颜色
         holder.setTextColor(R.id.flow_tag, randomColor())
     }

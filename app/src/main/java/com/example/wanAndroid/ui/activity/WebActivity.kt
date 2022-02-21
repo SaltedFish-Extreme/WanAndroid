@@ -24,7 +24,8 @@ import com.example.wanAndroid.logic.dao.HistoryRecordDB
 import com.example.wanAndroid.ui.BaseWebClient
 import com.example.wanAndroid.ui.base.BaseActivity
 import com.example.wanAndroid.widget.ext.getAgentWeb
-import com.example.wanAndroid.widget.ext.html2Sting
+import com.example.wanAndroid.widget.ext.html2Spanned
+import com.example.wanAndroid.widget.ext.html2String
 import com.example.wanAndroid.widget.web.WebContainer
 import com.google.android.material.appbar.AppBarLayout
 import com.just.agentweb.AgentWeb
@@ -135,9 +136,9 @@ class WebActivity : BaseActivity(false), SwipeBackAbility.OnlyEdge {
             //只对不是以URL链接为标题的网页执行以下操作(e.g.微信公众号会先显示网页链接，再显示标题)
             if (title.isNotEmpty() && !title.startsWith("http")) {
                 //设置网页标题
-                this@WebActivity.title.text = title.html2Sting()
+                this@WebActivity.title.text = title.html2Spanned()
                 //设置网页分享标题
-                this@WebActivity.shareTitle = title.html2Sting()
+                this@WebActivity.shareTitle = title.html2String()
                 //设置网页分享URL
                 this@WebActivity.shareUrl = view.url.toString()
                 //给历史记录数据库表写入一条记录，已存在则更新

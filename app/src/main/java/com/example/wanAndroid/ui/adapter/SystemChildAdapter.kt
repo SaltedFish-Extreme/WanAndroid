@@ -4,7 +4,7 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.example.wanAndroid.R
 import com.example.wanAndroid.logic.model.ClassificationResponse
 import com.example.wanAndroid.ui.base.BaseAdapter
-import com.example.wanAndroid.widget.ext.html2Sting
+import com.example.wanAndroid.widget.ext.html2Spanned
 
 /**
  * Created by 咸鱼至尊 on 2022/2/2
@@ -20,6 +20,6 @@ class SystemChildAdapter(dataList: MutableList<ClassificationResponse>) : BaseAd
 
     override fun convert(holder: BaseViewHolder, item: ClassificationResponse) {
         //标签文字
-        holder.setText(R.id.flow_tag, item.name.html2Sting())
+        holder.setText(R.id.flow_tag, item.name.html2Spanned())
     }
 }

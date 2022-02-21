@@ -15,7 +15,8 @@ import com.example.wanAndroid.logic.dao.HistoryRecordDB
 import com.example.wanAndroid.ui.base.BaseActivity
 import com.example.wanAndroid.widget.dialog.Dialog
 import com.example.wanAndroid.widget.ext.cancelFloatBtn
-import com.example.wanAndroid.widget.ext.html2Sting
+import com.example.wanAndroid.widget.ext.html2Spanned
+import com.example.wanAndroid.widget.ext.html2String
 import com.example.wanAndroid.widget.ext.initFloatBtn
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.hjq.bar.TitleBar
@@ -60,7 +61,7 @@ class HistoryRecordActivity : BaseActivity(), SwipeBackAbility.OnlyEdge {
             //数据绑定回调
             onBind {
                 //设置标题
-                findView<TextView>(R.id.item_history_title).text = getModel<HistoryRecordDB>().title.html2Sting()
+                findView<TextView>(R.id.item_history_title).text = getModel<HistoryRecordDB>().title.html2Spanned()
                 //设置日期
                 findView<TextView>(R.id.item_history_date).text = DateFormat.format("yyyy-MM-dd HH:mm:ss", getModel<HistoryRecordDB>().date)
             }
@@ -74,7 +75,7 @@ class HistoryRecordActivity : BaseActivity(), SwipeBackAbility.OnlyEdge {
                     // 这是侧滑删除后回调, 这里可以同步服务器 (这里从数据库中删除对应行)
                     LitePal.deleteAll<HistoryRecordDB>(
                         "title = ?",
-                        ((viewHolder as BindingAdapter.BindingViewHolder).getModel<HistoryRecordDB>().title.html2Sting())
+                        ((viewHolder as BindingAdapter.BindingViewHolder).getModel<HistoryRecordDB>().title.html2String())
                     )
                     ToastUtils.show(getString(R.string.delete_succeed))
                 }

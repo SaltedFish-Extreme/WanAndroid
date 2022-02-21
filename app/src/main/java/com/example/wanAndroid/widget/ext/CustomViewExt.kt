@@ -111,7 +111,7 @@ fun String.html2Spanned(@Nullable flag: Int = Html.FROM_HTML_MODE_LEGACY): Spann
  * @param flag 转换方式，可空
  * @return String字符串
  */
-fun String.html2Sting(@Nullable flag: Int = Html.FROM_HTML_MODE_LEGACY): String {
+fun String.html2String(@Nullable flag: Int = Html.FROM_HTML_MODE_LEGACY): String {
     return Html.fromHtml(this, flag).toString()
 }
 

@@ -5,7 +5,7 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.example.wanAndroid.R
 import com.example.wanAndroid.logic.model.NavigationResponse
 import com.example.wanAndroid.ui.base.BaseAdapter
-import com.example.wanAndroid.widget.ext.html2Sting
+import com.example.wanAndroid.widget.ext.html2Spanned
 import com.google.android.flexbox.FlexboxLayoutManager
 
 /**
@@ -35,7 +35,7 @@ class NavigationContentAdapter(dataList: MutableList<NavigationResponse>) : Base
 
     override fun convert(holder: BaseViewHolder, item: NavigationResponse) {
         //设置rv标题
-        holder.setText(R.id.title, item.name.html2Sting())
+        holder.setText(R.id.title, item.name.html2Spanned())
         //使用子流标签适配器
         holder.getView<RecyclerView>(R.id.rv).adapter = NavigationChildAdapter(item.articles)
     }

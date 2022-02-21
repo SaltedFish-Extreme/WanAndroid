@@ -5,12 +5,13 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.drake.serialize.intent.openActivity
 import com.example.wanAndroid.R
+import com.example.wanAndroid.ext.vibration
 import com.example.wanAndroid.logic.model.ArticleResponse
 import com.example.wanAndroid.ui.activity.AuthorActivity
 import com.example.wanAndroid.ui.activity.WebActivity
 import com.example.wanAndroid.ui.base.BaseAdapter
-import com.example.wanAndroid.ext.vibration
-import com.example.wanAndroid.widget.ext.html2Sting
+import com.example.wanAndroid.widget.ext.html2Spanned
+import com.example.wanAndroid.widget.ext.html2String
 import com.google.android.material.imageview.ShapeableImageView
 import com.hjq.toast.ToastUtils
 import per.goweii.reveallayout.RevealLayout
@@ -65,9 +66,9 @@ class ArticleAdapter(private val showTag: Boolean = false) : BaseAdapter<Article
             //发布日期
             holder.setText(R.id.item_article_date, niceDate)
             //文章标题
-            holder.setText(R.id.item_article_title, title.html2Sting())
+            holder.setText(R.id.item_article_title, title.html2Spanned())
             //文章章节
-            holder.setText(R.id.item_article_chapter, ("$superChapterName·$chapterName").html2Sting())
+            holder.setText(R.id.item_article_chapter, ("$superChapterName·$chapterName").html2Spanned())
             //是否收藏
             holder.getView<RevealLayout>(R.id.item_article_collect).isChecked = collect
             //是否置顶
@@ -99,7 +100,7 @@ class ArticleAdapter(private val showTag: Boolean = false) : BaseAdapter<Article
             holder.setGone(R.id.item_article_content, desc.isEmpty())
             if (desc.isNotEmpty()) {
                 //内容描述
-                holder.setText(R.id.item_article_content, desc.html2Sting())
+                holder.setText(R.id.item_article_content, desc.html2String())
             }
         }
     }
