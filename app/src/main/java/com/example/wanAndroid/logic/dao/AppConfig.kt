@@ -16,5 +16,5 @@ object AppConfig {
     val SearchHot: MutableList<SearchHotResponse> by lazy { (mutableListOf()) }
 
     /** 搜索记录 永久保存磁盘，app删除或者赋值为null清除 */
-    var SearchHistory: ArrayList<String>? by serialLazy()
+    var SearchHistory: ArrayList<String> by serialLazy(arrayListOf())
 }
