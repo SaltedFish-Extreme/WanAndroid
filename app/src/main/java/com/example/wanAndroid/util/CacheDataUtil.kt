@@ -11,12 +11,12 @@ import java.math.BigDecimal
  * desc: 缓存工具类
  */
 object CacheDataUtil {
+
     /** 获取缓存大小 */
-    @Throws(Exception::class)
     fun getTotalCacheSize(context: Context): String {
-        var cacheSize = getFolderSize(context.cacheDir)
-        if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
-            cacheSize += getFolderSize(context.externalCacheDir)
+        var cacheSize: Long = getFolderSize(context.cacheDir)
+        if ((Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED)) {
+            cacheSize += getFolderSize(context.externalCacheDir!!)
         }
         return getFormatSize(cacheSize.toDouble())
     }
@@ -24,23 +24,24 @@ object CacheDataUtil {
     /** 清除缓存 */
     fun clearAllCache(context: Context) {
         deleteDir(context.cacheDir)
-        if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
+        if ((Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED)) {
             deleteDir(context.externalCacheDir)
         }
     }
 
-    /** 删除文件 */
+    /** 删除文件夹 */
     private fun deleteDir(dir: File?): Boolean {
-        if (dir != null && dir.isDirectory) {
-            val children = dir.list()
-            for (i in children!!.indices) {
-                val success = deleteDir(File(dir, children[i]))
-                if (!success) {
-                    return false
-                }
-            }
+        if (dir == null) {
+            return false
         }
-        return dir!!.delete()
+        if (!dir.isDirectory) {
+            return dir.delete()
+        }
+        val children: Array<out String> = dir.list() ?: return false
+        for (child: String in children) {
+            deleteDir(File(dir, child))
+        }
+        return false
     }
 
     /**
@@ -54,17 +55,16 @@ object CacheDataUtil {
      *
      * SDCard/Android/data/你的应用包名/cache/目录， 一般存放临时缓存数据
      */
-    @Throws(Exception::class)
-    private fun getFolderSize(file: File?): Long {
+    private fun getFolderSize(file: File): Long {
         var size: Long = 0
         try {
-            val fileList = file!!.listFiles()
-            for (i in fileList!!.indices) {
+            val list: Array<out File> = file.listFiles() ?: return 0
+            for (temp: File in list) {
                 // 如果下面还有文件
-                size += if (fileList[i].isDirectory) {
-                    getFolderSize(fileList[i])
+                size += if (temp.isDirectory) {
+                    getFolderSize(temp)
                 } else {
-                    fileList[i].length()
+                    temp.length()
                 }
             }
         } catch (e: Exception) {
@@ -75,26 +75,23 @@ object CacheDataUtil {
 
     /** 格式化单位 */
     private fun getFormatSize(size: Double): String {
-        val kiloByte = size / 1024
+        val kiloByte: Double = size / 1024
         if (kiloByte < 1) {
-            return size.toString() + "Byte"
+            // return size + "Byte";
+            return "0KB"
         }
-        val megaByte = kiloByte / 1024
+        val megaByte: Double = kiloByte / 1024
         if (megaByte < 1) {
-            val result1 = BigDecimal(kiloByte.toString())
-            return result1.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "KB"
+            return BigDecimal(kiloByte).setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "KB"
         }
-        val gigaByte = megaByte / 1024
+        val gigaByte: Double = megaByte / 1024
         if (gigaByte < 1) {
-            val result2 = BigDecimal(megaByte.toString())
-            return result2.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "MB"
+            return BigDecimal(megaByte).setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "MB"
         }
-        val teraBytes = gigaByte / 1024
+        val teraBytes: Double = gigaByte / 1024
         if (teraBytes < 1) {
-            val result3 = BigDecimal(gigaByte.toString())
-            return result3.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "GB"
+            return BigDecimal(gigaByte).setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "GB"
         }
-        val result4 = BigDecimal(teraBytes)
-        return result4.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "TB"
+        return BigDecimal(teraBytes).setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "TB"
     }
 }
