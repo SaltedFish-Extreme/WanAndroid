@@ -37,7 +37,8 @@
     <string name="my_ellipsis">--</string>
     <string name="my_setting">系统设置</string>
     <string name="my_exit">退出登录</string>
-    <string name="my_score">1000</string>
+    <string name="exit_confirm">确定退出登陆吗？</string>
+    <string name="exit_succeed">退出登陆成功</string>
     <!--设置页-->
     <string name="setting">设置</string>
     <string name="setting_dark">夜间模式</string>
@@ -87,8 +88,6 @@
     <string name="search_history">搜索历史(保留最近前十条搜索记录)</string>
     <string name="clear">清空</string>
     <!--历史记录页-->
-    <string name="copy_link">复制链接</string>
-    <string name="delete">删除</string>
     <string name="delete_succeed">删除成功</string>
     <string name="date">2022\-02\-02 00:00:00</string>
     <string name="delete_confirm">确定删除所有历史记录吗？</string>
@@ -100,6 +99,12 @@
     <string name="password">密码</string>
     <string name="no_account">没有账号？去注册</string>
     <string name="login_succeed">登陆成功</string>
-    <string name="exit_confirm">确定退出登陆吗？</string>
-    <string name="exit_succeed">退出登陆成功</string>
+    <!--注册页-->
+    <string name="register">注册</string>
+    <string name="user_register">注册用户</string>
+    <string name="register_tip">用户注册后才可以登陆！</string>
+    <string name="re_password">再输入一次密码</string>
+    <string name="re_enter_password">两次密码输入不一致，请重新输入</string>
+    <string name="have_account">已有帐户？去登陆</string>
+    <string name="register_succeed">注册成功</string>
 </resources>

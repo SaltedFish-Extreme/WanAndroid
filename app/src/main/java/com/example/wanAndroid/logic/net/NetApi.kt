@@ -71,4 +71,7 @@ object NetApi {
 
     /** 用户退出路径 */
     const val ExitAPI = "user/logout/json"
+
+    /** 用户注册路径 */
+    const val RegisterAPI = "user/register"
 }

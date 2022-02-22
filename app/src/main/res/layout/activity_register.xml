@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!--登录页-->
+<?xml version="1.0" encoding="utf-8"?><!--注册页-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -8,7 +8,7 @@
     <com.hjq.bar.TitleBar
         android:id="@+id/title_bar"
         style="@style/TitleBar"
-        app:title="@string/login" />
+        app:title="@string/register" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/user_login"
+            android:text="@string/user_register"
             android:textColor="?android:attr/textColorPrimary"
             android:textSize="@dimen/sp_18" />
 
@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_6"
-            android:text="@string/login_tip"
+            android:text="@string/register_tip"
             android:textColor="?android:attr/textColorSecondary"
             android:textSize="@dimen/sp_14" />
 
@@ -64,21 +64,37 @@
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:layout_marginBottom="@dimen/dp_8"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <com.example.wanAndroid.widget.view.PasswordEditText
+                android:id="@+id/et_re_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/re_password"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
         <com.example.wanAndroid.widget.view.SubmitButton
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_register"
             style="@style/ButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/dp_12"
             android:layout_marginVertical="@dimen/dp_24"
-            android:text="@string/login" />
+            android:text="@string/register" />
 
         <TextView
-            android:id="@+id/tv_register"
+            android:id="@+id/tv_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="end"
-            android:text="@string/no_account"
+            android:text="@string/have_account"
             android:textColor="?android:attr/textColorSecondary"
             android:textSize="@dimen/sp_16" />
 
