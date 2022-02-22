@@ -15,13 +15,15 @@ import com.example.wanAndroid.widget.dialog.Dialog
 import com.example.wanAndroid.widget.settingbar.SettingBar
 import com.hjq.bar.TitleBar
 import com.hjq.toast.ToastUtils
+import per.goweii.swipeback.SwipeBackAbility
+import per.goweii.swipeback.SwipeBackDirection
 
 /**
  * Created by 咸鱼至尊 on 2022/2/6
  *
  * desc: 设置页Activity
  */
-class SettingActivity : BaseActivity() {
+class SettingActivity : BaseActivity(), SwipeBackAbility.Direction {
 
     private val titleBar: TitleBar by lazy { findViewById(R.id.title_bar) }
     private val settingDark: SwitchCompat by lazy { findViewById(R.id.setting_dark) }
@@ -97,4 +99,7 @@ class SettingActivity : BaseActivity() {
             about.show(supportFragmentManager, about.tag)
         }
     }
+
+    /** 当前页禁用侧滑 */
+    override fun swipeBackDirection() = SwipeBackDirection.NONE
 }

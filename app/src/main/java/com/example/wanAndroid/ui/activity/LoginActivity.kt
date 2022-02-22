@@ -6,6 +6,7 @@ import android.widget.TextView
 import com.drake.net.Post
 import com.drake.net.utils.scope
 import com.example.wanAndroid.R
+import com.example.wanAndroid.logic.dao.AppConfig
 import com.example.wanAndroid.logic.model.UserInfoResponse
 import com.example.wanAndroid.logic.model.base.ApiResponse
 import com.example.wanAndroid.logic.net.NetApi
@@ -19,13 +20,14 @@ import com.hjq.bar.TitleBar
 import com.hjq.toast.ToastUtils
 import kotlinx.coroutines.delay
 import per.goweii.swipeback.SwipeBackAbility
+import per.goweii.swipeback.SwipeBackDirection
 
 /**
  * Created by 咸鱼至尊 on 2022/2/20
  *
  * desc: 登陆页Activity
  */
-class LoginActivity : BaseActivity(), SwipeBackAbility.OnlyEdge {
+class LoginActivity : BaseActivity(), SwipeBackAbility.Direction {
 
     private val titleBar: TitleBar by lazy { findViewById(R.id.title_bar) }
     private val etUsername: ClearEditText by lazy { findViewById(R.id.et_username) }
@@ -61,6 +63,8 @@ class LoginActivity : BaseActivity(), SwipeBackAbility.OnlyEdge {
                     param("username", etUsername.text.toString())
                     param("password", etPassword.text.toString())
                 }.await()
+                //存储用户名
+                AppConfig.UserName = data.data.username
                 //登陆按钮显示成功
                 btnLogin.showSucceed()
                 //再延迟一会，增强用户体验~
@@ -93,6 +97,6 @@ class LoginActivity : BaseActivity(), SwipeBackAbility.OnlyEdge {
         tvRegister.setOnClickListener { ToastUtils.debugShow("OK") }
     }
 
-    /** 只允许边缘侧滑返回 */
-    override fun swipeBackOnlyEdge() = true
+    /** 当前页禁用侧滑 */
+    override fun swipeBackDirection() = SwipeBackDirection.NONE
 }

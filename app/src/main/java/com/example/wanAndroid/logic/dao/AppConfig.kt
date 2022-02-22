@@ -20,4 +20,7 @@ object AppConfig {
 
     /** 玩安卓登陆后返回的Cookie 永久保存磁盘，app删除或者赋值为null清除 */
     var Cookie: HashMap<String, String> by serialLazy(hashMapOf())
+
+    /** 用户名 永久保存磁盘，app删除或者赋值为null清除 */
+    var UserName: String by serialLazy("")
 }

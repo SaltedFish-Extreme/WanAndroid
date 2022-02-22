@@ -1,5 +1,6 @@
 package com.example.wanAndroid.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
@@ -10,6 +11,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.drake.serialize.intent.openActivity
 import com.example.wanAndroid.R
+import com.example.wanAndroid.logic.dao.AppConfig
 import com.example.wanAndroid.ui.activity.HistoryRecordActivity
 import com.example.wanAndroid.ui.activity.LoginActivity
 import com.example.wanAndroid.ui.activity.SettingActivity
@@ -48,9 +50,17 @@ class MineFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_mine, container, false)
     }
 
+    @Suppress("DEPRECATION")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        headerImage.setOnClickListener { openActivity<LoginActivity>() }
+        //未登陆过则点击头像跳转登陆页面并获取返回结果
+        if (AppConfig.UserName.isEmpty()) {
+            headerImage.setOnClickListener {
+                startActivityForResult(Intent(context, LoginActivity::class.java), 0, null)
+            }
+        }
+        //用户名存储过则设置
+        userText.text = AppConfig.UserName.ifEmpty { getString(R.string.my_user) }
         gradeText.text = getString(R.string.my_score)
         rankText.text = getString(R.string.my_score)
         mineIntegral.setRightText(R.string.my_score)
