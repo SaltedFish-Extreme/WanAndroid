@@ -32,6 +32,9 @@
             android:value="true" />
 
         <activity
+            android:name=".ui.activity.LoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.HistoryRecordActivity"
             android:exported="false" />
         <activity

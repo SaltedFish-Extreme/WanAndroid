@@ -62,4 +62,7 @@ object NetApi {
 
     /** 搜索结果路径 */
     const val SearchResultAPI = "article/query"
+
+    /** 用户登陆路径 */
+    const val LoginAPI = "user/login"
 }

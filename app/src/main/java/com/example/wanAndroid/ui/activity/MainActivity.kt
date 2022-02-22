@@ -118,8 +118,7 @@ class MainActivity : BaseActivity() {
             //排名文字
             val rankText = findViewById<TextView>(R.id.rank_text)
             rankImage.setOnClickListener { ToastUtils.debugShow("积分排名") }
-            headerImage.setOnClickListener { ToastUtils.debugShow("登陆！") }
-            userText.text = getString(R.string.app_name)
+            headerImage.setOnClickListener { openActivity<LoginActivity>() }
             gradeText.text = getString(R.string.my_score)
             rankText.text = getString(R.string.my_score)
         }

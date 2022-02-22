@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.drake.serialize.intent.openActivity
 import com.example.wanAndroid.R
 import com.example.wanAndroid.ui.activity.HistoryRecordActivity
+import com.example.wanAndroid.ui.activity.LoginActivity
 import com.example.wanAndroid.ui.activity.SettingActivity
 import com.example.wanAndroid.widget.settingbar.SettingBar
 import com.example.wanAndroid.widget.toolbar.Toolbar
@@ -49,8 +50,7 @@ class MineFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        headerImage.setOnClickListener { ToastUtils.debugShow("登陆！") }
-        userText.text = getString(R.string.app_name)
+        headerImage.setOnClickListener { openActivity<LoginActivity>() }
         gradeText.text = getString(R.string.my_score)
         rankText.text = getString(R.string.my_score)
         mineIntegral.setRightText(R.string.my_score)

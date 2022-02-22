@@ -92,4 +92,12 @@
     <string name="delete_succeed">删除成功</string>
     <string name="date">2022\-02\-02 00:00:00</string>
     <string name="delete_confirm">确定删除所有历史记录吗？</string>
+    <!--登陆页-->
+    <string name="login">登陆</string>
+    <string name="user_login">用户登陆</string>
+    <string name="login_tip">请使用WanAndroid账号登录！</string>
+    <string name="username">用户名</string>
+    <string name="password">密码</string>
+    <string name="no_account">没有账号？去注册</string>
+    <string name="login_succeed">登陆成功</string>
 </resources>

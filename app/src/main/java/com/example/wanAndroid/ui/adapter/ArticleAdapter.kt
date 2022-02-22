@@ -13,7 +13,6 @@ import com.example.wanAndroid.ui.base.BaseAdapter
 import com.example.wanAndroid.widget.ext.html2Spanned
 import com.example.wanAndroid.widget.ext.html2String
 import com.google.android.material.imageview.ShapeableImageView
-import com.hjq.toast.ToastUtils
 import per.goweii.reveallayout.RevealLayout
 
 /**
@@ -48,14 +47,6 @@ class ArticleAdapter(private val showTag: Boolean = false) : BaseAdapter<Article
                 }
                 R.id.item_article_collect -> context.vibration() //震动一下
             }
-        }
-    }
-
-    override fun onItemViewHolderCreated(viewHolder: BaseViewHolder, viewType: Int) {
-        super.onItemViewHolderCreated(viewHolder, viewType)
-        viewHolder.getView<RevealLayout>(R.id.item_article_collect).setOnCheckedChangeListener { _, isChecked ->
-            //选中状态改变监听
-            if (isChecked) ToastUtils.debugShow("喜欢！${data[viewHolder.layoutPosition].id}") else ToastUtils.debugShow("不喜欢！")
         }
     }
 

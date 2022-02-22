@@ -93,4 +93,13 @@
         <item name="cornerSize">50%</item>
     </style>
 
+    <!-- 默认按钮样式 -->
+    <style name="ButtonStyle" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/button_circle_selector</item>
+        <item name="android:foreground">@null</item>
+    </style>
+
 </resources>

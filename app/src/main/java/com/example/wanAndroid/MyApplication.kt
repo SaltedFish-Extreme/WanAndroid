@@ -11,6 +11,7 @@ import com.drake.statelayout.StateConfig
 import com.example.wanAndroid.logic.dao.AppConfig
 import com.example.wanAndroid.logic.net.GsonConvert
 import com.example.wanAndroid.logic.net.NetApi.BaseURL
+import com.example.wanAndroid.util.MyCookieJar
 import com.example.wanAndroid.widget.refresh.MyClassicsFooter
 import com.example.wanAndroid.widget.refresh.MyClassicsHeader
 import com.hjq.toast.ToastUtils
@@ -70,6 +71,9 @@ class MyApplication : Application() {
         NetConfig.init(BaseURL) {
             //设置Gson解析方式
             setConverter(GsonConvert())
+            //设置cookie管理器
+            //cookieJar(CookieJarImpl(PersistentCookieStore(context)))
+            cookieJar(MyCookieJar())
         }
         //全局缺省页配置 [https://github.com/liangjingkanji/StateLayout]
         StateConfig.apply {
