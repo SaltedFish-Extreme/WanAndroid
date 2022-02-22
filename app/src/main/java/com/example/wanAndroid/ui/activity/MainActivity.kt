@@ -12,9 +12,14 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.drawerlayout.widget.DrawerLayout.DrawerListener
 import androidx.navigation.fragment.NavHostFragment
+import com.drake.net.Get
+import com.drake.net.utils.scopeNetLife
 import com.drake.serialize.intent.openActivity
 import com.example.wanAndroid.R
 import com.example.wanAndroid.logic.dao.AppConfig
+import com.example.wanAndroid.logic.model.CoinInfoResponse
+import com.example.wanAndroid.logic.model.base.ApiResponse
+import com.example.wanAndroid.logic.net.NetApi
 import com.example.wanAndroid.ui.base.BaseActivity
 import com.example.wanAndroid.widget.ext.interceptLongClick
 import com.example.wanAndroid.widget.toolbar.Toolbar
@@ -23,13 +28,15 @@ import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.navigation.NavigationView
 import com.hjq.toast.ToastUtils
 import org.litepal.LitePal
+import per.goweii.swipeback.SwipeBackAbility
+import per.goweii.swipeback.SwipeBackDirection
 
 /**
  * Created by 咸鱼至尊 on 2021/12/9
  *
  * desc: 主页Activity
  */
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(), SwipeBackAbility.Direction {
 
     private val drawerLayout: DrawerLayout by lazy { findViewById(R.id.drawer_layout) }
     private val toolbar: Toolbar by lazy { findViewById(R.id.toolbar) }
@@ -39,6 +46,9 @@ class MainActivity : BaseActivity() {
 
     /** 退出时间 */
     private var exitTime = 0L
+
+    /** 数据集 */
+    private lateinit var data: ApiResponse<CoinInfoResponse>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +65,8 @@ class MainActivity : BaseActivity() {
         LitePal.getDatabase()
         //删除数据库
         //LitePal.deleteDatabase("example")
+        //获取积分信息
+        getCoinInfo()
     }
 
     /** 初始化抽屉布局控件 */
@@ -115,29 +127,26 @@ class MainActivity : BaseActivity() {
             //用户头像
             val headerImage = findViewById<ShapeableImageView>(R.id.header_image)
             //用户名
-            val userText = findViewById<TextView>(R.id.user_text)
+            findViewById<TextView>(R.id.user_text).text = AppConfig.UserName.ifEmpty { getString(R.string.my_user) }
             //等级文字
-            val gradeText = findViewById<TextView>(R.id.grade_text)
+            findViewById<TextView>(R.id.level_text).text = AppConfig.Level.ifEmpty { getString(R.string.my_ellipsis) }
             //排名文字
-            val rankText = findViewById<TextView>(R.id.rank_text)
+            findViewById<TextView>(R.id.rank_text).text = AppConfig.Rank.ifEmpty { getString(R.string.my_ellipsis) }
+            //积分项设置文本
+            val navMenu = navView.menu.findItem(R.id.nav_integral).actionView as TextView
+            navMenu.gravity = Gravity.CENTER_VERTICAL
+            navMenu.text = AppConfig.CoinCount.ifEmpty { "" }
             //未登陆过则点击头像跳转登陆页面并获取返回结果
             if (AppConfig.UserName.isEmpty()) {
                 headerImage.setOnClickListener {
                     startActivityForResult(Intent(context, LoginActivity::class.java), 0, null)
                 }
             }
-            //用户名存储过则设置
-            userText.text = AppConfig.UserName.ifEmpty { getString(R.string.my_user) }
+            //积分图标点击事件
             rankImage.setOnClickListener { ToastUtils.debugShow("积分排名") }
-            gradeText.text = getString(R.string.my_score)
-            rankText.text = getString(R.string.my_score)
         }
         //未登录隐藏登出项
         //navView.menu.findItem(R.id.nav_exit).isVisible = false
-        //积分项设置文本
-        val navMenu = navView.menu.findItem(R.id.nav_integral).actionView as TextView
-        navMenu.gravity = Gravity.CENTER_VERTICAL
-        navMenu.text = getString(R.string.my_score)
         //侧滑栏菜单项点击事件监听
         navView.setNavigationItemSelectedListener {
             when (it.itemId) {
@@ -149,6 +158,18 @@ class MainActivity : BaseActivity() {
                 R.id.nav_exit -> ToastUtils.debugShow(R.string.my_exit)
             }
             true
+        }
+    }
+
+    /** 获取积分数据 */
+    private fun getCoinInfo() {
+        if (AppConfig.UserName.isNotEmpty()) {
+            scopeNetLife {
+                data = Get<ApiResponse<CoinInfoResponse>>(NetApi.CoinInfoAPI).await()
+                AppConfig.Level = data.data.level.toString()
+                AppConfig.Rank = data.data.rank
+                AppConfig.CoinCount = data.data.coinCount.toString()
+            }
         }
     }
 
@@ -166,6 +187,15 @@ class MainActivity : BaseActivity() {
         return true
     }
 
+    @Suppress("DEPRECATION")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        //从登陆页面返回，已登陆，重建activity刷新数据
+        if (AppConfig.UserName.isNotEmpty()) {
+            recreate()
+        }
+    }
+
     override fun onBackPressed() {
         //返回键退出程序确认
         if (System.currentTimeMillis() - exitTime > 2000) {
@@ -176,10 +206,6 @@ class MainActivity : BaseActivity() {
         super.onBackPressed()
     }
 
-    @Suppress("DEPRECATION")
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        //从登陆页面返回，重建activity刷新数据
-        recreate()
-    }
+    /** 当前页禁用侧滑 */
+    override fun swipeBackDirection() = SwipeBackDirection.NONE
 }

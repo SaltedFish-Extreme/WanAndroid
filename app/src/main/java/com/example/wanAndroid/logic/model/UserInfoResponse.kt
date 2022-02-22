@@ -1,5 +1,6 @@
 package com.example.wanAndroid.logic.model
 
+/** 用户信息数据类 */
 data class UserInfoResponse(
     val admin: Boolean,
     val chapterTops: List<Any>,

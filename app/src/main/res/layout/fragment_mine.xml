@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?><!--我的片段-->
 <com.example.wanAndroid.widget.nested.NestedLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -42,13 +43,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_10"
-            android:text="@string/my_user"
             android:textColor="?android:attr/textColorPrimary"
             android:textSize="@dimen/sp_15"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/header_image" />
+            app:layout_constraintTop_toBottomOf="@id/header_image"
+            tool:text="@string/my_user" />
 
         <TextView
             android:id="@+id/grade"
@@ -57,20 +58,20 @@
             android:text="@string/my_grade"
             android:textColor="?android:attr/textColorPrimary"
             android:textSize="@dimen/sp_15"
-            app:layout_constraintBottom_toBottomOf="@id/grade_text"
-            app:layout_constraintEnd_toStartOf="@id/grade_text"
-            app:layout_constraintTop_toTopOf="@id/grade_text" />
+            app:layout_constraintBottom_toBottomOf="@id/level_text"
+            app:layout_constraintEnd_toStartOf="@id/level_text"
+            app:layout_constraintTop_toTopOf="@id/level_text" />
 
         <TextView
-            android:id="@+id/grade_text"
+            android:id="@+id/level_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/dp_5"
-            android:text="@string/my_ellipsis"
             android:textColor="?android:attr/textColorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/guide_line"
-            app:layout_constraintTop_toBottomOf="@id/user_text" />
+            app:layout_constraintTop_toBottomOf="@id/user_text"
+            tool:text="@string/my_ellipsis" />
 
         <TextView
             android:id="@+id/rank"
@@ -88,11 +89,11 @@
             android:id="@+id/rank_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/my_ellipsis"
             android:textColor="?android:attr/textColorPrimary"
             app:layout_constraintBottom_toBottomOf="@id/rank"
             app:layout_constraintStart_toEndOf="@id/rank"
-            app:layout_constraintTop_toTopOf="@id/rank" />
+            app:layout_constraintTop_toTopOf="@id/rank"
+            tool:text="@string/my_ellipsis" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guide_line"

@@ -65,4 +65,7 @@ object NetApi {
 
     /** 用户登陆路径 */
     const val LoginAPI = "user/login"
+
+    /** 用户积分路径 */
+    const val CoinInfoAPI = "lg/coin/userinfo/json"
 }

@@ -30,7 +30,7 @@ class MineFragment : Fragment() {
     private val notificationImage: ImageView by lazy { requireView().findViewById(R.id.notification_image) }
     private val headerImage: ShapeableImageView by lazy { requireView().findViewById(R.id.header_image) }
     private val userText: TextView by lazy { requireView().findViewById(R.id.user_text) }
-    private val gradeText: TextView by lazy { requireView().findViewById(R.id.grade_text) }
+    private val levelText: TextView by lazy { requireView().findViewById(R.id.level_text) }
     private val rankText: TextView by lazy { requireView().findViewById(R.id.rank_text) }
     private val mineIntegral: SettingBar by lazy { requireView().findViewById(R.id.mine_integral) }
     private val mineCollect: SettingBar by lazy { requireView().findViewById(R.id.mine_collect) }
@@ -59,11 +59,6 @@ class MineFragment : Fragment() {
                 startActivityForResult(Intent(context, LoginActivity::class.java), 0, null)
             }
         }
-        //用户名存储过则设置
-        userText.text = AppConfig.UserName.ifEmpty { getString(R.string.my_user) }
-        gradeText.text = getString(R.string.my_score)
-        rankText.text = getString(R.string.my_score)
-        mineIntegral.setRightText(R.string.my_score)
         mineIntegral.setOnClickListener { ToastUtils.debugShow(R.string.my_integral) }
         mineCollect.setOnClickListener { ToastUtils.debugShow(R.string.my_collect) }
         mineShare.setOnClickListener { ToastUtils.debugShow(R.string.my_share) }
@@ -75,6 +70,14 @@ class MineFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         toolbar.title = getString(R.string.mine_fragment)
+        //用户名
+        userText.text = AppConfig.UserName.ifEmpty { getString(R.string.my_user) }
+        //等级文字
+        levelText.text = AppConfig.Level.ifEmpty { getString(R.string.my_ellipsis) }
+        //排名文字
+        rankText.text = AppConfig.Rank.ifEmpty { getString(R.string.my_ellipsis) }
+        //积分项设置文本
+        mineIntegral.setRightText(AppConfig.CoinCount.ifEmpty { "" })
     }
 
     override fun onPrepareOptionsMenu(menu: Menu) {

@@ -3,10 +3,12 @@ package com.example.wanAndroid.ui.activity
 import android.os.Bundle
 import android.view.animation.AnimationUtils
 import android.widget.TextView
+import com.drake.net.Get
 import com.drake.net.Post
-import com.drake.net.utils.scope
+import com.drake.net.utils.scopeNetLife
 import com.example.wanAndroid.R
 import com.example.wanAndroid.logic.dao.AppConfig
+import com.example.wanAndroid.logic.model.CoinInfoResponse
 import com.example.wanAndroid.logic.model.UserInfoResponse
 import com.example.wanAndroid.logic.model.base.ApiResponse
 import com.example.wanAndroid.logic.net.NetApi
@@ -35,9 +37,6 @@ class LoginActivity : BaseActivity(), SwipeBackAbility.Direction {
     private val btnLogin: SubmitButton by lazy { findViewById(R.id.btn_login) }
     private val tvRegister: TextView by lazy { findViewById(R.id.tv_register) }
 
-    /** 数据集 */
-    private lateinit var data: ApiResponse<UserInfoResponse>
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -55,16 +54,24 @@ class LoginActivity : BaseActivity(), SwipeBackAbility.Direction {
         btnLogin.setOnClickListener {
             //隐藏输入法
             hideSoftKeyboard(this)
-            scope {
+            scopeNetLife {
                 //延迟请求(因为请求速度太快，让动画效果飞一会~)
                 delay(1500)
-                //获取用户信息数据
-                data = Post<ApiResponse<UserInfoResponse>>(NetApi.LoginAPI) {
+                //先获取用户登陆信息数据
+                val userInfoData = Post<ApiResponse<UserInfoResponse>>(NetApi.LoginAPI) {
                     param("username", etUsername.text.toString())
                     param("password", etPassword.text.toString())
                 }.await()
+                //再获取用户积分信息数据
+                val coinInfoData = Get<ApiResponse<CoinInfoResponse>>(NetApi.CoinInfoAPI).await()
                 //存储用户名
-                AppConfig.UserName = data.data.username
+                AppConfig.UserName = userInfoData.data.username
+                //存储用户等级
+                AppConfig.Level = coinInfoData.data.level.toString()
+                //存储用户排名
+                AppConfig.Rank = coinInfoData.data.rank
+                //存储用户积分
+                AppConfig.CoinCount = coinInfoData.data.coinCount.toString()
                 //登陆按钮显示成功
                 btnLogin.showSucceed()
                 //再延迟一会，增强用户体验~
@@ -75,6 +82,8 @@ class LoginActivity : BaseActivity(), SwipeBackAbility.Direction {
                 //如果用户名或密码错误导致请求失败会走这里
                 //登陆按钮显示失败
                 btnLogin.showError(2000)
+                //弹出错误信息吐司
+                ToastUtils.show(it.message)
                 //账号输入框加载动画效果
                 etUsername.startAnimation(
                     AnimationUtils.loadAnimation(
@@ -89,8 +98,6 @@ class LoginActivity : BaseActivity(), SwipeBackAbility.Direction {
                         R.anim.shake_anim
                     )
                 )
-                //弹出错误信息吐司
-                ToastUtils.show(it.message)
             }
         }
         //注册文本点击事件
