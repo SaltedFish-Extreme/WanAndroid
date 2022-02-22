@@ -100,4 +100,6 @@
     <string name="password">密码</string>
     <string name="no_account">没有账号？去注册</string>
     <string name="login_succeed">登陆成功</string>
+    <string name="exit_confirm">确定退出登陆吗？</string>
+    <string name="exit_succeed">退出登陆成功</string>
 </resources>

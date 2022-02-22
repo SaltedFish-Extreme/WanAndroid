@@ -68,4 +68,7 @@ object NetApi {
 
     /** 用户积分路径 */
     const val CoinInfoAPI = "lg/coin/userinfo/json"
+
+    /** 用户退出路径 */
+    const val ExitAPI = "user/logout/json"
 }

@@ -8,13 +8,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import com.drake.net.Get
+import com.drake.net.utils.scopeNetLife
 import com.drake.serialize.intent.openActivity
 import com.example.wanAndroid.R
 import com.example.wanAndroid.logic.dao.AppConfig
+import com.example.wanAndroid.logic.model.NoDataResponse
+import com.example.wanAndroid.logic.net.NetApi
 import com.example.wanAndroid.ui.activity.HistoryRecordActivity
 import com.example.wanAndroid.ui.activity.LoginActivity
 import com.example.wanAndroid.ui.activity.SettingActivity
+import com.example.wanAndroid.widget.dialog.Dialog
 import com.example.wanAndroid.widget.settingbar.SettingBar
 import com.example.wanAndroid.widget.toolbar.Toolbar
 import com.google.android.material.imageview.ShapeableImageView
@@ -64,7 +70,26 @@ class MineFragment : Fragment() {
         mineShare.setOnClickListener { ToastUtils.debugShow(R.string.my_share) }
         mineRecord.setOnClickListener { openActivity<HistoryRecordActivity>() }
         mineSetting.setOnClickListener { openActivity<SettingActivity>() }
-        mineExit.setOnClickListener { ToastUtils.debugShow(R.string.my_exit) }
+        //未登录隐藏登出项，登陆可见
+        mineExit.isVisible = AppConfig.CoinCount.isNotEmpty()
+        mineExit.setOnClickListener {
+            //登出弹窗确认
+            Dialog.getConfirmDialog(context!!, getString(R.string.exit_confirm)) { _, _ ->
+                scopeNetLife {
+                    //退出清除cookie
+                    Get<NoDataResponse>(NetApi.ExitAPI).await()
+                }
+                //从存储中清除cookie、个人信息
+                AppConfig.Cookie.clear()
+                AppConfig.UserName = ""
+                AppConfig.Level = ""
+                AppConfig.Rank = ""
+                AppConfig.CoinCount = ""
+                //重建页面
+                activity?.recreate()
+                ToastUtils.show(getString(R.string.exit_succeed))
+            }.show()
+        }
     }
 
     override fun onResume() {

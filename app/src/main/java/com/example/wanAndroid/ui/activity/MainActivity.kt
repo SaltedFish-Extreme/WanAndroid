@@ -17,10 +17,12 @@ import com.drake.net.utils.scopeNetLife
 import com.drake.serialize.intent.openActivity
 import com.example.wanAndroid.R
 import com.example.wanAndroid.logic.dao.AppConfig
+import com.example.wanAndroid.logic.model.NoDataResponse
 import com.example.wanAndroid.logic.model.CoinInfoResponse
 import com.example.wanAndroid.logic.model.base.ApiResponse
 import com.example.wanAndroid.logic.net.NetApi
 import com.example.wanAndroid.ui.base.BaseActivity
+import com.example.wanAndroid.widget.dialog.Dialog
 import com.example.wanAndroid.widget.ext.interceptLongClick
 import com.example.wanAndroid.widget.toolbar.Toolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -145,8 +147,8 @@ class MainActivity : BaseActivity(), SwipeBackAbility.Direction {
             //积分图标点击事件
             rankImage.setOnClickListener { ToastUtils.debugShow("积分排名") }
         }
-        //未登录隐藏登出项
-        //navView.menu.findItem(R.id.nav_exit).isVisible = false
+        //未登录隐藏登出项，登陆可见
+        navView.menu.findItem(R.id.nav_exit).isVisible = AppConfig.CoinCount.isNotEmpty()
         //侧滑栏菜单项点击事件监听
         navView.setNavigationItemSelectedListener {
             when (it.itemId) {
@@ -155,7 +157,24 @@ class MainActivity : BaseActivity(), SwipeBackAbility.Direction {
                 R.id.nav_share -> ToastUtils.debugShow(R.string.my_share)
                 R.id.nav_record -> openActivity<HistoryRecordActivity>()
                 R.id.nav_setting -> openActivity<SettingActivity>()
-                R.id.nav_exit -> ToastUtils.debugShow(R.string.my_exit)
+                R.id.nav_exit -> {
+                    //登出弹窗确认
+                    Dialog.getConfirmDialog(this, getString(R.string.exit_confirm)) { _, _ ->
+                        scopeNetLife {
+                            //退出清除cookie
+                            Get<NoDataResponse>(NetApi.ExitAPI).await()
+                        }
+                        //从存储中清除cookie、个人信息
+                        AppConfig.Cookie.clear()
+                        AppConfig.UserName = ""
+                        AppConfig.Level = ""
+                        AppConfig.Rank = ""
+                        AppConfig.CoinCount = ""
+                        //重建页面
+                        recreate()
+                        ToastUtils.show(getString(R.string.exit_succeed))
+                    }.show()
+                }
             }
             true
         }
