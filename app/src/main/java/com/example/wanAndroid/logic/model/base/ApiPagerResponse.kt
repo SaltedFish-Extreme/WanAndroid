@@ -1,8 +1,6 @@
 package com.example.wanAndroid.logic.model.base
 
-/**
- * 分页数据的基类
- */
+/** 分页数据的基类 */
 data class ApiPagerResponse<T>(
     val datas: T,
     val curPage: Int,
