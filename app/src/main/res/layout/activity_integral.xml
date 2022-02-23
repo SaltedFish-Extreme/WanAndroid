@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?><!--我的积分页-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.hjq.bar.TitleBar
+        android:id="@+id/title_bar"
+        style="@style/TitleBar"
+        app:rightIcon="@drawable/ic_help"
+        app:title="@string/my_integral" />
+
+    <TextView
+        android:id="@+id/my_integral"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_bar"
+        android:background="@color/color_floating_button"
+        android:gravity="center"
+        android:lines="1"
+        android:padding="@dimen/dp_16"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="@dimen/sp_80"
+        app:autoSizeMinTextSize="@dimen/sp_20"
+        app:autoSizeTextType="uniform"
+        tools:text="@string/integral" />
+
+    <com.drake.brv.PageRefreshLayout
+        android:id="@+id/page"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/my_integral"
+        app:srlEnableFooterFollowWhenLoadFinished="true">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_integral_list" />
+    </com.drake.brv.PageRefreshLayout>
+
+    <!--悬浮按钮-->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="@dimen/dp_20"
+        android:layout_marginBottom="@dimen/dp_70"
+        android:contentDescription="@android:string/unknownName"
+        android:visibility="invisible"
+        app:backgroundTint="@color/color_floating_button"
+        app:srcCompat="@drawable/ic_arrow_upward" />
+
+</RelativeLayout>

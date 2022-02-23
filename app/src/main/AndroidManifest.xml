@@ -32,6 +32,9 @@
             android:value="true" />
 
         <activity
+            android:name=".ui.activity.IntegralActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.RegisterActivity"
             android:exported="false" />
         <activity

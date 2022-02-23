@@ -65,4 +65,5 @@
     <dimen name="sp_18">18sp</dimen>
     <dimen name="sp_19">19sp</dimen>
     <dimen name="sp_20">20sp</dimen>
+    <dimen name="sp_80">80sp</dimen>
 </resources>

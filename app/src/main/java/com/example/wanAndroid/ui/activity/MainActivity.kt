@@ -152,7 +152,14 @@ class MainActivity : BaseActivity(), SwipeBackAbility.Direction {
         //侧滑栏菜单项点击事件监听
         navView.setNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.nav_integral -> ToastUtils.debugShow(R.string.my_integral)
+                R.id.nav_integral -> {
+                    if (AppConfig.UserName.isEmpty()) {
+                        ToastUtils.show(getString(R.string.please_login))
+                        startActivityForResult(Intent(this, LoginActivity::class.java), 0, null)
+                    } else {
+                        openActivity<IntegralActivity>()
+                    }
+                }
                 R.id.nav_collect -> ToastUtils.debugShow(R.string.my_collect)
                 R.id.nav_share -> ToastUtils.debugShow(R.string.my_share)
                 R.id.nav_record -> openActivity<HistoryRecordActivity>()

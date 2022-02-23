@@ -107,4 +107,11 @@
     <string name="re_enter_password">两次密码输入不一致，请重新输入</string>
     <string name="have_account">已有帐户？去登陆</string>
     <string name="register_succeed">注册成功</string>
+    <!--积分页-->
+    <string name="integral">1024</string>
+    <string name="integral_help">https://www.wanandroid.com/blog/show/2653</string>
+    <string name="please_login">请先登录</string>
+    <string name="integral_reason">签到</string>
+    <string name="integral_desc">2020\-02\-02 00:00:10 签到 ，积分：20 + 20</string>
+    <string name="integral_count">+1024</string>
 </resources>

@@ -74,4 +74,7 @@ object NetApi {
 
     /** 用户注册路径 */
     const val RegisterAPI = "user/register"
+
+    /** 积分获取列表路径 */
+    const val IntegralListAPI = "lg/coin/list"
 }

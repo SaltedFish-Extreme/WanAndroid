@@ -18,6 +18,7 @@ import com.example.wanAndroid.logic.dao.AppConfig
 import com.example.wanAndroid.logic.model.NoDataResponse
 import com.example.wanAndroid.logic.net.NetApi
 import com.example.wanAndroid.ui.activity.HistoryRecordActivity
+import com.example.wanAndroid.ui.activity.IntegralActivity
 import com.example.wanAndroid.ui.activity.LoginActivity
 import com.example.wanAndroid.ui.activity.SettingActivity
 import com.example.wanAndroid.widget.dialog.Dialog
@@ -65,7 +66,14 @@ class MineFragment : Fragment() {
                 startActivityForResult(Intent(context, LoginActivity::class.java), 0, null)
             }
         }
-        mineIntegral.setOnClickListener { ToastUtils.debugShow(R.string.my_integral) }
+        mineIntegral.setOnClickListener {
+            if (AppConfig.UserName.isEmpty()) {
+                ToastUtils.show(getString(R.string.please_login))
+                startActivityForResult(Intent(context, LoginActivity::class.java), 0, null)
+            } else {
+                openActivity<IntegralActivity>()
+            }
+        }
         mineCollect.setOnClickListener { ToastUtils.debugShow(R.string.my_collect) }
         mineShare.setOnClickListener { ToastUtils.debugShow(R.string.my_share) }
         mineRecord.setOnClickListener { openActivity<HistoryRecordActivity>() }
