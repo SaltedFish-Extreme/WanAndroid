@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.drake.brv.BindingAdapter
 import com.drake.brv.listener.DefaultItemTouchCallback
+import com.drake.brv.utils.divider
 import com.drake.brv.utils.linear
 import com.drake.brv.utils.models
 import com.drake.brv.utils.setup
@@ -54,8 +55,8 @@ class HistoryRecordActivity : BaseActivity(), SwipeBackAbility.OnlyEdge {
                 ToastUtils.show(getString(R.string.delete_succeed))
             }.show()
         }
-        //代码中创建适配器列表，线性布局
-        rv.linear().setup {
+        //代码中创建适配器列表，线性布局，并设置分隔线
+        rv.linear().divider(R.drawable.shape_divider).setup {
             //设置数据类型及item布局
             addType<HistoryRecordDB>(R.layout.item_history_record_list)
             //数据绑定回调
