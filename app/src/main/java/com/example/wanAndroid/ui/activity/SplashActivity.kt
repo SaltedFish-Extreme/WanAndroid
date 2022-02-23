@@ -6,8 +6,14 @@ import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.drake.net.Post
+import com.drake.net.utils.scopeNetLife
 import com.drake.serialize.intent.openActivity
 import com.example.wanAndroid.R
+import com.example.wanAndroid.logic.dao.AppConfig
+import com.example.wanAndroid.logic.model.UserInfoResponse
+import com.example.wanAndroid.logic.model.base.ApiResponse
+import com.example.wanAndroid.logic.net.NetApi
 
 /**
  * Created by 咸鱼至尊 on 2022/2/7
@@ -26,7 +32,7 @@ class SplashActivity : AppCompatActivity() {
         //动画效果
         alphaAnimation.run {
             //动画持续时间
-            duration = 1000
+            duration = 1200
             setAnimationListener(object : Animation.AnimationListener {
                 override fun onAnimationRepeat(p0: Animation?) {}
 
@@ -35,7 +41,18 @@ class SplashActivity : AppCompatActivity() {
                     jumpToMain()
                 }
 
-                override fun onAnimationStart(p0: Animation?) {}
+                override fun onAnimationStart(p0: Animation?) {
+                    /** 先登陆，获取cookie */
+                    if (AppConfig.UserName.isNotEmpty()) {
+                        scopeNetLife {
+                            //登陆一遍
+                            Post<ApiResponse<UserInfoResponse>>(NetApi.LoginAPI) {
+                                param("username", AppConfig.UserName)
+                                param("password", AppConfig.PassWord)
+                            }.await()
+                        }
+                    }
+                }
             })
         }
         //加载内容视图动画效果

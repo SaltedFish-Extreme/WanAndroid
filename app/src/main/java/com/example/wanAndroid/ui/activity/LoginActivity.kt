@@ -67,6 +67,8 @@ class LoginActivity : BaseActivity(), SwipeBackAbility.Direction {
                 val coinInfoData = Get<ApiResponse<CoinInfoResponse>>(NetApi.CoinInfoAPI).await()
                 //存储用户名
                 AppConfig.UserName = userInfoData.data.username
+                //存储密码
+                AppConfig.PassWord = etPassword.text.toString()
                 //存储用户等级
                 AppConfig.Level = coinInfoData.data.level.toString()
                 //存储用户排名

@@ -24,6 +24,9 @@ object AppConfig {
     /** 用户名 永久保存磁盘，app删除或者赋值为null清除 */
     var UserName: String by serialLazy("")
 
+    /** 密码 永久保存磁盘，app删除或者赋值为null清除 */
+    var PassWord: String by serialLazy("")
+
     /** 等级 永久保存磁盘，app删除或者赋值为null清除 */
     var Level: String by serialLazy("")
 

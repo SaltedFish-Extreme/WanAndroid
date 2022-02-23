@@ -17,8 +17,8 @@ import com.drake.net.utils.scopeNetLife
 import com.drake.serialize.intent.openActivity
 import com.example.wanAndroid.R
 import com.example.wanAndroid.logic.dao.AppConfig
-import com.example.wanAndroid.logic.model.NoDataResponse
 import com.example.wanAndroid.logic.model.CoinInfoResponse
+import com.example.wanAndroid.logic.model.NoDataResponse
 import com.example.wanAndroid.logic.model.base.ApiResponse
 import com.example.wanAndroid.logic.net.NetApi
 import com.example.wanAndroid.ui.base.BaseActivity
