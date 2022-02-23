@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
-import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.drake.net.Post
 import com.drake.net.utils.scopeNetLife
@@ -14,14 +13,15 @@ import com.example.wanAndroid.logic.dao.AppConfig
 import com.example.wanAndroid.logic.model.UserInfoResponse
 import com.example.wanAndroid.logic.model.base.ApiResponse
 import com.example.wanAndroid.logic.net.NetApi
+import com.example.wanAndroid.ui.base.BaseActivity
 
 /**
  * Created by 咸鱼至尊 on 2022/2/7
  *
- * desc: 闪屏页Activity
+ * desc: 闪屏页Activity (不接收广播)
  */
 @SuppressLint("CustomSplashScreen")
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity(false) {
 
     private val layoutSplash: ConstraintLayout by lazy { findViewById(R.id.layout_splash) }
     private val alphaAnimation: AlphaAnimation by lazy { AlphaAnimation(0.3F, 1.0F) }

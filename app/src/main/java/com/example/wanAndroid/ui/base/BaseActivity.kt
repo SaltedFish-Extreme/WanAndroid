@@ -1,7 +1,9 @@
 package com.example.wanAndroid.ui.base
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
@@ -11,7 +13,7 @@ import com.example.wanAndroid.ui.receiver.NetworkConnectChangedReceiver
 /**
  * Created by 咸鱼至尊 on 2021/12/9
  *
- * desc: Activity基类 目前只用来监听网络状态变化|状态栏沉浸|转场动画效果，可选择继承
+ * desc: Activity基类 目前只用来监听网络状态变化|状态栏沉浸|转场动画效果
  *
  * @property receive 是否接收广播(默认接收)
  */
@@ -20,10 +22,13 @@ open class BaseActivity(private val receive: Boolean = true) : AppCompatActivity
     //延迟初始化网络状态变化监听器
     private val mNetworkChangeListener by lazy { NetworkConnectChangedReceiver() }
 
+    @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //使页面填充到状态栏(为了让toolBar沉浸状态栏)
         window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        //强制页面竖屏显示
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
     }
 
     override fun onResume() {
