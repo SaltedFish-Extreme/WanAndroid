@@ -36,39 +36,29 @@
                 style="@style/ShapeTextView"
                 android:text="@string/top_tip"
                 android:textColor="@color/color_important"
-                app:shape="rectangle"
-                app:shape_radius="@dimen/dp_2"
-                app:shape_strokeColor="@color/color_important"
-                app:shape_strokeWidth="@dimen/dp_0.5" />
+                app:shape_strokeColor="@color/color_important" />
 
             <com.hjq.shape.view.ShapeTextView
                 android:id="@+id/item_article_new"
                 style="@style/ShapeTextView"
                 android:text="@string/new_fresh"
                 android:textColor="@color/color_important"
-                app:shape="rectangle"
-                app:shape_radius="@dimen/dp_2"
-                app:shape_strokeColor="@color/color_important"
-                app:shape_strokeWidth="@dimen/dp_0.5" />
+                app:shape_strokeColor="@color/color_important" />
 
             <com.hjq.shape.view.ShapeTextView
                 android:id="@+id/item_article_tag"
                 style="@style/ShapeTextView"
                 android:textColor="@color/color_tag"
-                app:shape="rectangle"
-                app:shape_radius="@dimen/dp_2"
                 app:shape_strokeColor="@color/color_tag"
-                app:shape_strokeWidth="@dimen/dp_0.5"
                 tools:text="@string/platform_fragment" />
 
             <TextView
                 android:id="@+id/item_article_date"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/dp_10"
-                android:layout_weight="1"
                 android:gravity="end"
-                android:textColor="?android:attr/textColorTertiary"
+                android:textColor="?android:attr/textColorSecondary"
                 android:textSize="@dimen/sp_12"
                 tools:text="@string/just" />
         </LinearLayout>
@@ -79,8 +69,8 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/item_article_image"
-                android:layout_width="120dp"
-                android:layout_height="80dp"
+                android:layout_width="@dimen/dp_120"
+                android:layout_height="@dimen/dp_80"
                 android:layout_marginStart="@dimen/dp_8"
                 android:layout_marginTop="@dimen/dp_12"
                 android:contentDescription="@android:string/unknownName"
@@ -117,29 +107,25 @@
                 tools:text="@string/article_content" />
         </RelativeLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/item_article_chapter"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
                 android:layout_marginVertical="@dimen/dp_8"
                 android:layout_marginStart="@dimen/dp_10"
+                android:layout_weight="1"
                 android:textColor="@color/color_article_chapter"
                 android:textSize="@dimen/sp_12"
-                tools:ignore="RelativeOverlap"
                 tools:text="@string/article_chapter" />
 
             <per.goweii.reveallayout.RevealLayout
                 android:id="@+id/item_article_collect"
                 android:layout_width="@dimen/dp_25"
                 android:layout_height="@dimen/dp_25"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
                 android:layout_gravity="center"
                 android:layout_marginEnd="@dimen/dp_10"
                 app:rl_allowRevert="true"
@@ -147,7 +133,7 @@
                 app:rl_checkWithExpand="true"
                 app:rl_checkedLayout="@layout/view_reveal_like_checked"
                 app:rl_uncheckedLayout="@layout/view_reveal_like_unchecked" />
-        </RelativeLayout>
+        </LinearLayout>
 
     </LinearLayout>
 

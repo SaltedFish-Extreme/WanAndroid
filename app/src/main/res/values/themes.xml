@@ -48,6 +48,8 @@
         <item name="android:layout_marginStart">@dimen/dp_8</item>
         <item name="android:padding">@dimen/dp_4</item>
         <item name="android:textSize">@dimen/sp_10</item>
+        <item name="shape_radius">@dimen/dp_2</item>
+        <item name="shape_strokeWidth">@dimen/dp_0.5</item>
     </style>
 
     <!--标题栏通用样式-->
