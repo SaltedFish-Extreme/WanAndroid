@@ -1,6 +1,5 @@
 package com.example.wanAndroid.ui.activity
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -39,6 +38,8 @@ import java.sql.Date
  *
  * desc: 网页Activity (不接收广播)
  */
+//TODO 有的网页打开会闪退，暂不清楚具体原因，可能是框架问题 (E/chromium: [ERROR:aw_browser_terminator.cc(149)] Renderer process (12449) crash detected (code 11).
+// A/chromium: [FATAL:crashpad_client_linux.cc(670)] Render process (12449)'s crash wasn't handled by all associated  webviews, triggering application crash.)
 class WebActivity : BaseActivity(false), SwipeBackAbility.OnlyEdge {
 
     private val webContainer: WebContainer by lazy { findViewById(R.id.web_container) }
@@ -96,7 +97,6 @@ class WebActivity : BaseActivity(false), SwipeBackAbility.OnlyEdge {
     }
 
     /** 初始化 WebView */
-    @SuppressLint("SetJavaScriptEnabled")
     private fun initWebView() {
         val webView = NestedScrollAgentWebView(this)
         val layoutParams = CoordinatorLayout.LayoutParams(-1, -1)
@@ -111,13 +111,10 @@ class WebActivity : BaseActivity(false), SwipeBackAbility.OnlyEdge {
         )
         mAgentWeb.webCreator.webView.apply {
             overScrollMode = WebView.OVER_SCROLL_NEVER
-            settings.domStorageEnabled = true
-            settings.javaScriptEnabled = true
-            settings.loadsImagesAutomatically = true
             settings.useWideViewPort = true
             settings.loadWithOverviewMode = true
-            settings.layoutAlgorithm = WebSettings.LayoutAlgorithm.NORMAL
-            settings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
+            settings.allowFileAccess = false
+            settings.cacheMode = WebSettings.LOAD_NO_CACHE
         }
         //web文件下载监听(异步文件下载，自动申请权限，自动弹出安装)
         DownloadListener { url, _, _, _, _ ->
