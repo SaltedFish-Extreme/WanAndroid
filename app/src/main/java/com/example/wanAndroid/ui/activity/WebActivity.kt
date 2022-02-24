@@ -222,6 +222,7 @@ class WebActivity : BaseActivity(false), SwipeBackAbility.OnlyEdge {
 
     override fun onDestroy() {
         mAgentWeb.webLifeCycle.onDestroy()
+        setSupportActionBar(null)
         super.onDestroy()
     }
 

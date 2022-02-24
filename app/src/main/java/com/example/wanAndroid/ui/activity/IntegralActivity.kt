@@ -92,7 +92,7 @@ class IntegralActivity : BaseActivity() {
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         rv.cancelFloatBtn(fab)
+        super.onDestroy()
     }
 }

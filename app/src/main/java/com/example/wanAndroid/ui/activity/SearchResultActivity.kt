@@ -60,8 +60,8 @@ class SearchResultActivity : BaseActivity() {
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         rv.cancelFloatBtn(fab)
+        super.onDestroy()
     }
 
     private fun onRefresh() {

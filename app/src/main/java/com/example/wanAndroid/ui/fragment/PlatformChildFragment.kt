@@ -87,8 +87,8 @@ class PlatformChildFragment : Fragment() {
     }
 
     override fun onPause() {
-        super.onPause()
         rv.cancelFloatBtn(fab)
+        super.onPause()
     }
 
     /** 页面刷新加载操作，不设置onLoadMore则都会走onRefresh */

@@ -42,9 +42,9 @@ open class BaseActivity(private val receive: Boolean = true) : AppCompatActivity
     }
 
     override fun onPause() {
-        super.onPause()
         //同理，在程序暂停时销毁动态注册的广播接收器(当程序处于后台时不会接收广播)
         if (receive) unregisterReceiver(mNetworkChangeListener)
+        super.onPause()
     }
 
     @Suppress("DEPRECATION")

@@ -88,9 +88,9 @@ class AuthorActivity : BaseActivity() {
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         //取消rv悬浮按钮扩展函数
         rv.cancelFloatBtn(fab)
+        super.onDestroy()
     }
 
     /** 加载头像 */

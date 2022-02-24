@@ -73,10 +73,10 @@ class NavigationFragment : Fragment() {
     }
 
     override fun onPause() {
-        super.onPause()
         //这里不使用取消悬浮按钮扩展函数(删除rv滚动监听器会将TabLayout联动效果删除)
         rv.stopScroll()
         fab.hide()
+        super.onPause()
     }
 
     /** 联动左边标签和右边rv */

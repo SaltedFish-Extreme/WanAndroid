@@ -69,7 +69,7 @@ class SystemFragment : Fragment() {
     }
 
     override fun onPause() {
-        super.onPause()
         rv.cancelFloatBtn(fab)
+        super.onPause()
     }
 }

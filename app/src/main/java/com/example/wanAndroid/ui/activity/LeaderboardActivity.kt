@@ -98,7 +98,7 @@ class LeaderboardActivity : BaseActivity() {
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         rv.cancelFloatBtn(fab)
+        super.onDestroy()
     }
 }

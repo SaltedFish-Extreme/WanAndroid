@@ -91,8 +91,8 @@ class HistoryRecordActivity : BaseActivity(), SwipeBackAbility.OnlyEdge {
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         rv.cancelFloatBtn(fab)
+        super.onDestroy()
     }
 
     /** 只允许边缘侧滑返回 */
