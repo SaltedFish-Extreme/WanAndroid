@@ -46,7 +46,7 @@
         tool:text="@string/my_user" />
 
     <TextView
-        android:id="@+id/grade"
+        android:id="@+id/level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/my_grade"

@@ -77,4 +77,7 @@ object NetApi {
 
     /** 积分获取列表路径 */
     const val IntegralListAPI = "lg/coin/list"
+
+    /** 积分排行路径 */
+    const val LeaderboardAPI = "coin/rank"
 }

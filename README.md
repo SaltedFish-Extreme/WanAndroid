@@ -12,9 +12,11 @@ https://user-images.githubusercontent.com/54784104/154418770-de7e7933-1e38-46f7-
 
 https://user-images.githubusercontent.com/54784104/154806857-b08c5b3e-13a9-4d8f-8d71-19d82e197ca2.mp4
 
+https://user-images.githubusercontent.com/54784104/155440420-afe17be4-7861-4819-89b9-e744d76a10ed.mp4
+
 ## 功能介绍
 
-目前做完了主页面、作者页、设置页、搜索页、网页、历史记录页以及部分二级页面，后续会把用户功能方面做完
+目前做完了主页面、作者页、设置页、搜索页、网页、历史记录页、登陆注册页、积分和排名页以及部分二级页面，后续会把分享和收藏功能做完
 
 ## 参考项目
 

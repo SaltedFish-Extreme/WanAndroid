@@ -145,7 +145,7 @@ class MainActivity : BaseActivity(), SwipeBackAbility.Direction {
                 }
             }
             //积分图标点击事件
-            rankImage.setOnClickListener { ToastUtils.debugShow("积分排名") }
+            rankImage.setOnClickListener { openActivity<LeaderboardActivity>() }
         }
         //未登录隐藏登出项，登陆可见
         navView.menu.findItem(R.id.nav_exit).isVisible = AppConfig.CoinCount.isNotEmpty()

@@ -17,10 +17,7 @@ import com.example.wanAndroid.R
 import com.example.wanAndroid.logic.dao.AppConfig
 import com.example.wanAndroid.logic.model.NoDataResponse
 import com.example.wanAndroid.logic.net.NetApi
-import com.example.wanAndroid.ui.activity.HistoryRecordActivity
-import com.example.wanAndroid.ui.activity.IntegralActivity
-import com.example.wanAndroid.ui.activity.LoginActivity
-import com.example.wanAndroid.ui.activity.SettingActivity
+import com.example.wanAndroid.ui.activity.*
 import com.example.wanAndroid.widget.dialog.Dialog
 import com.example.wanAndroid.widget.settingbar.SettingBar
 import com.example.wanAndroid.widget.toolbar.Toolbar
@@ -34,7 +31,7 @@ import com.hjq.toast.ToastUtils
  */
 class MineFragment : Fragment() {
 
-    private val notificationImage: ImageView by lazy { requireView().findViewById(R.id.notification_image) }
+    private val rankImage: ImageView by lazy { requireView().findViewById(R.id.rank_image) }
     private val headerImage: ShapeableImageView by lazy { requireView().findViewById(R.id.header_image) }
     private val userText: TextView by lazy { requireView().findViewById(R.id.user_text) }
     private val levelText: TextView by lazy { requireView().findViewById(R.id.level_text) }
@@ -66,6 +63,7 @@ class MineFragment : Fragment() {
                 startActivityForResult(Intent(context, LoginActivity::class.java), 0, null)
             }
         }
+        rankImage.setOnClickListener { openActivity<LeaderboardActivity>() }
         mineIntegral.setOnClickListener {
             if (AppConfig.UserName.isEmpty()) {
                 ToastUtils.show(getString(R.string.please_login))

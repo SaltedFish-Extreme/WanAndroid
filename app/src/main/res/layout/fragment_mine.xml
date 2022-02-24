@@ -13,14 +13,13 @@
         android:padding="@dimen/dp_5">
 
         <ImageView
-            android:id="@+id/notification_image"
+            android:id="@+id/rank_image"
             android:layout_width="@dimen/dp_24"
             android:layout_height="@dimen/dp_24"
-            android:background="@drawable/ic_notification"
+            android:background="@drawable/ic_rank"
             android:backgroundTint="@color/color_ic_bg_tint"
             android:contentDescription="@android:string/unknownName"
             android:foreground="?attr/selectableItemBackground"
-            android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="@id/header_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/header_image" />
@@ -52,7 +51,7 @@
             tool:text="@string/my_user" />
 
         <TextView
-            android:id="@+id/grade"
+            android:id="@+id/level"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/my_grade"

@@ -114,4 +114,10 @@
     <string name="integral_reason">签到</string>
     <string name="integral_desc">2020\-02\-02 00:00:10 签到 ，积分：20 + 20</string>
     <string name="integral_count">+1024</string>
+    <!--积分排行页-->
+    <string name="leaderboard">积分排行</string>
+    <string name="integral_rank">999+</string>
+    <string name="integral_name">时长2年半的练习生</string>
+    <string name="integral_lv">Lv.%d</string>
+    <string name="integral_my_lv">Lv.%s</string>
 </resources>
