@@ -123,4 +123,5 @@
     <!--分享列表页-->
     <string name="pending_review">待审核</string>
     <string name="delete">删除</string>
+    <string name="delete_share_confirm">确定删除此分享文章吗？</string>
 </resources>

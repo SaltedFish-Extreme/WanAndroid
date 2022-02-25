@@ -83,4 +83,7 @@ object NetApi {
 
     /** 个人分享文章列表路径 */
     const val ShareListAPI = "user/lg/private_articles"
+
+    /** 删除分享文章路径 */
+    const val DeleteShareAPI = "lg/user_article/delete"
 }
