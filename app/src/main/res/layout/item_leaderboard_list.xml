@@ -12,8 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_60"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:gravity="center">
 
         <TextView
             android:id="@+id/item_integral_rank"

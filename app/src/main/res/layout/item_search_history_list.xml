@@ -5,7 +5,6 @@
     android:layout_height="wrap_content"
     android:background="?attr/selectableItemBackground"
     android:gravity="center"
-    android:orientation="horizontal"
     android:padding="@dimen/dp_12">
 
     <TextView
