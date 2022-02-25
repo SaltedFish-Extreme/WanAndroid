@@ -2,6 +2,7 @@ package com.example.wanAndroid.logic.model
 
 /** 文章数据类 */
 data class ArticleResponse(
+    val audit: Int,
     val author: String,
     val chapterId: Int,
     val chapterName: String,

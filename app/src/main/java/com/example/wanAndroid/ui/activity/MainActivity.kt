@@ -161,7 +161,14 @@ class MainActivity : BaseActivity(), SwipeBackAbility.Direction {
                     }
                 }
                 R.id.nav_collect -> ToastUtils.debugShow(R.string.my_collect)
-                R.id.nav_share -> ToastUtils.debugShow(R.string.my_share)
+                R.id.nav_share -> {
+                    if (AppConfig.UserName.isEmpty()) {
+                        ToastUtils.show(getString(R.string.please_login))
+                        startActivityForResult(Intent(this, LoginActivity::class.java), 0, null)
+                    } else {
+                        openActivity<ShareActivity>()
+                    }
+                }
                 R.id.nav_record -> openActivity<HistoryRecordActivity>()
                 R.id.nav_setting -> openActivity<SettingActivity>()
                 R.id.nav_exit -> {

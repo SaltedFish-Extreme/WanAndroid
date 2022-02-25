@@ -80,4 +80,7 @@ object NetApi {
 
     /** 积分排行路径 */
     const val LeaderboardAPI = "coin/rank"
+
+    /** 个人分享文章列表路径 */
+    const val ShareListAPI = "user/lg/private_articles"
 }

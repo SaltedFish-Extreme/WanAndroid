@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?><!--适配器分享列表--><!--侧滑布局-->
+<com.example.wanAndroid.widget.layout.SwipeItemLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/share_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?attr/selectableItemBackground"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_8"
+            android:layout_marginTop="@dimen/dp_12"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/item_share_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_4"
+                android:textColor="@color/color_article_author"
+                android:textSize="@dimen/sp_13"
+                tools:text="@string/article_author" />
+
+            <com.hjq.shape.view.ShapeTextView
+                android:id="@+id/item_share_new"
+                style="@style/ShapeTextView"
+                android:text="@string/new_fresh"
+                android:textColor="@color/color_important"
+                app:shape_strokeColor="@color/color_important" />
+
+            <com.hjq.shape.view.ShapeTextView
+                android:id="@+id/item_share_review"
+                style="@style/ShapeTextView"
+                android:layout_marginStart="@dimen/dp_10"
+                android:text="@string/pending_review"
+                android:textColor="@color/color_tag"
+                app:shape_strokeColor="@color/color_tag" />
+
+            <TextView
+                android:id="@+id/item_share_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:gravity="end"
+                android:textColor="?android:attr/textColorTertiary"
+                android:textSize="@dimen/sp_12"
+                tools:text="@string/just" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/item_share_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp_12"
+            android:layout_marginVertical="@dimen/dp_8"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="@dimen/sp_14"
+            tools:text="@string/article_title" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/item_share_chapter"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/dp_12"
+                android:layout_weight="1"
+                android:textColor="@color/color_article_chapter"
+                android:textSize="@dimen/sp_12"
+                tools:text="@string/article_chapter" />
+
+            <per.goweii.reveallayout.RevealLayout
+                android:id="@+id/item_share_collect"
+                android:layout_width="@dimen/dp_25"
+                android:layout_height="@dimen/dp_25"
+                android:layout_marginEnd="@dimen/dp_12"
+                app:rl_allowRevert="true"
+                app:rl_animDuration="400"
+                app:rl_checkWithExpand="true"
+                app:rl_checkedLayout="@layout/view_reveal_like_checked"
+                app:rl_uncheckedLayout="@layout/view_reveal_like_unchecked" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/color_important"
+            android:text="@string/delete"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="@dimen/sp_16" />
+    </LinearLayout>
+
+</com.example.wanAndroid.widget.layout.SwipeItemLayout>

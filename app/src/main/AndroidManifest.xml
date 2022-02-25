@@ -32,6 +32,9 @@
             android:value="true" />
 
         <activity
+            android:name=".ui.activity.ShareActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.LeaderboardActivity"
             android:exported="false" />
         <activity

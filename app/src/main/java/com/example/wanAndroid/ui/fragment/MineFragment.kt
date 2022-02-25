@@ -73,7 +73,14 @@ class MineFragment : Fragment() {
             }
         }
         mineCollect.setOnClickListener { ToastUtils.debugShow(R.string.my_collect) }
-        mineShare.setOnClickListener { ToastUtils.debugShow(R.string.my_share) }
+        mineShare.setOnClickListener {
+            if (AppConfig.UserName.isEmpty()) {
+                ToastUtils.show(getString(R.string.please_login))
+                startActivityForResult(Intent(context, LoginActivity::class.java), 0, null)
+            } else {
+                openActivity<ShareActivity>()
+            }
+        }
         mineRecord.setOnClickListener { openActivity<HistoryRecordActivity>() }
         mineSetting.setOnClickListener { openActivity<SettingActivity>() }
         //未登录隐藏登出项，登陆可见
