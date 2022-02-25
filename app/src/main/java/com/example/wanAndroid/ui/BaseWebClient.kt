@@ -7,6 +7,7 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import com.just.agentweb.WebViewClient
+import java.net.URISyntaxException
 
 /**
  * Created by 咸鱼至尊 on 2022/2/10
@@ -52,6 +53,20 @@ open class BaseWebClient : WebViewClient() {
     }
 
     override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+        if (url == null) {
+            return false
+        }
+        if (url.startsWith("intent")) run {
+            try {
+            } catch (e: URISyntaxException) {
+                e.printStackTrace()
+            }
+            return true
+        }
+        val isHttp = url.startsWith("http://") || url.startsWith("https://")
+        if (!isHttp) {//fix issue #5,阻止一些非http请求（如简书：jianshu://notes/xxx)
+            return true
+        }
         return shouldOverrideUrlLoading(Uri.parse(url))
     }
 
