@@ -7,6 +7,7 @@ import com.drake.net.Get
 import com.drake.net.Post
 import com.drake.net.utils.scope
 import com.drake.net.utils.scopeNetLife
+import com.drake.serialize.intent.openActivity
 import com.example.wanAndroid.R
 import com.example.wanAndroid.ext.vibration
 import com.example.wanAndroid.logic.model.ArticleResponse
@@ -51,7 +52,7 @@ class ShareActivity : BaseActivity() {
         setContentView(R.layout.activity_share)
         titleBar.leftView.setOnClickListener { finish() }
         //标题栏右侧图标打开分享文章页面
-        titleBar.rightView.setOnClickListener { ToastUtils.debugShow("分享文章") }
+        titleBar.rightView.setOnClickListener { openActivity<ShareArticleActivity>() }
         //设置此页面请求分页初始索引
         PageRefreshLayout.startIndex = 1
         //初始化rv
