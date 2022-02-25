@@ -59,6 +59,12 @@ class IntegralActivity : BaseActivity() {
         rv.adapter = adapter
         //设置RecycleView的分隔线
         rv.addItemDecoration(RecyclerViewItemDecoration(this))
+        //刷新数据
+        onRefresh()
+    }
+
+    /** 页面刷新加载操作，不设置onLoadMore则都会走onRefresh */
+    private fun onRefresh() {
         page.onRefresh {
             scope {
                 //获取积分列表数据

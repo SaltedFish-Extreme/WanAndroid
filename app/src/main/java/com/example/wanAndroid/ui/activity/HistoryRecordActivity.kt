@@ -41,8 +41,6 @@ class HistoryRecordActivity : BaseActivity(), SwipeBackAbility.OnlyEdge {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_history_record)
-        //初始化rv悬浮按钮扩展函数
-        rv.initFloatBtn(fab)
         //标题栏返回按钮关闭页面
         titleBar.leftView.setOnClickListener { finish() }
         //标题栏右侧副标题点击删除所有历史记录
@@ -55,6 +53,14 @@ class HistoryRecordActivity : BaseActivity(), SwipeBackAbility.OnlyEdge {
                 ToastUtils.show(getString(R.string.delete_succeed))
             }.show()
         }
+        //初始化rv
+        initRV()
+    }
+
+    /** 初始化RecyclerView */
+    private fun initRV() {
+        //初始化rv悬浮按钮扩展函数
+        rv.initFloatBtn(fab)
         //代码中创建适配器列表，线性布局
         rv.linear().setup {
             //设置数据类型及item布局

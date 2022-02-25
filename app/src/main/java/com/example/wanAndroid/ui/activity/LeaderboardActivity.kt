@@ -65,6 +65,12 @@ class LeaderboardActivity : BaseActivity() {
         }
         //设置RecycleView的Adapter
         rv.adapter = adapter
+        //刷新数据
+        onRefresh()
+    }
+
+    /** 页面刷新加载操作，不设置onLoadMore则都会走onRefresh */
+    private fun onRefresh() {
         page.onRefresh {
             scope {
                 //获取积分排行数据

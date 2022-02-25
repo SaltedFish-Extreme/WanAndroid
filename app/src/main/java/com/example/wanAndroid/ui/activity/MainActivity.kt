@@ -55,6 +55,8 @@ class MainActivity : BaseActivity(), SwipeBackAbility.Direction {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        //获取积分信息
+        getCoinInfo()
         //使用toolBar并使其外观与功能和actionBar一致
         setSupportActionBar(toolbar)
         //初始化抽屉布局控件
@@ -67,8 +69,6 @@ class MainActivity : BaseActivity(), SwipeBackAbility.Direction {
         LitePal.getDatabase()
         //删除数据库
         //LitePal.deleteDatabase("example")
-        //获取积分信息
-        getCoinInfo()
     }
 
     /** 初始化抽屉布局控件 */
@@ -148,7 +148,7 @@ class MainActivity : BaseActivity(), SwipeBackAbility.Direction {
             rankImage.setOnClickListener { openActivity<LeaderboardActivity>() }
         }
         //未登录隐藏登出项，登陆可见
-        navView.menu.findItem(R.id.nav_exit).isVisible = AppConfig.CoinCount.isNotEmpty()
+        navView.menu.findItem(R.id.nav_exit).isVisible = AppConfig.UserName.isNotEmpty()
         //侧滑栏菜单项点击事件监听
         navView.setNavigationItemSelectedListener {
             when (it.itemId) {
@@ -181,12 +181,13 @@ class MainActivity : BaseActivity(), SwipeBackAbility.Direction {
                         //从存储中清除cookie、个人信息
                         AppConfig.Cookie.clear()
                         AppConfig.UserName = ""
+                        AppConfig.PassWord = ""
                         AppConfig.Level = ""
                         AppConfig.Rank = ""
                         AppConfig.CoinCount = ""
+                        ToastUtils.show(getString(R.string.exit_succeed))
                         //重建页面
                         recreate()
-                        ToastUtils.show(getString(R.string.exit_succeed))
                     }.show()
                 }
             }

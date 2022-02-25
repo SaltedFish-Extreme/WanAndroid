@@ -53,10 +53,9 @@ class SearchResultActivity : BaseActivity() {
         titleBar.title = key
         //标题栏返回按钮关闭页面
         titleBar.leftView.setOnClickListener { finish() }
-        //刷新数据
-        onRefresh()
         //设置RecycleView的Adapter
         rv.adapter = adapter
+        onRefresh()
     }
 
     override fun onDestroy() {

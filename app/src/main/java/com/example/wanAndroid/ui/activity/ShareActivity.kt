@@ -54,6 +54,16 @@ class ShareActivity : BaseActivity() {
         titleBar.rightView.setOnClickListener { ToastUtils.debugShow("分享文章") }
         //设置此页面请求分页初始索引
         PageRefreshLayout.startIndex = 1
+        //初始化rv
+        initRV()
+        //初始化适配器
+        initAdapter()
+        //刷新数据
+        onRefresh()
+    }
+
+    /** 初始化RecyclerView */
+    private fun initRV() {
         //初始化rv悬浮按钮扩展函数
         rv.initFloatBtn(fab)
         //设置RecycleView的Adapter
@@ -62,6 +72,10 @@ class ShareActivity : BaseActivity() {
         rv.addItemDecoration(SpaceItemDecoration(this))
         //设置RecycleView的侧滑监听器
         rv.addOnItemTouchListener(SwipeItemLayout.OnSwipeItemTouchListener(this@ShareActivity))
+    }
+
+    /** 初始化Adapter */
+    private fun initAdapter() {
         //先注册需要点击的子控件id
         adapter.addChildClickViewIds(R.id.share_item, R.id.share_delete, R.id.item_share_collect)
         //设置子控件点击监听
@@ -88,6 +102,10 @@ class ShareActivity : BaseActivity() {
                 R.id.item_share_collect -> vibration() //震动一下
             }
         }
+    }
+
+    /** 页面刷新加载操作，不设置onLoadMore则都会走onRefresh */
+    private fun onRefresh() {
         page.onRefresh {
             scope {
                 //获取分享列表数据

@@ -92,8 +92,7 @@ class RegisterActivity : BaseActivity(), SwipeBackAbility.Direction {
                 delay(1000)
                 //关闭当前页面
                 finish()
-            }.catch {
-                //如果用户已注册或其余错误导致请求失败会走这里
+            }.catch { //如果用户已注册或其余错误导致请求失败会走这里
                 //注册按钮显示失败
                 btnRegister.showError(2000)
                 //弹出错误信息吐司

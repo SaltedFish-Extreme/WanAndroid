@@ -95,12 +95,13 @@ class MineFragment : Fragment() {
                 //从存储中清除cookie、个人信息
                 AppConfig.Cookie.clear()
                 AppConfig.UserName = ""
+                AppConfig.PassWord = ""
                 AppConfig.Level = ""
                 AppConfig.Rank = ""
                 AppConfig.CoinCount = ""
+                ToastUtils.show(getString(R.string.exit_succeed))
                 //重建页面
                 activity?.recreate()
-                ToastUtils.show(getString(R.string.exit_succeed))
             }.show()
         }
     }
