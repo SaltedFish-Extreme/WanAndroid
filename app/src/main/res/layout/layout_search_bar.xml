@@ -23,6 +23,7 @@
         android:layout_weight="1"
         android:background="@drawable/shape_search_bg"
         android:hint="@string/search_tip"
+        android:imeOptions="actionSearch"
         android:inputType="text"
         android:paddingHorizontal="@dimen/dp_10"
         android:textCursorDrawable="@drawable/shape_et_draw" />

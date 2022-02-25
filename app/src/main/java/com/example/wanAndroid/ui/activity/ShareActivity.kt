@@ -96,7 +96,7 @@ class ShareActivity : BaseActivity() {
                         }
                         //adapter中删除
                         adapter.removeAt(position)
-                        ToastUtils.debugShow(getString(R.string.delete_succeed))
+                        ToastUtils.show(getString(R.string.delete_succeed))
                     }.show()
                 }
                 R.id.item_share_collect -> vibration() //震动一下

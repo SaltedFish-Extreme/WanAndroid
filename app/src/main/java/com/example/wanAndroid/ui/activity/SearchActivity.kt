@@ -2,6 +2,7 @@ package com.example.wanAndroid.ui.activity
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.inputmethod.EditorInfo
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.drake.net.Get
@@ -53,9 +54,22 @@ class SearchActivity : BaseActivity() {
             AppConfig.SearchHistory = arrayListOf()
             historyAdapter.setList(arrayListOf())
         }
+        //输入框监听软键盘操作
+        searchText.setOnEditorActionListener { _, actionId, _ ->
+            //当点击软键盘的搜索键时搜索输入框中内容
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                //文本为空不执行操作
+                if (searchText.text.isNullOrBlank()) {
+                    return@setOnEditorActionListener false
+                } else {
+                    openActivity<SearchResultActivity>("key" to searchText.text.toString().trim())
+                    updateKey(searchText.text.toString().trim())
+                }
+            }
+            return@setOnEditorActionListener false
+        }
         //搜索图标跳转搜索结果Activity传递参数并更新搜索记录
         search.setOnClickListener {
-            //文本为空不执行操作
             if (searchText.text.isNullOrBlank()) {
                 return@setOnClickListener
             } else {
