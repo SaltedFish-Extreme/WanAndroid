@@ -86,7 +86,7 @@
                 android:layout_width="@dimen/dp_25"
                 android:layout_height="@dimen/dp_25"
                 android:layout_marginEnd="@dimen/dp_12"
-                app:rl_allowRevert="true"
+                app:rl_allowRevert="false"
                 app:rl_animDuration="400"
                 app:rl_checkWithExpand="true"
                 app:rl_checkedLayout="@layout/view_reveal_like_checked"
