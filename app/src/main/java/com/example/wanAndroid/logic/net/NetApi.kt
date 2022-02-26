@@ -89,4 +89,7 @@ object NetApi {
 
     /** 分享文章路径 */
     const val ShareArticleAPI = "lg/user_article/add/json"
+
+    /** 收藏文章列表路径 */
+    const val CollectArticleListAPI = "lg/collect/list"
 }

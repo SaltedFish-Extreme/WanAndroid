@@ -32,6 +32,9 @@
             android:value="true" />
 
         <activity
+            android:name=".ui.activity.CollectActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.ShareArticleActivity"
             android:exported="false" />
         <activity

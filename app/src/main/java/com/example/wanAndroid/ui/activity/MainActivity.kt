@@ -160,7 +160,14 @@ class MainActivity : BaseActivity(), SwipeBackAbility.Direction {
                         openActivity<IntegralActivity>()
                     }
                 }
-                R.id.nav_collect -> ToastUtils.debugShow(R.string.my_collect)
+                R.id.nav_collect -> {
+                    if (AppConfig.UserName.isEmpty()) {
+                        ToastUtils.show(getString(R.string.please_login))
+                        startActivityForResult(Intent(this, LoginActivity::class.java), 0, null)
+                    } else {
+                        openActivity<CollectActivity>()
+                    }
+                }
                 R.id.nav_share -> {
                     if (AppConfig.UserName.isEmpty()) {
                         ToastUtils.show(getString(R.string.please_login))

@@ -72,7 +72,14 @@ class MineFragment : Fragment() {
                 openActivity<IntegralActivity>()
             }
         }
-        mineCollect.setOnClickListener { ToastUtils.debugShow(R.string.my_collect) }
+        mineCollect.setOnClickListener {
+            if (AppConfig.UserName.isEmpty()) {
+                ToastUtils.show(getString(R.string.please_login))
+                startActivityForResult(Intent(context, LoginActivity::class.java), 0, null)
+            } else {
+                openActivity<CollectActivity>()
+            }
+        }
         mineShare.setOnClickListener {
             if (AppConfig.UserName.isEmpty()) {
                 ToastUtils.show(getString(R.string.please_login))

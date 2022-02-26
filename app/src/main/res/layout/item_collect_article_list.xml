@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?><!--适配器收藏文章列表-->
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/dp_8"
+    android:layout_marginVertical="@dimen/dp_5"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardCornerRadius="@dimen/dp_4"
+    app:cardElevation="@dimen/dp_4">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_12"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/item_article_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_article_author"
+                android:textSize="@dimen/sp_14"
+                tools:text="@string/article_author" />
+
+            <TextView
+                android:id="@+id/item_article_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="@dimen/sp_13"
+                tools:text="@string/just" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/item_article_image"
+                android:layout_width="@dimen/dp_120"
+                android:layout_height="@dimen/dp_80"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_12"
+                android:contentDescription="@android:string/unknownName"
+                android:scaleType="centerCrop"
+                app:shapeAppearance="@style/RoundedStyle" />
+
+            <TextView
+                android:id="@+id/item_article_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginHorizontal="@dimen/dp_10"
+                android:layout_marginVertical="@dimen/dp_8"
+                android:layout_toEndOf="@id/item_article_image"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="@dimen/sp_14"
+                tools:text="@string/article_title" />
+
+            <TextView
+                android:id="@+id/item_article_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/item_article_title"
+                android:layout_marginHorizontal="@dimen/dp_10"
+                android:layout_toEndOf="@id/item_article_image"
+                android:ellipsize="end"
+                android:includeFontPadding="true"
+                android:maxLines="3"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="@dimen/sp_13"
+                tools:text="@string/article_content" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp_10">
+
+            <TextView
+                android:id="@+id/item_article_chapter"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/dp_8"
+                android:layout_weight="1"
+                android:textColor="@color/color_article_chapter"
+                android:textSize="@dimen/sp_13"
+                tools:text="@string/article_chapter" />
+
+            <per.goweii.reveallayout.RevealLayout
+                android:id="@+id/item_article_collect"
+                android:layout_width="@dimen/dp_25"
+                android:layout_height="@dimen/dp_25"
+                android:layout_gravity="center"
+                app:rl_allowRevert="false"
+                app:rl_animDuration="400"
+                app:rl_checkWithExpand="true"
+                app:rl_checked="true"
+                app:rl_checkedLayout="@layout/view_reveal_like_checked"
+                app:rl_uncheckedLayout="@layout/view_reveal_like_unchecked" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
