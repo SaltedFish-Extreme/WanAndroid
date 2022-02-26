@@ -7,7 +7,6 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import com.just.agentweb.WebViewClient
-import java.net.URISyntaxException
 
 /**
  * Created by 咸鱼至尊 on 2022/2/10
@@ -17,8 +16,11 @@ import java.net.URISyntaxException
 open class BaseWebClient : WebViewClient() {
     // 拦截的网址
     private val blackHostList = arrayListOf(
-        "www.taobao.com",
-        "www.jd.com",
+        "taobao.com",
+        "jd.com",
+        "alipay.com",
+        "www.ilkwork.com",
+        "cnzz.com",
         "yun.tuisnake.com",
         "yun.lvehaisen.com",
         "yun.tuitiger.com",
@@ -37,45 +39,23 @@ open class BaseWebClient : WebViewClient() {
         return false
     }
 
-    private fun shouldInterceptRequest(uri: Uri?): Boolean {
-        if (uri != null) {
-            val host = uri.host ?: ""
-            return isBlackHost(host)
+    private fun shouldInterceptRequest(uri: Uri): Boolean {
+        val host = uri.host ?: ""
+        if (host.startsWith("intent") || host.startsWith("alipay") || host.contains("alipay")) run {
+            return true
         }
-        return false
+        return isBlackHost(host)
     }
 
-    override fun shouldInterceptRequest(view: WebView?, request: WebResourceRequest?): WebResourceResponse? {
-        if (shouldInterceptRequest(request?.url)) {
+    override fun shouldInterceptRequest(view: WebView, request: WebResourceRequest): WebResourceResponse? {
+        if (shouldInterceptRequest(request.url)) {
             return WebResourceResponse(null, null, null)
         }
         return super.shouldInterceptRequest(view, request)
     }
 
-    override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
-        if (url == null) {
-            return false
-        }
-        if (url.startsWith("intent")) run {
-            try {
-            } catch (e: URISyntaxException) {
-                e.printStackTrace()
-            }
-            return true
-        }
-        val isHttp = url.startsWith("http://") || url.startsWith("https://")
-        if (!isHttp) {//fix issue #5,阻止一些非http请求（如简书：jianshu://notes/xxx)
-            return true
-        }
-        return shouldOverrideUrlLoading(Uri.parse(url))
-    }
-
-    private fun shouldOverrideUrlLoading(uri: Uri?): Boolean {
-        if (uri != null) {
-            val host = uri.host ?: ""
-            return isBlackHost(host)
-        }
-        return false
+    override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
+        return true
     }
 
     override fun onReceivedSslError(view: WebView?, handler: SslErrorHandler?, error: SslError?) {

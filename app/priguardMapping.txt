@@ -1,7 +1,7 @@
 # compiler: R8
 # compiler_version: 3.1.66
 # min_api: 24
-# pg_map_id: 89957d3
+# pg_map_id: 4718388
 # common_typos_disable
 # {"id":"com.android.tools.r8.mapping","version":"1.0"}
 a.BGAQRCodeUtil$$ExternalSyntheticOutline0 -> a.a:
@@ -11230,12 +11230,12 @@ com.example.wanAndroid.logic.net.GsonConvert -> com.example.wanAndroid.logic.net
     5:5:void <init>():0:0 -> <init>
 com.example.wanAndroid.ui.BaseWebClient -> i1.a:
     java.util.ArrayList blackHostList -> a
-    boolean isBlackHost(java.lang.String) -> a
     1:1:boolean com.example.wanAndroid.ui.BaseWebClient.shouldInterceptRequest(android.net.Uri):0:0 -> shouldInterceptRequest
     1:1:android.webkit.WebResourceResponse shouldInterceptRequest(android.webkit.WebView,android.webkit.WebResourceRequest):0 -> shouldInterceptRequest
-    2:2:android.webkit.WebResourceResponse shouldInterceptRequest(android.webkit.WebView,android.webkit.WebResourceRequest):0:0 -> shouldInterceptRequest
-    1:1:boolean com.example.wanAndroid.ui.BaseWebClient.shouldOverrideUrlLoading(android.net.Uri):0:0 -> shouldOverrideUrlLoading
-    1:1:boolean shouldOverrideUrlLoading(android.webkit.WebView,java.lang.String):0 -> shouldOverrideUrlLoading
+    2:2:boolean com.example.wanAndroid.ui.BaseWebClient.isBlackHost(java.lang.String):0:0 -> shouldInterceptRequest
+    2:2:boolean com.example.wanAndroid.ui.BaseWebClient.shouldInterceptRequest(android.net.Uri):0 -> shouldInterceptRequest
+    2:2:android.webkit.WebResourceResponse shouldInterceptRequest(android.webkit.WebView,android.webkit.WebResourceRequest):0 -> shouldInterceptRequest
+    3:3:android.webkit.WebResourceResponse shouldInterceptRequest(android.webkit.WebView,android.webkit.WebResourceRequest):0:0 -> shouldInterceptRequest
 com.example.wanAndroid.ui.activity.AuthorActivity -> com.example.wanAndroid.ui.activity.AuthorActivity:
     boolean first -> o
     com.example.wanAndroid.logic.model.base.ApiResponse dataByName -> q
