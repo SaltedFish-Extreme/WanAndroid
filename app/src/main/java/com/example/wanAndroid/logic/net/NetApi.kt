@@ -92,4 +92,7 @@ object NetApi {
 
     /** 收藏文章列表路径 */
     const val CollectArticleListAPI = "lg/collect/list"
+
+    /** 收藏网址列表路径 */
+    const val CollectURLListAPI = "lg/collect/usertools/json"
 }

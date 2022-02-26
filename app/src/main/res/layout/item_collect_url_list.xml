@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?><!--适配器收藏网址列表-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?attr/selectableItemBackground"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/item_url_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_8"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="@dimen/sp_15"
+        tools:text="@string/article_title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_12"
+        android:layout_marginVertical="@dimen/dp_8">
+
+        <TextView
+            android:id="@+id/item_url_link"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            tools:text="@string/integral_help" />
+
+        <per.goweii.reveallayout.RevealLayout
+            android:id="@+id/item_url_collect"
+            android:layout_width="@dimen/dp_25"
+            android:layout_height="@dimen/dp_25"
+            app:rl_allowRevert="false"
+            app:rl_animDuration="400"
+            app:rl_checkWithExpand="true"
+            app:rl_checkedLayout="@layout/view_reveal_like_checked"
+            app:rl_uncheckedLayout="@layout/view_reveal_like_unchecked" />
+
+    </LinearLayout>
+
+</LinearLayout>
