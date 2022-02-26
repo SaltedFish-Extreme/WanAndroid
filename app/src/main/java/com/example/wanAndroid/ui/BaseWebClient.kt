@@ -41,9 +41,6 @@ open class BaseWebClient : WebViewClient() {
 
     private fun shouldInterceptRequest(uri: Uri): Boolean {
         val host = uri.host ?: ""
-        if (host.startsWith("intent") || host.startsWith("alipay") || host.contains("alipay")) run {
-            return true
-        }
         return isBlackHost(host)
     }
 
@@ -55,7 +52,16 @@ open class BaseWebClient : WebViewClient() {
     }
 
     override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
-        return true
+        return if (request != null) {
+            val isHttp = request.url.toString().startsWith("http")
+            if (!isHttp) {//fix issue #5,阻止一些非http请求（如简书：jianshu://notes/xxx)
+                true
+            } else {
+                request.url.toString().contains("alipay")//拦截跳转支付宝
+            }
+        } else {
+            false
+        }
     }
 
     override fun onReceivedSslError(view: WebView?, handler: SslErrorHandler?, error: SslError?) {
