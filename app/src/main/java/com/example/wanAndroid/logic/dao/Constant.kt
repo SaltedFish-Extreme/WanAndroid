@@ -14,4 +14,10 @@ object Constant {
 
     /** url key */
     const val CONTENT_URL_KEY = "url"
+
+    /** collect key */
+    const val CONTENT_COLLECT_KEY = "collect"
+
+    /** article key */
+    const val CONTENT_ARTICLE_KEY = "article"
 }

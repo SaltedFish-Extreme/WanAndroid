@@ -13,6 +13,7 @@ import android.webkit.WebView
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.content.ContextCompat
 import com.download.library.DownloadImpl
 import com.drake.serialize.intent.browse
 import com.drake.serialize.intent.share
@@ -50,20 +51,25 @@ class WebActivity : BaseActivity(false), SwipeBackAbility.OnlyEdge {
     private lateinit var shareTitle: String
     private lateinit var shareUrl: String
     private var shareId = -1
-    private var collect = false
+    private var isCollect = false
+    private var isArticle = true
 
     companion object {
-        fun start(context: Context, id: Int, title: String, url: String, bundle: Bundle? = null) {
+
+        fun start(context: Context, id: Int, title: String, url: String, collect: Boolean = false, article: Boolean = true, bundle: Bundle? = null) {
             Intent(context, WebActivity::class.java).run {
                 putExtra(Constant.CONTENT_ID_KEY, id)
                 putExtra(Constant.CONTENT_TITLE_KEY, title)
                 putExtra(Constant.CONTENT_URL_KEY, url)
+                putExtra(Constant.CONTENT_COLLECT_KEY, collect)
+                putExtra(Constant.CONTENT_ARTICLE_KEY, article)
                 context.startActivity(this, bundle)
             }
         }
 
         fun start(context: Context, url: String) {
-            start(context, -1, "", url)
+            //不是从文章进来
+            start(context, -1, "", url, article = false)
         }
     }
 
@@ -74,6 +80,8 @@ class WebActivity : BaseActivity(false), SwipeBackAbility.OnlyEdge {
             shareId = it.getInt(Constant.CONTENT_ID_KEY, -1)
             shareTitle = it.getString(Constant.CONTENT_TITLE_KEY, "")
             shareUrl = it.getString(Constant.CONTENT_URL_KEY, "")
+            isCollect = it.getBoolean(Constant.CONTENT_COLLECT_KEY, false)
+            isArticle = it.getBoolean(Constant.CONTENT_ARTICLE_KEY, true)
         }
         toolbar.apply {
             //使用toolBar并使其外观与功能和actionBar一致
@@ -148,13 +156,27 @@ class WebActivity : BaseActivity(false), SwipeBackAbility.OnlyEdge {
         }
     }
 
-    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-        return super.onPrepareOptionsMenu(menu)
-    }
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_web, menu)
+        if (!isArticle) {
+            //不是从文章进来，隐藏收藏选项
+            menu?.findItem(R.id.web_collect)?.isVisible = false
+        }
         return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu): Boolean {
+        //如果收藏了，右上角的收藏图标相对应改变
+        this.let {
+            if (isCollect) {
+                //已收藏
+                menu.findItem(R.id.web_collect).icon = ContextCompat.getDrawable(it, R.drawable.ic_collect_strawberry)
+            } else {
+                //未收藏
+                menu.findItem(R.id.web_collect).icon = ContextCompat.getDrawable(it, R.drawable.ic_collect_black_24)
+            }
+        }
+        return super.onPrepareOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -163,8 +185,8 @@ class WebActivity : BaseActivity(false), SwipeBackAbility.OnlyEdge {
                 //点击收藏 震动一下
                 vibration()
                 //收藏取反
-                collect = !collect
-                if (collect) {
+                isCollect = !isCollect
+                if (isCollect) {
                     //已收藏
                     item.setIcon(R.drawable.ic_collect_strawberry)
                 } else {

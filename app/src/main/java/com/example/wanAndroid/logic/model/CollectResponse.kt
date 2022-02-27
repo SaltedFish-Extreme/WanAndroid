@@ -1,7 +1,7 @@
 package com.example.wanAndroid.logic.model
 
-/** 收藏文章数据类 */
-data class CollectArticleResponse(
+/** 收藏数据类 */
+data class CollectResponse(
     val author: String,
     val chapterId: Int,
     val chapterName: String,

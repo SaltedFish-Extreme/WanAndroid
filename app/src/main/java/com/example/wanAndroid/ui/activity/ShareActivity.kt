@@ -85,8 +85,8 @@ class ShareActivity : BaseActivity() {
             val item = adapter.data[position] as ArticleResponse
             when (view.id) {
                 R.id.share_item -> {
-                    //跳转文章网页打开链接，传递文章id标题和链接
-                    item.run { WebActivity.start(this@ShareActivity, id, title, link) }
+                    //跳转文章网页打开链接，传递文章id标题链接及收藏与否
+                    item.run { WebActivity.start(this@ShareActivity, id, title, link, collect) }
                 }
                 R.id.share_delete -> {
                     //删除对应分享文章

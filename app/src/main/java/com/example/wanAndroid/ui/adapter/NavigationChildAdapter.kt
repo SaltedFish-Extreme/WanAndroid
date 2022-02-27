@@ -20,7 +20,8 @@ class NavigationChildAdapter(dataList: MutableList<ArticleResponse>) : BaseAdapt
         setAnimationWithDefault(AnimationType.ScaleIn)
         //设置Item点击事件
         this.setOnItemClickListener { _, _, position ->
-            WebActivity.start(context, dataList[position].link)
+            //跳转文章网页打开链接，传递文章id标题链接及收藏与否
+            data[position].run { WebActivity.start(context, id, title, link, collect) }
         }
     }
 
