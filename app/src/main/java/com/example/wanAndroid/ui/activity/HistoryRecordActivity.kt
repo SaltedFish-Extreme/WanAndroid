@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.drake.brv.BindingAdapter
+import com.drake.brv.annotaion.AnimationType
 import com.drake.brv.listener.DefaultItemTouchCallback
 import com.drake.brv.utils.linear
 import com.drake.brv.utils.models
@@ -63,6 +64,8 @@ class HistoryRecordActivity : BaseActivity(), SwipeBackAbility.OnlyEdge {
         rv.initFloatBtn(fab)
         //代码中创建适配器列表，线性布局
         rv.linear().setup {
+            //设置列表动画
+            setAnimation(AnimationType.SCALE)
             //设置数据类型及item布局
             addType<HistoryRecordDB>(R.layout.item_history_record_list)
             //数据绑定回调
