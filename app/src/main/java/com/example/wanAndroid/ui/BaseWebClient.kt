@@ -1,5 +1,6 @@
 package com.example.wanAndroid.ui
 
+import android.annotation.SuppressLint
 import android.net.Uri
 import android.net.http.SslError
 import android.webkit.SslErrorHandler
@@ -64,8 +65,9 @@ open class BaseWebClient : WebViewClient() {
         }
     }
 
+    @SuppressLint("WebViewClientOnReceivedSslError")
     override fun onReceivedSslError(view: WebView?, handler: SslErrorHandler?, error: SslError?) {
         super.onReceivedSslError(view, handler, error)
-        handler?.cancel()
+        handler?.proceed()
     }
 }
