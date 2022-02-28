@@ -34,7 +34,7 @@ class SquareChildFragment : Fragment() {
     private var first = true
 
     /** 适配器 */
-    private val adapter: ArticleAdapter by lazy { ArticleAdapter() }
+    private val adapter: ArticleAdapter by lazy { ArticleAdapter(this) }
 
     /** 数据集 */
     private lateinit var data: ApiResponse<ApiPagerResponse<ArrayList<ArticleResponse>>>

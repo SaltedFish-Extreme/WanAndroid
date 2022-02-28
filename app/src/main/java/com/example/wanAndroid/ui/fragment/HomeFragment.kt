@@ -35,7 +35,7 @@ class HomeFragment : Fragment() {
     private val page: PageRefreshLayout by lazy { requireView().findViewById(R.id.page) }
     private val fab: FloatingActionButton by lazy { requireActivity().findViewById(R.id.fab) }
     private val toolbar: Toolbar by lazy { requireActivity().findViewById(R.id.toolbar) }
-    private val adapter: ArticleAdapter by lazy { ArticleAdapter(true) }
+    private val adapter: ArticleAdapter by lazy { ArticleAdapter(this, true) }
 
     /** 是否初次切换页面 */
     private var first = true

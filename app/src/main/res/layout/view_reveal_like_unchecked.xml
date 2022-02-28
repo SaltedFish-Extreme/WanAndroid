@@ -4,6 +4,5 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:contentDescription="@android:string/unknownName"
-    android:scaleType="fitCenter"
     app:srcCompat="@drawable/ic_collect_silver"
     app:tint="@color/light_silver" />

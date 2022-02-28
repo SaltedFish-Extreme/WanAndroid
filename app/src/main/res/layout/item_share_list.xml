@@ -81,16 +81,11 @@
                 android:textSize="@dimen/sp_12"
                 tools:text="@string/article_chapter" />
 
-            <per.goweii.reveallayout.RevealLayout
+            <com.example.wanAndroid.widget.view.CollectView
                 android:id="@+id/item_share_collect"
                 android:layout_width="@dimen/dp_25"
                 android:layout_height="@dimen/dp_25"
-                android:layout_marginEnd="@dimen/dp_12"
-                app:rl_allowRevert="false"
-                app:rl_animDuration="400"
-                app:rl_checkWithExpand="true"
-                app:rl_checkedLayout="@layout/view_reveal_like_checked"
-                app:rl_uncheckedLayout="@layout/view_reveal_like_unchecked" />
+                android:layout_marginEnd="@dimen/dp_12" />
         </LinearLayout>
 
     </LinearLayout>

@@ -33,7 +33,7 @@ class CollectActivity : BaseActivity() {
     private var first = true
 
     /** 适配器 */
-    private val adapter: CollectAdapter by lazy { CollectAdapter() }
+    private val adapter: CollectAdapter by lazy { CollectAdapter(this) }
 
     /** 数据集 */
     private lateinit var data: ApiResponse<ApiPagerResponse<ArrayList<CollectResponse>>>

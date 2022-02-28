@@ -52,7 +52,7 @@ class AuthorActivity : BaseActivity() {
     private var first = true
 
     /** 适配器 */
-    private val adapter: ArticleAdapter by lazy { ArticleAdapter() }
+    private val adapter: ArticleAdapter by lazy { ArticleAdapter(this) }
 
     /** 按照作者昵称搜索文章 数据集 */
     private lateinit var dataByName: ApiResponse<ApiPagerResponse<ArrayList<ArticleResponse>>>

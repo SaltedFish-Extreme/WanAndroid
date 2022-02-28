@@ -54,11 +54,15 @@ class ShareArticleActivity : BaseActivity(), SwipeBackAbility.OnlyEdge {
                     param("title", etShareTitle.text.toString())
                     param("link", etShareLink.text.toString())
                 }.await()
-                //登陆按钮显示成功
+                //分享按钮显示成功
                 btnShare.showSucceed()
                 ToastUtils.show(getString(R.string.share_succeed))
-            }.catch { //如果用户未登录或其余错误导致请求失败会走这里
-                //登陆按钮显示失败
+                //再延迟一会，增强用户体验~
+                delay(1000)
+                //关闭当前页面
+                finish()
+            }.catch { //如果文章被分享过或其余错误导致请求失败会走这里
+                //分享按钮显示失败
                 btnShare.showError(2000)
                 //弹出错误信息吐司
                 ToastUtils.show(it.message)

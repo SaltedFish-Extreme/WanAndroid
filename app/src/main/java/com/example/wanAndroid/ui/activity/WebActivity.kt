@@ -15,12 +15,16 @@ import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
 import com.download.library.DownloadImpl
+import com.drake.net.Post
+import com.drake.net.utils.scopeNetLife
 import com.drake.serialize.intent.browse
 import com.drake.serialize.intent.share
 import com.example.wanAndroid.R
 import com.example.wanAndroid.ext.vibration
 import com.example.wanAndroid.logic.dao.Constant
 import com.example.wanAndroid.logic.dao.HistoryRecordDB
+import com.example.wanAndroid.logic.model.NoDataResponse
+import com.example.wanAndroid.logic.net.NetApi
 import com.example.wanAndroid.ui.BaseWebClient
 import com.example.wanAndroid.ui.base.BaseActivity
 import com.example.wanAndroid.widget.ext.getAgentWeb
@@ -187,11 +191,17 @@ class WebActivity : BaseActivity(false), SwipeBackAbility.OnlyEdge {
                 //收藏取反
                 isCollect = !isCollect
                 if (isCollect) {
-                    //已收藏
+                    //收藏
                     item.setIcon(R.drawable.ic_collect_strawberry)
+                    scopeNetLife {
+                        Post<NoDataResponse>("${NetApi.CollectArticleAPI}/$shareId/json").await()
+                    }
                 } else {
-                    //未收藏
+                    //取消收藏
                     item.setIcon(R.drawable.ic_collect_black_24)
+                    scopeNetLife {
+                        Post<NoDataResponse>("${NetApi.UnCollectArticleAPI}/$shareId/json").await()
+                    }
                 }
             }
             R.id.web_share -> {

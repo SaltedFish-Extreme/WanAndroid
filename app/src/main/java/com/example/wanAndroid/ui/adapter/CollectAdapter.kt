@@ -1,16 +1,22 @@
 package com.example.wanAndroid.ui.adapter
 
+import androidx.lifecycle.LifecycleOwner
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.drake.net.Post
+import com.drake.net.utils.scopeNetLife
 import com.example.wanAndroid.R
-import com.example.wanAndroid.ext.vibration
 import com.example.wanAndroid.logic.model.CollectResponse
+import com.example.wanAndroid.logic.model.NoDataResponse
+import com.example.wanAndroid.logic.net.NetApi
 import com.example.wanAndroid.ui.activity.WebActivity
 import com.example.wanAndroid.ui.base.BaseAdapter
 import com.example.wanAndroid.widget.ext.html2Spanned
 import com.example.wanAndroid.widget.ext.html2String
+import com.example.wanAndroid.widget.view.CollectView
 import com.google.android.material.imageview.ShapeableImageView
+import kotlinx.coroutines.delay
 import per.goweii.reveallayout.RevealLayout
 
 /**
@@ -18,7 +24,7 @@ import per.goweii.reveallayout.RevealLayout
  *
  * desc: 收藏列表适配器
  */
-class CollectAdapter : BaseAdapter<CollectResponse>(R.layout.item_collect_list) {
+class CollectAdapter(private val lifecycleOwner: LifecycleOwner) : BaseAdapter<CollectResponse>(R.layout.item_collect_list) {
 
     init {
         //设置默认加载动画
@@ -28,14 +34,26 @@ class CollectAdapter : BaseAdapter<CollectResponse>(R.layout.item_collect_list) 
             //跳转文章网页打开链接，传递文章id标题链接及收藏与否
             data[position].run { WebActivity.start(context, id, title, link, true) }
         }
-        //先注册需要点击的子控件id
-        this.addChildClickViewIds(R.id.item_article_collect)
-        //设置子控件点击监听
-        this.setOnItemChildClickListener { _, view, position ->
-            when (view.id) {
-                R.id.item_article_collect -> context.vibration() //震动一下
+    }
+
+    override fun onItemViewHolderCreated(viewHolder: BaseViewHolder, viewType: Int) {
+        super.onItemViewHolderCreated(viewHolder, viewType)
+        viewHolder.getView<CollectView>(R.id.item_article_collect).setOnClickListener(object : CollectView.OnClickListener {
+            //收藏控件点击事件回调
+            override fun onClick(v: CollectView) {
+                if (!v.isChecked) {
+                    //收藏页面默认全部选中，点击后直接取消收藏，并移除item
+                    lifecycleOwner.scopeNetLife {
+                        Post<NoDataResponse>("${NetApi.UserUnCollectArticleAPI}/${data[viewHolder.adapterPosition].id}/json") {
+                            param("originId", "${data[viewHolder.adapterPosition].originId}")
+                        }.await()
+                        //延迟一小会等取消收藏动画结束再删除item，增强一丢丢用户体验~
+                        delay(300)
+                        removeAt(viewHolder.adapterPosition)
+                    }
+                }
             }
-        }
+        })
     }
 
     override fun convert(holder: BaseViewHolder, item: CollectResponse) {
@@ -49,7 +67,7 @@ class CollectAdapter : BaseAdapter<CollectResponse>(R.layout.item_collect_list) 
             //文章章节
             holder.setText(R.id.item_article_chapter, (chapterName).html2Spanned())
             //全部收藏
-            holder.getView<RevealLayout>(R.id.item_article_collect).isChecked = true
+            holder.getView<RevealLayout>(R.id.item_article_collect).setChecked(true, false)
             //项目图片
             holder.setGone(R.id.item_article_image, envelopePic.isEmpty())
             if (envelopePic.isNotEmpty()) {

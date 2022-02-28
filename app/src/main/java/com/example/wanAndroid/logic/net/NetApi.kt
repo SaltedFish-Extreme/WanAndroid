@@ -92,4 +92,13 @@ object NetApi {
 
     /** 收藏列表路径 */
     const val CollectListAPI = "lg/collect/list"
+
+    /** 收藏文章路径 */
+    const val CollectArticleAPI = "lg/collect"
+
+    /** 取消收藏文章路径 */
+    const val UnCollectArticleAPI = "lg/uncollect_originId"
+
+    /** 收藏页面取消收藏文章路径 */
+    const val UserUnCollectArticleAPI = "lg/uncollect"
 }

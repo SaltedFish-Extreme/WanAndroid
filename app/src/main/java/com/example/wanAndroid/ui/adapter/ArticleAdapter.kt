@@ -1,19 +1,23 @@
 package com.example.wanAndroid.ui.adapter
 
+import androidx.lifecycle.LifecycleOwner
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.drake.net.Post
+import com.drake.net.utils.scopeNetLife
 import com.drake.serialize.intent.openActivity
 import com.example.wanAndroid.R
-import com.example.wanAndroid.ext.vibration
 import com.example.wanAndroid.logic.model.ArticleResponse
+import com.example.wanAndroid.logic.model.NoDataResponse
+import com.example.wanAndroid.logic.net.NetApi
 import com.example.wanAndroid.ui.activity.AuthorActivity
 import com.example.wanAndroid.ui.activity.WebActivity
 import com.example.wanAndroid.ui.base.BaseAdapter
 import com.example.wanAndroid.widget.ext.html2Spanned
 import com.example.wanAndroid.widget.ext.html2String
+import com.example.wanAndroid.widget.view.CollectView
 import com.google.android.material.imageview.ShapeableImageView
-import per.goweii.reveallayout.RevealLayout
 
 /**
  * Created by 咸鱼至尊 on 2022/1/20
@@ -22,7 +26,8 @@ import per.goweii.reveallayout.RevealLayout
  *
  * @param showTag 是否显示标签
  */
-class ArticleAdapter(private val showTag: Boolean = false) : BaseAdapter<ArticleResponse>(R.layout.item_article_list) {
+class ArticleAdapter(private val lifecycleOwner: LifecycleOwner, private val showTag: Boolean = false) :
+    BaseAdapter<ArticleResponse>(R.layout.item_article_list) {
 
     init {
         //设置默认加载动画
@@ -33,7 +38,7 @@ class ArticleAdapter(private val showTag: Boolean = false) : BaseAdapter<Article
             data[position].run { WebActivity.start(context, id, title, link, collect) }
         }
         //先注册需要点击的子控件id
-        this.addChildClickViewIds(R.id.item_article_author, R.id.item_article_collect)
+        this.addChildClickViewIds(R.id.item_article_author)
         //设置子控件点击监听
         this.setOnItemChildClickListener { _, view, position ->
             when (view.id) {
@@ -45,9 +50,28 @@ class ArticleAdapter(private val showTag: Boolean = false) : BaseAdapter<Article
                         "userId" to data[position].run { userId }
                     )
                 }
-                R.id.item_article_collect -> context.vibration() //震动一下
             }
         }
+    }
+
+    override fun onItemViewHolderCreated(viewHolder: BaseViewHolder, viewType: Int) {
+        super.onItemViewHolderCreated(viewHolder, viewType)
+        viewHolder.getView<CollectView>(R.id.item_article_collect).setOnClickListener(object : CollectView.OnClickListener {
+            //收藏控件点击事件回调
+            override fun onClick(v: CollectView) {
+                if (v.isChecked) {
+                    //选中收藏文章
+                    lifecycleOwner.scopeNetLife {
+                        Post<NoDataResponse>("${NetApi.CollectArticleAPI}/${data[viewHolder.adapterPosition - headerLayoutCount].id}/json").await()
+                    }
+                } else {
+                    //未选中取消收藏文章
+                    lifecycleOwner.scopeNetLife {
+                        Post<NoDataResponse>("${NetApi.UnCollectArticleAPI}/${data[viewHolder.adapterPosition - headerLayoutCount].id}/json").await()
+                    }
+                }
+            }
+        })
     }
 
     override fun convert(holder: BaseViewHolder, item: ArticleResponse) {
@@ -61,7 +85,7 @@ class ArticleAdapter(private val showTag: Boolean = false) : BaseAdapter<Article
             //文章章节
             holder.setText(R.id.item_article_chapter, ("$superChapterName·$chapterName").html2Spanned())
             //是否收藏
-            holder.getView<RevealLayout>(R.id.item_article_collect).isChecked = collect
+            holder.getView<CollectView>(R.id.item_article_collect).setChecked(collect, false)
             //是否置顶
             holder.setGone(R.id.item_article_top, (type != 1))
             //是否上新
