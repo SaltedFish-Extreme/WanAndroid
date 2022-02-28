@@ -129,6 +129,7 @@ dependencies {
     implementation 'com.google.android.flexbox:flexbox:3.0.0'
     //垂直选项卡布局 https://github.com/qstumn/VerticalTabLayout
     implementation 'q.rorbin:VerticalTabLayout:1.2.9'
+    //implementation 'com.github.angcyo.DslTablayout:TabLayout:3.1.0'
     //web浏览器 https://github.com/Justson/AgentWeb
     implementation 'com.github.Justson.AgentWeb:agentweb-core:v5.0.0-alpha.1-androidx'
     //web文件下载 https://github.com/Justson/Downloader

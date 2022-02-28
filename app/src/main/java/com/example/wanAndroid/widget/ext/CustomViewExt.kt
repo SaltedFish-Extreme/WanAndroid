@@ -5,16 +5,15 @@ import android.content.Context
 import android.graphics.Color
 import android.text.Html
 import android.text.Spanned
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.view.inputmethod.InputMethodManager
 import android.webkit.WebView
-import androidx.annotation.ColorInt
-import androidx.annotation.FloatRange
+import androidx.annotation.*
 import androidx.annotation.IntRange
-import androidx.annotation.Nullable
 import androidx.core.view.get
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
@@ -146,6 +145,20 @@ fun String.getAgentWeb(
     .createAgentWeb()
     .ready()
     .go(this)
+
+/**
+ * 视图填充扩展函数
+ *
+ * @param layoutId 布局文件
+ * @param attachToRoot 是否附加到根视图
+ * @return 当前视图
+ */
+fun ViewGroup.inflate(@LayoutRes layoutId: Int, attachToRoot: Boolean = true): View {
+    if (layoutId == -1) {
+        return this
+    }
+    return LayoutInflater.from(context).inflate(layoutId, this, attachToRoot)
+}
 
 /**
  * 初始化ViewPager2扩展函数(Fragment使用)
