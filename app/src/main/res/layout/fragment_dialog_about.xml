@@ -79,4 +79,27 @@
         app:layout_constraintStart_toEndOf="@id/iv_github"
         app:layout_constraintTop_toTopOf="@id/iv_github" />
 
+    <ImageView
+        android:id="@+id/iv_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:background="@drawable/ic_link"
+        android:backgroundTint="@color/color_ic_bg_tint"
+        android:contentDescription="@android:string/unknownName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_github" />
+
+    <com.example.wanAndroid.widget.view.PressAlphaTextView
+        android:id="@+id/tv_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_10"
+        android:text="@string/link"
+        android:textColor="@color/color_drawable_bg_tint"
+        android:textSize="@dimen/sp_20"
+        app:layout_constraintBottom_toBottomOf="@id/iv_link"
+        app:layout_constraintStart_toEndOf="@id/iv_link"
+        app:layout_constraintTop_toTopOf="@id/iv_link" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

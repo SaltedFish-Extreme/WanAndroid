@@ -64,6 +64,7 @@
     <string name="qq">1738099872</string>
     <string name="email">1738099872@qq.com</string>
     <string name="github">github.com/SaltedFish-Extreme</string>
+    <string name="link">saltedfish-extreme.github.io</string>
     <!--网页-->
     <string name="loading">加载中…</string>
     <string name="text_plan">text/plain</string>
