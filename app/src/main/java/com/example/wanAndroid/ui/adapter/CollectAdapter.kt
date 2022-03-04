@@ -4,6 +4,7 @@ import androidx.lifecycle.LifecycleOwner
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.drake.channel.receiveEvent
 import com.drake.net.Post
 import com.drake.net.utils.scopeNetLife
 import com.example.wanAndroid.R
@@ -31,9 +32,11 @@ class CollectAdapter(private val lifecycleOwner: LifecycleOwner) : BaseAdapter<C
         setAnimationWithDefault(AnimationType.ScaleIn)
         //设置Item点击事件
         this.setOnItemClickListener { _, _, position ->
-            //跳转文章网页打开链接，传递文章id标题链接及收藏与否
-            data[position].run { WebActivity.start(context, id, title, link, true) }
+            //跳转文章网页打开链接，传递文章id标题链接及收藏与否，外加一个收藏文章原始id，同时将数据类传递过去
+            data[position].run { WebActivity.start(context, id, title, link, true, originId = originId, data = this) }
         }
+        //接收消息事件，同步收藏列表(从adapter移除对应数据)，默认自动在ON_DESTROY生命周期取消接收
+        lifecycleOwner.receiveEvent<CollectResponse> { remove(it) }
     }
 
     override fun onItemViewHolderCreated(viewHolder: BaseViewHolder, viewType: Int) {

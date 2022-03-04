@@ -18,6 +18,8 @@ https://user-images.githubusercontent.com/54784104/155742119-f32f9735-8917-4038-
 
 https://user-images.githubusercontent.com/54784104/156009468-dd198fef-bf63-4675-93ed-9941a96ecf71.mp4
 
+https://user-images.githubusercontent.com/54784104/156790236-4ac87041-4a98-44c7-82ef-8c9c481f05d2.mp4
+
 ## 功能介绍
 
 大体功能已经完成，包含主页面、作者页、设置页、搜索页、网页、历史记录页、登陆注册页、积分及排名页、分享列表及分享文章页、体系下的二级页面，以及收藏功能
@@ -41,6 +43,7 @@ https://user-images.githubusercontent.com/54784104/156009468-dd198fef-bf63-4675-
 ***[Gson解析](https://github.com/google/gson)***
 ***[网络请求](https://github.com/liangjingkanji/Net)***
 ***[序列化数据](https://github.com/liangjingkanji/Serialize)***
+***[消息事件](https://github.com/liangjingkanji/Channel)***
 ***[RecyclerView](https://github.com/liangjingkanji/BRV)***
 ***[Adapter](https://github.com/CymChad/BaseRecyclerViewAdapterHelper)***
 ***[侧滑返回](https://github.com/goweii/SwipeBack)***

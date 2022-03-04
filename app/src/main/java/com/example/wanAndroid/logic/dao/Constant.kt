@@ -6,8 +6,12 @@ package com.example.wanAndroid.logic.dao
  * desc: 全局常量类
  */
 object Constant {
+
     /** id key */
     const val CONTENT_ID_KEY = "id"
+
+    /** originId key */
+    const val CONTENT_ORIGIN_ID_KEY = "originId"
 
     /** title key */
     const val CONTENT_TITLE_KEY = "title"
@@ -20,4 +24,7 @@ object Constant {
 
     /** article key */
     const val CONTENT_ARTICLE_KEY = "article"
+
+    /** data key */
+    const val CONTENT_DATA_KEY = "data"
 }

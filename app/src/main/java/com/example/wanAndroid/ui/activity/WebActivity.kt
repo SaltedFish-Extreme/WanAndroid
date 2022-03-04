@@ -15,6 +15,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
 import com.download.library.DownloadImpl
+import com.drake.channel.sendEvent
 import com.drake.net.Post
 import com.drake.net.utils.scopeNetLife
 import com.drake.serialize.intent.browse
@@ -23,6 +24,7 @@ import com.example.wanAndroid.R
 import com.example.wanAndroid.ext.vibration
 import com.example.wanAndroid.logic.dao.Constant
 import com.example.wanAndroid.logic.dao.HistoryRecordDB
+import com.example.wanAndroid.logic.model.CollectResponse
 import com.example.wanAndroid.logic.model.NoDataResponse
 import com.example.wanAndroid.logic.net.NetApi
 import com.example.wanAndroid.ui.BaseWebClient
@@ -57,20 +59,51 @@ class WebActivity : BaseActivity(false), SwipeBackAbility.OnlyEdge {
     private var shareId = -1
     private var isCollect = false
     private var isArticle = true
+    private var originId = -1
+    private var data: CollectResponse? = null
 
     companion object {
 
-        fun start(context: Context, id: Int, title: String, url: String, collect: Boolean = false, article: Boolean = true, bundle: Bundle? = null) {
+        /**
+         * 从文章打开网页
+         *
+         * @param context 上下文对象
+         * @param id 文章ID
+         * @param title 文章标题
+         * @param url 文章URL
+         * @param collect 是否收藏
+         * @param article 是否文章(不用填)
+         * @param originId 文章原始ID(收藏页面跳转时使用，网页取消收藏时同时从收藏列表中删除)
+         * @param data 数据源(收藏数据类，网页取消收藏时同时从收藏列表中删除)
+         */
+        fun start(
+            context: Context,
+            id: Int,
+            title: String,
+            url: String,
+            collect: Boolean = false,
+            article: Boolean = true,
+            originId: Int = -1,
+            data: CollectResponse? = null
+        ) {
             Intent(context, WebActivity::class.java).run {
                 putExtra(Constant.CONTENT_ID_KEY, id)
+                putExtra(Constant.CONTENT_ORIGIN_ID_KEY, originId)
                 putExtra(Constant.CONTENT_TITLE_KEY, title)
                 putExtra(Constant.CONTENT_URL_KEY, url)
                 putExtra(Constant.CONTENT_COLLECT_KEY, collect)
                 putExtra(Constant.CONTENT_ARTICLE_KEY, article)
-                context.startActivity(this, bundle)
+                putExtra(Constant.CONTENT_DATA_KEY, data)
+                context.startActivity(this)
             }
         }
 
+        /**
+         * 普通打开网页
+         *
+         * @param context 上下文对象
+         * @param url 网址URL
+         */
         fun start(context: Context, url: String) {
             //不是从文章进来
             start(context, -1, "", url, article = false)
@@ -82,10 +115,12 @@ class WebActivity : BaseActivity(false), SwipeBackAbility.OnlyEdge {
         setContentView(R.layout.activity_web)
         intent.extras?.let {
             shareId = it.getInt(Constant.CONTENT_ID_KEY, -1)
+            originId = it.getInt(Constant.CONTENT_ORIGIN_ID_KEY, -1)
             shareTitle = it.getString(Constant.CONTENT_TITLE_KEY, "")
             shareUrl = it.getString(Constant.CONTENT_URL_KEY, "")
             isCollect = it.getBoolean(Constant.CONTENT_COLLECT_KEY, false)
             isArticle = it.getBoolean(Constant.CONTENT_ARTICLE_KEY, true)
+            data = it.getParcelable(Constant.CONTENT_DATA_KEY)
         }
         toolbar.apply {
             //使用toolBar并使其外观与功能和actionBar一致
@@ -194,13 +229,27 @@ class WebActivity : BaseActivity(false), SwipeBackAbility.OnlyEdge {
                     //收藏
                     item.setIcon(R.drawable.ic_collect_strawberry)
                     scopeNetLife {
-                        Post<NoDataResponse>("${NetApi.CollectArticleAPI}/$shareId/json").await()
+                        if (originId == -1) {
+                            //不是从收藏列表进来，根据文章id收藏
+                            Post<NoDataResponse>("${NetApi.CollectArticleAPI}/$shareId/json").await()
+                        } else {
+                            //从收藏列表进来，根据文章原始id收藏
+                            Post<NoDataResponse>("${NetApi.CollectArticleAPI}/$originId/json").await()
+                        }
                     }
                 } else {
                     //取消收藏
                     item.setIcon(R.drawable.ic_collect_black_24)
                     scopeNetLife {
-                        Post<NoDataResponse>("${NetApi.UnCollectArticleAPI}/$shareId/json").await()
+                        if (originId == -1) {
+                            //不是从收藏列表进来，从文章列表删除
+                            Post<NoDataResponse>("${NetApi.UnCollectArticleAPI}/$shareId/json").await()
+                        } else {
+                            //从收藏列表进来，从收藏列表删除
+                            Post<NoDataResponse>("${NetApi.UserUnCollectArticleAPI}/$shareId/json") {
+                                param("originId", "$originId")
+                            }.await()
+                        }
                     }
                 }
             }
@@ -250,6 +299,10 @@ class WebActivity : BaseActivity(false), SwipeBackAbility.OnlyEdge {
     }
 
     override fun onDestroy() {
+        if (originId != -1 && !isCollect) {
+            //从收藏列表进来，并且最后取消收藏，则发送事件同步收藏列表(删除这条item)
+            data?.let { sendEvent(it) }
+        }
         mAgentWeb.webLifeCycle.onDestroy()
         setSupportActionBar(null)
         super.onDestroy()
