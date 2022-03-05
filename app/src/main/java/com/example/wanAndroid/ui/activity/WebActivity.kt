@@ -16,6 +16,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
 import com.download.library.DownloadImpl
 import com.drake.channel.sendEvent
+import com.drake.channel.sendTag
 import com.drake.net.Post
 import com.drake.net.utils.scopeNetLife
 import com.drake.serialize.intent.browse
@@ -302,6 +303,14 @@ class WebActivity : BaseActivity(false), SwipeBackAbility.OnlyEdge {
         if (originId != -1 && !isCollect) {
             //从收藏列表进来，并且最后取消收藏，则发送事件同步收藏列表(删除这条item)
             data?.let { sendEvent(it) }
+        } else {
+            //如果收藏，发送标签(true)
+            if (isCollect) {
+                sendTag(true.toString())
+            } else {
+                //如果未收藏发送标签(false)
+                sendTag(false.toString())
+            }
         }
         mAgentWeb.webLifeCycle.onDestroy()
         setSupportActionBar(null)

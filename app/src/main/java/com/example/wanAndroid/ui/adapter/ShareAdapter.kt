@@ -2,6 +2,7 @@ package com.example.wanAndroid.ui.adapter
 
 import androidx.lifecycle.LifecycleOwner
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.drake.channel.receiveTag
 import com.drake.net.Post
 import com.drake.net.utils.scopeNetLife
 import com.example.wanAndroid.R
@@ -22,6 +23,11 @@ import com.hjq.toast.ToastUtils
  */
 class ShareAdapter(private val lifecycleOwner: LifecycleOwner) : BaseAdapter<ArticleResponse>(R.layout.item_share_list) {
 
+    companion object {
+        //item的位置
+        private var index: Int = 0
+    }
+
     init {
         //设置默认加载动画
         setAnimationWithDefault(AnimationType.ScaleIn)
@@ -35,6 +41,8 @@ class ShareAdapter(private val lifecycleOwner: LifecycleOwner) : BaseAdapter<Art
                 R.id.share_item -> {
                     //跳转文章网页打开链接，传递文章id标题链接及收藏与否
                     item.run { WebActivity.start(context, id, title, link, collect) }
+                    //跳转后将位置传递
+                    index = position
                 }
                 R.id.share_delete -> {
                     //删除对应分享文章
@@ -49,6 +57,13 @@ class ShareAdapter(private val lifecycleOwner: LifecycleOwner) : BaseAdapter<Art
                     }.show()
                 }
             }
+        }
+        //接收消息事件，同步收藏与否
+        lifecycleOwner.receiveTag(true.toString(), false.toString()) {
+            //将对应的数据类的收藏字段修改
+            this@ShareAdapter.getItem(index).collect = it.toBoolean()
+            //刷新这条数据，同步显示
+            this@ShareAdapter.notifyItemChanged(index)
         }
     }
 
