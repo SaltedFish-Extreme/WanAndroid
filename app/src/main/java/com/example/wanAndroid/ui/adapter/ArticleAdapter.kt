@@ -81,6 +81,8 @@ class ArticleAdapter(private val lifecycleOwner: LifecycleOwner, private val sho
                     lifecycleOwner.scopeNetLife {
                         Post<NoDataResponse>("${NetApi.UnCollectArticleAPI}/${data[viewHolder.adapterPosition - headerLayoutCount].id}/json").await()
                     }
+                    //收藏控件点击后，同步一下数据类，跳转网页同步收藏
+                    data[viewHolder.adapterPosition - headerLayoutCount].collect = v.isChecked
                 }
             }
         })
