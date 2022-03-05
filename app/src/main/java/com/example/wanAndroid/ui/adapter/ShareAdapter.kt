@@ -61,9 +61,9 @@ class ShareAdapter(private val lifecycleOwner: LifecycleOwner) : BaseAdapter<Art
         //接收消息事件，同步收藏与否
         lifecycleOwner.receiveTag(true.toString(), false.toString()) {
             //将对应的数据类的收藏字段修改
-            this@ShareAdapter.getItem(index).collect = it.toBoolean()
+            getItem(index).collect = it.toBoolean()
             //刷新这条数据，同步显示
-            this@ShareAdapter.notifyItemChanged(index)
+            notifyItemChanged(index)
         }
     }
 

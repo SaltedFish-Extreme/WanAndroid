@@ -1,5 +1,7 @@
 package com.example.wanAndroid.ui.adapter
 
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -60,13 +62,8 @@ class ArticleAdapter(private val lifecycleOwner: LifecycleOwner, private val sho
                 }
             }
         }
-        //接收消息事件，同步收藏与否
-        lifecycleOwner.receiveTag(true.toString(), false.toString()) {
-            //将对应的数据类的收藏字段修改
-            this@ArticleAdapter.getItem(index).collect = it.toBoolean()
-            //刷新这条数据，同步显示(首页有轮播图，其余页没有，更新数据需加上判断头部视图位置)
-            this@ArticleAdapter.notifyItemChanged(index + headerLayoutCount)
-        }
+        //添加生命周期管理者
+        lifecycleOwner.lifecycle.addObserver(lifecycleObserver())
     }
 
     override fun onItemViewHolderCreated(viewHolder: BaseViewHolder, viewType: Int) {
@@ -131,6 +128,24 @@ class ArticleAdapter(private val lifecycleOwner: LifecycleOwner, private val sho
             if (desc.isNotEmpty()) {
                 //内容描述
                 holder.setText(R.id.item_article_content, desc.html2String())
+            }
+        }
+    }
+
+    /** 生命周期管理器 */
+    private fun lifecycleObserver(): LifecycleEventObserver {
+        return LifecycleEventObserver { _, event ->
+            //页面恢复时接收事件(复用adapter导致多个已打开页面重复接收消息)
+            if (event == Lifecycle.Event.ON_RESUME) {
+                //接收消息事件，页面暂停时注销
+                lifecycleOwner.receiveTag(true.toString(), false.toString(), lifeEvent = Lifecycle.Event.ON_PAUSE) {
+                    //根据打开网页的item的位置获取到它的收藏控件对象
+                    val collectView = getViewByPosition(index + headerLayoutCount, R.id.item_article_collect) as CollectView
+                    //收藏控件是否选中
+                    collectView.isChecked = it.toBoolean()
+                    //同时将对应的数据类的收藏字段修改
+                    data[index].collect = it.toBoolean()
+                }
             }
         }
     }
