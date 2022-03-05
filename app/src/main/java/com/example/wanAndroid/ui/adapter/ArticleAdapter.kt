@@ -4,6 +4,7 @@ import androidx.lifecycle.LifecycleOwner
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.drake.channel.receiveTag
 import com.drake.net.Post
 import com.drake.net.utils.scopeNetLife
 import com.drake.serialize.intent.openActivity
@@ -29,6 +30,11 @@ import com.google.android.material.imageview.ShapeableImageView
 class ArticleAdapter(private val lifecycleOwner: LifecycleOwner, private val showTag: Boolean = false) :
     BaseAdapter<ArticleResponse>(R.layout.item_article_list) {
 
+    companion object {
+        //item的位置
+        private var index: Int = 0
+    }
+
     init {
         //设置默认加载动画
         setAnimationWithDefault(AnimationType.ScaleIn)
@@ -36,6 +42,8 @@ class ArticleAdapter(private val lifecycleOwner: LifecycleOwner, private val sho
         this.setOnItemClickListener { _, _, position ->
             //跳转文章网页打开链接，传递文章id标题链接及收藏与否
             data[position].run { WebActivity.start(context, id, title, link, collect) }
+            //跳转后将位置传递
+            index = position
         }
         //先注册需要点击的子控件id
         this.addChildClickViewIds(R.id.item_article_author)
@@ -51,6 +59,13 @@ class ArticleAdapter(private val lifecycleOwner: LifecycleOwner, private val sho
                     )
                 }
             }
+        }
+        //接收消息事件，同步收藏与否
+        lifecycleOwner.receiveTag(true.toString(), false.toString()) {
+            //将对应的数据类的收藏字段修改
+            this@ArticleAdapter.getItem(index).collect = it.toBoolean()
+            //刷新这条数据，同步显示(首页有轮播图，其余页没有，更新数据需加上判断头部视图位置)
+            this@ArticleAdapter.notifyItemChanged(index + headerLayoutCount)
         }
     }
 
