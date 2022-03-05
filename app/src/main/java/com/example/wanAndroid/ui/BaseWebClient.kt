@@ -1,9 +1,6 @@
 package com.example.wanAndroid.ui
 
-import android.annotation.SuppressLint
 import android.net.Uri
-import android.net.http.SslError
-import android.webkit.SslErrorHandler
 import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
 import android.webkit.WebView
@@ -15,6 +12,7 @@ import com.just.agentweb.WebViewClient
  * desc: 通用web客户端
  */
 open class BaseWebClient : WebViewClient() {
+
     // 拦截的网址
     private val blackHostList = arrayListOf(
         "taobao.com",
@@ -63,11 +61,5 @@ open class BaseWebClient : WebViewClient() {
         } else {
             false
         }
-    }
-
-    @SuppressLint("WebViewClientOnReceivedSslError")
-    override fun onReceivedSslError(view: WebView?, handler: SslErrorHandler?, error: SslError?) {
-        super.onReceivedSslError(view, handler, error)
-        handler?.proceed()
     }
 }
