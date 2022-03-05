@@ -1,7 +1,7 @@
 # compiler: R8
 # compiler_version: 3.1.66
 # min_api: 24
-# pg_map_id: bface52
+# pg_map_id: 7a49e60
 # common_typos_disable
 # {"id":"com.android.tools.r8.mapping","version":"1.0"}
 a.BGAQRCodeUtil$$ExternalSyntheticOutline0 -> a.a:
@@ -14981,6 +14981,15 @@ com.example.wanAndroid.ui.adapter.ShareAdapter$onItemViewHolderCreated$1 -> com.
     5:5:androidx.lifecycle.LifecycleOwner com.example.wanAndroid.ui.adapter.ShareAdapter.access$getLifecycleOwner$p(com.example.wanAndroid.ui.adapter.ShareAdapter):0:0 -> a
     5:5:void onClick(com.example.wanAndroid.widget.view.CollectView):0 -> a
     6:6:void onClick(com.example.wanAndroid.widget.view.CollectView):0:0 -> a
+    7:7:java.util.List com.chad.library.adapter.base.BaseQuickAdapter.getData():0:0 -> a
+    7:7:void onClick(com.example.wanAndroid.widget.view.CollectView):0 -> a
+    8:8:void onClick(com.example.wanAndroid.widget.view.CollectView):0:0 -> a
+    9:9:int com.chad.library.adapter.base.BaseQuickAdapter.getHeaderLayoutCount():0:0 -> a
+    9:9:void onClick(com.example.wanAndroid.widget.view.CollectView):0 -> a
+    10:10:void onClick(com.example.wanAndroid.widget.view.CollectView):0:0 -> a
+    11:11:boolean per.goweii.reveallayout.RevealLayout.isChecked():0:0 -> a
+    11:11:void onClick(com.example.wanAndroid.widget.view.CollectView):0 -> a
+    12:12:void onClick(com.example.wanAndroid.widget.view.CollectView):0:0 -> a
 com.example.wanAndroid.ui.adapter.ShareAdapter$onItemViewHolderCreated$1$onClick$1 -> com.example.wanAndroid.ui.adapter.ShareAdapter$onItemViewHolderCreated$1$onClick$1:
     com.chad.library.adapter.base.viewholder.BaseViewHolder $viewHolder -> g
     com.example.wanAndroid.ui.adapter.ShareAdapter this$0 -> f
