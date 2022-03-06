@@ -23,6 +23,7 @@ import com.drake.serialize.intent.browse
 import com.drake.serialize.intent.share
 import com.example.wanAndroid.R
 import com.example.wanAndroid.ext.vibration
+import com.example.wanAndroid.logic.dao.AppConfig
 import com.example.wanAndroid.logic.dao.Constant
 import com.example.wanAndroid.logic.dao.HistoryRecordDB
 import com.example.wanAndroid.logic.model.CollectResponse
@@ -35,6 +36,7 @@ import com.example.wanAndroid.widget.ext.html2Spanned
 import com.example.wanAndroid.widget.ext.html2String
 import com.example.wanAndroid.widget.web.WebContainer
 import com.google.android.material.appbar.AppBarLayout
+import com.hjq.toast.ToastUtils
 import com.just.agentweb.AgentWeb
 import com.just.agentweb.NestedScrollAgentWebView
 import com.just.agentweb.WebChromeClient
@@ -222,6 +224,10 @@ class WebActivity : BaseActivity(false), SwipeBackAbility.OnlyEdge {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.web_collect -> {
+                if (AppConfig.UserName.isEmpty()) {
+                    ToastUtils.show(getString(R.string.please_login))
+                    return true
+                }
                 //点击收藏 震动一下
                 vibration()
                 //收藏取反
