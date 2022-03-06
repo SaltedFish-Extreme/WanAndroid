@@ -1,11 +1,11 @@
 package com.example.wanAndroid.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
 import com.drake.brv.PageRefreshLayout
 import com.drake.net.Get
 import com.drake.net.utils.scope
-import com.drake.serialize.intent.openActivity
 import com.example.wanAndroid.R
 import com.example.wanAndroid.logic.model.ShareResponse
 import com.example.wanAndroid.logic.model.base.ApiResponse
@@ -40,12 +40,13 @@ class ShareActivity : BaseActivity() {
     /** 适配器 */
     private val adapter: ShareAdapter by lazy { ShareAdapter(this) }
 
+    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_share)
         titleBar.leftView.setOnClickListener { finish() }
-        //标题栏右侧图标打开分享文章页面
-        titleBar.rightView.setOnClickListener { openActivity<ShareArticleActivity>() }
+        //标题栏右侧图标打开分享文章页面，获取返回结果，增加一条数据
+        titleBar.rightView.setOnClickListener { startActivityForResult(Intent(this, ShareArticleActivity::class.java), 0, null) }
         //设置此页面请求分页初始索引
         PageRefreshLayout.startIndex = 1
         //初始化rv
@@ -103,5 +104,14 @@ class ShareActivity : BaseActivity() {
     override fun onDestroy() {
         rv.cancelFloatBtn(fab)
         super.onDestroy()
+    }
+
+    @Suppress("DEPRECATION")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == RESULT_OK) {
+            //发布文章成功后，返回当前页面刷新数据
+            page.refresh()
+        }
     }
 }

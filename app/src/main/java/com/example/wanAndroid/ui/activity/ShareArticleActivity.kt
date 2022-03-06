@@ -59,6 +59,8 @@ class ShareArticleActivity : BaseActivity(), SwipeBackAbility.OnlyEdge {
                 ToastUtils.show(getString(R.string.share_succeed))
                 //再延迟一会，增强用户体验~
                 delay(1000)
+                //返回成功请求码
+                setResult(RESULT_OK)
                 //关闭当前页面
                 finish()
             }.catch { //如果文章被分享过或其余错误导致请求失败会走这里
