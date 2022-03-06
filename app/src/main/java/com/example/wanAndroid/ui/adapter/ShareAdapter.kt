@@ -62,8 +62,10 @@ class ShareAdapter(private val lifecycleOwner: LifecycleOwner) : BaseAdapter<Art
         lifecycleOwner.receiveTag(true.toString(), false.toString()) {
             //将对应的数据类的收藏字段修改
             getItem(index).collect = it.toBoolean()
-            //刷新这条数据，同步显示
-            notifyItemChanged(index)
+            //根据item的位置获取到它的收藏控件对象
+            val collectView = getViewByPosition(index, R.id.item_share_collect) as CollectView
+            //收藏控件是否选中
+            collectView.isChecked = it.toBoolean()
         }
     }
 
