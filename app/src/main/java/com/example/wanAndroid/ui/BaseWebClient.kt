@@ -1,6 +1,7 @@
 package com.example.wanAndroid.ui
 
 import android.net.Uri
+import android.webkit.RenderProcessGoneDetail
 import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
 import android.webkit.WebView
@@ -61,5 +62,10 @@ open class BaseWebClient : WebViewClient() {
         } else {
             false
         }
+    }
+
+    override fun onRenderProcessGone(view: WebView?, detail: RenderProcessGoneDetail?): Boolean {
+        //fix 渲染失败导致应用崩溃闪退  (https://github.com/Justson/AgentWeb/issues/973)
+        return true
     }
 }
