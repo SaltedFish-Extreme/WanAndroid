@@ -16,7 +16,7 @@ import kotlin.math.abs
  * 侧滑布局
  */
 @Suppress("unused", "MemberVisibilityCanBePrivate")
-class SwipeItemLayout @JvmOverloads constructor(context: Context?, attrs: AttributeSet? = null) : ViewGroup(context, attrs) {
+class SwipeItemLayout @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) : ViewGroup(context, attrs) {
 
     enum class Mode {
         RESET, DRAG, FLING, TAP
@@ -112,9 +112,7 @@ class SwipeItemLayout @JvmOverloads constructor(context: Context?, attrs: Attrib
         val horizontalMargin: Int = lp.leftMargin + lp.rightMargin
         var verticalMargin: Int = lp.topMargin + lp.bottomMargin
         measureChildWithMargins(
-            mMainView,
-            widthMeasureSpec, horizontalMargin + horizontalPadding,
-            heightMeasureSpec, verticalMargin + verticalPadding
+            mMainView, widthMeasureSpec, horizontalMargin + horizontalPadding, heightMeasureSpec, verticalMargin + verticalPadding
         )
         if (widthMode == MeasureSpec.AT_MOST) widthSize =
             widthSize.coerceAtMost(mMainView!!.measuredWidth + horizontalMargin + horizontalPadding) else if (widthMode == MeasureSpec.UNSPECIFIED) widthSize =
@@ -253,10 +251,10 @@ class SwipeItemLayout @JvmOverloads constructor(context: Context?, attrs: Attrib
         }
     }
 
-    internal inner class ScrollRunnable(context: Context?) : Runnable {
+    internal inner class ScrollRunnable(context: Context) : Runnable {
         private val mScroller: Scroller = Scroller(context, sInterpolator)
         private var mAbort: Boolean
-        private val mMinVelocity: Int
+        private var mMinVelocity = 0
 
         //是否正在滑动需要另外判断
         var isScrollToLeft: Boolean
@@ -331,7 +329,7 @@ class SwipeItemLayout @JvmOverloads constructor(context: Context?, attrs: Attrib
         }
     }
 
-    class OnSwipeItemTouchListener(context: Context?) : RecyclerView.OnItemTouchListener {
+    class OnSwipeItemTouchListener(context: Context) : RecyclerView.OnItemTouchListener {
         private var mCaptureItem: SwipeItemLayout? = null
         private var mLastMotionX = 0f
         private var mLastMotionY = 0f
