@@ -17,4 +17,5 @@
     <!--搜索框背景颜色--><color name="color_search_bg">@color/light_inky_grey</color>
     <!--自定义悬浮按钮颜色--><color name="color_fab">@color/dove_gray</color>
     <!--自定义悬浮按钮按下颜色--><color name="color_fab_pressed">@color/dusty_gray</color>
+    <!--教程标题颜色--><color name="color_course_title">@color/night_blue</color>
 </resources>

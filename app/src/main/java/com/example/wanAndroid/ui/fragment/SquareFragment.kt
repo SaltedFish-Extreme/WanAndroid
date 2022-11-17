@@ -34,7 +34,7 @@ class SquareFragment : Fragment() {
     private val fragments: ArrayList<Fragment> by lazy { arrayListOf() }
 
     /** 分类集合 */
-    private val classifyList: ArrayList<String> by lazy { arrayListOf("广场", "每日一问", "体系", "导航") }
+    private val classifyList: ArrayList<String> by lazy { arrayListOf("广场", "每日一问", "体系", "导航", "教程") }
 
     init {
         //将子fragment添加进集合
@@ -42,6 +42,7 @@ class SquareFragment : Fragment() {
         fragments.add(InquiryAnswerChildFragment())
         fragments.add(SystemFragment())
         fragments.add(NavigationFragment())
+        fragments.add(CourseChildFragment())
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

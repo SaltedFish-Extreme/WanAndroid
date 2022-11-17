@@ -137,4 +137,8 @@
     <string name="share_succeed">分享成功</string>
     <!--收藏页-->
     <string name="anonymous">匿名</string>
+    <!--教程列表页-->
+    <string name="course_title">JAVA从入门到入土</string>
+    <string name="course_author">作者：%s</string>
+    <string name="course_desc">Android从入门到入土Android从入门到入土Android从入门到入土Android从入门到入土Android从入门到入土</string>
 </resources>

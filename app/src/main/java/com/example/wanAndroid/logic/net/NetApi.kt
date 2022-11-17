@@ -101,4 +101,7 @@ object NetApi {
 
     /** 收藏页面取消收藏文章路径 */
     const val UserUnCollectArticleAPI = "lg/uncollect"
+
+    /** 教程列表路径 */
+    const val CourseListAPI = "chapter/547/sublist/json"
 }

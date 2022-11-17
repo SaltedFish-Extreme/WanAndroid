@@ -168,6 +168,9 @@
     <!--全透明--><color name="transparent">#00000000</color>
     <!--不透明--><color name="opaque">#FF000000</color>
 
+    <!--日间蓝色--><color name="daytime_blue">#007fff</color>
+    <!--夜间蓝色--><color name="night_blue">#33a3ff</color>
+
     <!--默认mipmap前景色--><color name="mipmap_foreground_color">#33FFFFFF</color>
     <!--默认mipmap背景色--><color name="mipmap_background_color">#3DDC84</color>
     <!--黑色阴影--><color name="black_shadow">#44000000</color>
@@ -190,4 +193,5 @@
     <!--搜索框背景颜色--><color name="color_search_bg">@color/light_inky_black</color>
     <!--自定义悬浮按钮颜色--><color name="color_fab">@color/color_primary_dark</color>
     <!--自定义悬浮按钮按下颜色--><color name="color_fab_pressed">@color/color_accent</color>
+    <!--教程标题颜色--><color name="color_course_title">@color/daytime_blue</color>
 </resources>

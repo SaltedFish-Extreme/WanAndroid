@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?><!--适配器文章列表-->
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/dp_8"
+    android:layout_marginVertical="@dimen/dp_5"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardCornerRadius="@dimen/dp_4"
+    app:cardElevation="@dimen/dp_4">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/item_course_image"
+            android:layout_width="@dimen/dp_130"
+            android:layout_height="@dimen/dp_180"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:contentDescription="@android:string/unknownName"
+            android:scaleType="centerCrop"
+            app:shapeAppearance="@style/RoundedStyle" />
+
+        <TextView
+            android:id="@+id/item_course_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:layout_toEndOf="@id/item_course_image"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/color_course_title"
+            android:textSize="@dimen/sp_18"
+            tools:text="@string/course_title" />
+
+        <TextView
+            android:id="@+id/item_course_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_course_title"
+            android:layout_marginHorizontal="@dimen/dp_10"
+            android:layout_toEndOf="@id/item_course_image"
+            android:ellipsize="end"
+            android:includeFontPadding="true"
+            android:lineSpacingMultiplier="1.1"
+            android:maxLines="1"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="@dimen/sp_16"
+            tools:text="@string/course_author" />
+
+        <TextView
+            android:id="@+id/item_course_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_course_author"
+            android:layout_margin="@dimen/dp_10"
+            android:layout_toEndOf="@id/item_course_image"
+            android:ellipsize="end"
+            android:includeFontPadding="true"
+            android:lineSpacingMultiplier="1.1"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="@dimen/sp_14"
+            tools:text="@string/course_desc" />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
