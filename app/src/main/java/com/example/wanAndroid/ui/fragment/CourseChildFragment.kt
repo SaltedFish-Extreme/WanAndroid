@@ -64,7 +64,7 @@ class CourseChildFragment : Fragment() {
     private fun onRefresh() {
         page.onRefresh {
             scope {
-                //获取广场列表数据
+                //获取教程列表数据
                 data = Get<ApiResponse<ArrayList<CourseResponse>>>(NetApi.CourseListAPI).await()
                 if (first && data.data.isEmpty()) {
                     //如果第一次切换且数据为空显示空缺省页

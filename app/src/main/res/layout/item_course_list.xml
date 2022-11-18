@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!--适配器文章列表-->
+<?xml version="1.0" encoding="utf-8"?><!--适配器教程列表-->
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -24,7 +24,8 @@
             android:layout_marginBottom="@dimen/dp_10"
             android:contentDescription="@android:string/unknownName"
             android:scaleType="centerCrop"
-            app:shapeAppearance="@style/RoundedStyle" />
+            app:shapeAppearance="@style/RoundedStyle"
+            tools:background="@drawable/bg_course_article" />
 
         <TextView
             android:id="@+id/item_course_title"
@@ -62,7 +63,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/item_course_author"
-            android:layout_margin="@dimen/dp_10"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_10"
             android:layout_toEndOf="@id/item_course_image"
             android:ellipsize="end"
             android:includeFontPadding="true"

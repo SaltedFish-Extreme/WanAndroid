@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_vertical_tab_layout_fill"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/course_article_img"
+        android:layout_width="@dimen/dp_130"
+        android:layout_height="@dimen/dp_180"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/dp_20"
+        android:contentDescription="@null"
+        tools:background="@drawable/bg_course_article" />
+
+    <TextView
+        android:id="@+id/course_article_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_20"
+        android:text="@string/course_title"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="@dimen/sp_20" />
+
+    <TextView
+        android:id="@+id/course_article_author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_20"
+        android:layout_marginVertical="@dimen/dp_10"
+        android:text="@string/course_author"
+        android:textColor="?android:attr/textColorSecondary"
+        android:textSize="@dimen/sp_15" />
+
+    <TextView
+        android:id="@+id/course_article_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_20"
+        android:text="@string/course_brief_introduction"
+        android:textColor="?android:attr/textColorSecondary"
+        android:textSize="@dimen/sp_15" />
+
+    <TextView
+        android:id="@+id/course_article_copyright"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_20"
+        android:layout_marginVertical="@dimen/dp_10"
+        android:text="@string/course_copyright"
+        android:textColor="@color/color_drawable_bg_tint"
+        android:textSize="@dimen/sp_15" />
+
+</LinearLayout>

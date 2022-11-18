@@ -140,5 +140,9 @@
     <!--教程列表页-->
     <string name="course_title">JAVA从入门到入土</string>
     <string name="course_author">作者：%s</string>
+    <string name="course_brief_introduction">简介：%s</string>
     <string name="course_desc">Android从入门到入土Android从入门到入土Android从入门到入土Android从入门到入土Android从入门到入土</string>
+    <string name="course_copyright">知识共享 署名-相同方式共享 3.0协议</string>
+    <string name="one">1</string>
+    <string name="course_catalog">课程目录</string>
 </resources>
