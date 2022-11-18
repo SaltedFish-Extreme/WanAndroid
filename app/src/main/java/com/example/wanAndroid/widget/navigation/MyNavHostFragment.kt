@@ -15,9 +15,7 @@ import com.example.wanAndroid.R
  */
 class MyNavHostFragment : NavHostFragment() {
 
-    /**
-     * @return 使用自己的FragmentNavigator
-     */
+    /** @return 使用自己的FragmentNavigator */
     override fun createFragmentNavigator(): Navigator<out FragmentNavigator.Destination?> {
         return MyFragmentNavigator(requireContext(), childFragmentManager, containerId)
     }

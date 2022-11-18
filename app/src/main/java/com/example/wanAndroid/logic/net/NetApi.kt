@@ -104,4 +104,7 @@ object NetApi {
 
     /** 教程列表路径 */
     const val CourseListAPI = "chapter/547/sublist/json"
+
+    /** 课程目录列表路径 */
+    const val CourseCatalogListAPI = "article/list/0/json"
 }

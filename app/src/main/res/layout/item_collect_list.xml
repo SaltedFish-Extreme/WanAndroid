@@ -52,7 +52,8 @@
                 android:layout_marginTop="@dimen/dp_12"
                 android:contentDescription="@android:string/unknownName"
                 android:scaleType="centerCrop"
-                app:shapeAppearance="@style/RoundedStyle" />
+                app:shapeAppearance="@style/RoundedStyle"
+                tools:background="@drawable/bg_project" />
 
             <TextView
                 android:id="@+id/item_article_title"

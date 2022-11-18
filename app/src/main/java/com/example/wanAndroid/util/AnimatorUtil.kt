@@ -12,9 +12,7 @@ import java.util.*
  * 动画帮助类
  *
  * @author CuiZhen
- *
  * @version v1.0.0
- *
  * @date 2018/3/30-上午10:51
  */
 @Suppress("unused", "MemberVisibilityCanBePrivate")

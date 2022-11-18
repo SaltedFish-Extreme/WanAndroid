@@ -6,6 +6,7 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
 import com.drake.brv.PageRefreshLayout
 import com.drake.net.NetConfig
+import com.drake.net.interceptor.LogRecordInterceptor
 import com.drake.net.okhttp.setConverter
 import com.drake.statelayout.StateConfig
 import com.example.wanAndroid.logic.dao.AppConfig
@@ -29,9 +30,7 @@ import per.goweii.swipeback.transformer.ParallaxSwipeBackTransformer
  */
 class MyApplication : Application() {
     companion object {
-        /**
-         * 全局context对象
-         */
+        /** 全局context对象 */
         @SuppressLint("StaticFieldLeak")
         internal lateinit var context: Context
 
@@ -74,6 +73,8 @@ class MyApplication : Application() {
             //设置cookie管理器
             //cookieJar(CookieJarImpl(PersistentCookieStore(context)))
             cookieJar(MyCookieJar())
+            //添加日志拦截器
+            addInterceptor(LogRecordInterceptor(BuildConfig.DEBUG))
         }
         //全局缺省页配置 [https://github.com/liangjingkanji/StateLayout]
         StateConfig.apply {

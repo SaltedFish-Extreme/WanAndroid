@@ -7,9 +7,7 @@ import okhttp3.HttpUrl
  * Cookie缓存接口
  *
  * @author linzhiyong
- *
  * @email wflinzhiyong@163.com
- *
  * @blog https://www.jianshu.com/p/23b35d403148
  */
 interface CookieStore {

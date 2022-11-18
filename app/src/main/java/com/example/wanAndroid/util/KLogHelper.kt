@@ -28,8 +28,8 @@ object KLogHelper {
     }
 
     /**
-     * Extract the class name without any anonymous class suffixes
-     * (e.g., `Foo$1` becomes `Foo`).
+     * Extract the class name without any anonymous class suffixes (e.g.,
+     * `Foo$1` becomes `Foo`).
      */
     private fun extractClassName(element: StackTraceElement): String {
         var tag = element.className

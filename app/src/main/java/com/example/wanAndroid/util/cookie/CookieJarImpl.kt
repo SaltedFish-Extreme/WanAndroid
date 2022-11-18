@@ -8,11 +8,8 @@ import okhttp3.HttpUrl
  * CookieJarImpl
  *
  * @author linzhiyong
- *
  * @email wflinzhiyong@163.com
- *
  * @blog https://www.jianshu.com/p/23b35d403148
- *
  * @time 2018/7/20
  */
 @Suppress("unused")
