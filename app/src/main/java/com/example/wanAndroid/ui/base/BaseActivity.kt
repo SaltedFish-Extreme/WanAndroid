@@ -4,11 +4,14 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.ActivityInfo
+import android.content.res.Resources
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.wanAndroid.R
 import com.example.wanAndroid.ui.receiver.NetworkConnectChangedReceiver
+import com.gyf.immersionbar.ImmersionBar
+import com.gyf.immersionbar.ktx.immersionBar
 
 /**
  * Created by 咸鱼至尊 on 2021/12/9
@@ -25,8 +28,13 @@ open class BaseActivity(private val receive: Boolean = true) : AppCompatActivity
     @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //使页面填充到状态栏(为了让toolBar沉浸状态栏)
-        window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        //状态栏沉浸（设置透明底部导航栏，设置状态栏颜色，设置深色图标，最后调用）
+        immersionBar {
+            transparentNavigationBar()
+            statusBarDarkFont(true)
+            navigationBarDarkIcon(true)
+            init()
+        }
         //强制页面竖屏显示
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
     }
