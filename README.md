@@ -22,7 +22,7 @@ https://user-images.githubusercontent.com/54784104/156889738-ddb1c6c8-e1b5-469f-
 
 ## 功能介绍
 
-大体功能已经完成，包含主页面、作者页、设置页、搜索页、网页、历史记录页、登陆注册页、积分及排名页、分享列表及分享文章页、体系下的二级页面，以及收藏功能
+大体功能已经完成，包含主页面、作者页、设置页、搜索页、网页、历史记录页、登陆注册页、积分及排名页、分享列表及分享文章页、体系下的二级页面，以及收藏功能还有课程及详情页面
 
 ## 参考项目
 
@@ -66,3 +66,4 @@ https://user-images.githubusercontent.com/54784104/156889738-ddb1c6c8-e1b5-469f-
 ***[web进度指示条](https://github.com/Justson/CoolIndicator)***
 ***[扫描二维码](https://github.com/bingoogolapple/BGAQRCode-Android)***
 ***[数据库](https://github.com/guolindev/LitePal)***
+***[状态栏沉浸](https://github.com/gyf-dev/ImmersionBar)***
