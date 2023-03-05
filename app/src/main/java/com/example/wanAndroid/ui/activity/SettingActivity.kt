@@ -14,7 +14,7 @@ import com.example.wanAndroid.util.CacheDataUtil
 import com.example.wanAndroid.widget.dialog.Dialog
 import com.example.wanAndroid.widget.settingbar.SettingBar
 import com.hjq.bar.TitleBar
-import com.hjq.toast.ToastUtils
+import com.hjq.toast.Toaster
 import per.goweii.swipeback.SwipeBackAbility
 import per.goweii.swipeback.SwipeBackDirection
 
@@ -66,7 +66,7 @@ class SettingActivity : BaseActivity(), SwipeBackAbility.Direction {
         settingClear.setOnClickListener {
             Dialog.getConfirmDialog(this, getString(R.string.clear_cache)) { _, _ ->
                 CacheDataUtil.clearAllCache(this)
-                ToastUtils.show(getString(R.string.clear_success))
+                Toaster.show(getString(R.string.clear_success))
                 settingClear.setRightText(CacheDataUtil.getTotalCacheSize(this))
             }.show()
         }

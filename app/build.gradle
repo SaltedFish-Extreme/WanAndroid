@@ -12,8 +12,8 @@ android {
         applicationId "com.example.wanandroid"
         minSdk 24
         targetSdk 33
-        versionCode 3
-        versionName "2.0.0"
+        versionCode 4
+        versionName "2.1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -55,8 +55,8 @@ android {
 
     //BRV限定，BindingAdapter使用
     buildFeatures.dataBinding = true
-    buildToolsVersion '31.0.0'
-    ndkVersion '21.4.7075529'
+
+    namespace 'com.example.wanAndroid'
 }
 
 dependencies {
@@ -71,8 +71,8 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     //region 注释掉不使用viewModel和liveData及retrofit
     /*//activity和fragment的kotlin扩展
     implementation 'androidx.activity:activity-ktx:1.4.0'
@@ -86,11 +86,12 @@ dependencies {
     //endregion
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
     //navigation支持
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
     //协程
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
     //OkHttp
+    //noinspection GradleDependency
     implementation 'com.squareup.okhttp3:okhttp:4.10.0'
     //网络请求 https://github.com/liangjingkanji/Net
     implementation 'com.github.liangjingkanji:Net:3.1.2'
@@ -105,13 +106,13 @@ dependencies {
     implementation 'com.github.liangjingkanji:StateLayout:1.2.0'*/
     //endregion
     //RecyclerView https://github.com/liangjingkanji/BRV
-    implementation 'com.github.liangjingkanji:BRV:1.3.53'
+    implementation 'com.github.liangjingkanji:BRV:1.3.90'
     //Adapter https://github.com/CymChad/BaseRecyclerViewAdapterHelper
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.7'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.11'
     //序列化数据 https://github.com/liangjingkanji/Serialize
-    implementation 'com.github.liangjingkanji:Serialize:1.2.3'
+    implementation 'com.github.liangjingkanji:Serialize:3.0.0'
     //消息事件 https://github.com/liangjingkanji/Channel
-    implementation 'com.github.liangjingkanji:Channel:1.1.4'
+    implementation 'com.github.liangjingkanji:Channel:1.1.5'
     //侧滑返回activity https://github.com/goweii/SwipeBack
     implementation 'com.github.goweii:SwipeBack:2.0.5'
     //今日诗词 https://github.com/xenv/jinrishici-sdk-android
@@ -119,19 +120,19 @@ dependencies {
     //ViewPager指示器 https://github.com/hackware1993/MagicIndicator
     implementation 'com.github.hackware1993:MagicIndicator:1.7.0'
     //图片加载 https://github.com/bumptech/glide
-    implementation 'com.github.bumptech.glide:glide:4.14.2'
+    implementation 'com.github.bumptech.glide:glide:4.15.0'
     //轮播图 https://github.com/youth5201314/banner
     implementation 'io.github.youth5201314:banner:2.2.2'
     //相机相册 https://github.com/HuanTanSheng/EasyPhotos
     implementation 'com.github.HuanTanSheng:EasyPhotos:3.1.5'
     //标题栏 https://github.com/getActivity/TitleBar
     implementation 'com.github.getActivity:TitleBar:9.3'
-    //吐司 https://github.com/getActivity/ToastUtils
-    implementation 'com.github.getActivity:ToastUtils:10.3'
+    //吐司 https://github.com/getActivity/Toaster
+    implementation 'com.github.getActivity:Toaster:12.0'
     //权限请求 https://github.com/getActivity/XXPermissions
-    implementation 'com.github.getActivity:XXPermissions:13.5'
+    implementation 'com.github.getActivity:XXPermissions:16.8'
     //Shape https://github.com/getActivity/ShapeView
-    implementation 'com.github.getActivity:ShapeView:6.2'
+    implementation 'com.github.getActivity:ShapeView:8.5'
     //揭示效果 https://github.com/goweii/RevealLayout
     implementation 'com.github.goweii:RevealLayout:1.3.4'
     //伸缩布局 https://github.com/google/flexbox-layout

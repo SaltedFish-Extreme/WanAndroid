@@ -7,7 +7,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkRequest
 import android.os.Build
 import com.example.wanAndroid.R
-import com.hjq.toast.ToastUtils
+import com.hjq.toast.Toaster
 
 /**
  * Created by 咸鱼至尊 on 2021/12/9
@@ -28,13 +28,13 @@ class NetworkConnectChangedReceiver : BroadcastReceiver() {
                 //连接可用
                 /*override fun onAvailable(network: Network) {
                     super.onAvailable(network)
-                    ToastUtils.show("当前网络连接可用")
+                    Toaster.show("当前网络连接可用")
                 }*/
 
                 //连接不可用
                 override fun onUnavailable() {
                     super.onUnavailable()
-                    ToastUtils.show(R.string.no_wifi)
+                    Toaster.show(R.string.no_wifi)
                 }
 
                 //region 注释丢失连接回调
@@ -44,7 +44,7 @@ class NetworkConnectChangedReceiver : BroadcastReceiver() {
                 // 可以和onUnavailable同时使用，也可以单独使用onUnavailable，不推荐单独使用这个
                 override fun onLost(network: Network) {
                     super.onLost(network)
-                    ToastUtils.show(R.string.no_wifi)
+                    Toaster.show(R.string.no_wifi)
                 }*/
                 //endregion
 

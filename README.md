@@ -54,7 +54,7 @@ https://user-images.githubusercontent.com/54784104/156889738-ddb1c6c8-e1b5-469f-
 ***[轮播图](https://github.com/youth5201314/banner)***
 ***[相机相册](https://github.com/HuanTanSheng/EasyPhotos)***
 ***[标题栏](https://github.com/getActivity/TitleBar)***
-***[吐司](https://github.com/getActivity/ToastUtils)***
+***[吐司](https://github.com/getActivity/Toaster)***
 ***[权限申请](https://github.com/getActivity/XXPermissions)***
 ***[ShapeView](https://github.com/getActivity/ShapeView)***
 

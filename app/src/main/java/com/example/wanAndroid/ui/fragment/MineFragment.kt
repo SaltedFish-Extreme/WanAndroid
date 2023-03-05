@@ -22,7 +22,7 @@ import com.example.wanAndroid.widget.dialog.Dialog
 import com.example.wanAndroid.widget.settingbar.SettingBar
 import com.example.wanAndroid.widget.toolbar.Toolbar
 import com.google.android.material.imageview.ShapeableImageView
-import com.hjq.toast.ToastUtils
+import com.hjq.toast.Toaster
 
 /**
  * Created by 咸鱼至尊 on 2021/12/20
@@ -66,7 +66,7 @@ class MineFragment : Fragment() {
         rankImage.setOnClickListener { openActivity<LeaderboardActivity>() }
         mineIntegral.setOnClickListener {
             if (AppConfig.UserName.isEmpty()) {
-                ToastUtils.show(getString(R.string.please_login))
+                Toaster.show(getString(R.string.please_login))
                 startActivityForResult(Intent(context, LoginActivity::class.java), 0, null)
             } else {
                 openActivity<IntegralActivity>()
@@ -74,7 +74,7 @@ class MineFragment : Fragment() {
         }
         mineCollect.setOnClickListener {
             if (AppConfig.UserName.isEmpty()) {
-                ToastUtils.show(getString(R.string.please_login))
+                Toaster.show(getString(R.string.please_login))
                 startActivityForResult(Intent(context, LoginActivity::class.java), 0, null)
             } else {
                 openActivity<CollectActivity>()
@@ -82,7 +82,7 @@ class MineFragment : Fragment() {
         }
         mineShare.setOnClickListener {
             if (AppConfig.UserName.isEmpty()) {
-                ToastUtils.show(getString(R.string.please_login))
+                Toaster.show(getString(R.string.please_login))
                 startActivityForResult(Intent(context, LoginActivity::class.java), 0, null)
             } else {
                 openActivity<ShareActivity>()
@@ -106,7 +106,7 @@ class MineFragment : Fragment() {
                 AppConfig.Level = ""
                 AppConfig.Rank = ""
                 AppConfig.CoinCount = ""
-                ToastUtils.show(getString(R.string.exit_succeed))
+                Toaster.show(getString(R.string.exit_succeed))
                 //重建页面
                 activity?.recreate()
             }.show()

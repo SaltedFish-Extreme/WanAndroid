@@ -20,7 +20,7 @@ import com.example.wanAndroid.widget.view.ClearEditText
 import com.example.wanAndroid.widget.view.PasswordEditText
 import com.example.wanAndroid.widget.view.SubmitButton
 import com.hjq.bar.TitleBar
-import com.hjq.toast.ToastUtils
+import com.hjq.toast.Toaster
 import kotlinx.coroutines.delay
 import per.goweii.swipeback.SwipeBackAbility
 import per.goweii.swipeback.SwipeBackDirection
@@ -85,7 +85,7 @@ class LoginActivity : BaseActivity(), SwipeBackAbility.Direction {
                 //登陆按钮显示失败
                 btnLogin.showError(2000)
                 //弹出错误信息吐司
-                ToastUtils.show(it.message)
+                Toaster.show(it.message)
                 //账号输入框加载动画效果
                 etUsername.startAnimation(
                     AnimationUtils.loadAnimation(

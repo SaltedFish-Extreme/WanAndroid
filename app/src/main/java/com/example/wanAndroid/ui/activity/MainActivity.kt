@@ -28,7 +28,7 @@ import com.example.wanAndroid.widget.toolbar.Toolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.navigation.NavigationView
-import com.hjq.toast.ToastUtils
+import com.hjq.toast.Toaster
 import org.litepal.LitePal
 import per.goweii.swipeback.SwipeBackAbility
 import per.goweii.swipeback.SwipeBackDirection
@@ -154,7 +154,7 @@ class MainActivity : BaseActivity(), SwipeBackAbility.Direction {
             when (it.itemId) {
                 R.id.nav_integral -> {
                     if (AppConfig.UserName.isEmpty()) {
-                        ToastUtils.show(getString(R.string.please_login))
+                        Toaster.show(getString(R.string.please_login))
                         startActivityForResult(Intent(this, LoginActivity::class.java), 0, null)
                     } else {
                         openActivity<IntegralActivity>()
@@ -162,7 +162,7 @@ class MainActivity : BaseActivity(), SwipeBackAbility.Direction {
                 }
                 R.id.nav_collect -> {
                     if (AppConfig.UserName.isEmpty()) {
-                        ToastUtils.show(getString(R.string.please_login))
+                        Toaster.show(getString(R.string.please_login))
                         startActivityForResult(Intent(this, LoginActivity::class.java), 0, null)
                     } else {
                         openActivity<CollectActivity>()
@@ -170,7 +170,7 @@ class MainActivity : BaseActivity(), SwipeBackAbility.Direction {
                 }
                 R.id.nav_share -> {
                     if (AppConfig.UserName.isEmpty()) {
-                        ToastUtils.show(getString(R.string.please_login))
+                        Toaster.show(getString(R.string.please_login))
                         startActivityForResult(Intent(this, LoginActivity::class.java), 0, null)
                     } else {
                         openActivity<ShareActivity>()
@@ -192,7 +192,7 @@ class MainActivity : BaseActivity(), SwipeBackAbility.Direction {
                         AppConfig.Level = ""
                         AppConfig.Rank = ""
                         AppConfig.CoinCount = ""
-                        ToastUtils.show(getString(R.string.exit_succeed))
+                        Toaster.show(getString(R.string.exit_succeed))
                         //重建页面
                         recreate()
                     }.show()
@@ -240,7 +240,7 @@ class MainActivity : BaseActivity(), SwipeBackAbility.Direction {
     override fun onBackPressed() {
         //返回键退出程序确认
         if (System.currentTimeMillis() - exitTime > 2000) {
-            ToastUtils.show(getString(R.string.exit))
+            Toaster.show(getString(R.string.exit))
             exitTime = System.currentTimeMillis()
             return
         }

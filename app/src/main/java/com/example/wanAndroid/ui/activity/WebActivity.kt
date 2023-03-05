@@ -2,6 +2,7 @@ package com.example.wanAndroid.ui.activity
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.Menu
@@ -19,8 +20,6 @@ import com.drake.channel.sendEvent
 import com.drake.channel.sendTag
 import com.drake.net.Post
 import com.drake.net.utils.scopeNetLife
-import com.drake.serialize.intent.browse
-import com.drake.serialize.intent.share
 import com.example.wanAndroid.R
 import com.example.wanAndroid.ext.vibration
 import com.example.wanAndroid.logic.dao.AppConfig
@@ -36,7 +35,7 @@ import com.example.wanAndroid.widget.ext.html2Spanned
 import com.example.wanAndroid.widget.ext.html2String
 import com.example.wanAndroid.widget.web.WebContainer
 import com.google.android.material.appbar.AppBarLayout
-import com.hjq.toast.ToastUtils
+import com.hjq.toast.Toaster
 import com.just.agentweb.AgentWeb
 import com.just.agentweb.NestedScrollAgentWebView
 import com.just.agentweb.WebChromeClient
@@ -225,7 +224,7 @@ class WebActivity : BaseActivity(false), SwipeBackAbility.OnlyEdge {
         when (item.itemId) {
             R.id.web_collect -> {
                 if (AppConfig.UserName.isEmpty()) {
-                    ToastUtils.show(getString(R.string.please_login))
+                    Toaster.show(getString(R.string.please_login))
                     return true
                 }
                 //点击收藏 震动一下
@@ -262,11 +261,11 @@ class WebActivity : BaseActivity(false), SwipeBackAbility.OnlyEdge {
             }
             R.id.web_share -> {
                 //分享
-                share(
-                    getString(R.string.web_share_url, getString(R.string.app_name), shareTitle, shareUrl),
-                    getString(R.string.text_plan),
-                    getString(R.string.web_share)
-                )
+                val intent = Intent(Intent.ACTION_SEND)
+                intent.type = "text/plain"
+                intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.text_plan))
+                intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.web_share_url, getString(R.string.app_name), shareTitle, shareUrl))
+                startActivity(Intent.createChooser(intent, getString(R.string.web_share)))
             }
             R.id.web_refresh -> {
                 //刷新网页
@@ -274,12 +273,13 @@ class WebActivity : BaseActivity(false), SwipeBackAbility.OnlyEdge {
             }
             R.id.web_browser -> {
                 //用浏览器打开
-                browse(shareUrl)
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(shareUrl)))
             }
         }
         return super.onOptionsItemSelected(item)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         mAgentWeb.run {
             if (!back()) {

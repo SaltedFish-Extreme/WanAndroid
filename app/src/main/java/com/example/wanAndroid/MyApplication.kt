@@ -15,7 +15,7 @@ import com.example.wanAndroid.logic.net.NetApi.BaseURL
 import com.example.wanAndroid.util.MyCookieJar
 import com.example.wanAndroid.widget.refresh.MyClassicsFooter
 import com.example.wanAndroid.widget.refresh.MyClassicsHeader
-import com.hjq.toast.ToastUtils
+import com.hjq.toast.Toaster
 import com.jinrishici.sdk.android.factory.JinrishiciFactory
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import org.litepal.LitePal
@@ -50,7 +50,7 @@ class MyApplication : Application() {
         //初始化数据库
         LitePal.initialize(this)
         //初始化Toast框架
-        ToastUtils.init(this)
+        Toaster.init(this)
         //初始化今日诗词
         JinrishiciFactory.init(context)
         //全局配置侧滑返回activity(有各种骚操作的奇怪BUG，不影响正常使用)

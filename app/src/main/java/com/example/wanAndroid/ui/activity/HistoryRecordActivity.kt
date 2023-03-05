@@ -22,7 +22,7 @@ import com.example.wanAndroid.widget.ext.html2String
 import com.example.wanAndroid.widget.ext.initFloatBtn
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.hjq.bar.TitleBar
-import com.hjq.toast.ToastUtils
+import com.hjq.toast.Toaster
 import org.litepal.LitePal
 import org.litepal.extension.deleteAll
 import org.litepal.extension.find
@@ -51,7 +51,7 @@ class HistoryRecordActivity : BaseActivity(), SwipeBackAbility.OnlyEdge {
                 rv.adapter = null
                 //同时从数据库删除对应表的所有记录
                 LitePal.deleteAll<HistoryRecordDB>()
-                ToastUtils.show(getString(R.string.delete_succeed))
+                Toaster.show(getString(R.string.delete_succeed))
             }.show()
         }
         //初始化rv
@@ -87,7 +87,7 @@ class HistoryRecordActivity : BaseActivity(), SwipeBackAbility.OnlyEdge {
                         "title = ?",
                         ((viewHolder as BindingAdapter.BindingViewHolder).getModel<HistoryRecordDB>().title.html2String())
                     )
-                    ToastUtils.show(getString(R.string.delete_succeed))
+                    Toaster.show(getString(R.string.delete_succeed))
                 }
             })
         }

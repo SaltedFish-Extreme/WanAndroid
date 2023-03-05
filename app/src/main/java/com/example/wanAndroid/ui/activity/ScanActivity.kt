@@ -10,7 +10,7 @@ import com.example.wanAndroid.ui.base.BaseActivity
 import com.example.wanAndroid.util.GlideEngine
 import com.example.wanAndroid.widget.view.FloatActionButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.hjq.toast.ToastUtils
+import com.hjq.toast.Toaster
 import com.huantansheng.easyphotos.EasyPhotos
 import com.huantansheng.easyphotos.callback.SelectCallback
 import com.huantansheng.easyphotos.models.album.entity.Photo
@@ -93,11 +93,11 @@ class ScanActivity : BaseActivity(), QRCodeView.Delegate {
     override fun onScanQRCodeSuccess(result: String?) {
         //解析失败
         if (result.isNullOrEmpty()) {
-            ToastUtils.show(R.string.identify_error)
+            Toaster.show(R.string.identify_error)
             zXingView.startSpot()//继续识别
             return
         }
-        ToastUtils.show(R.string.identify_succeed)
+        Toaster.show(R.string.identify_succeed)
         vibration()
         WebActivity.start(this, result)
         finish()
@@ -120,6 +120,6 @@ class ScanActivity : BaseActivity(), QRCodeView.Delegate {
     }
 
     override fun onScanQRCodeOpenCameraError() {
-        ToastUtils.show(R.string.open_camera_failed)
+        Toaster.show(R.string.open_camera_failed)
     }
 }

@@ -14,7 +14,7 @@ import com.example.wanAndroid.widget.ext.hideSoftKeyboard
 import com.example.wanAndroid.widget.view.SubmitButton
 import com.hjq.bar.TitleBar
 import com.hjq.shape.view.ShapeEditText
-import com.hjq.toast.ToastUtils
+import com.hjq.toast.Toaster
 import kotlinx.coroutines.delay
 import per.goweii.swipeback.SwipeBackAbility
 
@@ -56,7 +56,7 @@ class ShareArticleActivity : BaseActivity(), SwipeBackAbility.OnlyEdge {
                 }.await()
                 //分享按钮显示成功
                 btnShare.showSucceed()
-                ToastUtils.show(getString(R.string.share_succeed))
+                Toaster.show(getString(R.string.share_succeed))
                 //再延迟一会，增强用户体验~
                 delay(1000)
                 //返回成功请求码
@@ -67,7 +67,7 @@ class ShareArticleActivity : BaseActivity(), SwipeBackAbility.OnlyEdge {
                 //分享按钮显示失败
                 btnShare.showError(2000)
                 //弹出错误信息吐司
-                ToastUtils.show(it.message)
+                Toaster.show(it.message)
                 //标题输入框加载动画效果
                 etShareTitle.startAnimation(
                     AnimationUtils.loadAnimation(

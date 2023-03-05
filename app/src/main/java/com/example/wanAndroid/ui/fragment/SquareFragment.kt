@@ -15,7 +15,7 @@ import com.example.wanAndroid.ui.activity.ShareArticleActivity
 import com.example.wanAndroid.widget.ext.bindViewPager2
 import com.example.wanAndroid.widget.ext.init
 import com.example.wanAndroid.widget.toolbar.Toolbar
-import com.hjq.toast.ToastUtils
+import com.hjq.toast.Toaster
 import net.lucode.hackware.magicindicator.MagicIndicator
 
 /**
@@ -60,7 +60,7 @@ class SquareFragment : Fragment() {
                     //添加按钮要执行的操作
                     R.id.add -> {
                         if (AppConfig.UserName.isEmpty()) {
-                            ToastUtils.show(getString(R.string.please_login))
+                            Toaster.show(getString(R.string.please_login))
                             startActivityForResult(Intent(context, LoginActivity::class.java), 0, null)
                         } else {
                             openActivity<ShareArticleActivity>()

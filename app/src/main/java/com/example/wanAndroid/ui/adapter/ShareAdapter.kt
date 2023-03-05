@@ -14,7 +14,7 @@ import com.example.wanAndroid.ui.base.BaseAdapter
 import com.example.wanAndroid.widget.dialog.Dialog
 import com.example.wanAndroid.widget.ext.html2Spanned
 import com.example.wanAndroid.widget.view.CollectView
-import com.hjq.toast.ToastUtils
+import com.hjq.toast.Toaster
 
 /**
  * Created by 咸鱼至尊 on 2022/2/24
@@ -53,7 +53,7 @@ class ShareAdapter(private val lifecycleOwner: LifecycleOwner) : BaseAdapter<Art
                         }
                         //adapter中删除
                         adapter.removeAt(position)
-                        ToastUtils.show(context.getString(R.string.delete_succeed))
+                        Toaster.show(context.getString(R.string.delete_succeed))
                     }.show()
                 }
             }

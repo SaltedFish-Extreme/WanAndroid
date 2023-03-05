@@ -109,7 +109,7 @@ class HomeFragment : Fragment() {
                 //获取文章列表数据
                 val mArticleListData =
                     Get<ApiResponse<ApiPagerResponse<ArrayList<ArticleResponse>>>>("${NetApi.ArticleListAPI}/$index/json").await()
-                if (mArticleListData.data.datas.isNullOrEmpty()) {
+                if (mArticleListData.data.datas.isEmpty()) {
                     //没有更多数据，结束动画，显示内容(没有更多数据)
                     showContent(false)
                     return@scope

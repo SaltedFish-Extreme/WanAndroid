@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import com.example.wanAndroid.R
 import com.example.wanAndroid.ext.vibration
 import com.example.wanAndroid.logic.dao.AppConfig
-import com.hjq.toast.ToastUtils
+import com.hjq.toast.Toaster
 import per.goweii.reveallayout.RevealLayout
 
 /**
@@ -39,7 +39,7 @@ class CollectView @JvmOverloads constructor(context: Context, attrs: AttributeSe
                 context.vibration() //震动一下
             } else {
                 //否则弹吐司并且不给选中
-                ToastUtils.show(R.string.please_login)
+                Toaster.show(R.string.please_login)
                 isChecked = false
             }
         }

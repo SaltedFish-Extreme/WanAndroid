@@ -20,7 +20,7 @@ import com.example.wanAndroid.widget.view.ClearEditText
 import com.example.wanAndroid.widget.view.PasswordEditText
 import com.example.wanAndroid.widget.view.SubmitButton
 import com.hjq.bar.TitleBar
-import com.hjq.toast.ToastUtils
+import com.hjq.toast.Toaster
 import kotlinx.coroutines.delay
 import per.goweii.swipeback.SwipeBackAbility
 import per.goweii.swipeback.SwipeBackDirection
@@ -60,7 +60,7 @@ class RegisterActivity : BaseActivity(), SwipeBackAbility.Direction {
                 etPassword.startAnimation(AnimationUtils.loadAnimation(this, R.anim.shake_anim))
                 etRePassword.startAnimation(AnimationUtils.loadAnimation(this, R.anim.shake_anim))
                 btnRegister.showError(2000)
-                ToastUtils.show(getString(R.string.re_enter_password))
+                Toaster.show(getString(R.string.re_enter_password))
                 return@setOnClickListener
             }
             //隐藏输入法
@@ -96,7 +96,7 @@ class RegisterActivity : BaseActivity(), SwipeBackAbility.Direction {
                 //注册按钮显示失败
                 btnRegister.showError(2000)
                 //弹出错误信息吐司
-                ToastUtils.show(it.message)
+                Toaster.show(it.message)
                 //账号输入框加载动画效果
                 etUsername.startAnimation(
                     AnimationUtils.loadAnimation(

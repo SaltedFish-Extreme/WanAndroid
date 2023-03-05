@@ -10,7 +10,7 @@ import com.example.wanAndroid.util.PhotoUtils
 import com.hjq.bar.TitleBar
 import com.hjq.permissions.Permission
 import com.hjq.permissions.XXPermissions
-import com.hjq.toast.ToastUtils
+import com.hjq.toast.Toaster
 import com.huantansheng.easyphotos.ui.widget.PressedImageView
 
 /**
@@ -42,7 +42,7 @@ class QRCodeActivity : BaseActivity() {
                 if (all) {
                     PhotoUtils.saveBitmap2Gallery(this, qrCode.drawable.toBitmap())
                     vibration()
-                    ToastUtils.show(R.string.save_succeed)
+                    Toaster.show(R.string.save_succeed)
                 }
             }
             true

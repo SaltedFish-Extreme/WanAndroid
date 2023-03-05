@@ -45,8 +45,8 @@
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="?android:attr/actionBarSize"
-                android:layout_marginTop="@dimen/dp_20"
-                android:paddingTop="@dimen/dp_20" />
+                android:layout_marginTop="@dimen/dp_25"
+                android:paddingTop="@dimen/dp_25" />
 
             <com.hjq.bar.TitleBar
                 android:id="@+id/title_bar"

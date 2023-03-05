@@ -21,7 +21,7 @@
             <com.example.wanAndroid.widget.toolbar.Toolbar
                 android:id="@+id/toolbar"
                 style="@style/KToolbarStyle"
-                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_25"
                 app:layout_scrollFlags="scroll|enterAlways" />
         </com.google.android.material.appbar.AppBarLayout>
 

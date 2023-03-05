@@ -127,7 +127,7 @@ class ProjectChildFragment : Fragment() {
                         //翻页
                         1
                     } else { //上拉加载更多
-                        if (data.data.datas.isNullOrEmpty()) {
+                        if (data.data.datas.isEmpty()) {
                             //没有更多数据，结束动画，显示内容(没有更多数据)
                             showContent(false)
                             return@scope
