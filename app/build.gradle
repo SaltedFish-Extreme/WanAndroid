@@ -66,8 +66,8 @@ dependencies {
 
     //默认
     implementation 'androidx.core:core-ktx:1.9.0'
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.13.2'
@@ -94,7 +94,7 @@ dependencies {
     //noinspection GradleDependency
     implementation 'com.squareup.okhttp3:okhttp:4.10.0'
     //网络请求 https://github.com/liangjingkanji/Net
-    implementation 'com.github.liangjingkanji:Net:3.1.2'
+    implementation 'com.github.liangjingkanji:Net:3.5.5'
     //JSON解析
     implementation 'com.google.code.gson:gson:2.10'
     //region 注释掉刷新加载及缺省页(BRV自带)
