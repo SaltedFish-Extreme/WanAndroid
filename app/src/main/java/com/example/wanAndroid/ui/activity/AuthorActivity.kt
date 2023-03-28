@@ -24,6 +24,7 @@ import com.example.wanAndroid.widget.ext.cancelFloatBtn
 import com.example.wanAndroid.widget.ext.initFloatBtn
 import com.example.wanAndroid.widget.layout.XCollapsingToolbarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.gyf.immersionbar.ktx.immersionBar
 import com.hjq.bar.TitleBar
 import java.io.File
 
@@ -63,6 +64,10 @@ class AuthorActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_author)
+        //使标题栏和状态栏不重叠
+        immersionBar {
+            titleBar(titleBar)
+        }
         //初始化rv悬浮按钮扩展函数
         rv.initFloatBtn(fab)
         //标题栏返回按钮关闭页面
@@ -161,8 +166,7 @@ class AuthorActivity : BaseActivity() {
                     }
                 } else {
                     //分享人对应列表数据
-                    dataByID =
-                        Get<ApiResponse<ShareResponse>>("${NetApi.SearchArticleByIdAPI}/$userId/share_articles/$index/json").await()
+                    dataByID = Get<ApiResponse<ShareResponse>>("${NetApi.SearchArticleByIdAPI}/$userId/share_articles/$index/json").await()
                     if (first && dataByID.data.shareArticles.datas.isEmpty()) {
                         //如果第一次切换且数据为空显示空缺省页
                         showEmpty()

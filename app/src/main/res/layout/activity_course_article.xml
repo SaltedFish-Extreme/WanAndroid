@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_scrollFlags="scroll|snap|enterAlwaysCollapsed|exitUntilCollapsed"
-            app:scrimVisibleHeightTrigger="@dimen/dp_80">
+            app:scrimVisibleHeightTrigger="@dimen/dp_95">
 
             <include
                 layout="@layout/layout_course_article_head"
@@ -24,9 +24,8 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
-                android:layout_height="?android:attr/actionBarSize"
-                android:layout_marginTop="@dimen/dp_25"
-                android:paddingTop="@dimen/dp_25" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_35" />
 
             <!--自定义工具栏-->
             <com.hjq.bar.TitleBar

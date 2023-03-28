@@ -35,6 +35,7 @@ import com.example.wanAndroid.widget.ext.html2Spanned
 import com.example.wanAndroid.widget.ext.html2String
 import com.example.wanAndroid.widget.web.WebContainer
 import com.google.android.material.appbar.AppBarLayout
+import com.gyf.immersionbar.ktx.immersionBar
 import com.hjq.toast.Toaster
 import com.just.agentweb.AgentWeb
 import com.just.agentweb.NestedScrollAgentWebView
@@ -124,6 +125,10 @@ class WebActivity : BaseActivity(false), SwipeBackAbility.OnlyEdge {
             isArticle = it.getBoolean(Constant.CONTENT_ARTICLE_KEY, true)
             data = it.getParcelable(Constant.CONTENT_DATA_KEY)
         }
+        //使标题栏和状态栏不重叠
+        immersionBar {
+            titleBar(toolbar)
+        }
         toolbar.apply {
             //使用toolBar并使其外观与功能和actionBar一致
             setSupportActionBar(this)
@@ -151,12 +156,7 @@ class WebActivity : BaseActivity(false), SwipeBackAbility.OnlyEdge {
         val layoutParams = CoordinatorLayout.LayoutParams(-1, -1)
         layoutParams.behavior = AppBarLayout.ScrollingViewBehavior()
         mAgentWeb = shareUrl.getAgentWeb(
-            this,
-            webContainer,
-            layoutParams,
-            webView,
-            BaseWebClient(),
-            mWebChromeClient
+            this, webContainer, layoutParams, webView, BaseWebClient(), mWebChromeClient
         )
         mAgentWeb.webCreator.webView.apply {
             overScrollMode = WebView.OVER_SCROLL_NEVER
@@ -169,9 +169,7 @@ class WebActivity : BaseActivity(false), SwipeBackAbility.OnlyEdge {
         DownloadListener { url, _, _, _, _ ->
             //这样并不能阻止csdn等网站弹窗app下载，目前只能在BaseWebClient拦截其网址，有能力也可以加黑名单或者正则表达式判断
             if (url.startsWith("https://") && url.endsWith(".apk")) {
-                DownloadImpl.getInstance(applicationContext)
-                    .url(url)
-                    .enqueue()
+                DownloadImpl.getInstance(applicationContext).url(url).enqueue()
             }
         }
     }

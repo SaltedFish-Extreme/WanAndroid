@@ -12,6 +12,7 @@ import com.example.wanAndroid.ui.base.BaseActivity
 import com.example.wanAndroid.util.InputTextManager
 import com.example.wanAndroid.widget.ext.hideSoftKeyboard
 import com.example.wanAndroid.widget.view.SubmitButton
+import com.gyf.immersionbar.ktx.immersionBar
 import com.hjq.bar.TitleBar
 import com.hjq.shape.view.ShapeEditText
 import com.hjq.toast.Toaster
@@ -33,14 +34,14 @@ class ShareArticleActivity : BaseActivity(), SwipeBackAbility.OnlyEdge {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_share_article)
+        //使标题栏和状态栏不重叠
+        immersionBar {
+            titleBar(titleBar)
+        }
         titleBar.leftView.setOnClickListener { finish() }
         //联动分享按钮和标题链接文本框
         btnShare.let {
-            InputTextManager.with(this)
-                .addView(etShareTitle)
-                .addView(etShareLink)
-                .setMain(it)
-                .build()
+            InputTextManager.with(this).addView(etShareTitle).addView(etShareLink).setMain(it).build()
         }
         //分享按钮点击事件
         btnShare.setOnClickListener {
@@ -71,15 +72,13 @@ class ShareArticleActivity : BaseActivity(), SwipeBackAbility.OnlyEdge {
                 //标题输入框加载动画效果
                 etShareTitle.startAnimation(
                     AnimationUtils.loadAnimation(
-                        this@ShareArticleActivity,
-                        R.anim.shake_anim
+                        this@ShareArticleActivity, R.anim.shake_anim
                     )
                 )
                 //链接输入框加载动画效果
                 etShareLink.startAnimation(
                     AnimationUtils.loadAnimation(
-                        this@ShareArticleActivity,
-                        R.anim.shake_anim
+                        this@ShareArticleActivity, R.anim.shake_anim
                     )
                 )
             }

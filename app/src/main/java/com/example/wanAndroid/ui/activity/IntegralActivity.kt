@@ -19,6 +19,7 @@ import com.example.wanAndroid.widget.decoration.RecyclerViewItemDecoration
 import com.example.wanAndroid.widget.ext.cancelFloatBtn
 import com.example.wanAndroid.widget.ext.initFloatBtn
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.gyf.immersionbar.ktx.immersionBar
 import com.hjq.bar.TitleBar
 
 /**
@@ -46,6 +47,10 @@ class IntegralActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_integral)
+        //使标题栏和状态栏不重叠
+        immersionBar {
+            titleBar(titleBar)
+        }
         titleBar.leftView.setOnClickListener { finish() }
         //标题栏右侧图标打开网页
         titleBar.rightView.setOnClickListener { WebActivity.start(this, getString(R.string.integral_help)) }

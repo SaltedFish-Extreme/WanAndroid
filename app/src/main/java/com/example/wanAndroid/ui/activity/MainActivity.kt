@@ -28,6 +28,7 @@ import com.example.wanAndroid.widget.toolbar.Toolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.navigation.NavigationView
+import com.gyf.immersionbar.ktx.immersionBar
 import com.hjq.toast.Toaster
 import org.litepal.LitePal
 import per.goweii.swipeback.SwipeBackAbility
@@ -55,6 +56,10 @@ class MainActivity : BaseActivity(), SwipeBackAbility.Direction {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        //使标题栏和状态栏不重叠
+        immersionBar {
+            titleBar(toolbar)
+        }
         //获取积分信息
         getCoinInfo()
         //使用toolBar并使其外观与功能和actionBar一致

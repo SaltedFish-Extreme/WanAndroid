@@ -17,6 +17,7 @@ import com.example.wanAndroid.widget.ext.cancelFloatBtn
 import com.example.wanAndroid.widget.ext.initFloatBtn
 import com.example.wanAndroid.widget.layout.SwipeItemLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.gyf.immersionbar.ktx.immersionBar
 import com.hjq.bar.TitleBar
 
 /**
@@ -44,6 +45,10 @@ class ShareActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_share)
+        //使标题栏和状态栏不重叠
+        immersionBar {
+            titleBar(titleBar)
+        }
         titleBar.leftView.setOnClickListener { finish() }
         //标题栏右侧图标打开分享文章页面，获取返回结果，增加一条数据
         titleBar.rightView.setOnClickListener { startActivityForResult(Intent(this, ShareArticleActivity::class.java), 0, null) }

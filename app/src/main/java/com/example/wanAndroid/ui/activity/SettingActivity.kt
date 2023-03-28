@@ -13,6 +13,7 @@ import com.example.wanAndroid.ui.fragment.AboutDialogFragment
 import com.example.wanAndroid.util.CacheDataUtil
 import com.example.wanAndroid.widget.dialog.Dialog
 import com.example.wanAndroid.widget.settingbar.SettingBar
+import com.gyf.immersionbar.ktx.immersionBar
 import com.hjq.bar.TitleBar
 import com.hjq.toast.Toaster
 import per.goweii.swipeback.SwipeBackAbility
@@ -38,6 +39,10 @@ class SettingActivity : BaseActivity(), SwipeBackAbility.Direction {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
+        //使标题栏和状态栏不重叠
+        immersionBar {
+            titleBar(titleBar)
+        }
         //标题栏返回按钮关闭页面
         titleBar.leftView.setOnClickListener { finish() }
         //夜间模式开关是否打开
@@ -87,11 +92,7 @@ class SettingActivity : BaseActivity(), SwipeBackAbility.Direction {
         settingProject.setOnClickListener { WebActivity.start(this, getString(R.string.setting_repository)) }
         //版权声明
         settingCopyright.setOnClickListener {
-            AlertDialog.Builder(this)
-                .setTitle(R.string.setting_copyright)
-                .setMessage(R.string.copyright_content)
-                .setCancelable(true)
-                .show()
+            AlertDialog.Builder(this).setTitle(R.string.setting_copyright).setMessage(R.string.copyright_content).setCancelable(true).show()
         }
         //关于我们
         settingAbout.setOnClickListener {

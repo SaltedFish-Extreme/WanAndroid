@@ -15,7 +15,7 @@
             android:layout_height="@dimen/dp_240"
             android:background="@color/color_floating_button"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:scrimVisibleHeightTrigger="@dimen/dp_110">
+            app:scrimVisibleHeightTrigger="@dimen/dp_100">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -25,7 +25,8 @@
                     android:id="@+id/header_image"
                     android:layout_width="@dimen/dp_80"
                     android:layout_height="@dimen/dp_80"
-                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dp_110"
                     android:contentDescription="@android:string/unknownName"
                     app:srcCompat="@drawable/ic_account" />
 
@@ -34,8 +35,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/header_image"
-                    android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dp_10"
                     android:gravity="center"
                     android:textColor="?android:attr/textColorPrimary"
                     android:textSize="@dimen/sp_20"
@@ -45,8 +46,7 @@
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="?android:attr/actionBarSize"
-                android:layout_marginTop="@dimen/dp_25"
-                android:paddingTop="@dimen/dp_25" />
+                android:layout_marginTop="@dimen/dp_40" />
 
             <com.hjq.bar.TitleBar
                 android:id="@+id/title_bar"

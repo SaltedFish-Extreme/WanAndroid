@@ -21,6 +21,7 @@ import com.example.wanAndroid.widget.ext.html2Spanned
 import com.example.wanAndroid.widget.ext.html2String
 import com.example.wanAndroid.widget.ext.initFloatBtn
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.gyf.immersionbar.ktx.immersionBar
 import com.hjq.bar.TitleBar
 import com.hjq.toast.Toaster
 import org.litepal.LitePal
@@ -42,6 +43,10 @@ class HistoryRecordActivity : BaseActivity(), SwipeBackAbility.OnlyEdge {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_history_record)
+        //使标题栏和状态栏不重叠
+        immersionBar {
+            titleBar(titleBar)
+        }
         //标题栏返回按钮关闭页面
         titleBar.leftView.setOnClickListener { finish() }
         //标题栏右侧副标题点击删除所有历史记录
@@ -84,8 +89,7 @@ class HistoryRecordActivity : BaseActivity(), SwipeBackAbility.OnlyEdge {
                     super.onSwiped(viewHolder, direction)
                     // 这是侧滑删除后回调, 这里可以同步服务器 (这里从数据库中删除对应行)
                     LitePal.deleteAll<HistoryRecordDB>(
-                        "title = ?",
-                        ((viewHolder as BindingAdapter.BindingViewHolder).getModel<HistoryRecordDB>().title.html2String())
+                        "title = ?", ((viewHolder as BindingAdapter.BindingViewHolder).getModel<HistoryRecordDB>().title.html2String())
                     )
                     Toaster.show(getString(R.string.delete_succeed))
                 }

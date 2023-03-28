@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.inputmethod.EditorInfo
 import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.drake.net.Get
 import com.drake.net.utils.scopeNetLife
@@ -19,6 +20,7 @@ import com.example.wanAndroid.ui.base.BaseActivity
 import com.example.wanAndroid.widget.view.ClearEditText
 import com.example.wanAndroid.widget.view.PressAlphaTextView
 import com.google.android.flexbox.FlexboxLayoutManager
+import com.gyf.immersionbar.ktx.immersionBar
 
 /**
  * Created by 咸鱼至尊 on 2022/2/16
@@ -27,6 +29,7 @@ import com.google.android.flexbox.FlexboxLayoutManager
  */
 class SearchActivity : BaseActivity() {
 
+    private val ll: LinearLayout by lazy { findViewById(R.id.ll) }
     private val back: ImageView by lazy { findViewById(R.id.back) }
     private val searchText: ClearEditText by lazy { findViewById(R.id.search_text) }
     private val search: ImageView by lazy { findViewById(R.id.search) }
@@ -43,6 +46,10 @@ class SearchActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
+        //使标题栏和状态栏不重叠
+        immersionBar {
+            titleBar(ll)
+        }
         //返回图标关闭页面
         back.setOnClickListener { finish() }
         //初始化搜索热词

@@ -13,14 +13,14 @@
             android:id="@+id/include_viewpager_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_15" />
+            android:layout_marginTop="@dimen/dp_20" />
 
         <net.lucode.hackware.magicindicator.MagicIndicator
             android:id="@+id/magic_indicator"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/dp_5" />
+            android:layout_marginTop="@dimen/dp_10" />
     </FrameLayout>
 
     <androidx.viewpager2.widget.ViewPager2

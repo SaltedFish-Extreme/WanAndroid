@@ -19,6 +19,7 @@ import com.example.wanAndroid.ui.base.BaseActivity
 import com.example.wanAndroid.widget.ext.cancelFloatBtn
 import com.example.wanAndroid.widget.ext.initFloatBtn
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.gyf.immersionbar.ktx.immersionBar
 import com.hjq.bar.TitleBar
 
 /**
@@ -50,6 +51,10 @@ class LeaderboardActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_leaderboard)
+        //使标题栏和状态栏不重叠
+        immersionBar {
+            titleBar(titleBar)
+        }
         titleBar.leftView.setOnClickListener { finish() }
         //设置此页面请求分页初始索引
         PageRefreshLayout.startIndex = 1

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?><!--填充式通用搜索框-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/color_floating_button"
-    android:paddingHorizontal="@dimen/dp_10"
-    android:paddingTop="@dimen/dp_42"
-    android:paddingBottom="@dimen/dp_10">
+    android:padding="@dimen/dp_15">
 
     <ImageView
         android:id="@+id/back"
@@ -13,7 +12,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/ic_back"
         android:backgroundTint="@color/color_ic_bg_tint"
-        android:contentDescription="@android:string/unknownName" />
+        android:contentDescription="@android:string/unknownName"
+        android:foreground="?attr/selectableItemBackground" />
 
     <com.example.wanAndroid.widget.view.ClearEditText
         android:id="@+id/search_text"
@@ -34,6 +34,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/ic_search"
         android:backgroundTint="@color/color_ic_bg_tint"
-        android:contentDescription="@android:string/unknownName" />
+        android:contentDescription="@android:string/unknownName"
+        android:foreground="?attr/selectableItemBackground" />
 
 </LinearLayout>

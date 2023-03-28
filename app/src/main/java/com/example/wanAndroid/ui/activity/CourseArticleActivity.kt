@@ -22,6 +22,7 @@ import com.example.wanAndroid.widget.ext.cancelFloatBtn
 import com.example.wanAndroid.widget.ext.initFloatBtn
 import com.example.wanAndroid.widget.layout.XCollapsingToolbarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.gyf.immersionbar.ktx.immersionBar
 import com.hjq.bar.TitleBar
 
 /**
@@ -54,6 +55,10 @@ class CourseArticleActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_course_article)
+        //使标题栏和状态栏不重叠
+        immersionBar {
+            titleBar(titleBar)
+        }
         //初始化rv悬浮按钮扩展函数
         rv.initFloatBtn(fab)
         //标题栏返回按钮关闭页面

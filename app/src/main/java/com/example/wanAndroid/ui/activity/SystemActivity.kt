@@ -10,6 +10,7 @@ import com.example.wanAndroid.ui.fragment.SystemChildFragment
 import com.example.wanAndroid.widget.ext.bindViewPager2
 import com.example.wanAndroid.widget.ext.init
 import com.example.wanAndroid.widget.toolbar.Toolbar
+import com.gyf.immersionbar.ktx.immersionBar
 import net.lucode.hackware.magicindicator.MagicIndicator
 import per.goweii.swipeback.SwipeBackAbility
 
@@ -42,6 +43,10 @@ class SystemActivity : BaseActivity(), SwipeBackAbility.OnlyEdge {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_system)
+        //使标题栏和状态栏不重叠
+        immersionBar {
+            titleBar(toolbar)
+        }
         toolbar.apply {
             //设置标题
             title = this@SystemActivity.title

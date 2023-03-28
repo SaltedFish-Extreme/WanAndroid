@@ -7,6 +7,7 @@ import com.example.wanAndroid.R
 import com.example.wanAndroid.ext.vibration
 import com.example.wanAndroid.ui.base.BaseActivity
 import com.example.wanAndroid.util.PhotoUtils
+import com.gyf.immersionbar.ktx.immersionBar
 import com.hjq.bar.TitleBar
 import com.hjq.permissions.Permission
 import com.hjq.permissions.XXPermissions
@@ -26,6 +27,10 @@ class QRCodeActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_qrcode)
+        //使标题栏和状态栏不重叠
+        immersionBar {
+            titleBar(titleBar)
+        }
         //标题栏返回按钮关闭页面
         titleBar.leftView.setOnClickListener { finish() }
         titleBar.rightView.setOnClickListener {

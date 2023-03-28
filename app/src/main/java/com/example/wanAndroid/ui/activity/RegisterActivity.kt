@@ -19,6 +19,7 @@ import com.example.wanAndroid.widget.ext.hideSoftKeyboard
 import com.example.wanAndroid.widget.view.ClearEditText
 import com.example.wanAndroid.widget.view.PasswordEditText
 import com.example.wanAndroid.widget.view.SubmitButton
+import com.gyf.immersionbar.ktx.immersionBar
 import com.hjq.bar.TitleBar
 import com.hjq.toast.Toaster
 import kotlinx.coroutines.delay
@@ -42,16 +43,15 @@ class RegisterActivity : BaseActivity(), SwipeBackAbility.Direction {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+        //使标题栏和状态栏不重叠
+        immersionBar {
+            titleBar(titleBar)
+        }
         //标题栏返回按钮关闭页面
         titleBar.leftView.setOnClickListener { finish() }
         //联动注册按钮和账号密码输入框
         btnRegister.let {
-            InputTextManager.with(this)
-                .addView(etUsername)
-                .addView(etPassword)
-                .addView(etRePassword)
-                .setMain(it)
-                .build()
+            InputTextManager.with(this).addView(etUsername).addView(etPassword).addView(etRePassword).setMain(it).build()
         }
         //注册按钮点击事件
         btnRegister.setOnClickListener {
@@ -100,22 +100,19 @@ class RegisterActivity : BaseActivity(), SwipeBackAbility.Direction {
                 //账号输入框加载动画效果
                 etUsername.startAnimation(
                     AnimationUtils.loadAnimation(
-                        this@RegisterActivity,
-                        R.anim.shake_anim
+                        this@RegisterActivity, R.anim.shake_anim
                     )
                 )
                 //密码输入框加载动画效果
                 etPassword.startAnimation(
                     AnimationUtils.loadAnimation(
-                        this@RegisterActivity,
-                        R.anim.shake_anim
+                        this@RegisterActivity, R.anim.shake_anim
                     )
                 )
                 //确认密码输入框加载动画效果
                 etRePassword.startAnimation(
                     AnimationUtils.loadAnimation(
-                        this@RegisterActivity,
-                        R.anim.shake_anim
+                        this@RegisterActivity, R.anim.shake_anim
                     )
                 )
             }
