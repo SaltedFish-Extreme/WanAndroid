@@ -13,4 +13,11 @@
         <!--子文本填充颜色-->
         <item name="itemTextColor">@color/selector_color_bottom_navigation_night</item>
     </style>
+    <!--闪屏页主题-->
+    <style name="Theme.WanAndroid.SplashTheme">
+        <!--启动页背景-->
+        <item name="android:windowBackground">@drawable/bg_splash_night</item>
+        <!--全屏-->
+        <item name="android:windowFullscreen">true</item>
+    </style>
 </resources>

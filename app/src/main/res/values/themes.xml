@@ -7,15 +7,12 @@
         <item name="colorAccent">@color/deep_sky_blue</item>
         <!-- 应用的主要暗色调，状态栏默认使用该颜色 -->
         <item name="colorPrimaryDark">@android:color/transparent</item>
-        <!-- 状态栏 -->
-        <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <!--闪屏页主题-->
     <style name="Theme.WanAndroid.SplashTheme">
         <!--启动页背景-->
-        <item name="android:windowBackground">@drawable/bg_project</item>
+        <item name="android:windowBackground">@drawable/bg_splash_day</item>
         <!--全屏-->
         <item name="android:windowFullscreen">true</item>
     </style>
