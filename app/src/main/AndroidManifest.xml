@@ -95,6 +95,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- 崩溃展示（必须在独立进程） -->
+        <activity
+            android:name=".ui.activity.CrashActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
+            android:launchMode="singleTop"
+            android:process=":crash" />
+        <!-- 重启应用（必须在独立进程） -->
+        <activity
+            android:name=".ui.activity.RestartActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
+            android:launchMode="singleTop"
+            android:process=":restart" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

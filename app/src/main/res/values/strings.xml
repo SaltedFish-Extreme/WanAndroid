@@ -145,4 +145,9 @@
     <string name="course_copyright">知识共享 署名-相同方式共享 3.0协议</string>
     <string name="one">1</string>
     <string name="course_catalog">课程目录</string>
+    <!--崩溃捕捉页-->
+    <string name="crash_title">应用程序发生崩溃</string>
+    <string name="crash_message">我是错误信息</string>
+    <string name="details">详细信息</string>
+    <string name="common_crash_hint">应用出了点小意外，正在重新启动…</string>
 </resources>

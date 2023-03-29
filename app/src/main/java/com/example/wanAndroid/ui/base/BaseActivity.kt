@@ -4,14 +4,11 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.ActivityInfo
-import android.content.res.Resources
 import android.os.Bundle
-import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.wanAndroid.R
 import com.example.wanAndroid.logic.dao.AppConfig
 import com.example.wanAndroid.ui.receiver.NetworkConnectChangedReceiver
-import com.gyf.immersionbar.ImmersionBar
 import com.gyf.immersionbar.ktx.immersionBar
 
 /**
@@ -55,6 +52,7 @@ open class BaseActivity(private val receive: Boolean = true) : AppCompatActivity
         super.onPause()
     }
 
+    @Deprecated("Deprecated in Java")
     @Suppress("DEPRECATION")
     override fun startActivityForResult(intent: Intent, requestCode: Int, options: Bundle?) {
         super.startActivityForResult(intent, requestCode, options)

@@ -42,6 +42,8 @@ class MyApplication : Application() {
         super.onCreate()
         //延迟初始化全局context对象
         context = applicationContext
+        //本地异常捕捉
+        CrashHandler.register(this)
         //应用主题切换
         when (AppConfig.DarkTheme) {
             true -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)

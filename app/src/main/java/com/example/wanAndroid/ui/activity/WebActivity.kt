@@ -28,7 +28,7 @@ import com.example.wanAndroid.logic.dao.HistoryRecordDB
 import com.example.wanAndroid.logic.model.CollectResponse
 import com.example.wanAndroid.logic.model.NoDataResponse
 import com.example.wanAndroid.logic.net.NetApi
-import com.example.wanAndroid.ui.BaseWebClient
+import com.example.wanAndroid.ui.base.BaseWebClient
 import com.example.wanAndroid.ui.base.BaseActivity
 import com.example.wanAndroid.widget.ext.getAgentWeb
 import com.example.wanAndroid.widget.ext.html2Spanned

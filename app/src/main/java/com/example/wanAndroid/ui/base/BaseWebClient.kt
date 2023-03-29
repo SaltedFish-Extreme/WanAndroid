@@ -1,4 +1,4 @@
-package com.example.wanAndroid.ui
+package com.example.wanAndroid.ui.base
 
 import android.net.Uri
 import android.webkit.RenderProcessGoneDetail
