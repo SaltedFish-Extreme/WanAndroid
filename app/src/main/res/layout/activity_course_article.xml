@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_35" />
 
-            <!--自定义工具栏-->
+            <!--自定义标题栏-->
             <com.hjq.bar.TitleBar
                 android:id="@+id/title_bar"
                 style="@style/TitleBar"

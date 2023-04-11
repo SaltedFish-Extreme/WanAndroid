@@ -7,10 +7,11 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <!--自定义工具栏-->
+        <!--官方居中工具栏-->
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
-            style="@style/KToolbarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
             app:layout_scrollFlags="scroll|enterAlways"
             app:titleCentered="true" />
     </com.google.android.material.appbar.AppBarLayout>
