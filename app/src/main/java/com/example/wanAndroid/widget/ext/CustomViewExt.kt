@@ -378,7 +378,7 @@ fun NestedScrollView.cancelFloatBtn(floatBtn: FloatingActionButton) {
  * @param t 上
  * @param r 右
  * @param b 下
- * @param v 悬浮按钮
+ * @param v 视图
  */
 fun View.margin(l: Int, t: Int, r: Int, b: Int, v: View = this) {
     if (v.layoutParams is ViewGroup.MarginLayoutParams) {
