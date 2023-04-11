@@ -14,7 +14,7 @@ import com.example.wanAndroid.ui.activity.LoginActivity
 import com.example.wanAndroid.ui.activity.ShareArticleActivity
 import com.example.wanAndroid.widget.ext.bindViewPager2
 import com.example.wanAndroid.widget.ext.init
-import com.example.wanAndroid.widget.toolbar.Toolbar
+import com.google.android.material.appbar.MaterialToolbar
 import com.hjq.toast.Toaster
 import net.lucode.hackware.magicindicator.MagicIndicator
 
@@ -25,7 +25,7 @@ import net.lucode.hackware.magicindicator.MagicIndicator
  */
 class SquareFragment : Fragment() {
 
-    private val toolbar: Toolbar by lazy { requireActivity().findViewById(R.id.toolbar) }
+    private val toolbar: MaterialToolbar by lazy { requireActivity().findViewById(R.id.toolbar) }
     private val viewPager: ViewPager2 by lazy { requireView().findViewById(R.id.view_pager) }
     private val magicIndicator: MagicIndicator by lazy { requireView().findViewById(R.id.magic_indicator) }
     private val toolbarChild: androidx.appcompat.widget.Toolbar by lazy { requireView().findViewById(R.id.include_viewpager_toolbar) }

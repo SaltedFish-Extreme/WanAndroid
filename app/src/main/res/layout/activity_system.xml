@@ -8,10 +8,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <!--自定义工具栏-->
-        <com.example.wanAndroid.widget.toolbar.Toolbar
+        <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             style="@style/KToolbarStyle"
-            app:layout_scrollFlags="scroll|enterAlways" />
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:titleCentered="true" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout

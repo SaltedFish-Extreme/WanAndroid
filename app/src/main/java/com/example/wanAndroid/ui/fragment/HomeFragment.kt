@@ -19,7 +19,7 @@ import com.example.wanAndroid.ui.adapter.ArticleAdapter
 import com.example.wanAndroid.ui.adapter.ImageTitleAdapter
 import com.example.wanAndroid.widget.ext.cancelFloatBtn
 import com.example.wanAndroid.widget.ext.initFloatBtn
-import com.example.wanAndroid.widget.toolbar.Toolbar
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.youth.banner.Banner
 import com.youth.banner.indicator.CircleIndicator
@@ -34,7 +34,7 @@ class HomeFragment : Fragment() {
     private val rv: RecyclerView by lazy { requireView().findViewById(R.id.rv) }
     private val page: PageRefreshLayout by lazy { requireView().findViewById(R.id.page) }
     private val fab: FloatingActionButton by lazy { requireActivity().findViewById(R.id.fab) }
-    private val toolbar: Toolbar by lazy { requireActivity().findViewById(R.id.toolbar) }
+    private val toolbar: MaterialToolbar by lazy { requireActivity().findViewById(R.id.toolbar) }
     private val adapter: ArticleAdapter by lazy { ArticleAdapter(this, true) }
 
     /** 是否初次切换页面 */
@@ -84,11 +84,9 @@ class HomeFragment : Fragment() {
                     first = false
                 }
                 //置顶文章请求
-                val mArticleTopDeferred =
-                    Get<ApiResponse<ArrayList<ArticleResponse>>>(NetApi.ArticleTopAPI)
+                val mArticleTopDeferred = Get<ApiResponse<ArrayList<ArticleResponse>>>(NetApi.ArticleTopAPI)
                 //文章列表请求
-                val mArticleListDeferred =
-                    Get<ApiResponse<ApiPagerResponse<ArrayList<ArticleResponse>>>>("${NetApi.ArticleListAPI}/$index/json")
+                val mArticleListDeferred = Get<ApiResponse<ApiPagerResponse<ArrayList<ArticleResponse>>>>("${NetApi.ArticleListAPI}/$index/json")
                 val mArticleTopData = mArticleTopDeferred.await() //获取置顶文章数据
                 val mArticleListData = mArticleListDeferred.await() //获取文章列表数据
                 //给adapter设置数据
@@ -107,8 +105,7 @@ class HomeFragment : Fragment() {
         page.onLoadMore {
             scope {
                 //获取文章列表数据
-                val mArticleListData =
-                    Get<ApiResponse<ApiPagerResponse<ArrayList<ArticleResponse>>>>("${NetApi.ArticleListAPI}/$index/json").await()
+                val mArticleListData = Get<ApiResponse<ApiPagerResponse<ArrayList<ArticleResponse>>>>("${NetApi.ArticleListAPI}/$index/json").await()
                 if (mArticleListData.data.datas.isEmpty()) {
                     //没有更多数据，结束动画，显示内容(没有更多数据)
                     showContent(false)

@@ -134,17 +134,10 @@ fun String.getAgentWeb(
     webChromeClient: WebChromeClient,
 ): AgentWeb = AgentWeb.with(activity)//传入Activity or Fragment
     .setAgentWebParent(webContent, 1, layoutParams)//传入AgentWeb的父控件
-    .setCustomIndicator(CoolIndicatorLayout(activity))
-    .setWebView(webView)
-    .setWebViewClient(webViewClient)
-    .setWebChromeClient(webChromeClient)
-    .setMainFrameErrorView(R.layout.agentweb_error_page, -1)
-    .setSecurityType(AgentWeb.SecurityType.STRICT_CHECK)
+    .setCustomIndicator(CoolIndicatorLayout(activity)).setWebView(webView).setWebViewClient(webViewClient).setWebChromeClient(webChromeClient)
+    .setMainFrameErrorView(R.layout.agentweb_error_page, -1).setSecurityType(AgentWeb.SecurityType.STRICT_CHECK)
     .setOpenOtherPageWays(DefaultWebClient.OpenOtherPageWays.DISALLOW)//不允许打开其他应用
-    .interceptUnkownUrl()
-    .createAgentWeb()
-    .ready()
-    .go(this)
+    .interceptUnkownUrl().createAgentWeb().ready().go(this)
 
 /**
  * 视图填充扩展函数
@@ -272,11 +265,9 @@ fun hideSoftKeyboard(activity: Activity?) {
     activity?.let { act ->
         val view = act.currentFocus
         view?.let {
-            val inputMethodManager =
-                act.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+            val inputMethodManager = act.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
             inputMethodManager.hideSoftInputFromWindow(
-                view.windowToken,
-                InputMethodManager.HIDE_NOT_ALWAYS
+                view.windowToken, InputMethodManager.HIDE_NOT_ALWAYS
             )
         }
     }
@@ -378,4 +369,21 @@ fun NestedScrollView.cancelFloatBtn(floatBtn: FloatingActionButton) {
     floatBtn.hide()
     //清除悬浮按钮点击事件
     floatBtn.setOnClickListener(null)
+}
+
+/**
+ * 视图扩展函数,设置边距
+ *
+ * @param l 左
+ * @param t 上
+ * @param r 右
+ * @param b 下
+ * @param v 悬浮按钮
+ */
+fun View.margin(l: Int, t: Int, r: Int, b: Int, v: View = this) {
+    if (v.layoutParams is ViewGroup.MarginLayoutParams) {
+        val p = v.layoutParams as ViewGroup.MarginLayoutParams
+        p.setMargins(l, t, r, b)
+        v.requestLayout()
+    }
 }

@@ -14,7 +14,7 @@ import com.example.wanAndroid.logic.model.base.ApiResponse
 import com.example.wanAndroid.logic.net.NetApi
 import com.example.wanAndroid.widget.ext.bindViewPager2
 import com.example.wanAndroid.widget.ext.init
-import com.example.wanAndroid.widget.toolbar.Toolbar
+import com.google.android.material.appbar.MaterialToolbar
 import net.lucode.hackware.magicindicator.MagicIndicator
 
 /**
@@ -24,7 +24,7 @@ import net.lucode.hackware.magicindicator.MagicIndicator
  */
 class PlatformFragment : Fragment() {
 
-    private val toolbar: Toolbar by lazy { requireActivity().findViewById(R.id.toolbar) }
+    private val toolbar: MaterialToolbar by lazy { requireActivity().findViewById(R.id.toolbar) }
     private val viewPager: ViewPager2 by lazy { requireView().findViewById(R.id.view_pager) }
     private val magicIndicator: MagicIndicator by lazy { requireView().findViewById(R.id.magic_indicator) }
 

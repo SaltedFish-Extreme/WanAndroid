@@ -20,7 +20,7 @@ import com.example.wanAndroid.logic.net.NetApi
 import com.example.wanAndroid.ui.activity.*
 import com.example.wanAndroid.widget.dialog.Dialog
 import com.example.wanAndroid.widget.settingbar.SettingBar
-import com.example.wanAndroid.widget.toolbar.Toolbar
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.imageview.ShapeableImageView
 import com.hjq.toast.Toaster
 
@@ -42,7 +42,7 @@ class MineFragment : Fragment() {
     private val mineRecord: SettingBar by lazy { requireView().findViewById(R.id.mine_record) }
     private val mineSetting: SettingBar by lazy { requireView().findViewById(R.id.mine_setting) }
     private val mineExit: SettingBar by lazy { requireView().findViewById(R.id.mine_exit) }
-    private val toolbar: Toolbar by lazy { requireActivity().findViewById(R.id.toolbar) }
+    private val toolbar: MaterialToolbar by lazy { requireActivity().findViewById(R.id.toolbar) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

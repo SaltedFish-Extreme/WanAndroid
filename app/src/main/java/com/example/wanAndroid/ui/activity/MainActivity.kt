@@ -2,10 +2,7 @@ package com.example.wanAndroid.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.Gravity
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
+import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -24,11 +21,14 @@ import com.example.wanAndroid.logic.net.NetApi
 import com.example.wanAndroid.ui.base.BaseActivity
 import com.example.wanAndroid.widget.dialog.Dialog
 import com.example.wanAndroid.widget.ext.interceptLongClick
-import com.example.wanAndroid.widget.toolbar.Toolbar
+import com.example.wanAndroid.widget.ext.margin
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.navigation.NavigationView
 import com.gyf.immersionbar.ktx.immersionBar
+import com.gyf.immersionbar.ktx.navigationBarHeight
 import com.hjq.toast.Toaster
 import org.litepal.LitePal
 import per.goweii.swipeback.SwipeBackAbility
@@ -42,10 +42,11 @@ import per.goweii.swipeback.SwipeBackDirection
 class MainActivity : BaseActivity(), SwipeBackAbility.Direction {
 
     private val drawerLayout: DrawerLayout by lazy { findViewById(R.id.drawer_layout) }
-    private val toolbar: Toolbar by lazy { findViewById(R.id.toolbar) }
+    private val toolbar: MaterialToolbar by lazy { findViewById(R.id.toolbar) }
     private val bottomNavigationView: BottomNavigationView by lazy { findViewById(R.id.bottom_navigation_view) }
     private val navHostFragment: NavHostFragment by lazy { supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment }
     private val navView: NavigationView by lazy { findViewById(R.id.nav_view) }
+    private val fab: FloatingActionButton by lazy { findViewById(R.id.fab) }
 
     /** 退出时间 */
     private var exitTime = 0L
@@ -70,6 +71,8 @@ class MainActivity : BaseActivity(), SwipeBackAbility.Direction {
         initBottomNavigationView()
         //初始化侧滑栏控件
         initNavigationView()
+        //设置悬浮按钮边距(解决虚拟导航栏遮盖按钮问题)
+        fab.margin(0, 0, 0, navigationBarHeight + 200)
         //获取数据库
         LitePal.getDatabase()
         //删除数据库
@@ -233,6 +236,7 @@ class MainActivity : BaseActivity(), SwipeBackAbility.Direction {
         return true
     }
 
+    @Deprecated("Deprecated in Java")
     @Suppress("DEPRECATION")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -242,6 +246,7 @@ class MainActivity : BaseActivity(), SwipeBackAbility.Direction {
         }
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         //返回键退出程序确认
         if (System.currentTimeMillis() - exitTime > 2000) {

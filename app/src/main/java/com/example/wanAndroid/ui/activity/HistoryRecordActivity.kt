@@ -16,12 +16,10 @@ import com.example.wanAndroid.logic.dao.HistoryRecordDB
 import com.example.wanAndroid.ui.base.BaseActivity
 import com.example.wanAndroid.widget.decoration.SpaceItemDecoration
 import com.example.wanAndroid.widget.dialog.Dialog
-import com.example.wanAndroid.widget.ext.cancelFloatBtn
-import com.example.wanAndroid.widget.ext.html2Spanned
-import com.example.wanAndroid.widget.ext.html2String
-import com.example.wanAndroid.widget.ext.initFloatBtn
+import com.example.wanAndroid.widget.ext.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.gyf.immersionbar.ktx.immersionBar
+import com.gyf.immersionbar.ktx.navigationBarHeight
 import com.hjq.bar.TitleBar
 import com.hjq.toast.Toaster
 import org.litepal.LitePal
@@ -97,6 +95,8 @@ class HistoryRecordActivity : BaseActivity(), SwipeBackAbility.OnlyEdge {
         }
         //设置RecycleView的分隔线
         rv.addItemDecoration(SpaceItemDecoration(this))
+        //设置rv边距(解决虚拟导航栏遮盖历史记录问题)
+        rv.margin(0, 0, 0, navigationBarHeight)
     }
 
     override fun onResume() {

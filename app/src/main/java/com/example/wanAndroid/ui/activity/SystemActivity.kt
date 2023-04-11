@@ -9,7 +9,7 @@ import com.example.wanAndroid.ui.base.BaseActivity
 import com.example.wanAndroid.ui.fragment.SystemChildFragment
 import com.example.wanAndroid.widget.ext.bindViewPager2
 import com.example.wanAndroid.widget.ext.init
-import com.example.wanAndroid.widget.toolbar.Toolbar
+import com.google.android.material.appbar.MaterialToolbar
 import com.gyf.immersionbar.ktx.immersionBar
 import net.lucode.hackware.magicindicator.MagicIndicator
 import per.goweii.swipeback.SwipeBackAbility
@@ -21,7 +21,7 @@ import per.goweii.swipeback.SwipeBackAbility
  */
 class SystemActivity : BaseActivity(), SwipeBackAbility.OnlyEdge {
 
-    private val toolbar: Toolbar by lazy { findViewById(R.id.toolbar) }
+    private val toolbar: MaterialToolbar by lazy { findViewById(R.id.toolbar) }
     private val viewPager: ViewPager2 by lazy { findViewById(R.id.view_pager) }
     private val magicIndicator: MagicIndicator by lazy { findViewById(R.id.magic_indicator) }
 

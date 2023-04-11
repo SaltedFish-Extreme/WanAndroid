@@ -18,8 +18,10 @@ import com.example.wanAndroid.ui.adapter.LeaderboardAdapter
 import com.example.wanAndroid.ui.base.BaseActivity
 import com.example.wanAndroid.widget.ext.cancelFloatBtn
 import com.example.wanAndroid.widget.ext.initFloatBtn
+import com.example.wanAndroid.widget.ext.margin
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.gyf.immersionbar.ktx.immersionBar
+import com.gyf.immersionbar.ktx.navigationBarHeight
 import com.hjq.bar.TitleBar
 
 /**
@@ -72,6 +74,10 @@ class LeaderboardActivity : BaseActivity() {
         rv.adapter = adapter
         //刷新数据
         onRefresh()
+        //设置底部个人积分栏边距(解决虚拟导航栏遮盖个人积分栏问题)
+        integralMe.margin(0, 0, 0, navigationBarHeight)
+        //设置悬浮按钮边距(解决虚拟导航栏遮盖按钮问题)
+        fab.margin(0, 0, 0, navigationBarHeight + 200)
     }
 
     /** 页面刷新加载操作，不设置onLoadMore则都会走onRefresh */

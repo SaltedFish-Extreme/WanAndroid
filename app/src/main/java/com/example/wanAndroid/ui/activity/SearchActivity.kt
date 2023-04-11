@@ -17,10 +17,12 @@ import com.example.wanAndroid.logic.net.NetApi
 import com.example.wanAndroid.ui.adapter.SearchHistoryAdapter
 import com.example.wanAndroid.ui.adapter.SearchHotAdapter
 import com.example.wanAndroid.ui.base.BaseActivity
+import com.example.wanAndroid.widget.ext.margin
 import com.example.wanAndroid.widget.view.ClearEditText
 import com.example.wanAndroid.widget.view.PressAlphaTextView
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.gyf.immersionbar.ktx.immersionBar
+import com.gyf.immersionbar.ktx.navigationBarHeight
 
 /**
  * Created by 咸鱼至尊 on 2022/2/16
@@ -84,12 +86,14 @@ class SearchActivity : BaseActivity() {
                 updateKey(searchText.text.toString().trim())
             }
         }
+        //设置rv边距(解决虚拟导航栏遮盖搜索历史问题)
+        rvHistory.margin(0, 0, 0, navigationBarHeight)
     }
 
     /** 初始化搜索热词 */
     @SuppressLint("NotifyDataSetChanged")
     private fun initSearchHot() {
-        if (AppConfig.SearchHot.isNullOrEmpty()) {
+        if (AppConfig.SearchHot.isEmpty()) {
             //没有存储过搜索热词就发起请求
             scopeNetLife {
                 //请求搜索热词数据
