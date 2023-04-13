@@ -43,7 +43,7 @@ class QRCodeActivity : BaseActivity() {
         }
         qrCode.setOnLongClickListener {
             //请求权限保存二维码
-            XXPermissions.with(this).permission(Permission.MANAGE_EXTERNAL_STORAGE).request { _, all ->
+            XXPermissions.with(this).permission(Permission.WRITE_EXTERNAL_STORAGE).request { _, all ->
                 if (all) {
                     PhotoUtils.saveBitmap2Gallery(this, qrCode.drawable.toBitmap())
                     vibration()
