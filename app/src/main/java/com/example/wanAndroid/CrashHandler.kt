@@ -56,10 +56,12 @@ class CrashHandler private constructor(private val application: Application) : T
         if (BuildConfig.DEBUG) {
             CrashActivity.start(application, throwable)
         } else {
-            if (!deadlyCrash) {
+            /*if (!deadlyCrash) {
                 // 如果不是致命的异常就自动重启应用
                 RestartActivity.start(application)
-            }
+            }*/
+            //直接重启应用，致命异常时应做额外操作
+            RestartActivity.start(application)
         }
 
         // 不去触发系统的崩溃处理（com.android.internal.os.RuntimeInit$KillApplicationHandler）

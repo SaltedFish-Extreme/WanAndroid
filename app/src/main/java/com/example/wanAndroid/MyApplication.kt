@@ -18,6 +18,7 @@ import com.example.wanAndroid.widget.refresh.MyClassicsHeader
 import com.hjq.toast.Toaster
 import com.jinrishici.sdk.android.factory.JinrishiciFactory
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
+import com.tencent.mmkv.MMKV
 import org.litepal.LitePal
 import per.goweii.swipeback.SwipeBack
 import per.goweii.swipeback.SwipeBackDirection
@@ -42,6 +43,8 @@ class MyApplication : Application() {
         super.onCreate()
         //延迟初始化全局context对象
         context = applicationContext
+        //初始化数据序列化框架
+        MMKV.initialize(this)
         //本地异常捕捉
         CrashHandler.register(this)
         //应用主题切换
