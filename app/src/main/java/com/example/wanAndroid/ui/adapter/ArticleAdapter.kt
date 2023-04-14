@@ -56,9 +56,7 @@ class ArticleAdapter(private val lifecycleOwner: LifecycleOwner, private val sho
                     //打开文章作者页面
                     context.openActivity<AuthorActivity>(
                         //传递name和userId
-                        "name" to data[position].run { author.ifEmpty { shareUser } },
-                        "userId" to data[position].run { userId }
-                    )
+                        "name" to data[position].run { author.ifEmpty { shareUser } }, "userId" to data[position].run { userId })
                 }
             }
         }
@@ -121,8 +119,8 @@ class ArticleAdapter(private val lifecycleOwner: LifecycleOwner, private val sho
             if (envelopePic.isNotEmpty()) {
                 //加载图片
                 holder.getView<ShapeableImageView>(R.id.item_article_image).run {
-                    Glide.with(context).load(envelopePic).placeholder(R.drawable.bg_project)
-                        .transition(DrawableTransitionOptions.withCrossFade(500)).into(this)
+                    Glide.with(context).load(envelopePic).placeholder(R.drawable.bg_project).transition(DrawableTransitionOptions.withCrossFade(500))
+                        .into(this)
                 }
             }
             //项目内容

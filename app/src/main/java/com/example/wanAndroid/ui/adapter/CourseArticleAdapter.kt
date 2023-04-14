@@ -3,6 +3,7 @@ package com.example.wanAndroid.ui.adapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.example.wanAndroid.R
 import com.example.wanAndroid.logic.model.CourseArticleResponse
+import com.example.wanAndroid.ui.activity.WebActivity
 import com.example.wanAndroid.ui.base.BaseAdapter
 
 /**
@@ -14,6 +15,11 @@ class CourseArticleAdapter : BaseAdapter<CourseArticleResponse>(R.layout.item_co
 
     init {
         setAnimationWithDefault(AnimationType.ScaleIn)
+        setOnItemClickListener { _, _, position ->
+            data[position].run {
+                WebActivity.start(context, id, title, link, collect)
+            }
+        }
     }
 
     override fun convert(holder: BaseViewHolder, item: CourseArticleResponse) {
