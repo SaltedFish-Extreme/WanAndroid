@@ -90,7 +90,7 @@ class ShareActivity : BaseActivity() {
                         //翻页
                         1
                     } else { //上拉加载更多
-                        if (data.data.shareArticles.datas.isNullOrEmpty()) {
+                        if (data.data.shareArticles.datas.isEmpty()) {
                             //没有更多数据，结束动画，显示内容(没有更多数据)
                             showContent(false)
                             return@scope
@@ -111,6 +111,7 @@ class ShareActivity : BaseActivity() {
         super.onDestroy()
     }
 
+    @Deprecated("Deprecated in Java")
     @Suppress("DEPRECATION")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

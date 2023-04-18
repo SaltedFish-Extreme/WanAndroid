@@ -77,16 +77,16 @@ class ShareAdapter(private val lifecycleOwner: LifecycleOwner) : BaseAdapter<Art
                 if (v.isChecked) {
                     //选中收藏文章
                     lifecycleOwner.scopeNetLife {
-                        Post<NoDataResponse>("${NetApi.CollectArticleAPI}/${data[viewHolder.adapterPosition - headerLayoutCount].id}/json").await()
+                        Post<NoDataResponse>("${NetApi.CollectArticleAPI}/${data[viewHolder.bindingAdapterPosition - headerLayoutCount].id}/json").await()
                     }
                 } else {
                     //未选中取消收藏文章
                     lifecycleOwner.scopeNetLife {
-                        Post<NoDataResponse>("${NetApi.UnCollectArticleAPI}/${data[viewHolder.adapterPosition - headerLayoutCount].id}/json").await()
+                        Post<NoDataResponse>("${NetApi.UnCollectArticleAPI}/${data[viewHolder.bindingAdapterPosition - headerLayoutCount].id}/json").await()
                     }
                 }
                 //收藏控件点击后，同步一下数据类，跳转网页同步收藏
-                data[viewHolder.adapterPosition - headerLayoutCount].collect = v.isChecked
+                data[viewHolder.bindingAdapterPosition - headerLayoutCount].collect = v.isChecked
             }
         })
     }

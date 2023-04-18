@@ -17,9 +17,7 @@ import android.text.style.UnderlineSpan
 import android.util.DisplayMetrics
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.core.view.GravityCompat
-import androidx.databinding.DataBindingUtil.setContentView
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.lifecycleScope
 import com.example.wanAndroid.BuildConfig
@@ -77,9 +75,9 @@ class CrashActivity : BaseActivity() {
         }
     }
 
-    private val ivCrashInfo: AppCompatImageView by lazy { findViewById<AppCompatImageView>(R.id.iv_crash_info) }
-    private val ivCrashShare: AppCompatImageView by lazy { findViewById<AppCompatImageView>(R.id.iv_crash_share) }
-    private val ivCrashRestart: AppCompatImageView by lazy { findViewById<AppCompatImageView>(R.id.iv_crash_restart) }
+    private val ivCrashInfo: AppCompatImageView by lazy { findViewById(R.id.iv_crash_info) }
+    private val ivCrashShare: AppCompatImageView by lazy { findViewById(R.id.iv_crash_share) }
+    private val ivCrashRestart: AppCompatImageView by lazy { findViewById(R.id.iv_crash_restart) }
 
     private val titleView: TextView? by lazy { findViewById(R.id.tv_crash_title) }
     private val drawerLayout: DrawerLayout? by lazy { findViewById(R.id.dl_crash_drawer) }
@@ -98,6 +96,7 @@ class CrashActivity : BaseActivity() {
                 R.id.iv_crash_info -> {
                     drawerLayout?.openDrawer(GravityCompat.START)
                 }
+
                 R.id.iv_crash_share -> {
                     // 分享文本
                     val intent = Intent(Intent.ACTION_SEND)
@@ -105,6 +104,7 @@ class CrashActivity : BaseActivity() {
                     intent.putExtra(Intent.EXTRA_TEXT, stackTrace)
                     startActivity(Intent.createChooser(intent, ""))
                 }
+
                 R.id.iv_crash_restart -> {
                     onBackPressed()
                 }
@@ -167,18 +167,23 @@ class CrashActivity : BaseActivity() {
             displayMetrics.densityDpi > 480 -> {
                 targetResource = "xxxhdpi"
             }
+
             displayMetrics.densityDpi > 320 -> {
                 targetResource = "xxhdpi"
             }
+
             displayMetrics.densityDpi > 240 -> {
                 targetResource = "xhdpi"
             }
+
             displayMetrics.densityDpi > 160 -> {
                 targetResource = "hdpi"
             }
+
             displayMetrics.densityDpi > 120 -> {
                 targetResource = "mdpi"
             }
+
             else -> {
                 targetResource = "ldpi"
             }
@@ -187,9 +192,9 @@ class CrashActivity : BaseActivity() {
         builder.append("设备品牌：\t").append(Build.BRAND).append("\n设备型号：\t").append(Build.MODEL).append("\n设备类型：\t")
             .append(if (isTablet()) "平板" else "手机")
 
-        builder.append("\n屏幕宽高：\t").append(screenWidth).append(" x ").append(screenHeight).append("\n屏幕密度：\t").append(displayMetrics.densityDpi)
-            .append("\n密度像素：\t").append(displayMetrics.density).append("\n目标资源：\t").append(targetResource).append("\n最小宽度：\t")
-            .append(smallestWidth.toInt())
+        builder.append("\n屏幕宽高：\t").append(screenWidth).append(" x ").append(screenHeight).append("\n屏幕密度：\t")
+            .append(displayMetrics.densityDpi).append("\n密度像素：\t").append(displayMetrics.density).append("\n目标资源：\t").append(targetResource)
+            .append("\n最小宽度：\t").append(smallestWidth.toInt())
 
         builder.append("\n安卓版本：\t").append(Build.VERSION.RELEASE).append("\nAPI 版本：\t").append(Build.VERSION.SDK_INT).append("\nCPU 架构：\t")
             .append(Build.SUPPORTED_ABIS[0])
@@ -216,9 +221,11 @@ class CrashActivity : BaseActivity() {
                         XXPermissions.isGranted(this, Permission.ACCESS_FINE_LOCATION) -> {
                             builder.append("精确")
                         }
+
                         XXPermissions.isGranted(this, Permission.ACCESS_COARSE_LOCATION) -> {
                             builder.append("粗略")
                         }
+
                         else -> {
                             builder.append("未获得")
                         }

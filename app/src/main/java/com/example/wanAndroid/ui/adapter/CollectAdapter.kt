@@ -47,12 +47,12 @@ class CollectAdapter(private val lifecycleOwner: LifecycleOwner) : BaseAdapter<C
                 if (!v.isChecked) {
                     //收藏页面默认全部选中，点击后直接取消收藏，并移除item
                     lifecycleOwner.scopeNetLife {
-                        Post<NoDataResponse>("${NetApi.UserUnCollectArticleAPI}/${data[viewHolder.adapterPosition].id}/json") {
-                            param("originId", "${data[viewHolder.adapterPosition].originId}")
+                        Post<NoDataResponse>("${NetApi.UserUnCollectArticleAPI}/${data[viewHolder.bindingAdapterPosition].id}/json") {
+                            param("originId", "${data[viewHolder.bindingAdapterPosition].originId}")
                         }.await()
                         //延迟一小会等取消收藏动画结束再删除item，增强一丢丢用户体验~
                         delay(300)
-                        removeAt(viewHolder.adapterPosition)
+                        removeAt(viewHolder.bindingAdapterPosition)
                     }
                 }
             }
@@ -76,8 +76,8 @@ class CollectAdapter(private val lifecycleOwner: LifecycleOwner) : BaseAdapter<C
             if (envelopePic.isNotEmpty()) {
                 //加载图片
                 holder.getView<ShapeableImageView>(R.id.item_article_image).run {
-                    Glide.with(context).load(envelopePic).placeholder(R.drawable.bg_project)
-                        .transition(DrawableTransitionOptions.withCrossFade(500)).into(this)
+                    Glide.with(context).load(envelopePic).placeholder(R.drawable.bg_project).transition(DrawableTransitionOptions.withCrossFade(500))
+                        .into(this)
                 }
             }
             //项目内容

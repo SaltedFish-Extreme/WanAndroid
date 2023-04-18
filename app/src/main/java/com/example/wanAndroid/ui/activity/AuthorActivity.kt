@@ -152,7 +152,7 @@ class AuthorActivity : BaseActivity() {
                             //翻页
                             1
                         } else { //上拉加载更多
-                            if (dataByName.data.datas.isNullOrEmpty()) {
+                            if (dataByName.data.datas.isEmpty()) {
                                 //没有更多数据，结束动画，显示内容(没有更多数据)
                                 showContent(false)
                                 return@scope
@@ -179,7 +179,7 @@ class AuthorActivity : BaseActivity() {
                             //翻页
                             1
                         } else { //上拉加载更多
-                            if (dataByID.data.shareArticles.datas.isNullOrEmpty()) {
+                            if (dataByID.data.shareArticles.datas.isEmpty()) {
                                 //没有更多数据，结束动画，显示内容(没有更多数据)
                                 showContent(false)
                                 return@scope
