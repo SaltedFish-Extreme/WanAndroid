@@ -5,6 +5,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.drake.channel.receiveEvent
+import com.drake.channel.sendEvent
 import com.drake.net.Post
 import com.drake.net.utils.scopeNetLife
 import com.example.wanAndroid.R
@@ -54,6 +55,8 @@ class CollectAdapter(private val lifecycleOwner: LifecycleOwner) : BaseAdapter<C
                         delay(300)
                         removeAt(viewHolder.bindingAdapterPosition)
                     }
+                    //发送消息事件，取消收藏(将文章的id传递过去)
+                    sendEvent(data[viewHolder.bindingAdapterPosition].originId, "tag_collect_cancel")
                 }
             }
         })

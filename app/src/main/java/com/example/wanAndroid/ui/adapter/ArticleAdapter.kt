@@ -1,11 +1,13 @@
 package com.example.wanAndroid.ui.adapter
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.drake.channel.receiveEventLive
 import com.drake.channel.receiveTag
 import com.drake.net.Post
 import com.drake.net.utils.scopeNetLife
@@ -133,6 +135,7 @@ class ArticleAdapter(private val lifecycleOwner: LifecycleOwner, private val sho
     }
 
     /** 生命周期管理器 */
+    @SuppressLint("NotifyDataSetChanged")
     private fun lifecycleObserver(): LifecycleEventObserver {
         return LifecycleEventObserver { _, event ->
             //页面恢复时接收事件(复用adapter导致多个已打开页面重复接收消息)
@@ -145,6 +148,16 @@ class ArticleAdapter(private val lifecycleOwner: LifecycleOwner, private val sho
                     collectView.isChecked = it.toBoolean()
                     //同时将对应的数据类的收藏字段修改
                     data[index].collect = it.toBoolean()
+                }
+                //接收消息事件，取消收藏(接收文章id)
+                lifecycleOwner.receiveEventLive<Int>("tag_collect_cancel") { id ->
+                    //根据文章id找到对应的数据源
+                    data.find { it.id == id }?.let {
+                        //修改收藏状态
+                        it.collect = false
+                        //通知改变数据状态
+                        this@ArticleAdapter.notifyDataSetChanged()
+                    }
                 }
             }
         }
