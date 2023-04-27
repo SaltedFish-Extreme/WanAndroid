@@ -83,15 +83,19 @@ class DrawableTextView @JvmOverloads constructor(context: Context, attrs: Attrib
         var compoundDrawables: Array<Drawable?> = compoundDrawables
         if (compoundDrawables[0] != null || compoundDrawables[1] != null) {
             super.setCompoundDrawables(
-                limitDrawableSize(compoundDrawables[0]), limitDrawableSize(compoundDrawables[1]),
-                limitDrawableSize(compoundDrawables[2]), limitDrawableSize(compoundDrawables[3])
+                limitDrawableSize(compoundDrawables[0]),
+                limitDrawableSize(compoundDrawables[1]),
+                limitDrawableSize(compoundDrawables[2]),
+                limitDrawableSize(compoundDrawables[3])
             )
             return
         }
         compoundDrawables = compoundDrawablesRelative
         super.setCompoundDrawablesRelative(
-            limitDrawableSize(compoundDrawables[0]), limitDrawableSize(compoundDrawables[1]),
-            limitDrawableSize(compoundDrawables[2]), limitDrawableSize(compoundDrawables[3])
+            limitDrawableSize(compoundDrawables[0]),
+            limitDrawableSize(compoundDrawables[1]),
+            limitDrawableSize(compoundDrawables[2]),
+            limitDrawableSize(compoundDrawables[3])
         )
     }
 

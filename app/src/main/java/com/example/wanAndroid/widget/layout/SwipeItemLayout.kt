@@ -209,6 +209,7 @@ class SwipeItemLayout @JvmOverloads constructor(context: Context, attrs: Attribu
                 val pointView = findTopChildUnder(this, x, y)
                 if (pointView != null && pointView === mMainView && mScrollOffset != 0) return true
             }
+
             MotionEvent.ACTION_MOVE, MotionEvent.ACTION_CANCEL -> {}
             MotionEvent.ACTION_UP -> {
                 val x = ev.x.toInt()
@@ -229,6 +230,7 @@ class SwipeItemLayout @JvmOverloads constructor(context: Context, attrs: Attribu
                 val pointView = findTopChildUnder(this, x, y)
                 if (pointView != null && pointView === mMainView && mScrollOffset != 0) return true
             }
+
             MotionEvent.ACTION_MOVE, MotionEvent.ACTION_CANCEL -> {}
             MotionEvent.ACTION_UP -> {
                 val x = ev.x.toInt()
@@ -406,12 +408,14 @@ class SwipeItemLayout @JvmOverloads constructor(context: Context, attrs: Attribu
                     mIsProbeParent = false
                     if (mDealByParent) intercept = false
                 }
+
                 MotionEvent.ACTION_POINTER_DOWN -> {
                     val actionIndex = ev.actionIndex
                     mActivePointerId = ev.getPointerId(actionIndex)
                     mLastMotionX = ev.getX(actionIndex)
                     mLastMotionY = ev.getY(actionIndex)
                 }
+
                 MotionEvent.ACTION_POINTER_UP -> {
                     val actionIndex = ev.actionIndex
                     val pointerId = ev.getPointerId(actionIndex)
@@ -422,6 +426,7 @@ class SwipeItemLayout @JvmOverloads constructor(context: Context, attrs: Attribu
                         mLastMotionY = ev.getY(newIndex)
                     }
                 }
+
                 MotionEvent.ACTION_MOVE -> {
                     val activePointerIndex = ev.findPointerIndex(mActivePointerId)
                     if (activePointerIndex == -1) return false
@@ -475,6 +480,7 @@ class SwipeItemLayout @JvmOverloads constructor(context: Context, attrs: Attribu
                         }
                     }
                 }
+
                 MotionEvent.ACTION_UP -> {
                     if (mCaptureItem != null) {
                         val touchMode = mCaptureItem!!.touchMode
@@ -488,6 +494,7 @@ class SwipeItemLayout @JvmOverloads constructor(context: Context, attrs: Attribu
                     }
                     cancel()
                 }
+
                 MotionEvent.ACTION_CANCEL -> {
                     if (mCaptureItem != null) mCaptureItem!!.revise()
                     cancel()
@@ -509,6 +516,7 @@ class SwipeItemLayout @JvmOverloads constructor(context: Context, attrs: Attribu
                     mLastMotionX = ev.getX(actionIndex)
                     mLastMotionY = ev.getY(actionIndex)
                 }
+
                 MotionEvent.ACTION_POINTER_UP -> {
                     val pointerId = ev.getPointerId(actionIndex)
                     if (pointerId == mActivePointerId) {
@@ -518,6 +526,7 @@ class SwipeItemLayout @JvmOverloads constructor(context: Context, attrs: Attribu
                         mLastMotionY = ev.getY(newIndex)
                     }
                 }
+
                 MotionEvent.ACTION_MOVE -> {
                     val activePointerIndex = ev.findPointerIndex(mActivePointerId)
                     if (activePointerIndex == -1) return
@@ -532,6 +541,7 @@ class SwipeItemLayout @JvmOverloads constructor(context: Context, attrs: Attribu
                         mCaptureItem!!.trackMotionScroll(deltaX)
                     }
                 }
+
                 MotionEvent.ACTION_UP -> {
                     if (mCaptureItem != null) {
                         val touchMode = mCaptureItem!!.touchMode
@@ -544,6 +554,7 @@ class SwipeItemLayout @JvmOverloads constructor(context: Context, attrs: Attribu
                     }
                     cancel()
                 }
+
                 MotionEvent.ACTION_CANCEL -> {
                     if (mCaptureItem != null) mCaptureItem!!.revise()
                     cancel()

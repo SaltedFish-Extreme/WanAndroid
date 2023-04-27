@@ -46,8 +46,7 @@ class ClearEditText @JvmOverloads constructor(context: Context, attrs: Attribute
         clearDrawable.setVisible(visible, false)
         val drawables: Array<Drawable> = compoundDrawablesRelative
         setCompoundDrawablesRelative(
-            drawables[0], drawables[1],
-            if (visible) clearDrawable else null, drawables[3]
+            drawables[0], drawables[1], if (visible) clearDrawable else null, drawables[3]
         )
     }
 

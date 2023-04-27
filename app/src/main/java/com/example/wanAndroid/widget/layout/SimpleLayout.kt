@@ -17,8 +17,7 @@ import kotlin.math.max
  */
 @Suppress("unused")
 open class SimpleLayout @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0, defStyleRes: Int = 0
+    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0, defStyleRes: Int = 0
 ) : ViewGroup(context, attrs, defStyleAttr, defStyleRes) {
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -61,10 +60,8 @@ open class SimpleLayout @JvmOverloads constructor(
             val params: MarginLayoutParams = child.layoutParams as MarginLayoutParams
             val left: Int = params.leftMargin + paddingLeft
             val top: Int = params.topMargin + paddingTop
-            val right: Int =
-                left + child.measuredWidth + paddingRight + params.rightMargin
-            val bottom: Int =
-                top + child.measuredHeight + paddingBottom + params.bottomMargin
+            val right: Int = left + child.measuredWidth + paddingRight + params.rightMargin
+            val bottom: Int = top + child.measuredHeight + paddingBottom + params.bottomMargin
             // 将子 View 放置到左上角的位置
             child.layout(left, top, right, bottom)
         }

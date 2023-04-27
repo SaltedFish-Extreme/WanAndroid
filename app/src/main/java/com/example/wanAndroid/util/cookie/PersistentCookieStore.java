@@ -241,8 +241,7 @@ public class PersistentCookieStore implements CookieStore {
     }
 
     protected String encodeCookie(SerializableCookie cookie) {
-        if (cookie == null)
-            return null;
+        if (cookie == null) return null;
         ByteArrayOutputStream os = new ByteArrayOutputStream();
         try {
             ObjectOutputStream outputStream = new ObjectOutputStream(os);

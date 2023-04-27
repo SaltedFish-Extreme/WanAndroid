@@ -16,8 +16,8 @@ import androidx.viewpager.widget.ViewPager
  * desc : 支持嵌套滚动的 ViewPager
  */
 @Suppress("unused")
-class NestedViewPager @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) :
-    ViewPager(context, attrs), NestedScrollingParent, NestedScrollingChild {
+class NestedViewPager @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) : ViewPager(context, attrs), NestedScrollingParent,
+    NestedScrollingChild {
 
     private val parentHelper: NestedScrollingParentHelper = NestedScrollingParentHelper(this)
     private val childHelper: NestedScrollingChildHelper = NestedScrollingChildHelper(this)

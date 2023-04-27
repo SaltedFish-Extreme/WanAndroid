@@ -51,6 +51,7 @@ open class NestedScrollWebView @JvmOverloads constructor(context: Context, attrs
                 startNestedScroll(ViewCompat.SCROLL_AXIS_VERTICAL)
                 result = super.onTouchEvent(event)
             }
+
             MotionEvent.ACTION_MOVE -> {
                 var deltaY: Int = lastMotionY - y
                 if (dispatchNestedPreScroll(0, deltaY, scrollConsumed, scrollOffset)) {
@@ -84,6 +85,7 @@ open class NestedScrollWebView @JvmOverloads constructor(context: Context, attrs
                     }
                 }
             }
+
             MotionEvent.ACTION_POINTER_DOWN, MotionEvent.ACTION_POINTER_UP, MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
                 stopNestedScroll()
                 result = super.onTouchEvent(event)

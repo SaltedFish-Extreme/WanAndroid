@@ -62,8 +62,7 @@ class NestedContentScrollBehavior(context: Context?, attrs: AttributeSet?) : Coo
     }
 
     override fun onStartNestedScroll(
-        coordinatorLayout: CoordinatorLayout, child: View, directTargetChild: View,
-        target: View, axes: Int, type: Int
+        coordinatorLayout: CoordinatorLayout, child: View, directTargetChild: View, target: View, axes: Int, type: Int
     ): Boolean {
         // 如果是垂直滑动的话就声明需要处理
         // 只有这里返回 true 才会收到下面一系列滑动事件的回调
@@ -87,8 +86,7 @@ class NestedContentScrollBehavior(context: Context?, attrs: AttributeSet?) : Coo
 
 
     override fun onNestedPreScroll(
-        coordinatorLayout: CoordinatorLayout, child: View, target: View, dx: Int, dy: Int,
-        consumed: IntArray, type: Int
+        coordinatorLayout: CoordinatorLayout, child: View, target: View, dx: Int, dy: Int, consumed: IntArray, type: Int
     ) {
         // 此时 RecyclerView 还没开始滑动
         super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed, type)
@@ -110,13 +108,19 @@ class NestedContentScrollBehavior(context: Context?, attrs: AttributeSet?) : Coo
     }
 
     override fun onNestedScroll(
-        coordinatorLayout: CoordinatorLayout, child: View, target: View, dxConsumed: Int,
-        dyConsumed: Int, dxUnconsumed: Int, dyUnconsumed: Int, type: Int, consumed: IntArray
+        coordinatorLayout: CoordinatorLayout,
+        child: View,
+        target: View,
+        dxConsumed: Int,
+        dyConsumed: Int,
+        dxUnconsumed: Int,
+        dyUnconsumed: Int,
+        type: Int,
+        consumed: IntArray
     ) {
         // 此时 RV 已经完成了滑动，dyUnconsumed 表示剩余未消耗的滑动距离
         super.onNestedScroll(
-            coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed,
-            type, consumed
+            coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed, type, consumed
         )
         stopAutoScroll()
         if (dyUnconsumed < 0) { // 只处理手指向下滑动的情况

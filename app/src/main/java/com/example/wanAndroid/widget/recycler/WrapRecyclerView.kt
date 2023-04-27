@@ -113,9 +113,7 @@ class WrapRecyclerView @JvmOverloads constructor(
         layoutManager.spanSizeLookup = object : SpanSizeLookup() {
 
             override fun getSpanSize(position: Int): Int {
-                return if (((position < wrapAdapter.getHeaderViewsCount()
-                            || position >= wrapAdapter.getHeaderViewsCount() + (if (realAdapter == null) 0 else realAdapter!!.itemCount)))
-                ) layoutManager.spanCount else 1
+                return if (((position < wrapAdapter.getHeaderViewsCount() || position >= wrapAdapter.getHeaderViewsCount() + (if (realAdapter == null) 0 else realAdapter!!.itemCount)))) layoutManager.spanCount else 1
             }
         }
     }

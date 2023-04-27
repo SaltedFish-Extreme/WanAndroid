@@ -11,6 +11,7 @@ import android.net.NetworkCapabilities
  *
  * @return 是否联网
  */
+@Suppress("unused")
 fun Context.isNetworkAvailable(): Boolean {
     val connectivityManager = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     val nw = connectivityManager.activeNetwork ?: return false

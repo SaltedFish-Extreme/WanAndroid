@@ -44,6 +44,7 @@ class ShareAdapter(private val lifecycleOwner: LifecycleOwner) : BaseAdapter<Art
                     //跳转后将位置传递
                     index = position
                 }
+
                 R.id.share_delete -> {
                     //删除对应分享文章
                     Dialog.getConfirmDialog(context, context.getString(R.string.delete_share_confirm)) { _, _ ->

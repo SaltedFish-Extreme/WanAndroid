@@ -124,6 +124,7 @@ class MyClassicsHeader(context: Context) : SimpleComponent(context, null, 0), Re
                     textView.text = REFRESH_HEADER_LOADING
                 }
             }
+
             else -> {}
         }
     }

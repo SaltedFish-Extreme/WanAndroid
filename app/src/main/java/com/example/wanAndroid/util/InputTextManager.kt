@@ -204,8 +204,7 @@ class InputTextManager private constructor(view: View, alpha: Boolean) : TextWat
     }
 
     private class TextInputLifecycle private constructor(
-        private var activity: Activity?,
-        private var textHelper: InputTextManager?
+        private var activity: Activity?, private var textHelper: InputTextManager?
     ) : ActivityLifecycleCallbacks {
 
         companion object {

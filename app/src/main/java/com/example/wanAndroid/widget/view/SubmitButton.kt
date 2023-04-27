@@ -5,7 +5,13 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.ValueAnimator
 import android.content.Context
 import android.content.res.TypedArray
-import android.graphics.*
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.Path
+import android.graphics.PathMeasure
+import android.graphics.PorterDuff
+import android.graphics.RectF
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.animation.AccelerateInterpolator
@@ -160,6 +166,7 @@ class SubmitButton @JvmOverloads constructor(
             STATE_NONE -> {
                 super.onDraw(canvas)
             }
+
             STATE_SUBMIT, STATE_LOADING -> {
                 // 清除画布之前绘制的背景
                 canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR)
@@ -167,6 +174,7 @@ class SubmitButton @JvmOverloads constructor(
                 drawButton(canvas)
                 drawLoading(canvas)
             }
+
             STATE_RESULT -> {
                 // 清除画布之前绘制的背景
                 canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR)

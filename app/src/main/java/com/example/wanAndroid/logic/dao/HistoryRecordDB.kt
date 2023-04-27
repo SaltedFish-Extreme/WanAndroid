@@ -4,7 +4,7 @@ import com.drake.brv.annotaion.ItemOrientation
 import com.drake.brv.item.ItemSwipe
 import org.litepal.annotation.Column
 import org.litepal.crud.LitePalSupport
-import java.util.*
+import java.util.Date
 
 /**
  * Created by 咸鱼至尊 on 2022/2/18

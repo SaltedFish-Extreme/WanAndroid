@@ -16,12 +16,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 class FloatingActionButtonBehavior(context: Context?, attrs: AttributeSet?) : FloatingActionButton.Behavior(context, attrs) {
 
     override fun onStartNestedScroll(
-        coordinatorLayout: CoordinatorLayout,
-        child: FloatingActionButton,
-        directTargetChild: View,
-        target: View,
-        axes: Int,
-        type: Int
+        coordinatorLayout: CoordinatorLayout, child: FloatingActionButton, directTargetChild: View, target: View, axes: Int, type: Int
     ): Boolean {
         return axes == ViewCompat.SCROLL_AXIS_VERTICAL || super.onStartNestedScroll(coordinatorLayout, child, directTargetChild, target, axes, type)
     }

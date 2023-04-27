@@ -82,6 +82,7 @@ class MyClassicsFooter(context: Context) : SimpleComponent(context, null, 0), Re
                 imageView.setImageDrawable(null)
                 textView.text = LOAD_FOOTER_REFRESHING
             }
+
             else -> {}
         }
     }

@@ -19,22 +19,13 @@ class BottomNavigationBehavior(context: Context, attrs: AttributeSet?) : Coordin
 
     //垂直滑动
     override fun onStartNestedScroll(
-        coordinatorLayout: CoordinatorLayout,
-        child: View,
-        directTargetChild: View,
-        target: View,
-        axes: Int
+        coordinatorLayout: CoordinatorLayout, child: View, directTargetChild: View, target: View, axes: Int
     ): Boolean {
         return axes == ViewCompat.SCROLL_AXIS_VERTICAL
     }
 
     override fun onNestedPreScroll(
-        coordinatorLayout: CoordinatorLayout,
-        child: View,
-        target: View,
-        dx: Int,
-        dy: Int,
-        consumed: IntArray
+        coordinatorLayout: CoordinatorLayout, child: View, target: View, dx: Int, dy: Int, consumed: IntArray
     ) {
         if (dy > 0) {
             //上滑隐藏

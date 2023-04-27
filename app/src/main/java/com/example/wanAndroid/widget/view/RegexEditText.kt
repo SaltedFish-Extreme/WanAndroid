@@ -21,8 +21,7 @@ import java.util.regex.Pattern
  */
 @Suppress("MemberVisibilityCanBePrivate", "unused")
 open class RegexEditText @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null,
-    defStyleAttr: Int = android.R.attr.editTextStyle
+    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = android.R.attr.editTextStyle
 ) : AppCompatEditText(context, attrs, defStyleAttr), InputFilter {
 
     companion object {
@@ -138,8 +137,7 @@ open class RegexEditText @JvmOverloads constructor(
      * @return 返回字符串将会加入到内容中
      */
     override fun filter(
-        source: CharSequence?, start: Int, end: Int,
-        dest: Spanned?, destStart: Int, destEnd: Int
+        source: CharSequence?, start: Int, end: Int, dest: Spanned?, destStart: Int, destEnd: Int
     ): CharSequence? {
 
         if (pattern == null) {
@@ -149,8 +147,7 @@ open class RegexEditText @JvmOverloads constructor(
         // 拼接出最终的字符串
         val begin: String = dest.toString().substring(0, destStart)
         val over: String = dest.toString().substring(
-            destStart + (destEnd - destStart),
-            destStart + (dest.toString().length - begin.length)
+            destStart + (destEnd - destStart), destStart + (dest.toString().length - begin.length)
         )
         val result: String = begin + source + over
 

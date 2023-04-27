@@ -109,16 +109,14 @@ class SettingBar @JvmOverloads constructor(context: Context, attrs: AttributeSet
         if (array.hasValue(R.styleable.SettingBar_bar_leftDrawableSize)) {
             setLeftDrawableSize(
                 array.getDimensionPixelSize(
-                    R.styleable.SettingBar_bar_leftDrawableSize,
-                    0
+                    R.styleable.SettingBar_bar_leftDrawableSize, 0
                 )
             )
         }
         if (array.hasValue(R.styleable.SettingBar_bar_rightDrawableSize)) {
             setRightDrawableSize(
                 array.getDimensionPixelSize(
-                    R.styleable.SettingBar_bar_rightDrawableSize,
-                    0
+                    R.styleable.SettingBar_bar_rightDrawableSize, 0
                 )
             )
         }
@@ -127,16 +125,14 @@ class SettingBar @JvmOverloads constructor(context: Context, attrs: AttributeSet
         if (array.hasValue(R.styleable.SettingBar_bar_leftDrawableTint)) {
             setLeftDrawableTint(
                 array.getColor(
-                    R.styleable.SettingBar_bar_leftDrawableTint,
-                    NO_COLOR
+                    R.styleable.SettingBar_bar_leftDrawableTint, NO_COLOR
                 )
             )
         }
         if (array.hasValue(R.styleable.SettingBar_bar_rightDrawableTint)) {
             setRightDrawableTint(
                 array.getColor(
-                    R.styleable.SettingBar_bar_rightDrawableTint,
-                    NO_COLOR
+                    R.styleable.SettingBar_bar_rightDrawableTint, NO_COLOR
                 )
             )
         }
@@ -144,15 +140,15 @@ class SettingBar @JvmOverloads constructor(context: Context, attrs: AttributeSet
         // 图标和文字之间的间距
         setLeftDrawablePadding(
             if (array.hasValue(R.styleable.SettingBar_bar_leftDrawablePadding)) array.getDimensionPixelSize(
-                R.styleable.SettingBar_bar_leftDrawablePadding,
-                0
+                R.styleable.SettingBar_bar_leftDrawablePadding, 0
             ) else resources.getDimension(R.dimen.dp_10).toInt()
         )
         setRightDrawablePadding(
-            if (array.hasValue(R.styleable.SettingBar_bar_rightDrawablePadding))
-                array.getDimensionPixelSize(R.styleable.SettingBar_bar_rightDrawablePadding, 0)
-            else
-                resources.getDimension(R.dimen.dp_10).toInt()
+            if (array.hasValue(R.styleable.SettingBar_bar_rightDrawablePadding)) array.getDimensionPixelSize(
+                R.styleable.SettingBar_bar_rightDrawablePadding,
+                0
+            )
+            else resources.getDimension(R.dimen.dp_10).toInt()
         )
 
         // 图标设置
@@ -166,14 +162,12 @@ class SettingBar @JvmOverloads constructor(context: Context, attrs: AttributeSet
         // 文字颜色设置
         setLeftTextColor(
             array.getColor(
-                R.styleable.SettingBar_bar_leftTextColor,
-                ContextCompat.getColor(getContext(), R.color.black)
+                R.styleable.SettingBar_bar_leftTextColor, ContextCompat.getColor(getContext(), R.color.black)
             )
         )
         setRightTextColor(
             array.getColor(
-                R.styleable.SettingBar_bar_rightTextColor,
-                ContextCompat.getColor(getContext(), R.color.black)
+                R.styleable.SettingBar_bar_rightTextColor, ContextCompat.getColor(getContext(), R.color.black)
             )
         )
 
@@ -207,20 +201,16 @@ class SettingBar @JvmOverloads constructor(context: Context, attrs: AttributeSet
         if (background == null) {
             val drawable = StateListDrawable()
             drawable.addState(
-                intArrayOf(android.R.attr.state_pressed),
-                ColorDrawable(ContextCompat.getColor(getContext(), R.color.black))
+                intArrayOf(android.R.attr.state_pressed), ColorDrawable(ContextCompat.getColor(getContext(), R.color.black))
             )
             drawable.addState(
-                intArrayOf(android.R.attr.state_selected),
-                ColorDrawable(ContextCompat.getColor(getContext(), R.color.black))
+                intArrayOf(android.R.attr.state_selected), ColorDrawable(ContextCompat.getColor(getContext(), R.color.black))
             )
             drawable.addState(
-                intArrayOf(android.R.attr.state_focused),
-                ColorDrawable(ContextCompat.getColor(getContext(), R.color.black))
+                intArrayOf(android.R.attr.state_focused), ColorDrawable(ContextCompat.getColor(getContext(), R.color.black))
             )
             drawable.addState(
-                intArrayOf(),
-                ColorDrawable(ContextCompat.getColor(getContext(), R.color.white))
+                intArrayOf(), ColorDrawable(ContextCompat.getColor(getContext(), R.color.white))
             )
             background = drawable
 

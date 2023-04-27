@@ -113,8 +113,7 @@ class MainActivity : BaseActivity(), SwipeBackAbility.Direction {
         //为了不在切换选项卡时重建fragment，这里不使用bottomNavigationView.setupWithNavController方法
         /*方法一：在fragment管理器里通过id找到NavHostFragment
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        bottomNavigationView.setupWithNavController(navHostFragment.navController)*/
-        /*方法二：把xml中FragmentContainerView改成fragment
+        bottomNavigationView.setupWithNavController(navHostFragment.navController)*//*方法二：把xml中FragmentContainerView改成fragment
         val navController = findNavController(R.id.nav_host_fragment)
         bottomNavigationView.setupWithNavController(navController)*/
         //endregion
@@ -168,6 +167,7 @@ class MainActivity : BaseActivity(), SwipeBackAbility.Direction {
                         openActivity<IntegralActivity>()
                     }
                 }
+
                 R.id.nav_collect -> {
                     if (AppConfig.UserName.isEmpty()) {
                         Toaster.show(getString(R.string.please_login))
@@ -176,6 +176,7 @@ class MainActivity : BaseActivity(), SwipeBackAbility.Direction {
                         openActivity<CollectActivity>()
                     }
                 }
+
                 R.id.nav_share -> {
                     if (AppConfig.UserName.isEmpty()) {
                         Toaster.show(getString(R.string.please_login))
@@ -184,6 +185,7 @@ class MainActivity : BaseActivity(), SwipeBackAbility.Direction {
                         openActivity<ShareActivity>()
                     }
                 }
+
                 R.id.nav_record -> openActivity<HistoryRecordActivity>()
                 R.id.nav_setting -> openActivity<SettingActivity>()
                 R.id.nav_exit -> {
@@ -247,6 +249,7 @@ class MainActivity : BaseActivity(), SwipeBackAbility.Direction {
     }
 
     @Deprecated("Deprecated in Java")
+    @Suppress("DEPRECATION")
     override fun onBackPressed() {
         //返回键退出程序确认
         if (System.currentTimeMillis() - exitTime > 2000) {

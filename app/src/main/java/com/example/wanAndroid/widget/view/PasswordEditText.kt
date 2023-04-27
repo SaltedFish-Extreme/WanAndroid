@@ -95,8 +95,7 @@ class PasswordEditText @JvmOverloads constructor(context: Context, attrs: Attrib
             touchDrawable = x > width - currentDrawable.intrinsicWidth - paddingEnd && x < width - paddingEnd
         } else if (layoutDirection == LAYOUT_DIRECTION_RTL) {
             // 从右往左
-            touchDrawable = x > paddingStart &&
-                    x < paddingStart + currentDrawable.intrinsicWidth
+            touchDrawable = x > paddingStart && x < paddingStart + currentDrawable.intrinsicWidth
         }
         if (currentDrawable.isVisible && touchDrawable) {
             if (event.action == MotionEvent.ACTION_UP) {

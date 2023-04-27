@@ -1,12 +1,24 @@
 package com.example.wanAndroid.util
 
-import android.animation.*
+import android.animation.Animator
+import android.animation.ObjectAnimator
+import android.animation.TimeInterpolator
+import android.animation.TypeEvaluator
+import android.animation.ValueAnimator
 import android.text.TextUtils
 import android.view.View
-import android.view.animation.*
+import android.view.animation.AccelerateInterpolator
+import android.view.animation.Animation
+import android.view.animation.DecelerateInterpolator
+import android.view.animation.Interpolator
+import android.view.animation.OvershootInterpolator
+import android.view.animation.RotateAnimation
+import android.view.animation.ScaleAnimation
 import android.widget.TextView
 import java.math.BigDecimal
-import java.util.*
+import java.math.RoundingMode
+import java.util.Locale
+import java.util.Random
 
 /**
  * 动画帮助类
@@ -161,7 +173,7 @@ object AnimatorUtil {
         animator.addUpdateListener { animation: ValueAnimator ->
             val value = animation.animatedValue as BigDecimal
             if (target != null) {
-                target.text = String.format(value.setScale(scaleCount, BigDecimal.ROUND_DOWN).toString())
+                target.text = String.format(value.setScale(scaleCount, RoundingMode.DOWN).toString())
             }
         }
         animator.duration = duration
@@ -276,12 +288,15 @@ object AnimatorUtil {
                             in '0'..'9' -> {
                                 baseBuilder.append("0123456789")
                             }
+
                             in 'a'..'z' -> {
                                 baseBuilder.append("abcdefghijklmnopqrstuvwxyz")
                             }
+
                             in 'A'..'Z' -> {
                                 baseBuilder.append("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
                             }
+
                             else -> {
                                 baseBuilder.append(c)
                             }

@@ -22,8 +22,7 @@ import com.example.wanAndroid.R
  */
 @Suppress("MemberVisibilityCanBePrivate", "unused")
 class SwitchButton @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0, defStyleRes: Int = 0
+    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0, defStyleRes: Int = 0
 ) : View(context, attrs, defStyleAttr, defStyleRes) {
 
     companion object {
@@ -113,15 +112,16 @@ class SwitchButton @JvmOverloads constructor(
                     (resources.getDimension(R.dimen.dp_56) + paddingLeft + paddingRight).toInt(), MeasureSpec.EXACTLY
                 )
             }
+
             MeasureSpec.EXACTLY -> {}
         }
         when (MeasureSpec.getMode(finalHeightMeasureSpec)) {
             MeasureSpec.AT_MOST, MeasureSpec.UNSPECIFIED -> {
                 finalHeightMeasureSpec = MeasureSpec.makeMeasureSpec(
-                    ((MeasureSpec.getSize(finalWidthMeasureSpec) * aspectRatio).toInt() + paddingTop + paddingBottom),
-                    MeasureSpec.EXACTLY
+                    ((MeasureSpec.getSize(finalWidthMeasureSpec) * aspectRatio).toInt() + paddingTop + paddingBottom), MeasureSpec.EXACTLY
                 )
             }
+
             MeasureSpec.EXACTLY -> {}
         }
         setMeasuredDimension(finalWidthMeasureSpec, finalHeightMeasureSpec)
@@ -194,8 +194,7 @@ class SwitchButton @JvmOverloads constructor(
             val green: Int = shadowColor shr 8 and 0xFF
             val blue: Int = shadowColor and 0xFF
             shadowGradient = RadialGradient(
-                bCenterX, bCenterY, radius, Color.argb(200, red, green, blue),
-                Color.argb(25, red, green, blue), Shader.TileMode.CLAMP
+                bCenterX, bCenterY, radius, Color.argb(200, red, green, blue), Color.argb(25, red, green, blue), Shader.TileMode.CLAMP
             )
         }
     }
@@ -223,6 +222,7 @@ class SwitchButton @JvmOverloads constructor(
                     result = onLeftX - (onLeftX - on2LeftX) * percent
                 }
             }
+
             2 -> {
                 if (checkedState == STATE_SWITCH_ON) {
                     // off2 -> on
@@ -232,10 +232,12 @@ class SwitchButton @JvmOverloads constructor(
                     result = on2LeftX - (on2LeftX - offLeftX) * percent
                 }
             }
+
             3 -> {
                 // off -> on
                 result = onLeftX - (onLeftX - offLeftX) * percent
             }
+
             -1 -> {
                 if (checkedState == STATE_SWITCH_ON2) {
                     // on -> on2
@@ -245,6 +247,7 @@ class SwitchButton @JvmOverloads constructor(
                     result = offLeftX
                 }
             }
+
             -2 -> {
                 if (checkedState == STATE_SWITCH_OFF) {
                     // on2 -> off
@@ -254,10 +257,12 @@ class SwitchButton @JvmOverloads constructor(
                     result = off2LeftX + (onLeftX - off2LeftX) * percent
                 }
             }
+
             -3 -> {
                 // on -> off
                 result = offLeftX + (onLeftX - offLeftX) * percent
             }
+
             else -> {
                 if (checkedState == STATE_SWITCH_OFF) {
                     //  off -> off
@@ -300,8 +305,7 @@ class SwitchButton @JvmOverloads constructor(
         // To prepare center bar path
         canvas.save()
         canvas.translate(calcBTranslate(dbAnim), shadowReservedHeight)
-        val isState2: Boolean =
-            (checkedState == STATE_SWITCH_ON2 || checkedState == STATE_SWITCH_OFF2)
+        val isState2: Boolean = (checkedState == STATE_SWITCH_ON2 || checkedState == STATE_SWITCH_OFF2)
         calcBPath(if (isState2) 1 - dbAnim else dbAnim)
         // Use center bar path to draw shadow
         if (shadow) {
@@ -340,12 +344,14 @@ class SwitchButton @JvmOverloads constructor(
                             setChecked(checked = true, callback = false)
                             listener?.onCheckedChanged(this, true)
                         }
+
                         STATE_SWITCH_ON -> {
                             setChecked(checked = false, callback = false)
                             listener?.onCheckedChanged(this, false)
                         }
                     }
                 }
+
                 MotionEvent.ACTION_DOWN -> {}
             }
         }
@@ -407,9 +413,7 @@ class SwitchButton @JvmOverloads constructor(
         if (newState == checkedState) {
             return
         }
-        if (((newState == STATE_SWITCH_ON && (checkedState == STATE_SWITCH_OFF || checkedState == STATE_SWITCH_OFF2))
-                    || (newState == STATE_SWITCH_OFF && (checkedState == STATE_SWITCH_ON || checkedState == STATE_SWITCH_ON2)))
-        ) {
+        if (((newState == STATE_SWITCH_ON && (checkedState == STATE_SWITCH_OFF || checkedState == STATE_SWITCH_OFF2)) || (newState == STATE_SWITCH_OFF && (checkedState == STATE_SWITCH_ON || checkedState == STATE_SWITCH_ON2)))) {
             anim1 = 1f
         }
         anim2 = 1f
@@ -467,16 +471,15 @@ class SwitchButton @JvmOverloads constructor(
         companion object {
 
             @JvmField
-            val CREATOR: Parcelable.Creator<SavedState?> =
-                object : Parcelable.Creator<SavedState?> {
-                    override fun createFromParcel(`in`: Parcel): SavedState {
-                        return SavedState(`in`)
-                    }
-
-                    override fun newArray(size: Int): Array<SavedState?> {
-                        return arrayOfNulls(size)
-                    }
+            val CREATOR: Parcelable.Creator<SavedState?> = object : Parcelable.Creator<SavedState?> {
+                override fun createFromParcel(`in`: Parcel): SavedState {
+                    return SavedState(`in`)
                 }
+
+                override fun newArray(size: Int): Array<SavedState?> {
+                    return arrayOfNulls(size)
+                }
+            }
         }
     }
 }

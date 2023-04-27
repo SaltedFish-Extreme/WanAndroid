@@ -18,10 +18,8 @@ class LeaderboardAdapter(dataList: MutableList<CoinInfoResponse>) : BaseAdapter<
     }
 
     override fun convert(holder: BaseViewHolder, item: CoinInfoResponse) {
-        holder.setText(R.id.item_integral_rank, item.rank)
-            .setText(R.id.item_integral_lv, context.getString(R.string.integral_lv, item.level))
-            .setTextColor(R.id.item_integral_lv, randomColor())
-            .setText(R.id.item_integral_name, item.username)
+        holder.setText(R.id.item_integral_rank, item.rank).setText(R.id.item_integral_lv, context.getString(R.string.integral_lv, item.level))
+            .setTextColor(R.id.item_integral_lv, randomColor()).setText(R.id.item_integral_name, item.username)
             .setText(R.id.item_integral_count, item.coinCount.toString())
     }
 }

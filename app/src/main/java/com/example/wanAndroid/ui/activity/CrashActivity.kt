@@ -85,6 +85,7 @@ class CrashActivity : BaseActivity() {
     private val messageView: TextView? by lazy { findViewById(R.id.tv_crash_message) }
     private var stackTrace: String? = null
 
+    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crash)
@@ -284,7 +285,7 @@ class CrashActivity : BaseActivity() {
         return ((resources.configuration.screenLayout and Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE)
     }
 
-    @Suppress("UNCHECKED_CAST")
+    @Suppress("UNCHECKED_CAST", "DEPRECATION", "MemberVisibilityCanBePrivate")
     fun <S : Serializable?> getSerializable(name: String): S? {
         val bundle: Bundle = intent.extras ?: return null
         return (bundle.getSerializable(name)) as S?

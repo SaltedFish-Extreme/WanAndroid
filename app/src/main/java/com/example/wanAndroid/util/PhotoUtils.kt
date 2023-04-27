@@ -50,8 +50,7 @@ object PhotoUtils {
             }
         }
         val insert = context.contentResolver.insert(
-            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-            contentValues
+            MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues
         ) ?: return false //为空的话 直接失败返回了
         //这个打开了输出流  直接保存图片就好了
         context.contentResolver.openOutputStream(insert).use {
@@ -91,8 +90,7 @@ object PhotoUtils {
         }
         //返回出一个URI
         val insert = context.contentResolver.insert(
-            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-            contentValues
+            MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues
         ) ?: return false
         //这个打开了输出流  直接保存图片就好了
         context.contentResolver.openOutputStream(insert).use { os ->

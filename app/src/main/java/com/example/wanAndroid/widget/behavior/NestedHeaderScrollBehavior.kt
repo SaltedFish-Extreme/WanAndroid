@@ -12,8 +12,7 @@ import com.example.wanAndroid.R
  * desc: CoordinatorLayout嵌套RecyclerView联动布局行为(头布局)
  */
 @Suppress("unused")
-class NestedHeaderScrollBehavior constructor(context: Context?, attrs: AttributeSet?) :
-    CoordinatorLayout.Behavior<View>(context, attrs) {
+class NestedHeaderScrollBehavior constructor(context: Context?, attrs: AttributeSet?) : CoordinatorLayout.Behavior<View>(context, attrs) {
     override fun layoutDependsOn(parent: CoordinatorLayout, child: View, dependency: View): Boolean {
         // child: 当前 Behavior 所关联的 View，此处是 HeaderView
         // dependency: 待判断是否需要监听的其他子 View

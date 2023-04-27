@@ -16,7 +16,11 @@ import com.example.wanAndroid.logic.dao.HistoryRecordDB
 import com.example.wanAndroid.ui.base.BaseActivity
 import com.example.wanAndroid.widget.decoration.SpaceItemDecoration
 import com.example.wanAndroid.widget.dialog.Dialog
-import com.example.wanAndroid.widget.ext.*
+import com.example.wanAndroid.widget.ext.cancelFloatBtn
+import com.example.wanAndroid.widget.ext.html2Spanned
+import com.example.wanAndroid.widget.ext.html2String
+import com.example.wanAndroid.widget.ext.initFloatBtn
+import com.example.wanAndroid.widget.ext.margin
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.gyf.immersionbar.ktx.immersionBar
 import com.gyf.immersionbar.ktx.navigationBarHeight

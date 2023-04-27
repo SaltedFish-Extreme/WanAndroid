@@ -21,8 +21,5 @@ data class ArticleResponse(
     val title: String,
     val type: Int,
 ) {
-    data class Tag(
-        val name: String,
-        val url: String
-    )
+    data class Tag(val name: String, val url: String)
 }

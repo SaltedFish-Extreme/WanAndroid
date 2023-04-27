@@ -28,8 +28,8 @@ import com.example.wanAndroid.logic.dao.HistoryRecordDB
 import com.example.wanAndroid.logic.model.CollectResponse
 import com.example.wanAndroid.logic.model.NoDataResponse
 import com.example.wanAndroid.logic.net.NetApi
-import com.example.wanAndroid.ui.base.BaseWebClient
 import com.example.wanAndroid.ui.base.BaseActivity
+import com.example.wanAndroid.ui.base.BaseWebClient
 import com.example.wanAndroid.widget.ext.getAgentWeb
 import com.example.wanAndroid.widget.ext.html2Spanned
 import com.example.wanAndroid.widget.ext.html2String
@@ -113,6 +113,7 @@ class WebActivity : BaseActivity(false), SwipeBackAbility.OnlyEdge {
         }
     }
 
+    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web)
@@ -257,6 +258,7 @@ class WebActivity : BaseActivity(false), SwipeBackAbility.OnlyEdge {
                     }
                 }
             }
+
             R.id.web_share -> {
                 //分享
                 val intent = Intent(Intent.ACTION_SEND)
@@ -265,10 +267,12 @@ class WebActivity : BaseActivity(false), SwipeBackAbility.OnlyEdge {
                 intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.web_share_url, getString(R.string.app_name), shareTitle, shareUrl))
                 startActivity(Intent.createChooser(intent, getString(R.string.web_share)))
             }
+
             R.id.web_refresh -> {
                 //刷新网页
                 mAgentWeb.urlLoader?.reload()
             }
+
             R.id.web_browser -> {
                 //用浏览器打开
                 startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(shareUrl)))
@@ -278,6 +282,7 @@ class WebActivity : BaseActivity(false), SwipeBackAbility.OnlyEdge {
     }
 
     @Deprecated("Deprecated in Java")
+    @Suppress("DEPRECATION")
     override fun onBackPressed() {
         mAgentWeb.run {
             if (!back()) {

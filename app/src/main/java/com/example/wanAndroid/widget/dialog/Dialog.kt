@@ -33,8 +33,7 @@ object Dialog {
     /** 获取一个信息对话框,注意需要自己手动调用show方法 */
     @JvmOverloads
     fun getMessageDialog(
-        context: Context, message: String,
-        onClickListener: DialogInterface.OnClickListener? = null
+        context: Context, message: String, onClickListener: DialogInterface.OnClickListener? = null
     ): AlertDialog.Builder {
         val builder = getDialog(context)
         builder.setMessage(message)
@@ -44,8 +43,7 @@ object Dialog {
 
     /** 获取一个确认对话框 */
     fun getConfirmDialog(
-        context: Context, message: String,
-        onClickListener: DialogInterface.OnClickListener
+        context: Context, message: String, onClickListener: DialogInterface.OnClickListener
     ): AlertDialog.Builder {
         val builder = getDialog(context)
         builder.setMessage(message)
@@ -55,10 +53,7 @@ object Dialog {
     }
 
     fun getConfirmDialog(
-        context: Context,
-        message: String,
-        onOKClickListener: DialogInterface.OnClickListener,
-        onCancelClickListener: DialogInterface.OnClickListener
+        context: Context, message: String, onOKClickListener: DialogInterface.OnClickListener, onCancelClickListener: DialogInterface.OnClickListener
     ): AlertDialog.Builder {
         val builder = getDialog(context)
         builder.setMessage(message)
@@ -69,8 +64,7 @@ object Dialog {
 
     /** 获取一个选择对话框 */
     fun getSelectDialog(
-        context: Context, title: String, arrays: Array<String>,
-        onClickListener: DialogInterface.OnClickListener
+        context: Context, title: String, arrays: Array<String>, onClickListener: DialogInterface.OnClickListener
     ): AlertDialog.Builder {
         val builder = getDialog(context)
         builder.setItems(arrays, onClickListener)
@@ -82,8 +76,7 @@ object Dialog {
     }
 
     fun getSelectDialog(
-        context: Context, arrays: Array<String>,
-        onClickListener: DialogInterface.OnClickListener
+        context: Context, arrays: Array<String>, onClickListener: DialogInterface.OnClickListener
     ): AlertDialog.Builder {
         return getSelectDialog(context, "", arrays, onClickListener)
     }
@@ -109,8 +102,7 @@ object Dialog {
     }
 
     fun getSingleChoiceDialog(
-        context: Context, title: String, arrays: Array<String>,
-        selectIndex: Int, onClickListener: DialogInterface.OnClickListener
+        context: Context, title: String, arrays: Array<String>, selectIndex: Int, onClickListener: DialogInterface.OnClickListener
     ): AlertDialog.Builder {
         val builder = getDialog(context)
         builder.setSingleChoiceItems(arrays, selectIndex, onClickListener)
@@ -122,13 +114,15 @@ object Dialog {
     }
 
     fun getSingleChoiceDialog(
-        context: Context, arrays: Array<String>, selectIndex: Int,
-        onClickListener: DialogInterface.OnClickListener, onOKClickListener: DialogInterface.OnClickListener,
+        context: Context,
+        arrays: Array<String>,
+        selectIndex: Int,
+        onClickListener: DialogInterface.OnClickListener,
+        onOKClickListener: DialogInterface.OnClickListener,
         onCancelClickListener: DialogInterface.OnClickListener
     ): AlertDialog.Builder {
         return getSingleChoiceDialog(
-            context, "", arrays, selectIndex, onClickListener, onOKClickListener,
-            onCancelClickListener
+            context, "", arrays, selectIndex, onClickListener, onOKClickListener, onCancelClickListener
         )
     }
 

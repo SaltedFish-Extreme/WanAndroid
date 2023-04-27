@@ -72,7 +72,7 @@ class MyApplication : Application() {
             swipeBackTransformer = ParallaxSwipeBackTransformer()
         }
         //网络请求配置全局根路径
-        NetConfig.init(BaseURL) {
+        NetConfig.initialize(host = BaseURL, context = this) {
             //设置Gson解析方式
             setConverter(GsonConvert())
             //设置cookie管理器

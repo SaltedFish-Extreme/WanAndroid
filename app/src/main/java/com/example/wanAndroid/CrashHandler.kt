@@ -55,8 +55,7 @@ class CrashHandler private constructor(private val application: Application) : T
         val deadlyCrash: Boolean = currentCrashTime - lastCrashTime < 1000 * 60 * 5
         if (BuildConfig.DEBUG) {
             CrashActivity.start(application, throwable)
-        } else {
-            /*if (!deadlyCrash) {
+        } else {/*if (!deadlyCrash) {
                 // 如果不是致命的异常就自动重启应用
                 RestartActivity.start(application)
             }*/

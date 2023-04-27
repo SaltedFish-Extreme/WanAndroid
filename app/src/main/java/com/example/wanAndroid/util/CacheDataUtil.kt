@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Environment
 import java.io.File
 import java.math.BigDecimal
+import java.math.RoundingMode
 
 /**
  * Created by 咸鱼至尊 on 2022/2/8
@@ -82,16 +83,16 @@ object CacheDataUtil {
         }
         val megaByte: Double = kiloByte / 1024
         if (megaByte < 1) {
-            return BigDecimal(kiloByte).setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "KB"
+            return BigDecimal(kiloByte).setScale(2, RoundingMode.HALF_UP).toPlainString() + "KB"
         }
         val gigaByte: Double = megaByte / 1024
         if (gigaByte < 1) {
-            return BigDecimal(megaByte).setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "MB"
+            return BigDecimal(megaByte).setScale(2, RoundingMode.HALF_UP).toPlainString() + "MB"
         }
         val teraBytes: Double = gigaByte / 1024
         if (teraBytes < 1) {
-            return BigDecimal(gigaByte).setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "GB"
+            return BigDecimal(gigaByte).setScale(2, RoundingMode.HALF_UP).toPlainString() + "GB"
         }
-        return BigDecimal(teraBytes).setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "TB"
+        return BigDecimal(teraBytes).setScale(2, RoundingMode.HALF_UP).toPlainString() + "TB"
     }
 }

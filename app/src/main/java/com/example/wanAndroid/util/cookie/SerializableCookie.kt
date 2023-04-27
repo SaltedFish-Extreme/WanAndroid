@@ -40,6 +40,7 @@ class SerializableCookie(@field:Transient private val cookie: Cookie) : Serializ
     }
 
     /** 从对象流中构建cookie对象 */
+    @Suppress("unused")
     @Throws(IOException::class, ClassNotFoundException::class)
     private fun readObject(`in`: ObjectInputStream) {
         val name = `in`.readObject() as String
@@ -51,11 +52,7 @@ class SerializableCookie(@field:Transient private val cookie: Cookie) : Serializ
         val httpOnly = `in`.readBoolean()
         val hostOnly = `in`.readBoolean()
         val persistent = `in`.readBoolean()
-        var builder: Cookie.Builder = Cookie.Builder()
-            .name(name)
-            .value(value)
-            .expiresAt(expiresAt)
-            .path(path)
+        var builder: Cookie.Builder = Cookie.Builder().name(name).value(value).expiresAt(expiresAt).path(path)
         builder = if (hostOnly) builder.hostOnlyDomain(domain) else builder.domain(domain)
         builder = if (secure) builder.secure() else builder
         builder = if (httpOnly) builder.httpOnly() else builder

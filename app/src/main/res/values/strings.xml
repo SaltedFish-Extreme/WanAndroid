@@ -50,12 +50,12 @@
     <string name="setting_copyright">版权声明</string>
     <string name="setting_about">关于我们</string>
     <string name="setting_cache">0MB</string>
-    <string name="setting_recommend">好用的话推荐给你的小伙伴吧(ಡωಡ)</string>
+    <string name="setting_recommend">推荐给你的小伙伴们吧(ಡωಡ)</string>
     <string name="setting_version">当前版本 %s</string>
     <string name="setting_site">https://www.wanandroid.com</string>
     <string name="setting_code">SaltedFish-Extreme/wanandroid</string>
     <string name="setting_tips">仅作个人及非商业用途 ⊙ω⊙</string>
-    <string name="setting_desc">一个练习时长一年半的安卓菜鸡(ㅎ.ㅎ)</string>
+    <string name="setting_desc">练习时长两年半的安卓菜鸡(ㅎ.ㅎ)</string>
     <string name="clear_cache">确定清理缓存吗</string>
     <string name="clear_success">清理成功</string>
     <string name="update_address">https://wwz.lanzouo.com/b030pezzi</string>

@@ -18,8 +18,6 @@ class IntegralAdapter(dataList: MutableList<IntegralListResponse>) : BaseAdapter
     }
 
     override fun convert(holder: BaseViewHolder, item: IntegralListResponse) {
-        holder.setText(R.id.tv_reason, item.reason)
-            .setText(R.id.tv_desc, item.desc.html2Spanned())
-            .setText(R.id.tv_score, "+${item.coinCount}")
+        holder.setText(R.id.tv_reason, item.reason).setText(R.id.tv_desc, item.desc.html2Spanned()).setText(R.id.tv_score, "+${item.coinCount}")
     }
 }

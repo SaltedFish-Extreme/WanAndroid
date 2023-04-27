@@ -158,10 +158,12 @@ class NavigationFragment : Fragment() {
             position <= firstPosition -> {
                 rv.smoothScrollToPosition(position)
             }
+
             position <= lastPosition -> {
                 val top: Int = rv.getChildAt(position - firstPosition).top
                 rv.smoothScrollBy(0, top)
             }
+
             else -> {
                 rv.smoothScrollToPosition(position)
                 scroll = true

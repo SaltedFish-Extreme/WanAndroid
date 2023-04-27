@@ -36,6 +36,7 @@ class SettingActivity : BaseActivity(), SwipeBackAbility.Direction {
     private val settingCopyright: SettingBar by lazy { findViewById(R.id.setting_copyright) }
     private val settingAbout: SettingBar by lazy { findViewById(R.id.setting_about) }
 
+    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)

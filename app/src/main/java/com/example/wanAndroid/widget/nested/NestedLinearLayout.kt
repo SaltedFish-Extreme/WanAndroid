@@ -60,6 +60,7 @@ class NestedLinearLayout @JvmOverloads constructor(context: Context, attrs: Attr
                 activePointerId = event.getPointerId(0)
                 startNestedScroll(ViewCompat.SCROLL_AXIS_VERTICAL)
             }
+
             MotionEvent.ACTION_MOVE -> run {
                 val activePointerIndex: Int = event.findPointerIndex(activePointerId)
                 if (activePointerIndex == -1) {
@@ -89,11 +90,11 @@ class NestedLinearLayout @JvmOverloads constructor(context: Context, attrs: Attr
                     }
                 }
             }
+
             MotionEvent.ACTION_CANCEL, MotionEvent.ACTION_UP -> {
                 if (beingDragged) {
                     velocityTracker?.computeCurrentVelocity(1000, maximumVelocity)
-                    var initialVelocity: Int? =
-                        velocityTracker?.getYVelocity(activePointerId)?.toInt()
+                    var initialVelocity: Int? = velocityTracker?.getYVelocity(activePointerId)?.toInt()
                     if (initialVelocity == null) {
                         initialVelocity = 0
                     }
@@ -104,11 +105,13 @@ class NestedLinearLayout @JvmOverloads constructor(context: Context, attrs: Attr
                 activePointerId = INVALID_POINTER
                 endDrag()
             }
+
             MotionEvent.ACTION_POINTER_DOWN -> {
                 val index: Int = event.actionIndex
                 lastMotionY = event.getY(index).toInt()
                 activePointerId = event.getPointerId(index)
             }
+
             MotionEvent.ACTION_POINTER_UP -> {
                 onSecondaryPointerUp(event)
                 lastMotionY = event.getY(event.findPointerIndex(activePointerId)).toInt()
@@ -119,8 +122,7 @@ class NestedLinearLayout @JvmOverloads constructor(context: Context, attrs: Attr
     }
 
     private fun onSecondaryPointerUp(ev: MotionEvent) {
-        val pointerIndex: Int = ((ev.action and MotionEvent.ACTION_POINTER_INDEX_MASK)
-                shr MotionEvent.ACTION_POINTER_INDEX_SHIFT)
+        val pointerIndex: Int = ((ev.action and MotionEvent.ACTION_POINTER_INDEX_MASK) shr MotionEvent.ACTION_POINTER_INDEX_SHIFT)
         val pointerId: Int = ev.getPointerId(pointerIndex)
         if (pointerId == activePointerId) {
             val newPointerIndex: Int = if (pointerIndex == 0) 1 else 0

@@ -27,8 +27,7 @@ class SystemAdapter(dataList: MutableList<SystemResponse>) : BaseAdapter<SystemR
                 //传递页面标题 子名称集合 子ID集合
                 "title" to dataList[position].name,
                 "content" to dataList[position].children.map { it.name },
-                "cid" to dataList[position].children.map { it.id }
-            )
+                "cid" to dataList[position].children.map { it.id })
         }
     }
 
@@ -55,10 +54,7 @@ class SystemAdapter(dataList: MutableList<SystemResponse>) : BaseAdapter<SystemR
                 //打开体系页面
                 context.openActivity<SystemActivity>(
                     //传递页面标题 子名称集合 子ID集合 索引
-                    "title" to item.name,
-                    "content" to item.children.map { it.name },
-                    "cid" to item.children.map { it.id },
-                    "index" to position
+                    "title" to item.name, "content" to item.children.map { it.name }, "cid" to item.children.map { it.id }, "index" to position
                 )
             }
             this
