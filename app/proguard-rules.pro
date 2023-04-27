@@ -3,12 +3,6 @@
 
 -dontusemixedcaseclassnames
 
--dontskipnonpubliclibraryclasses
-
--dontskipnonpubliclibraryclassmembers
-
--dontpreverify
-
 -verbose
 -printmapping priguardMapping.txt
 
