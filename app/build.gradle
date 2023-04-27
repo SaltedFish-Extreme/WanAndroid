@@ -105,7 +105,7 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
     //OkHttp
     //noinspection GradleDependency
-    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.11.0'
     //网络请求 https://github.com/liangjingkanji/Net
     implementation 'com.github.liangjingkanji:Net:3.5.8'
     //JSON解析
