@@ -102,6 +102,7 @@ class MyFragmentNavigator(
             initialNavigation -> {
                 true
             }
+
             isSingleTopReplacement -> {
                 // Single Top means we only want one instance on the back stack
                 if (mBackStack.size > 1) {
@@ -117,6 +118,7 @@ class MyFragmentNavigator(
                 }
                 false
             }
+
             else -> {
                 ft.addToBackStack(generateBackStackName(mBackStack.size + 1, destId))
                 true

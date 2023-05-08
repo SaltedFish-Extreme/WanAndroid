@@ -67,6 +67,9 @@
 
 -dontwarn com.just.agentweb.**
 
+-dontwarn com.download.library.DownloadStatusListener
+-dontwarn com.download.library.DownloadTask
+
 ################Litepal###############
 -keep class org.litepal.** { *; }
 -keep class * extends org.litepal.crud.LitePalSupport { *; }

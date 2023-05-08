@@ -12,8 +12,8 @@ android {
         applicationId "com.example.wanandroid"
         minSdk 24
         targetSdk 33
-        versionCode 16
-        versionName "3.6.0"
+        versionCode 17
+        versionName "3.7.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -82,7 +82,7 @@ dependencies {
     //默认
     implementation 'androidx.core:core-ktx:1.10.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     //region 注释掉不使用viewModel和liveData及retrofit
     /*//activity和fragment的kotlin扩展
@@ -152,7 +152,6 @@ dependencies {
     implementation 'com.google.android.flexbox:flexbox:3.0.0'
     //垂直选项卡布局 https://github.com/qstumn/VerticalTabLayout
     implementation 'q.rorbin:VerticalTabLayout:1.2.9'
-    //implementation 'com.github.angcyo.DslTablayout:TabLayout:3.1.0'
     //web浏览器 https://github.com/Justson/AgentWeb
     implementation 'com.github.Justson.AgentWeb:agentweb-core:v5.0.6-androidx'
     //web文件下载 https://github.com/Justson/Downloader

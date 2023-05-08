@@ -2,9 +2,11 @@ package com.example.wanAndroid.ui.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.drake.serialize.intent.openActivity
@@ -79,6 +81,10 @@ class SquareFragment : Fragment() {
         }
         //缓存所有fragment，不会销毁重建
         viewPager.offscreenPageLimit = fragments.size
+        //将viewpager指示器居中左对齐(留出添加按钮的位置)
+        val params = magicIndicator.layoutParams as FrameLayout.LayoutParams
+        params.gravity = Gravity.CENTER_VERTICAL
+        magicIndicator.layoutParams = params
     }
 
     override fun onResume() {
