@@ -28,7 +28,7 @@ import okhttp3.HttpUrl;
  *
  * @author linzhiyong
  * @email wflinzhiyong@163.com
- * @blog https://www.jianshu.com/p/23b35d403148
+ * @blog <a href="https://www.jianshu.com/p/23b35d403148">...</a>
  * @time 2018/7/20
  */
 @SuppressWarnings("unused")
@@ -64,7 +64,6 @@ public class PersistentCookieStore implements CookieStore {
                 this.cookies.put((String) key, new ConcurrentHashMap<>());
             }
 
-            assert cookieNames != null;
             String[] cookieNameArr = cookieNames.split(",");
             for (String name : cookieNameArr) {
                 String encodedCookie = this.cookiePrefs.getString("cookie_" + name, null);

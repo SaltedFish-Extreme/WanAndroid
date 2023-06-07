@@ -18,12 +18,14 @@ class BottomNavigationBehavior(context: Context, attrs: AttributeSet?) : Coordin
     private var inAnimator: ObjectAnimator? = null
 
     //垂直滑动
+    @Deprecated("Deprecated in Java", ReplaceWith("axes == ViewCompat.SCROLL_AXIS_VERTICAL", "androidx.core.view.ViewCompat"))
     override fun onStartNestedScroll(
         coordinatorLayout: CoordinatorLayout, child: View, directTargetChild: View, target: View, axes: Int
     ): Boolean {
         return axes == ViewCompat.SCROLL_AXIS_VERTICAL
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onNestedPreScroll(
         coordinatorLayout: CoordinatorLayout, child: View, target: View, dx: Int, dy: Int, consumed: IntArray
     ) {

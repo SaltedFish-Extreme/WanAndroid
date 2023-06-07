@@ -16,7 +16,6 @@ import androidx.annotation.ColorInt
 import androidx.annotation.FloatRange
 import androidx.annotation.IntRange
 import androidx.annotation.LayoutRes
-import androidx.annotation.Nullable
 import androidx.core.view.get
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
@@ -101,7 +100,7 @@ fun alphaColor(@ColorInt color: Int, @FloatRange(from = 0.0, to = 1.0) alpha: Fl
  * @param flag 转换方式，可空
  * @return Spanned可视化文本
  */
-fun String.html2Spanned(@Nullable flag: Int = Html.FROM_HTML_MODE_LEGACY): Spanned {
+fun String.html2Spanned(flag: Int = Html.FROM_HTML_MODE_LEGACY): Spanned {
     return Html.fromHtml(this, flag)
 }
 
@@ -113,7 +112,7 @@ fun String.html2Spanned(@Nullable flag: Int = Html.FROM_HTML_MODE_LEGACY): Spann
  * @param flag 转换方式，可空
  * @return String字符串
  */
-fun String.html2String(@Nullable flag: Int = Html.FROM_HTML_MODE_LEGACY): String {
+fun String.html2String(flag: Int = Html.FROM_HTML_MODE_LEGACY): String {
     return Html.fromHtml(this, flag).toString()
 }
 
