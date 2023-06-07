@@ -12,8 +12,8 @@ android {
         applicationId "com.example.wanandroid"
         minSdk 24
         targetSdk 33
-        versionCode 17
-        versionName "3.7.0"
+        versionCode 18
+        versionName "3.8.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -64,6 +64,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
@@ -80,7 +81,7 @@ dependencies {
     //implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
 
     //默认
-    implementation 'androidx.core:core-ktx:1.10.0'
+    implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -102,7 +103,7 @@ dependencies {
     //noinspection GradleDependency
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
     //协程
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1'
     //OkHttp
     //noinspection GradleDependency
     implementation 'com.squareup.okhttp3:okhttp:4.11.0'
@@ -139,11 +140,11 @@ dependencies {
     //相机相册 https://github.com/HuanTanSheng/EasyPhotos
     implementation 'com.github.HuanTanSheng:EasyPhotos:3.1.5'
     //标题栏 https://github.com/getActivity/TitleBar
-    implementation 'com.github.getActivity:TitleBar:10.3'
+    implementation 'com.github.getActivity:TitleBar:10.5'
     //吐司 https://github.com/getActivity/Toaster
-    implementation 'com.github.getActivity:Toaster:12.2'
+    implementation 'com.github.getActivity:Toaster:12.3'
     //权限请求 https://github.com/getActivity/XXPermissions
-    implementation 'com.github.getActivity:XXPermissions:18.0'
+    implementation 'com.github.getActivity:XXPermissions:18.2'
     //Shape https://github.com/getActivity/ShapeView
     implementation 'com.github.getActivity:ShapeView:8.5'
     //揭示效果 https://github.com/goweii/RevealLayout
