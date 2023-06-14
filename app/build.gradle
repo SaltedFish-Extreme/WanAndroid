@@ -12,8 +12,8 @@ android {
         applicationId "com.example.wanandroid"
         minSdk 24
         targetSdk 33
-        versionCode 19
-        versionName "3.9.0"
+        versionCode 20
+        versionName "4.0.0"
 
         // 仅保留中文语种的资源
         resConfigs 'zh'

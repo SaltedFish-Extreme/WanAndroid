@@ -1,6 +1,5 @@
 package com.example.wanAndroid.ui.activity
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.inputmethod.EditorInfo
 import android.widget.ImageView
@@ -91,7 +90,6 @@ class SearchActivity : BaseActivity() {
     }
 
     /** 初始化搜索热词 */
-    @SuppressLint("NotifyDataSetChanged")
     private fun initSearchHot() {
         if (AppConfig.SearchHot.isEmpty()) {
             //没有存储过搜索热词就发起请求
@@ -102,8 +100,6 @@ class SearchActivity : BaseActivity() {
                 AppConfig.SearchHot.addAll(data.data)
                 //给adapter设置数据
                 hotAdapter.setList(data.data)
-                //刷新adapter数据
-                hotAdapter.notifyDataSetChanged()
             }
         } else {
             //存储过搜索热词直接获取并设置给adapter
