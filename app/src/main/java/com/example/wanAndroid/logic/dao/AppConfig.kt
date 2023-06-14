@@ -12,11 +12,11 @@ object AppConfig {
     /** 是否夜间主题 */
     var DarkTheme: Boolean by serialLazy(false) //懒加载
 
-    /** 搜索热词 每次打开app重新初始化赋值一次 */
+    /** 搜索热词 全局变量 每次打开app重新初始化赋值 */
     val SearchHot: MutableList<SearchHotResponse> by lazy { (mutableListOf()) }
 
-    /** 搜索记录 永久保存磁盘，app删除或者赋值为null清除 */
-    var SearchHistory: ArrayList<String> by serialLazy(arrayListOf())
+    /** 搜索记录 永久保存磁盘，app删除或者赋值为null时清除 */
+    var SearchHistory: MutableList<String> by serialLazy(mutableListOf())
 
     /** 玩安卓登陆后返回的Cookie 永久保存磁盘，app删除或者赋值为null清除 */
     var Cookie: HashMap<String, String> by serialLazy(hashMapOf())

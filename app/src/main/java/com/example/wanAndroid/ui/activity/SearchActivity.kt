@@ -60,8 +60,8 @@ class SearchActivity : BaseActivity() {
         initSearchHistory()
         //清空图标重置存储的历史记录并重置adapter
         clear.setOnClickListener {
+            historyAdapter.setList(emptyList())
             AppConfig.SearchHistory = arrayListOf()
-            historyAdapter.setList(arrayListOf())
         }
         //输入框监听软键盘操作
         searchText.setOnEditorActionListener { _, actionId, _ ->
@@ -151,12 +151,8 @@ class SearchActivity : BaseActivity() {
                     R.id.item_history_image -> {
                         //从adapter删除指定数据
                         historyAdapter.removeAt(position)
-                        AppConfig.SearchHistory.apply {
-                            //从存储中删除指定数据
-                            removeAt(position)
-                            //改变序列化对象内的字段要求重新赋值
-                            AppConfig.SearchHistory = this
-                        }
+                        //改变序列化对象内的字段要求重新赋值
+                        AppConfig.SearchHistory = historyAdapter.data
                     }
                 }
             }
@@ -167,26 +163,21 @@ class SearchActivity : BaseActivity() {
 
     /** 更新搜索记录 */
     private fun updateKey(keyStr: String) {
-        AppConfig.SearchHistory.apply {
-            if (contains(keyStr)) {
-                //当搜索记录中包含该数据时 删除
+        historyAdapter.apply {
+            if (data.contains(keyStr)) {
+                //当搜索记录中包含该数据时 删除此记录
                 remove(keyStr)
-                //同时从adapter中删除
-                historyAdapter.remove(keyStr)
-            } else if (size >= 10) {
+            }
+            if (data.size >= 10) {
                 //如果集合的size 有10个以上了，删除最后一个
-                removeAt(size - 1)
-                //同时从adapter中删除
-                historyAdapter.removeAt(size - 1)
+                remove(data.last())
             }
             //添加新数据到第一条
-            add(0, keyStr)
-            //同时添加到adapter
-            historyAdapter.addData(0, keyStr)
+            addData(0, keyStr)
             //滚动到rv顶部
             rvHistory.scrollToPosition(0)
-            //改变序列化对象内的字段要求重新赋值
-            AppConfig.SearchHistory = this
+            //重新赋值序列化对象
+            AppConfig.SearchHistory = data
         }
     }
 }
