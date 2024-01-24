@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.drake.serialize.intent.openActivity
@@ -30,7 +31,7 @@ class SquareFragment : Fragment() {
     private val toolbar: MaterialToolbar by lazy { requireActivity().findViewById(R.id.toolbar) }
     private val viewPager: ViewPager2 by lazy { requireView().findViewById(R.id.view_pager) }
     private val magicIndicator: MagicIndicator by lazy { requireView().findViewById(R.id.magic_indicator) }
-    private val toolbarChild: androidx.appcompat.widget.Toolbar by lazy { requireView().findViewById(R.id.include_viewpager_toolbar) }
+    private val toolbarChild: Toolbar by lazy { requireView().findViewById(R.id.include_viewpager_toolbar) }
 
     /** fragment集合 */
     private val fragments: ArrayList<Fragment> by lazy { arrayListOf() }

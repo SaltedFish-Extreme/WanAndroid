@@ -12,8 +12,8 @@ android {
         applicationId "com.example.wanandroid"
         minSdk 24
         targetSdk 33
-        versionCode 22
-        versionName "4.0.2"
+        versionCode 23
+        versionName "4.0.3"
 
         // 仅保留中文语种的资源
         resConfigs 'zh'
@@ -106,6 +106,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'*/
     //endregion
     //vm生命周期kotlin扩展包
+    //noinspection GradleDependency
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2'
     //navigation支持
     //noinspection GradleDependency
@@ -130,7 +131,7 @@ dependencies {
     implementation 'com.github.liangjingkanji:StateLayout:1.4.1'*/
     //endregion
     //RecyclerView https://github.com/liangjingkanji/BRV
-    implementation 'com.github.liangjingkanji:BRV:1.5.6'
+    implementation 'com.github.liangjingkanji:BRV:1.5.8'
     //Adapter https://github.com/CymChad/BaseRecyclerViewAdapterHelper
     implementation "io.github.cymchad:BaseRecyclerViewAdapterHelper:3.0.14"
     //序列化数据 https://github.com/liangjingkanji/Serialize
@@ -146,7 +147,7 @@ dependencies {
     //图片加载 https://github.com/bumptech/glide
     implementation 'com.github.bumptech.glide:glide:4.16.0'
     //轮播图 https://github.com/youth5201314/banner
-    implementation 'io.github.youth5201314:banner:2.2.2'
+    implementation 'io.github.youth5201314:banner:2.2.3'
     //相机相册 https://github.com/HuanTanSheng/EasyPhotos
     implementation 'com.github.HuanTanSheng:EasyPhotos:3.1.5'
     //标题栏 https://github.com/getActivity/TitleBar
@@ -164,7 +165,7 @@ dependencies {
     //垂直选项卡布局 https://github.com/qstumn/VerticalTabLayout
     implementation 'q.rorbin:VerticalTabLayout:1.2.9'
     //web浏览器 https://github.com/Justson/AgentWeb
-    implementation 'com.github.Justson.AgentWeb:agentweb-core:v5.0.6-androidx'
+    implementation 'io.github.justson:agentweb-core:v5.1.1-androidx'
     //web文件下载 https://github.com/Justson/Downloader
     implementation 'com.github.Justson:Downloader:v5.0.4-androidx'
     //web进度指示条 https://github.com/Justson/CoolIndicator
