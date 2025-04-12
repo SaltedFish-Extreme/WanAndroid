@@ -21,6 +21,7 @@ import com.example.wanAndroid.logic.net.NetApi
 import com.example.wanAndroid.ui.base.BaseActivity
 import com.example.wanAndroid.widget.dialog.Dialog
 import com.example.wanAndroid.widget.ext.interceptLongClick
+import com.example.wanAndroid.widget.ext.loginActivityForResult
 import com.example.wanAndroid.widget.ext.margin
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -159,33 +160,9 @@ class MainActivity : BaseActivity(), SwipeBackAbility.Direction {
         //侧滑栏菜单项点击事件监听
         navView.setNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.nav_integral -> {
-                    if (AppConfig.UserName.isEmpty()) {
-                        Toaster.show(getString(R.string.please_login))
-                        startActivityForResult(Intent(this, LoginActivity::class.java), 0, null)
-                    } else {
-                        openActivity<IntegralActivity>()
-                    }
-                }
-
-                R.id.nav_collect -> {
-                    if (AppConfig.UserName.isEmpty()) {
-                        Toaster.show(getString(R.string.please_login))
-                        startActivityForResult(Intent(this, LoginActivity::class.java), 0, null)
-                    } else {
-                        openActivity<CollectActivity>()
-                    }
-                }
-
-                R.id.nav_share -> {
-                    if (AppConfig.UserName.isEmpty()) {
-                        Toaster.show(getString(R.string.please_login))
-                        startActivityForResult(Intent(this, LoginActivity::class.java), 0, null)
-                    } else {
-                        openActivity<ShareActivity>()
-                    }
-                }
-
+                R.id.nav_integral -> loginActivityForResult<IntegralActivity>()
+                R.id.nav_collect -> loginActivityForResult<CollectActivity>()
+                R.id.nav_share -> loginActivityForResult<ShareActivity>()
                 R.id.nav_record -> openActivity<HistoryRecordActivity>()
                 R.id.nav_setting -> openActivity<SettingActivity>()
                 R.id.nav_exit -> {

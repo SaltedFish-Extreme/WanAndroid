@@ -19,6 +19,7 @@ import com.example.wanAndroid.logic.model.NoDataResponse
 import com.example.wanAndroid.logic.net.NetApi
 import com.example.wanAndroid.ui.activity.*
 import com.example.wanAndroid.widget.dialog.Dialog
+import com.example.wanAndroid.widget.ext.loginActivityForResult
 import com.example.wanAndroid.widget.settingbar.SettingBar
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.imageview.ShapeableImageView
@@ -64,30 +65,9 @@ class MineFragment : Fragment() {
             }
         }
         rankImage.setOnClickListener { openActivity<LeaderboardActivity>() }
-        mineIntegral.setOnClickListener {
-            if (AppConfig.UserName.isEmpty()) {
-                Toaster.show(getString(R.string.please_login))
-                startActivityForResult(Intent(context, LoginActivity::class.java), 0, null)
-            } else {
-                openActivity<IntegralActivity>()
-            }
-        }
-        mineCollect.setOnClickListener {
-            if (AppConfig.UserName.isEmpty()) {
-                Toaster.show(getString(R.string.please_login))
-                startActivityForResult(Intent(context, LoginActivity::class.java), 0, null)
-            } else {
-                openActivity<CollectActivity>()
-            }
-        }
-        mineShare.setOnClickListener {
-            if (AppConfig.UserName.isEmpty()) {
-                Toaster.show(getString(R.string.please_login))
-                startActivityForResult(Intent(context, LoginActivity::class.java), 0, null)
-            } else {
-                openActivity<ShareActivity>()
-            }
-        }
+        mineIntegral.setOnClickListener { loginActivityForResult<IntegralActivity>() }
+        mineCollect.setOnClickListener { loginActivityForResult<CollectActivity>() }
+        mineShare.setOnClickListener { loginActivityForResult<ShareActivity>() }
         mineRecord.setOnClickListener { openActivity<HistoryRecordActivity>() }
         mineSetting.setOnClickListener { openActivity<SettingActivity>() }
         //未登录隐藏登出项，登陆可见

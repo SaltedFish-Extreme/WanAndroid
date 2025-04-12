@@ -24,12 +24,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.drake.serialize.intent.openActivity
+import com.drake.serialize.intent.openActivityForResult
 import com.example.wanAndroid.R
+import com.example.wanAndroid.logic.dao.AppConfig
+import com.example.wanAndroid.ui.activity.LoginActivity
 import com.example.wanAndroid.widget.viewpager.ScaleTransitionPagerTitleView
 import com.example.wanAndroid.widget.web.CoolIndicatorLayout
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.hjq.toast.Toaster
 import com.just.agentweb.AgentWeb
 import com.just.agentweb.DefaultWebClient
 import com.just.agentweb.WebChromeClient
@@ -136,9 +141,9 @@ fun String.getAgentWeb(
     webChromeClient: WebChromeClient,
 ): AgentWeb = AgentWeb.with(activity)//传入Activity or Fragment
     .setAgentWebParent(webContent, 1, layoutParams)//传入AgentWeb的父控件
-    .setCustomIndicator(CoolIndicatorLayout(activity)).setWebView(webView).setWebViewClient(webViewClient).setWebChromeClient(webChromeClient)
-    .setMainFrameErrorView(R.layout.agentweb_error_page, -1).setSecurityType(AgentWeb.SecurityType.STRICT_CHECK)
-    .setOpenOtherPageWays(DefaultWebClient.OpenOtherPageWays.DISALLOW)//不允许打开其他应用
+    .setCustomIndicator(CoolIndicatorLayout(activity)).setWebView(webView).setWebViewClient(webViewClient)
+    .setWebChromeClient(webChromeClient).setMainFrameErrorView(R.layout.agentweb_error_page, -1)
+    .setSecurityType(AgentWeb.SecurityType.STRICT_CHECK).setOpenOtherPageWays(DefaultWebClient.OpenOtherPageWays.DISALLOW)//不允许打开其他应用
     .interceptUnkownUrl().createAgentWeb().ready().go(this)
 
 /**
@@ -387,5 +392,33 @@ fun View.margin(l: Int, t: Int, r: Int, b: Int, v: View = this) {
         val p = v.layoutParams as ViewGroup.MarginLayoutParams
         p.setMargins(l, t, r, b)
         v.requestLayout()
+    }
+}
+
+/**
+ * 登录判断跳转指定Activity(Activity使用)
+ *
+ * @param T 跳转目标Activity
+ */
+inline fun <reified T : Activity> Activity.loginActivityForResult() {
+    if (AppConfig.UserName.isEmpty()) {
+        Toaster.show(getString(R.string.please_login))
+        openActivityForResult<LoginActivity>(0)
+    } else {
+        openActivity<T>()
+    }
+}
+
+/**
+ * 登录判断跳转指定Activity(Fragment使用)
+ *
+ * @param T 跳转目标Activity
+ */
+inline fun <reified T : Activity> Fragment.loginActivityForResult() {
+    if (AppConfig.UserName.isEmpty()) {
+        Toaster.show(getString(R.string.please_login))
+        openActivityForResult<LoginActivity>(0)
+    } else {
+        openActivity<T>()
     }
 }

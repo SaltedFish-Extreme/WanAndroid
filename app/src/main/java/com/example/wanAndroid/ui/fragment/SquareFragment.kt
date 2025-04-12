@@ -1,6 +1,5 @@
 package com.example.wanAndroid.ui.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -10,15 +9,12 @@ import android.widget.FrameLayout
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import com.drake.serialize.intent.openActivity
 import com.example.wanAndroid.R
-import com.example.wanAndroid.logic.dao.AppConfig
-import com.example.wanAndroid.ui.activity.LoginActivity
 import com.example.wanAndroid.ui.activity.ShareArticleActivity
 import com.example.wanAndroid.widget.ext.bindViewPager2
 import com.example.wanAndroid.widget.ext.init
+import com.example.wanAndroid.widget.ext.loginActivityForResult
 import com.google.android.material.appbar.MaterialToolbar
-import com.hjq.toast.Toaster
 import net.lucode.hackware.magicindicator.MagicIndicator
 
 /**
@@ -52,23 +48,15 @@ class SquareFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_project, container, false)
     }
 
-    @Suppress("DEPRECATION")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         toolbarChild.run {
             //填充子toolbar右侧菜单项
             inflateMenu(R.menu.menu_toolbar_child_add)
             setOnMenuItemClickListener {
+                //添加按钮要执行的操作
                 when (it.itemId) {
-                    //添加按钮要执行的操作
-                    R.id.add -> {
-                        if (AppConfig.UserName.isEmpty()) {
-                            Toaster.show(getString(R.string.please_login))
-                            startActivityForResult(Intent(context, LoginActivity::class.java), 0, null)
-                        } else {
-                            openActivity<ShareArticleActivity>()
-                        }
-                    }
+                    R.id.add -> loginActivityForResult<ShareArticleActivity>()
                 }
                 true
             }
