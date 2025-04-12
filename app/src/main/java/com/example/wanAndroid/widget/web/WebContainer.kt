@@ -15,7 +15,7 @@ import com.example.wanAndroid.widget.ext.alphaColor
  */
 class WebContainer : CoordinatorLayout {
 
-    private val mMaskColor by lazy { alphaColor(ContextCompat.getColor(context, R.color.color_web_bg_draw), 0.5f) }
+    private val mMaskColor by lazy { alphaColor(ContextCompat.getColor(context, R.color.color_web_bg_draw), 0.2f) }
 
     constructor(context: Context) : super(context)
 

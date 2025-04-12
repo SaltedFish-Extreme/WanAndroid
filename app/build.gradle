@@ -12,8 +12,8 @@ android {
         applicationId "com.example.wanandroid"
         minSdk 24
         targetSdk 33
-        versionCode 23
-        versionName "4.0.3"
+        versionCode 24
+        versionName "4.0.4"
 
         // 仅保留中文语种的资源
         resConfigs 'zh'
@@ -85,11 +85,13 @@ dependencies {
     //implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
 
     //AndroidX库 https://github.com/androidx/androidx
+    //noinspection GradleDependency
     implementation 'androidx.appcompat:appcompat:1.6.1'
     //Material库 https://github.com/material-components/material-components-android
     //noinspection GradleDependency
     implementation 'com.google.android.material:material:1.9.0'
     //约束布局
+    //noinspection GradleDependency
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     //kotlin核心包
     //noinspection GradleDependency
